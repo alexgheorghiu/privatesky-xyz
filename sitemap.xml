@@ -37,13 +37,13 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/rawdossiers</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/virtualmq</loc>
+        <loc>https://privatesky.xyz/?API/virtualmq/overview</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/brick-storage</loc>
+        <loc>https://privatesky.xyz/?API/virtualmq/brick-storage</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/anchoring</loc>
+        <loc>https://privatesky.xyz/?API/virtualmq/anchoring</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/message-passing</loc>
+        <loc>https://privatesky.xyz/?API/virtualmq/message-passing</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/ssapp</loc>
       </url><url>
