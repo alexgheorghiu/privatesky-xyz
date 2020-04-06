@@ -94,16 +94,21 @@
                         "name": "RawDossiers"
                     },
                     {
-                        "name": "VirtualMQ"
-                    },
-                    {
-                        "name": "Brick Storage"
-                    },
-                    {
-                        "name": "Anchoring"
-                    },
-                    {
-                        "name": "Message Passing"
+                        "name": "VirtualMQ",
+                        "children": [
+                            {
+                                "name": "Overview"
+                            },
+                            {
+                                "name": "Brick Storage"
+                            },
+                            {
+                                "name": "Anchoring"
+                            },
+                            {
+                                "name": "Message Passing"
+                            }
+                        ]
                     },
                     {
                         "name": "SSApp"
