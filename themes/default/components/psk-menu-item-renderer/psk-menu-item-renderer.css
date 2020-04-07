@@ -57,9 +57,6 @@ span.icon {
     width: 100%;
 }
 
-.dropdown {
-    cursor: pointer;
-}
 
 .dropdown.isOpened,
 .dropdown .children {
