@@ -1,26 +1,18 @@
-@import url(../../../commons/fonts/font-awesome.min.css);
-@import url(../../../commons/bootstrap/css/bootstrap.min.css);
 :host {
     width: 100%;
-    padding: 10px 0 10px 0;
-    display: block;
-    font-size: 16px;
 }
+
+
+/* no icons */
 
 span.icon {
-    color: rgba(255, 255, 255, .6);
-    margin-right: 10px;
-}
-
-.expand-menu {
-    position: absolute;
-    right: 5px;
-    top: 22px
+    display: none;
 }
 
 .wrapper_container {
     display: inline-block;
-    padding: 0 10px;
+    padding-left: 30px;
+    padding-right: 30px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -28,60 +20,74 @@ span.icon {
 .item_container {
     width: 100%;
     position: relative;
-    padding: 20px 0 0 0;
-    border-top: 1px solid rgba(255, 255, 255, .15);
+    padding: 7px 10px 7px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.40);
 }
 
 a,
-a span.icon,
 .item_container .item_name {
-    color: rgba(255, 255, 255, .7);
+    color: rgba(255, 255, 255);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     cursor: pointer;
+    font-weight: 600;
 }
 
-a.active,
-.dropdown.isOpened>.item_container>.item_name {
-    font-weight: 700;
+ /* adding pointer */
+a.active .item_name::before{
+  content: "";
+    background-image:url(../../../../assets/images/hand-point.svg);
+    background-size: 100% 100%;
+    display: inline-block;
+    height: 20px;
+    width:20px;
+    filter: invert(99%) sepia(3%) saturate(1419%) hue-rotate(225deg) brightness(123%) contrast(100%);
+    position: relative;
+    margin-left: -24px;
+    margin-right: 4px;
+    bottom: -5px;
 }
 
 a:hover,
 .item_container:hover>.item_name,
-.item_container:hover>span.icon,
-.dropdown.active>.wrapper_container>.item_container>span.icon,
-.dropdown.isOpened>.wrapper_container>.item_container>span.icon,
-.dropdown.active>.wrapper_container>.item_container>span.item_name,
-.dropdown.isOpened>.wrapper_container>.item_container>span.item_name,
-a:hover span.icon,
-a.active .item_name,
-a.active span.icon {
-    color: rgba(255, 255, 255, 1);
+.children .item_container .item_name:hover,
+a.active .item_name {
+    opacity: 85%;
+}
+
+
+/* no lines on subcategory */
+
+.children .item_container {
+    border-style: none;
+}
+
+.children .item_container .item_name {
+    font-weight: 400;
+}
+
+.children .wrapper_container {
+    padding: 0;
 }
 
 .children {
     position: relative;
     display: none;
-    padding-left: 10px;
-    padding-top: 20px;
-}
-
-.children .wrapper_container {
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-left: 30px;
 }
 
 .dropdown:hover {
     cursor: pointer;
 }
 
-:host([active]) .children,
-.dropdown.isOpened .wrapper_container>.children {
-    display: block;
+.item_container .fa {
+    display: none;
 }
 
-.dropdown.isOpened .fa-caret-right.expand-menu {
-    transform: rotate(90deg);
+:host([active]) .children,
+.dropdown.active .wrapper_container>.children,
+.dropdown.isOpened .wrapper_container>.children {
+    display: block;
 }
 
 :host([hamburger]) a div {
@@ -91,8 +97,10 @@ a.active span.icon {
 :host([hamburger]) div.children {
     position: relative;
     background: none;
-    top: 0;
+    top: 10px;
     width: 100%;
+    padding-bottom: 15px;
+    margin-top: -10px;
 }
 
 :host([hamburger]) div.children .item_container {
@@ -102,4 +110,8 @@ a.active span.icon {
 :host([hamburger]) .wrapper_container,
 :host([hamburger]) .dropdown {
     width: 100%;
+}
+
+:host([hamburger]) .wrapper_container {
+    padding-right: 40px;
 }
