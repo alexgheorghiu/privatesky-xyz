@@ -84,7 +84,7 @@ a.active .item_name {
     display: none;
 }
 
-:host([active])  .children,
+:host([active]) > .children,
 .dropdown.active > .wrapper_container>.children,
 .dropdown.isOpened > .wrapper_container>.children {
     display: block;
