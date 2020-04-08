@@ -288,6 +288,62 @@
         </psk-card>
     </psk-chapter>
 
+    <psk-chapter title="createReadStream">
+        The <code>createReadStream()</code> method creates a readable stream from the data written in a brick archive at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                createReadStream(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive entry from were the data is read.<br><br>
+                    <code><b>callback</b></code>
+                        The function called after the stream has been initialized or if an error occurs. It receives an error and the readable stream.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>createReadStream()</code> reads the bricks at a specified entry inside the archive and pushes the data into a readable stream.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the data stored at path "bar" inside the archive is read and returned through the callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const archive = edfs.createBar();
+                archive.writeFile("bar", "content", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the archive's hash", archiveDigest);
+                    archive.createReadStream("bar", (err, stream) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        stream.on('data', (chunk) => {
+                            console.log("Received part of the data: ", chunk);
+                        });
+
+                        stream.on('error', (err) => {
+                            console.error(err);
+                        })
+
+                        stream.on('end', () => {
+                            console.log("Stream has no more data");
+                        });
+                    });
+                });
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
     <psk-chapter title="listFiles">
         The <code>listFiles()</code> returns the names of all the files stored inside a brick archive at a specific path.
         <psk-card title="Syntax">
