@@ -111,7 +111,7 @@
                         ]
                     },
                     {
-                        "name": "SSApp"
+                        "name": "Service Worker Middleware"
                     }
                 ]
             },

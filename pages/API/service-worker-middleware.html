@@ -1,18 +1,18 @@
-<psk-page title="Self-Sovereign Application API">
+<psk-page title="Service Worker Middleware">
     <psk-toc title="In this section"></psk-toc>
 
     <psk-description>
-        <p>The SSapp API consists of a set of endpoints provided by the service worker middleware which will allow a developer to interact with the PrivateSky services through the HTTP protocol.</p>
+        <p>The SSApp service worker simulates a HTTP server environment with a set of endpoints which allow a developer to interact with the PrivateSky services using the HTTP protocol. These endpoints are implemented with the help of <code>Middleware</code> functions similar to the ones used by the Express Node.js framework.</p>
     </psk-description>
 
-    <psk-chapter title="Upload">
-        <p>Using this endpoint a developer can upload files in a brick archive. Both multipart/form-data and request body uploads are supported and multiple files can be uploaded in a single request.</p>
-
-        <psk-highlight title="Request" type-of-highlight="note">
-            <code>POST <strong>/upload</strong>?<strong>path</strong>=/upload/directory&<strong>input</strong>=files[]&<strong>filename</strong>=my-file.name&<strong>maxSize</strong>=100M&<strong>allowedTypes</strong>=application/json,image/jpeg</code>
-        </psk-highlight>
+    <psk-chapter title="Upload Middleware">
+        <p>The upload middleware provides an endpoint for uploading files to a brick archive. Both multipart/form-data and request body uploads are supported and multiple files can be uploaded in a single request.</p>
 
         <psk-chapter title="Request">
+            <psk-highlight title="Example" type-of-highlight="note">
+                <code>POST <strong>/upload</strong>?<strong>path</strong>=/upload/directory&<strong>input</strong>=files[]&<strong>filename</strong>=my-file.name&<strong>maxSize</strong>=100M&<strong>allowedTypes</strong>=image/jpeg</code>
+            </psk-highlight>
+
             <psk-table header="false" footer="false">
                 <strong>Parameter</strong> | <strong>Required</strong> | <strong>Description</strong>
                 path | <strong>true</strong> | Specifies the upload directory in the brick archive. If this directory doesn't exist it will be created
@@ -361,6 +361,28 @@
                 </psk-code>
             </psk-card>
         </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="Download Middleware">
+        <p>The endpoint provided by this middleware allows file downloading from a brick archive.</p>
+        <psk-chapter title="Request">
+            <psk-highlight title="Example" type-of-highlight="note">
+                <code>GET <strong>/download</strong>/path/to/file/in/brick/archive</code>
+            </psk-highlight>
+        </psk-chapter>
+
+        <p>The upload &amp; download middlewares make use of the <psk-link page="APIs/BARs">BARs API</psk-link>.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Communication middleware">
+        <p>The following middleware provide endpoints for communicating with different processes inside PrivateSky using VirtualMQ:</p>
+        <psk-list>
+            create channel
+            send message
+            forward message
+            receive message
+        </psk-list>
+        <p>The documentation for using those endpoints can be found by accessing the <psk-link page="APIs/VirtualMQ/Message Passing">VirtualMQ/Message Passing</psk-link> chapter.</p>
     </psk-chapter>
 
 </psk-page>
