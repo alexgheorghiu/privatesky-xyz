@@ -88,10 +88,18 @@
                         "name": "Blockchain"
                     },
                     {
-                        "name": "BARs"
-                    },
-                    {
-                        "name": "RawDossiers"
+                        "name": "EDFS",
+                        "children": [
+                            {
+                                "name": "Overview"
+                            },
+                            {
+                                "name": "BARs"
+                            },
+                            {
+                                "name": "RawDossiers"
+                            }
+                        ]
                     },
                     {
                         "name": "VirtualMQ",
@@ -111,7 +119,15 @@
                         ]
                     },
                     {
-                        "name": "Service Worker Middleware"
+                        "name": "SSApps",
+                        "children": [
+                            {
+                                "name": "Overview"
+                            },
+                            {
+                                "name": "Service Worker Middleware"
+                            }
+                        ]
                     }
                 ]
             },
@@ -119,18 +135,20 @@
                 "name": "EDFS",
                 "path": "/EDFS",
                 "icon": "fa-cog",
-                "children": [{
-                        "name": "EDFS"
-                    },
+                "children": [
                     {
                         "name": "Brick Archives"
                     },
                     {
-                        "name": "Cloud Safe Boxes"
-                    },
-                    {
-                        "name": "SSApps"
-                    },
+                        "name": "Raw Dossiers"
+                    }
+                ]
+            },
+            {
+                "name": "Blockchain",
+                "path": "/Blockchain",
+                "icon": "fa-cog",
+                "children": [
                     {
                         "name": "Secret Smart Contracts"
                     }
