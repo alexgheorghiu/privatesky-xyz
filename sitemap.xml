@@ -35,6 +35,8 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/edfs/overview</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?API/edfs/edfs</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?API/edfs/bars</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/edfs/rawdossiers</loc>
