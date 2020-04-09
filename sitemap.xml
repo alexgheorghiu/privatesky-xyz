@@ -33,9 +33,11 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/blockchain</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/bars</loc>
+        <loc>https://privatesky.xyz/?API/edfs/overview</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/rawdossiers</loc>
+        <loc>https://privatesky.xyz/?API/edfs/bars</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?API/edfs/rawdossiers</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/virtualmq/overview</loc>
       </url><url>
@@ -45,17 +47,15 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/virtualmq/message-passing</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/service-worker-middleware</loc>
+        <loc>https://privatesky.xyz/?API/ssapps/overview</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?EDFS/edfs</loc>
+        <loc>https://privatesky.xyz/?API/ssapps/service-worker-middleware</loc>
       </url><url>
         <loc>https://privatesky.xyz/?EDFS/brick-archives</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?EDFS/cloud-safe-boxes</loc>
+        <loc>https://privatesky.xyz/?EDFS/raw-dossiers</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?EDFS/ssapps</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?EDFS/secret-smart-contracts</loc>
+        <loc>https://privatesky.xyz/?Blockchain/secret-smart-contracts</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components-mvc</loc>
       </url><url>
