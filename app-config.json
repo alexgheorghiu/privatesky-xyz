@@ -85,7 +85,15 @@
                         "name": "Domains"
                     },
                     {
-                        "name": "Blockchain"
+                        "name": "Blockchain",
+                        "children": [
+                            {
+                                "name": "Overview"
+                            },
+                            {
+                                "name": "Blockchain"
+                            }
+                        ]
                     },
                     {
                         "name": "EDFS",

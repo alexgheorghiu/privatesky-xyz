@@ -1,0 +1,103 @@
+<psk-page title="Blockchain APIs">
+    <psk-highlight type-of-highlight="note">
+
+    </psk-highlight>
+    <psk-toc title="In this section"></psk-toc>
+    <psk-chapter title="start">
+        The <code>start()</code> initialises the blockchain's internal state.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                start(reportBootingFinishedCallback);
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>reportBootingFinishedCallback</b></code>
+                        The function called when the blockchain initialization is complete.
+                </psk-list>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="lookup">
+        The <code>lookup()</code> searches the blockchain for a specific asset and returns it.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                lookup(assetType, aid);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>assetType</b></code>
+                            A <code>string</code> representing the type of asset searched for in blockchain.
+                        <code><b>aid</b></code>
+                            An <code>alias</code> or <code>identifier</code> that uniquely identifies the asset of the specified
+                            type.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    The <code>asset</code> of the specified type that has the specific <code>alias</code> or <code>id</code>.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="startTransactionAs">
+        The <code>startTransactionAs()</code> calls a phase of a specified transaction swarm.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                startTransactionAs(agentId, transactionSwarmType, ...args);
+            </psk-code>
+            <psk-list list-type="unordered">
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>agentId</b></code>
+                            The <code>identifier</code> of the entity in the name of which the transaction's phase is called.
+                        <code><b>transactionSwarmType</b></code>
+                            The identifier of the <code>transaction swarm</code> started. The transaction swarm should be defined
+                            in blockchain's constitution.
+                        <code><b>...args</b></code>
+                            The list of arguments that the transaction swarm's <code>phase</code> called. The first argument of <code>...args</code>
+                            is the name of the <code>phase</code> called and the rest are the arguments taken by the <code>phase</code>.
+                    </psk-list>
+                </psk-card>
+                <psk-card title="Return value">
+                    The <code>transaction swarm</code> whose phase has been called.
+                </psk-card>
+            </psk-list>
+        </psk-card>
+
+        <psk-card title="Examples">
+            Below a transaction swarm of type <code>Constitution</code> is defined.
+            <psk-code language="JavaScript">
+                $$.transaction.describe("Constitution", {
+                    addAgent: function (alias, publicKey) {
+                        console.log("Adding Agent:", alias,  publicKey);
+                        let agent = this.transaction.createAsset("Agent", "init", alias, publicKey);
+                        this.commit();
+                });
+            </psk-code>
+                In the example below, the phase <code>addAgent()</code> of the transaction swarm <code>Constitution</code>
+                is called after a <code>Blockchain</code> instance is created through the function <code>createBlockchain</code>.
+            <psk-code>
+                    const bm = require("blockchain");
+
+                    function createBlockchain(onResult) {
+                        let worldStateCache = bm.createWorldStateCache("memory");
+                        let historyStorage = bm.createHistoryStorage("memory");
+                        let consensusAlgorithm = bm.createConsensusAlgorithm("direct");
+                        let signatureProvider = bm.createSignatureProvider("permissive");
+                        let blockchain = bm.createABlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider);
+                        blockchain.start(onResult)
+                    }
+
+                createBlockchain(function (err, blockchain) {
+                    if (err) {
+                        throw err;
+                    }
+                    blockchain.startTransactionAs("agent", "Constitution", "addAgent", "agentAlias", "PublicKey");
+                }
+
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
+</psk-page>
