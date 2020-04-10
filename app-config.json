@@ -26,7 +26,12 @@
                 "name": "Overview",
                 "path": "/overview",
                 "icon": "fa-cog",
-                "children": [{
+                "children": [
+
+                    {
+                        "name": "Why"
+                    },
+                    {
                         "name": "Main Innovations"
                     },
                     {
@@ -49,7 +54,6 @@
                     {
                         "name": "Swarms Explained"
                     },
-
                     {
                         "name": "Dependencies"
                     }
