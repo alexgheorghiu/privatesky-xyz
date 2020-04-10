@@ -21,6 +21,8 @@
 
                 filename | <strong>true</strong>| <strong>When uploading a file using the request body method this parameter is required.</strong> The contents of the file will be saved in the location provided by the <strong>path</strong> and <strong>filename</strong> parameters
 
+                preventOverwrite | | Set this to any non falsy value in order to prevent overwriting files with the same name. Defaults to <strong>false</strong>
+
                 maxSize | | Maximum allowed size for a single file. If this parameter is not provided, file size validation is skipped. This parameter can take a number value specifying the allowed number of bytes or a number suffixed with the size unit. Accepted unit sizes: <strong>b k m</strong>. Ex: <strong>65536 128K 32M</strong>. The unit size is case insensitive.
 
                 allowedTypes | | A list of mime types separated by a comma. Ex: <strong>allowedTypes=application/json,image/jpeg</strong>. If this paramater is not provided, file type validation is skipped.
