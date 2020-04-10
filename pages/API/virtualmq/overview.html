@@ -4,9 +4,9 @@
         storage and retrieval of bricks (blocks of data stored on the server in files identified by the block's cryptographic hash) and
         allows the grouping of different bricks under the same unique identifier (<code>anchor</code>). Each one of the three components is
         explained in more detail at the links below.
-        The VirtualMQ server can also be expanded to include custom services (besides the default ones below). The section
-        <a href="?API/virtualmq/overview&chapter=how-to-expand-a-virtualmq-server"> <code>How to expand a VirtualMQ server</code> </a> explains in more
-        detail how a VirtualMQ server can be expanded.
+        The VirtualMQ server can also be extended to include custom services (besides the default ones below). The section
+        <a href="?API/virtualmq/overview&chapter=how-to-extend-a-virtualmq-server"> <code>How to extend a VirtualMQ server</code> </a> explains in more
+        detail how a VirtualMQ server can be extended.
     </psk-highlight>
     <psk-toc title="In this section"></psk-toc>
     <psk-chapter title="Default VirtualMQ services">
@@ -67,10 +67,25 @@
         </psk-card>
     </psk-chapter>
 
-    <psk-chapter title="How to expand a VirtualMQ server">
+    <psk-chapter title="How to extend a VirtualMQ server">
         The <code>createVirtualMQ()</code> method starts a HTTP server and return the server instance. As a result, the
         server can be dynamically
-        expanded using the API below.
+        extended using the API below.
+        <psk-card title="server.use()">
+            <psk-card title="Syntax">
+                <psk-code language="JavaScript">
+                    server.use(url, handler);
+                </psk-code>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>url</b></code>
+                            The url where the server listens for requests.
+                        <code><b>handler</b></code>
+                            The function called for filtering requests that arrive at the server on the specified <code>url</code>.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-card>
         <psk-card title="server.put()">
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
@@ -116,6 +131,5 @@
                 </psk-card>
             </psk-card>
         </psk-card>
-
     </psk-chapter>
 </psk-page>
