@@ -23,18 +23,24 @@
             },
 
             {
-                "name": "PrivateSky",
-                "path": "/PrivateSky",
+                "name": "Overview",
+                "path": "/overview",
                 "icon": "fa-cog",
                 "children": [{
                         "name": "Main Innovations"
                     },
                     {
-                        "name": "Why",
-                        "indexed": "false"
+                        "name": "Architecture"
                     },
                     {
-                        "name": "Architecture"
+                        "name": "Blockchain",
+                        "path": "/Blockchain",
+                        "icon": "fa-cog",
+                        "children": [
+                            {
+                                "name": "Secret Smart Contracts"
+                            }
+                        ]
                     },
                     {
                         "name": "Development Vision",
@@ -43,23 +49,9 @@
                     {
                         "name": "Swarms Explained"
                     },
-                    {
-                        "name": "Interactions"
-                    },
-                    {
-                        "name": "Installation"
-                    },
+
                     {
                         "name": "Dependencies"
-                    },
-                    {
-                        "name": "Build"
-                    },
-                    {
-                        "name": "How to web"
-                    },
-                    {
-                        "name": "Code Examples"
                     }
                 ]
             },
@@ -74,15 +66,6 @@
                     },
                     {
                         "name": "Swarms"
-                    },
-                    {
-                        "name": "Interactions"
-                    },
-                    {
-                        "name": "Error Handling"
-                    },
-                    {
-                        "name": "Domains"
                     },
                     {
                         "name": "Blockchain",
@@ -113,7 +96,7 @@
                         ]
                     },
                     {
-                        "name": "VirtualMQ",
+                        "name": "Web - Services",
                         "children": [
                             {
                                 "name": "Overview"
@@ -125,7 +108,7 @@
                                 "name": "Anchoring"
                             },
                             {
-                                "name": "Message Passing"
+                                "name": "VirtualMQ"
                             }
                         ]
                     },
@@ -139,29 +122,12 @@
                                 "name": "Service Worker Middleware"
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "name": "EDFS",
-                "path": "/EDFS",
-                "icon": "fa-cog",
-                "children": [
-                    {
-                        "name": "Brick Archives"
                     },
                     {
-                        "name": "Raw Dossiers"
-                    }
-                ]
-            },
-            {
-                "name": "Blockchain",
-                "path": "/Blockchain",
-                "icon": "fa-cog",
-                "children": [
+                        "name": "Interactions"
+                    },
                     {
-                        "name": "Secret Smart Contracts"
+                        "name": "Error Handling"
                     }
                 ]
             },
@@ -171,9 +137,6 @@
                 "icon": "fa-cog",
                 "children": [{
                         "name": "Web Components MVC"
-                    },
-                    {
-                        "name": "How to create a new site with Cardinal"
                     },
                     {
                         "name": "Models"
@@ -189,204 +152,206 @@
                     },
                     {
                         "name": "Themes"
+                    },
+                    {
+                        "name": "PSK Wiki",
+                        "path": "/psk-wiki",
+                        "icon": "fa-bolt",
+                        "children": [{
+                            "name": "psk-card"
+                        },
+                            {
+                                "name": "psk-chapter"
+                            },
+                            {
+                                "name": "psk-code"
+                            },
+                            {
+                                "name": "psk-copy-clipboard"
+                            },
+                            {
+                                "name": "psk-description"
+                            },
+                            {
+                                "name": "psk-example"
+                            },
+                            {
+                                "name": "psk-highlight"
+                            },
+                            {
+                                "name": "psk-img"
+                            },
+                            {
+                                "name": "psk-link"
+                            },
+                            {
+                                "name": "psk-list"
+                            },
+                            {
+                                "name": "psk-page"
+                            },
+                            {
+                                "name": "psk-property-descriptor"
+                            },
+                            {
+                                "name": "psk-table"
+                            },
+                            {
+                                "name": "psk-toc"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Web Components",
+                        "path": "/web-components",
+                        "icon": "fa-cog",
+                        "children": [{
+                            "name": "App Root"
+                        },
+                            {
+                                "name": "App Router"
+                            },
+                            {
+                                "name": "Condition"
+                            },
+                            {
+                                "name": "Page Not Found"
+                            },
+                            {
+                                "name": "Feedback List"
+                            },
+                            {
+                                "name": "Attachments List"
+                            },
+                            {
+                                "name": "Files Chooser"
+                            },
+                            {
+                                "name": "Modal"
+                            },
+                            {
+                                "name": "PIN Popup"
+                            },
+                            {
+                                "name": "UI Loader"
+                            },
+                            {
+                                "name": "User Profile"
+                            },
+                            {
+                                "name": "Wizard"
+                            },
+                            {
+                                "name": "Floating Menu"
+                            },
+                            {
+                                "name": "Icon"
+                            },
+                            {
+                                "name": "Grid"
+                            },
+                            {
+                                "name": "Container"
+                            },
+                            {
+                                "name": "Slideshow"
+                            },
+                            {
+                                "name": "Toolbar"
+                            },
+                            {
+                                "name": "App Menu"
+                            },
+                            {
+                                "name": "PSK Button"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Forms",
+                        "children": [{
+                            "name": "Using Forms"
+                        },
+                            {
+                                "name": "psk-form"
+                            },
+                            {
+                                "name": "psk-form-row"
+                            },
+                            {
+                                "name": "psk-label"
+                            },
+                            {
+                                "name": "psk-input"
+                            },
+                            {
+                                "name": "psk-date-input"
+                            },
+                            {
+                                "name": "psk-text-input"
+                            },
+                            {
+                                "name": "psk-password-input"
+                            },
+                            {
+                                "name": "psk-number-input"
+                            },
+                            {
+                                "name": "psk-email-input"
+                            },
+                            {
+                                "name": "psk-select"
+                            },
+                            {
+                                "name": "psk-radio"
+                            },
+                            {
+                                "name": "psk-radio-group"
+                            },
+                            {
+                                "name": "psk-checkbox"
+                            },
+                            {
+                                "name": "psk-for-each"
+                            }
+                        ]
                     }
                 ]
             },
-            {
-                "name": "PSK Wiki",
-                "path": "/psk-wiki",
-                "icon": "fa-bolt",
-                "children": [{
-                        "name": "psk-card"
-                    },
-                    {
-                        "name": "psk-chapter"
-                    },
-                    {
-                        "name": "psk-code"
-                    },
-                    {
-                        "name": "psk-copy-clipboard"
-                    },
-                    {
-                        "name": "psk-description"
-                    },
-                    {
-                        "name": "psk-example"
-                    },
-                    {
-                        "name": "psk-highlight"
-                    },
-                    {
-                        "name": "psk-img"
-                    },
-                    {
-                        "name": "psk-link"
-                    },
-                    {
-                        "name": "psk-list"
-                    },
-                    {
-                        "name": "psk-page"
-                    },
-                    {
-                        "name": "psk-property-descriptor"
-                    },
-                    {
-                        "name": "psk-table"
-                    },
-                    {
-                        "name": "psk-toc"
-                    }
-                ]
-            },
-            {
-                "name": "Web Components",
-                "path": "/web-components",
-                "icon": "fa-cog",
-                "children": [{
-                        "name": "App Root"
-                    },
-                    {
-                        "name": "App Router"
-                    },
-                    {
-                        "name": "Condition"
-                    },
-                    {
-                        "name": "Page Not Found"
-                    },
-                    {
-                        "name": "Feedback List"
-                    },
-                    {
-                        "name": "Attachments List"
-                    },
-                    {
-                        "name": "Files Chooser"
-                    },
-                    {
-                        "name": "Modal"
-                    },
-                    {
-                        "name": "PIN Popup"
-                    },
-                    {
-                        "name": "UI Loader"
-                    },
-                    {
-                        "name": "User Profile"
-                    },
-                    {
-                        "name": "Wizard"
-                    },
-                    {
-                        "name": "Floating Menu"
-                    },
-                    {
-                        "name": "Icon"
-                    },
-                    {
-                        "name": "Grid"
-                    },
-                    {
-                        "name": "Container"
-                    },
-                    {
-                        "name": "Slideshow"
-                    },
-                    {
-                        "name": "Toolbar"
-                    },
-                    {
-                        "name": "App Menu"
-                    },
-                    {
-                        "name": "PSK Button"
-                    }
-                ]
-            },
-            {
-                "name": "Forms",
-                "children": [{
-                        "name": "Using Forms"
-                    },
-                    {
-                        "name": "psk-form"
-                    },
-                    {
-                        "name": "psk-form-row"
-                    },
-                    {
-                        "name": "psk-label"
-                    },
-                    {
-                        "name": "psk-input"
-                    },
-                    {
-                        "name": "psk-date-input"
-                    },
-                    {
-                        "name": "psk-text-input"
-                    },
-                    {
-                        "name": "psk-password-input"
-                    },
-                    {
-                        "name": "psk-number-input"
-                    },
-                    {
-                        "name": "psk-email-input"
-                    },
-                    {
-                        "name": "psk-select"
-                    },
-                    {
-                        "name": "psk-radio"
-                    },
-                    {
-                        "name": "psk-radio-group"
-                    },
-                    {
-                        "name": "psk-checkbox"
-                    },
-                    {
-                        "name": "psk-for-each"
-                    }
-                ]
-            },
-            {
-                "name": "Tools",
-                "path": "/Tools",
-                "icon": "fa-cog",
-                "children": [{
-                        "name": "Tool List"
-                    },
-                    {
-                        "name": "bar"
-                    },
-                    {
-                        "name": "PSKDomain"
-                    },
-                    {
-                        "name": "PSKWallet"
-                    },
-                    {
-                        "name": "CSBWizard"
-                    },
-                    {
-                        "name": "PSKMonitor"
-                    },
-                    {
-                        "name": "Governance"
-                    }
-                ]
-            },
+
             {
                 "name": "Development",
                 "path": "/Development",
                 "icon": "fa-cog",
-                "children": [{
+                "children": [
+                    {
+                        "name": "Tools",
+                        "path": "/Tools",
+                        "icon": "fa-cog",
+                        "children": [{
+                            "name": "Tool List"
+                        },
+                            {
+                                "name": "bar"
+                            },
+                            {
+                                "name": "PSKDomain"
+                            },
+                            {
+                                "name": "PSKWallet"
+                            },
+                            {
+                                "name": "CSBWizard"
+                            },
+                            {
+                                "name": "PSKMonitor"
+                            },
+                            {
+                                "name": "Governance"
+                            }
+                        ]
+                    },
+                    {
                         "name": "Coding style"
                     },
                     {
@@ -424,23 +389,53 @@
                         "name": "Annotation Engine"
                     },
                     {
+                        "name": "EDFS",
+                        "path": "/EDFS",
+                        "icon": "fa-cog",
+                        "children": [
+                            {
+                                "name": "Brick Archives"
+                            },
+                            {
+                                "name": "Raw Dossiers"
+                            }
+                        ]
+                    },
+                    {
                         "name": "Tests Results",
                         "pageSrc":"https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
                         "options": {
                             "type": "iframe"
                         }
                     }
+
                 ]
             },
             {
-                "name": "About",
-                "path": "/About",
+                "name": "HowTo",
+                "path": "/howto",
                 "icon": "fa-cog",
-                "children": [{
-                    "name": "About"
-                },
+                "children": [
                     {
-                        "name": "How to write documentation pages"
+                        "name": "How to create a new site with Cardinal"
+                    },
+                    {
+                    "name": "How to create a SSApp"
+                    },
+                    {
+                        "name": "How to create a new site with Cardinal"
+                    },
+                    {
+                        "name": "How to write documentations with PSK Wiki "
+                    },
+                    {
+                        "name": "How to web"
+                    },
+                    {
+                        "name": "Installation"
+                    },
+                    {
+                        "name": "Build"
                     }
                 ]
             },
@@ -448,6 +443,12 @@
                 "name": "Glossary",
                 "path": "/glossary",
                 "pageSrc": "About/glossary.html"
+            },
+            {
+                "name": "About",
+                "path": "/About",
+                "icon": "fa-cog",
+                "pageSrc": "About/about.html"
             },
             {
                 "name": "404",
