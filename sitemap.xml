@@ -31,7 +31,9 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/domains</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?API/blockchain</loc>
+        <loc>https://privatesky.xyz/?API/blockchain/overview</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?API/blockchain/blockchain</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/edfs/overview</loc>
       </url><url>
