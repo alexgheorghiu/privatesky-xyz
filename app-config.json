@@ -24,7 +24,7 @@
 
             {
                 "name": "Overview",
-                "path": "/overview",
+                "path": "/Overview",
                 "icon": "fa-cog",
                 "children": [
 
@@ -322,12 +322,57 @@
                     }
                 ]
             },
-
+            {
+                "name": "How To Create",
+                "path": "/Howto",
+                "icon": "fa-cog",
+                "children": [
+                    {
+                        "name": "A site with Cardinal"
+                    },
+                    {
+                    "name": "A SSApp"
+                    },
+                    {
+                        "name": "A documentation site"
+                    },
+                    {
+                        "name": "A web site with swarms"
+                    }
+                ]
+            },
+            {
+                "name": "Quick Start",
+                "path": "/Howto",
+                "icon": "fa-cog",
+                "children": [
+                    {
+                        "name": "Installation"
+                    },
+                    {
+                        "name": "Build"
+                    }
+                ]
+            },
+            {
+                "name": "Glossary",
+                "path": "/glossary",
+                "pageSrc": "About/glossary.html"
+            },
+            {
+                "name": "About",
+                "path": "/About",
+                "icon": "fa-cog",
+                "pageSrc": "About/about.html"
+            },
             {
                 "name": "Development",
                 "path": "/Development",
                 "icon": "fa-cog",
                 "children": [
+                    {
+                        "name": "For PrivateSky Contributors"
+                    },
                     {
                         "name": "Tools",
                         "path": "/Tools",
@@ -406,7 +451,7 @@
                         ]
                     },
                     {
-                        "name": "Tests Results",
+                        "name": "Smoke Tests Results",
                         "pageSrc":"https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
                         "options": {
                             "type": "iframe"
@@ -414,45 +459,6 @@
                     }
 
                 ]
-            },
-            {
-                "name": "HowTo",
-                "path": "/howto",
-                "icon": "fa-cog",
-                "children": [
-                    {
-                        "name": "How to create a new site with Cardinal"
-                    },
-                    {
-                    "name": "How to create a SSApp"
-                    },
-                    {
-                        "name": "How to create a new site with Cardinal"
-                    },
-                    {
-                        "name": "How to write documentations with PSK Wiki "
-                    },
-                    {
-                        "name": "How to web"
-                    },
-                    {
-                        "name": "Installation"
-                    },
-                    {
-                        "name": "Build"
-                    }
-                ]
-            },
-            {
-                "name": "Glossary",
-                "path": "/glossary",
-                "pageSrc": "About/glossary.html"
-            },
-            {
-                "name": "About",
-                "path": "/About",
-                "icon": "fa-cog",
-                "pageSrc": "About/about.html"
             },
             {
                 "name": "404",

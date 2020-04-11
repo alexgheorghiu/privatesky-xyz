@@ -1,5 +1,49 @@
 <psk-page title="Brick Archives APIs">
     <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-chapter title="BARs">
+
+    As a difference from the regular archives, BARs are created to follow this list of properties:
+    <ol>
+        <li>
+            BARs can be stored in files but also in cloud encrypted with a secret key that we call SEED.
+        </li>
+        <li>
+            A SEED is an encyption key but it is used to cryptographically derivate an identifier for the BAR archive. This identifier is called LSEED (Location Seed) and can be used to locate a BAR file.
+            The name of the file and the LSEED are called "Aliases".
+        </li>
+
+        <li>
+            BARs are stored in cloud as compressed Bricks. A large file is divided into Bricks. A Brick is just an encrypted buffer identifiable by its hash (after compression and encryption).
+            Each Brick is encrypted with a different gey (randomly generated)
+        </li>
+        <li>
+            A specific version of a BAR is identifiable by cryptographic hash  of it's content by computing the hash of the hashes of all its Bricks.
+        </li>
+    </ol>
+
+    For storing those Bricks, we have created the EDFS storage service but we plan to have similar storages that are using various cloud storages (Dropbox , Google Drive, Amazon S3,IPFS, etc)
+
+    <ul>
+        Therefore a BAR is:
+        <li>
+            An archive storable in cloud as Bricks
+        </li>
+        <li>
+            Anchorable in blockchains by it's HASH
+        </li>
+
+        <li>
+            Referencable in blockchain by an Alias
+        </li>
+
+        <li>
+            Retrievable from cloud by a SEED
+        </li>
+    </ul>
+
+    </psk-chapter>
+
     <psk-chapter title="addFolder">
         The <code>addFolder()</code> method adds all the files in a specified folder in a brick archive.
         <psk-card title="Syntax">

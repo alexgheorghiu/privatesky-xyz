@@ -1,10 +1,18 @@
 <psk-page title="PrivateSky Dependencies">
     <psk-description>
-        PrivateSky project tries to avoid using NPM packages and NPM in general (or any other build system) for the dependencies of the project's core and that is why we have a custom script that helps with the deps.
+        Due to security and confidentiality requirements of the PrivateSky  platform we decided to avoid using external NPM packages.
+        One of the main strong points of PrivateSky is the capacity to build a new type of Digital Wallets capable to embed Self Sovereign Application or blockchain based backends.
+        The security and privacy levels on such systems should be very high and having hundreds or thousands dependencies does not help.
+        For the UI we have created a small MVC framework called Cardinal.
+        We also have build our simple installation system called Octopus and a testing framework called double-check. Just check package.json in the PrivateSky project.
+        The only external dependency that remained  is Browserify.
+        While this could look like a case of "not invented here syndrome" this approach seems to work fine as all tools are perfectly customised for the PrivateSky ecosystem.
     </psk-description>
     <psk-toc title="Table of contents">
     </psk-toc>
     <psk-chapter title="Dependencies Management">
+        <b>This part is obsolete, will be replaced by the Octopus documentation! </b>
+
         PrivateSky project has a dedicated script that handles dependencies management (install, update etc.)<br>
         The script that handles PrivateSky deps can be found in <b>"bin/scripts/build-devel.js"</b>.
         <psk-code language="bash">

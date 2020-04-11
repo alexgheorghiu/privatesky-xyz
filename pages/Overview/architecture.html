@@ -1,21 +1,41 @@
 
-<psk-page title="Blockchain architecture">
+<psk-page title="Blockchain based architectures">
   <psk-toc title="Table of contents"></psk-toc>
 
   <psk-chapter title="Hierarchical Blockchain Domains">
     <psk-chapter title="Heterogeneous Blockchain Domains">
-      PrivateSky introduced the concept of Blockchain Domain. A Blockchain Domain is a blockchain network that is part in a hierarchy of blockchain domains. In the root of the hierarchy stays a "root domain".
+      PrivateSky introduced the concept of Blockchain Domain.
+      A Blockchain Domain is a blockchain network that is part in a hierarchy of blockchain domains. In the root of the hierarchy stays a "root domain".
       Any domains can have one parent or multiple parent domains. Periodically, each child should anchor its state in the parent domains.
-      The benefits are somehow obvious as it can solve scalability and confidentiality issues.
-    </psk-chapter>
-
-    <psk-chapter title="Hierarchical Blockchain Domains">
+      The benefits are  obvious as this can solve scalability, confidentiality issues while also allowing updated in the form of creation of new blockchain domains.
       <psk-img src="/assets/images/newlook/multichain.png" title="Multichain blockchain architecture"></psk-img>
     </psk-chapter>
 
-    <psk-chapter title="Offline Blockchain Domains">
+    <psk-chapter title="Anchoring. Off-chain Storage Called EDFS">
+     An important insight resulted from the PrivateSky related research is that from teh confidentiality point of view it is almost always a bad idea to have business logic onchain (in smart contracts).
+      There are cases where having network level visible smart contracts makes sense (for example in  the network governance components)  but
+      usually only a small of group of participants should see the data or the evolution of te business process.
+      Encryption or pseudonymisation are not very useful  because correlation with external events are always source of confidentiality leakages.
+      We have build a powerful approach to this problem in teh form of the offchain storage we call EDFS (Encrypted Distributed File System).
+      EDFS is formed from  data storage units that are by like tiny file systems capable to store data and some processing code. Let's call these data units with the generic name "Data Sharing Units".
+      The DSU are anchored in blockchain as a method fo obtaining integrity, lineage and verifiability.
+      The DSUs are also capable of referencing other DSUs, therefore a decentralised file system is formed.
+
+      <psk-img src="/assets/images/architecture/offchainArchitecture.png" title="Data Sharing Units and Anchoring"></psk-img>
+
+      In PrivateSky we have developed support for three types of DSUs: BARs, Dossiers and Wallets.
 
     </psk-chapter>
+
+    <psk-chapter title="Anchored Offline Blockchains ">
+    A special case of the Off-Chain storage is when the DSUs are basicaly small off-chain ledgers  that are shared between a group.
+    The verification of the ledger is done when there is a need to read or update the ledger.
+    Any changes requires blockchain anchoring and therefore the anchored ledger have the integrity, lineage and verifiability properties of a blockchain.
+    We call this type of ledger with the name "Dossier". A Dossier could contain a ledger (a blockchain like data structure) but also could contain UI code (web application).
+    A Dossier that embeds a web application that works only with the data from the Dossier is  named Self Sovereign Application.
+    </psk-chapter>
+
+
 
     <psk-chapter title="Satellite Blockchain enabling Self Sovereign Applications">
       <psk-img src="/assets/images/newlook/ssapps.png" title="Blockchain architecture"></psk-img>
