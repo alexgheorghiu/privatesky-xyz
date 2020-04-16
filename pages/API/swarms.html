@@ -1,24 +1,133 @@
-<psk-page title="PrivateSky APIs">
-  <psk-chapter title="APIs for creating swarm and flow type swarms">
+<psk-page title="Swarm APIs">
+    <psk-highlight type-of-highlight="note">
+        APIs for creating swarm and flow type swarms
+    </psk-highlight>
+    <psk-toc title="In this section"></psk-toc>
+    <psk-chapter title="describe">
+        Creates  a swarm description named swarmTypeName and register in the specific name space.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                $$.swarm.describe(swarmTypeName, description);
+            </psk-code>
+            <psk-code language="JavaScript">
+                $$.flow.describe(swarmTypeName, description);
+            </psk-code>
 
-    <psk-table header="true">
-      Swarm primitives | Parameters, Explanations
-      describe | $$.flow.describe(swarmTypeName, description)
-               | $$.swarm.describe(swarmTypeName, description)
-               | Create  a swarm description named swarmTypeName and register in the specific name space
-      start | $$.flow.start(swarmTypeName, ctor, ...params)
-            | $$.swarm.start(swarmTypeName, ctor, ...params)
-            | Start a swarm named swarmTypeName from a specified function (ctor) and speciefed params
-      startWithContext | $$.flow.startWithContext(context, swarmTypeName, ctor, ...params)
-                       | $$.swarm.startWithContext(context, swarmTypeName, ctor, ...params)
-                       | Start  a swarm with a context; context that will be passed to the homeSecurityContext metadata in the swarm instance
-      continue | $$.flow.continue(swarmTypeName, initialValues)
-               | $$.swarm.continue(swarmTypeName, initialValues)
-               | Continue a swarm with a serialisation initialValues. Useful to model workflows (serialised swarms or flows)
-      inline | $$.flow.inline(description, ctor, ...args)
-             | Start a swarm based on a description, without registering and giving a name
-    </psk-table>
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                            A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>description</b></code>
+                            An object that represents the swarm's definition.
+                    </psk-list>
+                </psk-card>
+        </psk-card>
+        <psk-card title="Example">
+            In the example below, a swarm with the name <code>echo</code> is described.
+            <psk-code language="JavaScript">
+                $$.swarms.describe("echo", {
+                    say: function (message) {
+                        this.return(null, 'Echo ' + message);
+                    }
+                });
+            </psk-code>
+        </psk-card>
+    </psk-chapter>
 
- <p align="justify">Note that the most used APIs are <i>described</i> and <i>start</i>.</p>
-  </psk-chapter>
+    <psk-chapter title="start">
+        Calls the specified function from the specified swarm.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                $$.swarm.start(swarmTypeName, ctor, ...params)
+            </psk-code>
+            <psk-code language="JavaScript">
+                $$.flow.start(swarmTypeName, ctor, ...params)
+            </psk-code>
+
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                            A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>ctor</b></code>
+                            The function called. <br><br>
+                        <code><b>...params</b></code>
+                            The arguments the function <code>ctor</code> takes.
+                    </psk-list>
+                </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="startWithContext">
+        Calls the specified function from the specified swarm with the specified context.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                $$.swarm.startWithContext(context, swarmTypeName, ctor, ...params);
+            </psk-code>
+            <psk-code language="JavaScript">
+                $$.flow.startWithContext(context, swarmTypeName, ctor, ...params);
+            </psk-code>
+
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>context</b></code>
+                            The <code>string</code> passed to the <code>homeSecurityContext</code> metadata in the swarm instance.<br><br>
+                        <code><b>swarmTypeName</b></code>
+                            A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>ctor</b></code>
+                            The function called. <br><br>
+                        <code><b>...params</b></code>
+                            The arguments the function <code>ctor</code> takes.
+                    </psk-list>
+                </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="continue">
+        Continue a swarm with the provided serialization.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                $$.swarm.continue(swarmTypeName, initialValues);
+            </psk-code>
+            <psk-code language="JavaScript">
+                $$.flow.continue(swarmTypeName, initialValues);
+            </psk-code>
+
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>swarmTypeName</b></code>
+                            A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>initialValues</b></code>
+                            The swarm serialization.
+                    </psk-list>
+                </psk-card>
+        </psk-card>
+    </psk-chapter>
+    <psk-chapter title="inline">
+        Starts a swarm based on a description without registering and giving a name.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                $$.swarm.inline(description, ctor, ...args);
+            </psk-code>
+            <psk-code language="JavaScript">
+                $$.flow.inline(description, ctor, ...args);
+            </psk-code>
+
+                <psk-card title="Parameters">
+                    <psk-list list-type="unordered">
+                        <code><b>description</b></code>
+                            The swarm description.<br><br>
+                        <code><b>swarmTypeName</b></code>
+                            A <code>string</code> representing the type of the swarm defined.<br><br>
+                        <code><b>ctor</b></code>
+                            The function called. <br><br>
+                        <code><b>...args</b></code>
+                            The arguments the function <code>ctor</code> takes.
+                    </psk-list>
+                </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+     <psk-highlight type-of-highlight="note">
+          Note that the most used APIs are <code>describe</code> and <code>start</code>.
+     </psk-highlight>
 </psk-page>
