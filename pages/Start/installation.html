@@ -30,7 +30,7 @@
     </psk-list>
   </psk-chapter>
 
-    <psk-chapter title="Setup SSApps (eg web-wallet)">
+    <psk-chapter title="Setup SSApps (eg web-wallet or your solution based on web-wallet)">
         <psk-description>
             The setup process of an development environment for building and running SSApps. For example, we use web-wallet.
         </psk-description>
@@ -44,10 +44,12 @@
                 npm install
             </psk-code>
 
-            Do a privatesky build
+            Optionally (if something crushed or you add changes) do a privatesky build
             <psk-code language="bash">
                 cd privatesky
                 npm install
+                #if you want to run the tests, have to install zeromq manually
+                #npm install zeromq@4.6.0
                 npm run build
                 cd ..
             </psk-code>
@@ -57,12 +59,12 @@
                 npm run server
             </psk-code>
 
-            Open a new terminal and build all the ssapps, wallets, etc in the current project
+            Wait for a message like "Domain boot successfully" and then open a new terminal and build all the ssapps, wallets, etc in the current project
             <psk-code language="bash">
                 npm run build-all
             </psk-code>
 
-            Finally, open the browser and go to <a href="http://localhost:8080/secure-channels/loader">http://localhost:8080/secure-channels/loader</a>
+            Finally, open the browser (in incognito tab is the best) and go to <a href="http://localhost:8080/secure-channels/loader">http://localhost:8080/secure-channels/loader</a>
 
         </psk-chapter>
     </psk-chapter>
