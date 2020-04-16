@@ -3,17 +3,17 @@
                  <url>
         <loc>https://privatesky.xyz/?home</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview/why</loc>
+        <loc>https://privatesky.xyz/?Overview/why</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview/main-innovations</loc>
+        <loc>https://privatesky.xyz/?Overview/main-innovations</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview/architecture</loc>
+        <loc>https://privatesky.xyz/?Overview/architecture</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview//Blockchain/secret-smart-contracts</loc>
+        <loc>https://privatesky.xyz/?Overview//Blockchain/secret-smart-contracts</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview/swarms-explained</loc>
+        <loc>https://privatesky.xyz/?Overview/swarms-explained</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?overview/dependencies</loc>
+        <loc>https://privatesky.xyz/?Overview/dependencies</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/privatesky-apis</loc>
       </url><url>
@@ -157,6 +157,24 @@
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/psk-for-each</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?Howto/a-site-with-cardinal</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Howto/a-ssapp</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Howto/a-documentation-site</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Howto/a-web-site-with-swarms</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Start/installation</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Start/build</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?glossary</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?About</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Development/for-privatesky-contributors</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?Development//Tools/tool-list</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Development//Tools/bar</loc>
@@ -191,24 +209,6 @@
       </url><url>
         <loc>https://privatesky.xyz/?Development//EDFS/raw-dossiers</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Development/tests-results</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/how-to-create-a-new-site-with-cardinal</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/how-to-create-a-ssapp</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/how-to-create-a-new-site-with-cardinal</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/how-to-write-documentations-with-psk-wiki-</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/how-to-web</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/installation</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?howto/build</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?glossary</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?About</loc>
+        <loc>https://privatesky.xyz/?Development/smoke-tests-results</loc>
       </url>
                  </urlset>
