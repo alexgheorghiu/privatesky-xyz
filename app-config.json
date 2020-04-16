@@ -343,7 +343,7 @@
             },
             {
                 "name": "Quick Start",
-                "path": "/Howto",
+                "path": "/Start",
                 "icon": "fa-cog",
                 "children": [
                     {
