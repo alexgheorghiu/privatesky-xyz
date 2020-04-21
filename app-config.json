@@ -377,26 +377,27 @@
                         "name": "Tools",
                         "path": "/Tools",
                         "icon": "fa-cog",
-                        "children": [{
-                            "name": "Tool List"
-                        },
+                        "children": [
                             {
                                 "name": "bar"
-                            },
-                            {
-                                "name": "PSKDomain"
-                            },
-                            {
-                                "name": "PSKWallet"
                             },
                             {
                                 "name": "CSBWizard"
                             },
                             {
+                                "name": "Governance"
+                            },
+                            {
+                                "name": "Octopus"
+                            },
+                            {
                                 "name": "PSKMonitor"
                             },
                             {
-                                "name": "Governance"
+                                "name": "PSKWallet"
+                            },
+                            {
+                                "name": "Tool List"
                             }
                         ]
                     },
