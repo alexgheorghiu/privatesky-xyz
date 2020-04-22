@@ -132,6 +132,20 @@
                     },
                     {
                         "name": "Error Handling"
+                    },
+                    {
+                        "name": "Classes",
+                        "children": [
+                            {
+                                "name": "Seed"
+                            },
+                            {
+                                "name": "Anchor"
+                            },
+                            {
+                                "name": "AnchorUID"
+                            }
+                        ]
                     }
                 ]
             },
