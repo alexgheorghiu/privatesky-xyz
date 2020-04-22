@@ -366,40 +366,46 @@
                 "pageSrc": "About/about.html"
             },
             {
+                "name": "Tools",
+                "path": "/Tools",
+                "icon": "fa-cog",
+                "children": [
+                    {
+                        "name": "Octopus"
+                    },
+                    {
+                        "name": "bar"
+                    },
+                    {
+                        "name": "CSBWizard",
+                        "indexed": "false"
+                    },
+                    {
+                        "name": "Governance",
+                        "indexed": "false"
+                    },
+                    {
+                        "name": "PSKMonitor",
+                        "indexed": "false"
+                    },
+                    {
+                        "name": "PSKWallet",
+                        "indexed": "false"
+
+                    },
+                    {
+                        "name": "Tool List",
+                        "indexed": "false"
+                    }
+                ]
+            },
+            {
                 "name": "Development",
                 "path": "/Development",
                 "icon": "fa-cog",
                 "children": [
                     {
                         "name": "For PrivateSky Contributors"
-                    },
-                    {
-                        "name": "Tools",
-                        "path": "/Tools",
-                        "icon": "fa-cog",
-                        "children": [
-                            {
-                                "name": "bar"
-                            },
-                            {
-                                "name": "CSBWizard"
-                            },
-                            {
-                                "name": "Governance"
-                            },
-                            {
-                                "name": "Octopus"
-                            },
-                            {
-                                "name": "PSKMonitor"
-                            },
-                            {
-                                "name": "PSKWallet"
-                            },
-                            {
-                                "name": "Tool List"
-                            }
-                        ]
                     },
                     {
                         "name": "Coding style"
