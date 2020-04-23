@@ -33,78 +33,204 @@
             <p>The <strong>wallet template</strong> installed by <strong>web-wallet</strong> is a plain customisable SSApp which once loaded will display a menu with  all the SSApp applications contained in this <code>web-wallet</code> installation. Through this app you will be able to access your newly created SSApp.</p>
 
             <p>The <strong>SSApp application loader</strong> is the first thing you'll see after running the <code>web-wallet</code> web server and accessing <code>http://localhost:8080/secure-channels/loader</code>. It is a basic web application which allows creation and loading of wallets based on the <em>menu wallet</em> template. The SSApp loader registers a service worker responsible with loading the built SSApps from the Brick Storage.</p>
+
+            <p><strong>Before advancing to the next chapters make sure you have correctly installed <code>web-wallet</code> and have started the web server:</strong></p>
+            <psk-code>
+                cd web-wallet
+                npm run server
+            </psk-code>
         </psk-chapter>
     </psk-chapter>
 
     <psk-chapter title="SSApp Tutorial">
         <psk-highlight type-of-highlight="example">If you are using a Windows operating system you will need to adapt some bash commands shown in this tutorial in order to execute them.</psk-highlight>
-        <p>Start with creating a folder inside <strong>web-wallet</strong> named after your application. For the purpose of this tutorial we will create a basic "To Do list" application.</p>
-        <psk-code>
-            cd web-wallet
-            mkdir todo-app
-        </psk-code>
 
-        <p>A typical SSApp will have the following structure:
+        <p>The gist of creating, integrating and developing a SSApp in <code>web-wallet</code> is:</p>
+        <psk-list list-type="ordered">
+            Create a git repository containing the minimum required configuration files for your application
+            Add the application into <code>web-wallet</code>
+            Bind the application to the web-wallet's solution
+            Enter the development cycle
+        </psk-list>
+
+        <p>All of the above steps are detailed in the following chapters.</p>
+
+        <psk-chapter title="Creating the folder structure">
+            <p>Start with creating a folder named after your application and initialize an empty git repository. For the purpose of this tutorial we will create a basic "To Do list" application.</p>
+            <psk-code>
+                mkdir todo-app
+                cd todo-app
+                git init
+            </psk-code>
+
+            <p>A <code>.gitignore</code> is recommened in order to ignore some dependencies that will be later installed using Octopus:</p>
+            <psk-code>
+                # .gitignore
+                /code/cardinal
+                /code/cardinal.js
+                /temp
+                /node_modules
+                seed
+            </psk-code>
+
+            <p>A typical SSApp will have the following structure:
+                <ul>
+                    <li>bin/</li>
+                    <li>code/</li>
+                    <li>octopus.json</li>
+                    <li>package.json</li>
+                </ul>
+            </p>
+            <p>The <code>bin</code> folder contains executable scripts and for this SSApp to be compatible with <strong>web-wallet</strong> a <code>build.js</code> script is required. For now go ahead and copy the <code>build.js</code> script from <code>web-wallet/profile-app/bin</code>
+            </p>
+            <psk-code>
+                # todo-app/
+                mkdir -p bin code
+                cp [path/to/web-wallet]/profile-app/bin/build.js bin/
+            </psk-code>
+
+            <p>This build script will create an empty Brick Archive, copy the application's code from the <code>code</code> folder into the BAR and write the BAR's SEED into a file in the root of the application's directory. This seed file will be later read by the SSApp loader in order to load the application.</p>
+
+            <p>The <code>code</code> folder will contain the application source code files (html, javacript &amp; css files).</p>
+
+            <p>Generate a new <code>package.json</code> file using <code>npm init</code> or copy and paste the following example and add it inside the application folder:</p>
+            <psk-code language="javascript">
+                {
+                    "name": "todo-app",
+                    "version": "1.0.0",
+                    "description": "To do list SSApp",
+                    "main": "index.js",
+                    "scripts": {
+                        "postinstall": "node ./node_modules/octopus/scripts/run",
+                        "prebuild": "node ./node_modules/octopus/scripts/run prebuild",
+                        "build": "node ./bin/build",
+                        "test": "echo \"Error: no test specified\" && exit 1"
+                    },
+                    "dependencies": {
+                        "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0"
+                    },
+                    "keywords": [
+                        "ssapp"
+                    ],
+                    "author": "",
+                    "license": "MIT"
+                }
+            </psk-code>
+
+            <p>As you can see in the file above, the only required dependency is the <strong>Octopus</strong> package, this will help with building the application. You are free to add as many dependencies as you want in order to develop your application. If you choose to generate your own <code>package.json</code> file make sure you add the "postinstall", "prebuild" and "build" scripts under the "scripts" section as in the example above.</p>
+
+            <p>Next you'll need to copy the <code>octopus.json</code> file from the <code>profile-app</code> folder to your application folder:</p>
+            <psk-code>
+                # go back to the web-wallet folder
+                cd ../
+
+                # copy the octopus.json file from profile app
+                cp profile-app/octopus.json todo-app/
+                cd todo-app
+            </psk-code>
+
+            <p>The <code>octopus.json</code> file contains actions executed by Octopus that will copy the runtime javascript bundles from PrivateSky into our new application into the <code>code</code> folder and install the <psk-link page="Cardinal/web-components-mvc">Cardinal</psk-link> framework.</p>
+
+            <p>Next add a basic <code>index.html</code> file inside the <code>code/</code> directory:</p>
+            <psk-code language="markup">
+                &#x3C;!DOCTYPE html&#x3E;
+                &#x3C;html lang=&#x22;en&#x22;&#x3E;
+
+                &#x3C;head&#x3E;
+                    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+                    &#x3C;meta http-equiv=&#x22;x-ua-compatible&#x22; content=&#x22;IE=Edge&#x22;&#x3E;
+                    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0&#x22;&#x3E;
+                    &#x3C;meta name=&#x22;apple-mobile-web-app-capable&#x22; content=&#x22;yes&#x22;&#x3E;
+
+                    &#x3C;title&#x3E;To do list&#x3C;/title&#x3E;
+                &#x3C;/head&#x3E;
+
+                &#x3C;body&#x3E;
+                    &#x3C;h1&#x3E;Hello World&#x3C;/h1&#x3E;
+                &#x3C;/body&#x3E;
+
+                &#x3C;/html&#x3E;
+            </psk-code>
+
+            <p>If you follow all the instructions above your <code>todo-app</code> folder should look like this:</p>
             <ul>
-                <li>bin/</li>
-                <li>code/</li>
+                <li>bin
+                    <ul>
+                        <li>build.js</li>
+                    </ul>
+                </li>
+                <li>code
+                    <ul>
+                        <li>index.html</li>
+                    </ul>
+                </li>
+                <li>.gitignore</li>
                 <li>octopus.json</li>
                 <li>package.json</li>
             </ul>
-        </p>
-        <p>The <code>bin</code> folder contains executable scripts and for this SSApp to be compatible with <strong>web-wallet</strong> a <code>build.js</code> script is required. For now go ahead and copy the <code>build.js</code> script from <code>web-wallet/profile-app/bin</code>
-        </p>
-        <psk-code>
-            mkdir -p todo-app/{bin,code}
-            cp profile-app/bin/build.js todo-app/bin
-        </psk-code>
+            <p>Go ahead and commit all those file in your git repository. It's time to integrate the application folder inside <code>web-wallet</code> and start adding some business logic to it:</p>
+            <psk-code>
+                cd todo-app
+                git add --all
+                git commit -am "My first commit"
+            </psk-code>
+        </psk-chapter>
 
-        <p>This build script will create an empty Brick Archive, copy the application's code from the <code>code</code> folder into the BAR and write the BAR's SEED into a file in the root of the application's directory. This seed file will be later read by the SSApp loader in order to load the application.</p>
+        <psk-chapter title="Adding the SSApp in web-wallet">
+            <psk-highlight type-of-highlight="issue">
+                <p>Make sure the web-wallet web server is running before proceeding with the next examples.</p>
+            </psk-highlight>
+            <p>It is time to integrate our application inside <code>web-wallet</code> by running a few octopus commands inside the web-wallet directory:</p>
+            <psk-code>
+                cd web-wallet
 
-        <p>The <code>code</code> folder will contain the application source code files (html, javacript &amp; css files).</p>
+                # This command will tell octopus to fetch the application from your git repository
+                npm run add todo-app [url of your todo-app repository]
 
-        <p>Generate a new <code>package.json</code> file using <code>npm init</code> or copy and paste the following example and add it inside the application folder:</p>
-        <psk-code language="javascript">
-            {
-                "name": "todo-app",
-                "version": "1.0.0",
-                "description": "To do list SSApp",
-                "main": "index.js",
-                "scripts": {
-                    "prebuild": "node ./node_modules/octopus/scripts/run",
-                    "build": "node ./bin/build",
-                    "test": "echo \"Error: no test specified\" && exit 1"
-                },
-                "dependencies": {
-                    "octopus": "git+https://github.com/PrivateSky/octopus.git"
-                },
-                "keywords": [
-                    "ssapp"
-                ],
-                "author": "",
-                "license": "MIT"
-            }
-        </psk-code>
+                npm run bind-app secure-channels todo-app
+            </psk-code>
 
-        <p>As you can see in the file above, the only required dependency is the <strong>Octopus</strong> package, this will help with building the application. You are free to add as many dependencies as you want in order todevelop your application.</p>
+            <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-app/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>web-wallet</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
+            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this web-wallet. You can think of <strong>secure-channels</strong> as container for SSApps.</p>
 
-        <p>Next you'll need to copy the <code>octopus.json</code> file from the <code>profile-app</code> folder to your application folder:</p>
-        <psk-code>
-            # go back to the web-wallet folder
-            cd ../
+            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into web-wallet and we have binded it to the web-wallet's solution. One last step before doing the actual development work is to add a link to our application in the wallet. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
+            <psk-code language="javascript">
+                "pages": [
+                    {
+                        "name": "Home"
+                    },
+                    {
+                        "name": "Inbox"
+                    },
+                    {
+                        "name": "Outbox"
+                    },
+                    {
+                        "name": "Contacts"
+                    },
+                    {
+                        "name": "Profile"
+                    },
+                    {
+                        "name": "To do List"
+                    }
+                ]
+            </psk-code>
 
-            # copy the octopus.json file from profile app
-            cp profile-app/octopus.json todo-app/
-            cd todo-app
-        </psk-code>
+            <p>Next, go ahead and create a new html file named <code>to-do-list.html</code> inside <code>web-server/secure-channels/wallet-template/pages/</code>:</p>
 
-        <p>The <code>octopus.json</code> file contains actions executed by Octopus that will copy the runtime javascript bundles from PrivateSky into our new application into the <code>code</code> folder.</p>
+            <psk-code language="markup">
 
-        <p>Next we'll add the application source code files.</p>
+                &#x3C;psk-container controller-name=&#x22;SSAppController&#x22;&#x3E;
+                    &#x3C;psk-ss-app app-name=&#x22;todo-app&#x22;&#x3E;
+                    &#x3C;/psk-ss-app&#x3E;
+                &#x3C;/psk-container&#x3E;
+
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Implementation">
+            <p>Start by adding an <code>index.html</code> inside the <code>code</code> folder of your application:</p>
+        </psk-chapter>
     </psk-chapter>
-
-    <psk-chapter title="SSApp development workflow">
-    </psk-chapter>
-
-
 </psk-page>
