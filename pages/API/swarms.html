@@ -397,6 +397,9 @@
                     <code><b>result</b></code> any type of object representing a potential result of the swarm.
                 </psk-list>
             </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>home()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
         </psk-chapter>
         <psk-chapter title="return">
             A call of <code>return()</code> method force swarm to return to the previous execution context.
@@ -409,6 +412,9 @@
                     <code><b>result</b></code> any type of object representing a potential result of the swarm.
                 </psk-list>
             </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>return()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
         </psk-chapter>
         <psk-chapter title="interact">
             A call of <code>interact()</code> method force swarm to return to the execution context from which was started and execute an interaction phase. It is similar somehow to <code>swarm()</code> method that with the difference without the need to know to which context should go and the phase that will get called is one that uses some sort of input method in order to interact with the user interface(terminal, web page etc.).
@@ -421,6 +427,9 @@
                     <code><b>args</b></code> args that will be passed to the interaction phase name.
                 </psk-list>
             </psk-card>
+            <psk-highlight title="Warning" type-of-highlight="example">
+                The call of <code>interact()</code> does not prevent to code following this statement to be executed!
+            </psk-highlight>
             <psk-card title="Example">
                 <psk-code language="JavaScript">
                     $$.swarm.describe("twoFactorValidation", {
