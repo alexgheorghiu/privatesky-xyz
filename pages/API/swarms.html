@@ -204,7 +204,7 @@
         <psk-chapter title="actualize">
             <code>actualize()</code> method enables the possibility to update a flow instance with a serialization.
             <psk-card title="Syntax">
-                actualize(serialisation)
+                <psk-code language="JavaScript">actualize(serialisation)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -218,7 +218,7 @@
         <psk-chapter title="serial">
             <code>serial()</code> returns a proxy that will order and execute flow phases (does not matter if they are sync or async) in order one after one. Once all phases are done calls the callback function.
             <psk-card title="Syntax">
-                serial(callback)
+                <psk-code language="JavaScript">serial(callback)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -271,7 +271,7 @@
         <psk-chapter title="parallel">
             <code>parallel()</code> returns a proxy that will execute flow phases(sync or async) in parallel. When all phases are done parallel does a callback call.
             <psk-card title="Syntax">
-                parallel(callback)
+                <psk-code language="JavaScript">parallel(callback)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -323,7 +323,7 @@
         </psk-chapter>
         <psk-chapter title="setMetadata">
             <psk-card title="Syntax">
-                setMetadata(metadata, value);
+                <psk-code language="JavaScript">setMetadata(metadata, value);</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -334,7 +334,7 @@
         </psk-chapter>
         <psk-chapter title="getMetadata">
             <psk-card title="Syntax">
-                getMetadata(metadata)
+                <psk-code language="JavaScript">getMetadata(metadata)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -350,7 +350,7 @@
         <psk-chapter title="swarm">
             <code>swarm()</code> method changes the execution context and continues swarm execution with a specified phase and args.
             <psk-card title="Syntax">
-                swarm(context, phaseName[, arg1, arg2, ...])
+                <psk-code language="JavaScript">swarm(context, phaseName[, arg1, arg2, ...])</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -389,7 +389,7 @@
         <psk-chapter title="home">
             A call of <code>home()</code> method force swarm to return to the execution context from which was started.
             <psk-card title="Syntax">
-                home(error, result);
+                <psk-code language="JavaScript">home(error, result);</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -401,7 +401,7 @@
         <psk-chapter title="return">
             A call of <code>return()</code> method force swarm to return to the previous execution context.
             <psk-card title="Syntax">
-                return(error, result);
+                <psk-code language="JavaScript">return(error, result);</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -413,7 +413,7 @@
         <psk-chapter title="interact">
             A call of <code>interact()</code> method force swarm to return to the execution context from which was started and execute an interaction phase. It is similar somehow to <code>swarm()</code> method that with the difference without the need to know to which context should go and the phase that will get called is one that uses some sort of input method in order to interact with the user interface(terminal, web page etc.).
             <psk-card title="Syntax">
-                interact(interactionPhaseName[, arg1, arg2, ...]);
+                <psk-code language="JavaScript">interact(interactionPhaseName[, arg1, arg2, ...]);</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -438,7 +438,7 @@
         <psk-chapter title="onReturn">
             Registers a callback function that will get called one the swarm returns to the current execution context with a result or error.
             <psk-card title="Syntax">
-                onReturn(callback);
+                <psk-code language="JavaScript">onReturn(callback)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
@@ -466,7 +466,7 @@
         <psk-chapter title="onResult">
             Registers a callback function that will get called one the swarm returns to the current execution context with a result or error.
             <psk-card title="Syntax">
-                onResult(callback);
+                <psk-code language="JavaScript">onResult(callback)</psk-code>
             </psk-card>
             <psk-card title="Parameters">
                 <psk-list>
