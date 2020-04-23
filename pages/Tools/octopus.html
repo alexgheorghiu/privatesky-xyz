@@ -3,9 +3,35 @@
     <psk-chapter title="Description">
         <b>Octopus</b> is an adaptive and extendable Javascript task runner built without dependencies. It’s designed to handle all PrivateSky and related subprojects dependencies installation, updates, builds and so on. It bundles a collection of actions and scripts that can prove useful when needed to automate diverse types of development tasks. Octopus has a plugin mechanism in order allow extension of the action collection.
     </psk-chapter>
+
+    <psk-chapter title="Installation">
+        <p><psk-link page="tools/octopus">Octopus</psk-link> can be installed using <code>npm</code> by adding its repository url to the list of dependencies in your <code>package.json</code> file:</p>
+        <psk-code language="javascript">
+            {
+                "name": "My Octopus Project",
+                "version": "1.0.0",
+                "description": "",
+                "main": "index.js",
+                "scripts": {
+                    "octopus": "node ./node_modules/octopus/scripts/run"
+                },
+                "dependencies": {
+                    "octopus": "git+http://github.com/privatesky/octopus.git#1.0"
+                },
+                "license": "MIT"
+            }
+        </psk-code>
+
+        <psk-code>
+            npm install
+
+            # to run octopus after installing
+            npm run octopus
+        </psk-code>
+    </psk-chapter>
+
     <psk-chapter title="Configuration">
-        <psk-link page="tools/octopus">Octopus</psk-link> knows what tasks to execute for a specific purpose by reading the configuration file called octopus.json
-        and executing one task at a time specified in configuration. The configuration file respects the JSON type file.<br>
+        <psk-link page="tools/octopus">Octopus</psk-link> executes in sequence all tasks found in a JSON configuration file called octopus.json. <br />
         The structure of the <b>octopus.json</b> file is represented by an dictionary of tasks organized by purpose:
         <psk-code language="javascript">
             {
@@ -32,13 +58,13 @@
                 }
             }
         </psk-code>
-        The available action types that <psk-link page="tools/octopus">Octopus</psk-link> comes bundle it can be found into the chapter Actions.<br>
+        The available action types that <psk-link page="tools/octopus">Octopus</psk-link> comes bundled with can be found by reading the Actions chapter.<br>
         <psk-chapter title="Examples">
-            For example if we need to use Octopus as dependency manager we can build a configuration file like this:
+            For example if we need to use Octopus as dependency manager we can write the following configuration:
             <psk-code language="javascript">
                 {
-                    workDir: ".",
-                    dependencies:[
+                    "workDir": ".",
+                    "dependencies": [
                         {
                             "name": "privatesky",
                             "src": "http://github.com/privatesky/privatesky.git"
@@ -46,8 +72,13 @@
                     ]
                 }
             </psk-code>
-            Running <psk-link page="tools/octopus">Octopus</psk-link> with the above configuration will result in obtaining a folder <i>modules</i> in which a local clone of the repo PrivateSky will be done.
+            Running <psk-link page="tools/octopus">Octopus</psk-link> with the above configuration will result in a new folder <i>modules</i> which will contain a clone of the PrivateSky repository.
 
+            <psk-code>
+                node ./node_modules/octopus/scripts/run
+                # or (if you added the run script in the "scripts" section of your package.json as in the Installation chapter)
+                npm run octopus
+            </psk-code>
         </psk-chapter>
 
         Example of an <b>octopus.json</b> file can be found accessing <a href="https://raw.githubusercontent.com/PrivateSky/privatesky/master/octopus.json">this link</a><br>
@@ -84,7 +115,7 @@
 			<psk-chapter title="Parameters">
 				<psk-list>
 					<code>configFileOrObject</code> - path to octopus.json file or a JSON object containing the configuration
-					<code>configTarget</code> - if configuration consists in a list of targets and need to run a specific one
+					<code>configTarget</code> - the name of a single target to execute
 					<code>callback</code> - callback function that will be called if an error occurs or execution finishes
 				</psk-list>
 			</psk-chapter>
