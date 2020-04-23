@@ -72,7 +72,24 @@
                     ]
                 }
             </psk-code>
-            Running <psk-link page="tools/octopus">Octopus</psk-link> with the above configuration will result in a new folder <i>modules</i> which will contain a clone of the PrivateSky repository.
+            Running <psk-link page="tools/octopus">Octopus</psk-link> with the above configuration will result in a new folder <i>modules</i> which will contain a clone of the PrivateSky repository.<br>
+			If Octopus does not find any action specified for a task sets a default:
+			<psk-code language="JavaScript">
+				{
+					"name": "privatesky",
+					"src": "http://github.com/privatesky/privatesky.git",
+					"actions":[
+						{
+							"type": "smartClone",
+							"target": "modules",
+							"options": {
+								"branch": "master",
+								"depth": 1
+							}
+						}
+					]
+				}
+			</psk-code>
 
             <psk-code>
                 node ./node_modules/octopus/scripts/run
@@ -97,7 +114,7 @@
             <b>move</b>|<p>Moves file or directory from {String}<b>actions.src</b> to {String}<b>action.target</b></p>
             <b>mkdir</b>|<p>Creates a new folder based on {String}<b>action.target</b></p>
             <b>remove</b>|<p>Remove a file or directory from a specified path {String}<b>action.target</b></p>
-            <b>smartClone</b>|<p>SmartClone action tries to execute a git clone command and if it finds the repo already cloned and the origin remote matches {String}<b>dependency.src</b> then executes git pull in order to update the repo.</p>
+			<b>smartClone</b>|<p>SmartClone action tries to execute a git clone command and if it finds the repo already cloned and the origin remote matches {String}<b>dependency.src</b> then executes git pull in order to update the repo. All properties found in {Object}<b>action.options</b> ar passed to git clone command as arguments.</p>
         </psk-table>
     </psk-chapter>
 	<psk-chapter title="Octopus as a module">
