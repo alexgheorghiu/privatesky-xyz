@@ -193,7 +193,7 @@
             <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-app/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>web-wallet</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
             The <strong>secure-channels</strong> argument refers to the name of the software solution built with this web-wallet. You can think of <strong>secure-channels</strong> as container for SSApps.</p>
 
-            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into web-wallet and we have binded it to the web-wallet's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>web-wallet</code> comes with a wallet template which is a SSapp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
+            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into web-wallet and we have binded it to the web-wallet's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>web-wallet</code> comes with a wallet template which is a SSApp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
             <psk-code language="javascript">
                 "pages": [
                     {
@@ -227,7 +227,7 @@
                 &#x3C;/psk-container&#x3E;
 
             </psk-code>
-            <p>The <code>psk-ss-app</code> is a Cardinal web component which handles loading and running a SSapp. The <code>to-do-list.html</code> file is actually a <code>View</code> file from the <code>wallet template</code> SSApp which will load our To do List SSapp.</p>
+            <p>The <code>psk-ss-app</code> is a Cardinal web component which handles loading and running a SSApp. The <code>to-do-list.html</code> file is actually a <code>View</code> file from the <code>wallet template</code> SSApp which will load our To do List SSApp.</p>
 
             <p>To verify that the application was built correctly, open the browser and load <a href="http://localhost:8080/secure-channels/loader" target="_blank">http://localhost:8080/secure-channels/loader</a>. If you have previously created a wallet using the loader make sure you clear your local storage and refresh the page. Follow the steps to create a new wallet and then open it. You should see a link to our To Do application in the left menu and when clicking it you should see the "Hello World" message.</p>
         </psk-chapter>
@@ -481,7 +481,14 @@
             </psk-highlight>
         </psk-chapter>
 
-        <psk-chapter title="SSApp loader">
-        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="SSApp loader">
+        <p>This section focuses a bit on the inner workings of the SSApp/Wallet loader, specifically on how it loads and runs wallets and SSApps.</p>
+        <p><em>Work in progress...</em></p>
+
+        <object data="assets/images/wallet-loader.svg" type="image/svg+xml">
+            SSApp loader architecture
+        </object>
     </psk-chapter>
 </psk-page>
