@@ -394,7 +394,7 @@
             </psk-chapter>
 
             <psk-chapter title="Model">
-                <p>The last piece of the puzzle is the model. Add the following code in <code>code/scripts/models/ListModel.js</code>. The model will fetch the data from EDFS using the <code>Download Middleware</code> of its service worker. When saving the data, the model will upload the list as a JSON file to EDFS using the <code>Upload Middleware</code> provided by the service worker.</p>
+                <p>The last piece of the puzzle is the model. Add the following code in <code>code/scripts/models/ListModel.js</code>. The model will fetch the data from EDFS using the <psk-link page="API/ssapps/service-worker-middleware">Download Middleware</psk-link> of its service worker. When saving the data, the model will upload the list as a JSON file to EDFS using the <psk-link page="API/ssapps/service-worker-middleware">Upload Middleware</psk-link> provided by the service worker.</p>
 
                 <psk-code language="javascript">
                     export default class ListModel {
