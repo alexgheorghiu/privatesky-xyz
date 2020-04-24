@@ -152,7 +152,7 @@
                 &#x3C;/html&#x3E;
             </psk-code>
 
-            <p>If you follow all the instructions above your <code>todo-app</code> folder should look like this:</p>
+            <p>If you follow all the above instructions your <code>todo-app</code> folder should look like this:</p>
             <ul>
                 <li>bin
                     <ul>
@@ -227,17 +227,21 @@
                 &#x3C;/psk-container&#x3E;
 
             </psk-code>
+            <p>The <code>psk-ss-app</code> is a Cardinal web component which handles loading and running a SSapp. The <code>to-do-list.html</code> file is actually a <code>View</code> file from the <code>wallet template</code> SSApp which will load our To do List SSapp.</p>
 
             <p>To verify that the application was built correctly, open the browser and load <a href="http://localhost:8080/secure-channels/loader" target="_blank">http://localhost:8080/secure-channels/loader</a>. If you have previously created a wallet using the loader make sure you clear your local storage and refresh the page. Follow the steps to create a new wallet and then open it. You should see a link to our To Do application in the left menu and when clicking it you should see the "Hello World" message.</p>
         </psk-chapter>
 
-        <psk-chapter title="Implementation">
+        <psk-chapter title="Application Development">
+            <p><strong>From now on the development work will be done from within the <code>todo-app</code> folder in the <code>web-wallet</code>. The only purpose for the initial todo-app directory was to be able to install it inside web-wallet.</strong></p>
             <p>The first thing you'll need to do before adding new code to the application is to switch the SSApp loader to run in "development" mode. To do that, go into <code>web-server/secure-channels/loader</code> and create a copy of <code>loader-config.local.json-template</code> file:</p>
 
             <psk-code>
                 cd web-server/secure-channels/loader
                 cp loader-config.local.json-template loader-config.local.json
             </psk-code>
+
+            <p>The <code>loader-config.local.json</code> is a configuration file that will allow us to override the default loader options set in <code>loader-config.js</code>. Our local configuration file will override the loader mode setting from "secure" to "development". While in development mode, the loader will skip the UI and create a new wallet if one doesn't exist, or update an existing one as the source code changes to speed up development.</p>
 
             <p>Next start the "watch" feature of the <code>web-wallet</code> that watches for source code changes and updates the application's BAR - remember, the SSApp, once built it is stored in a BAR in Brick Storage. In order to update the code we need to somehow update the BAR:</p>
 
@@ -246,7 +250,234 @@
                 npm run watch -- --app=todo-app
             </psk-code>
 
-            <p>Clear the browse's local storage and refresh. You should see that the loader's UI isn't shown anymore and you are automatically presented with the SSApps menu</p>
+            <p>Clear the browse's local storage and refresh. You should see that the loader's UI isn't shown anymore and you are automatically presented with the SSApps menu. Now, everytime you change the source code of your application the wallet will be automatically rebuilt.</p>
+
+            <p>It's time to add some functionality to our app and the first thing we need to do is update the <code>index.html</code> to include the Cardinal framework and add the <psk-link page="Cardinal/web components/app-root">psk-app-root</psk-link> component in the page's body section. Replace the inner content of the <code>body</code> tag with this one:</p>
+
+            <psk-code language="markup">
+                &#x3C;psk-app-root&#x3E;
+                    &#x3C;header&#x3E;
+                    &#x3C;/header&#x3E;
+                    &#x3C;section&#x3E;
+                        &#x3C;psk-app-router failRedirectTo=&#x22;/home&#x22;&#x3E;&#x3C;/psk-app-router&#x3E;
+                    &#x3C;/section&#x3E;
+                &#x3C;/psk-app-root&#x3E;
+
+                &#x3C;script src=&#x22;/scripts/browserSupport.js&#x22;&#x3E;&#x3C;/script&#x3E;
+
+                &#x3C;script src=&#x22;/scripts/privatesky/webshims.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x3C;script src=&#x22;/scripts/privatesky/pskruntime.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x3C;script src=&#x22;/scripts/privatesky/bindableModel.js&#x22;&#x3E;&#x3C;/script&#x3E;
+
+                &#x3C;script type=&#x22;module&#x22; src=&#x22;/cardinal/cardinal.esm.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x3C;script nomodule src=&#x22;/cardinal.js&#x22;&#x3E;&#x3C;/script&#x3E;
+                &#x3C;script&#x3E;
+                    globalConfig = {
+                        theme: &#x27;default&#x27;
+                    }
+                &#x3C;/script&#x3E;
+            </psk-code>
+
+            <p>The <psk-link page="Cardinal/web components/app-router">psk-app-router</psk-link> needs some default configuration and in order to provide that we need to create the <code>app-config.json</code> in the <code>code/</code> folder of the application:</p>
+            <psk-code language="javascript">
+                {
+                    "basePagesUrl": "/pages/",
+                    "menu": {
+                        "defaultMenuConfig": {
+                            "icon": "fa-bars",
+                            "type": "route",
+                            "component": "psk-page-loader",
+                            "exact": false,
+                            "indexed": true,
+                            "pagePrefix": "?",
+                            "historyType": "query"
+                        },
+                        "pages": [{
+                                "name": "Home",
+                                "path": "/home",
+                                "pageSrc": "index.html"
+                            }
+                        ]
+                    }
+                }
+            </psk-code>
+            <p>With this configuration we're telling the router to load the views from the <code>code/pages/</code> folder, so the next step is to add an <code>index.html</code> file in that location.</p>
+
+            <psk-chapter title="View">
+                <p>The <code>code/pages/index.html</code> view of our application will display the items in our to do list and will allow any user to add new items to that list:</p>
+                <psk-code language="markup">
+
+                    &#x3C;psk-page title=&#x22;To do list&#x22;&#x3E;
+                        &#x3C;psk-container controller-name=&#x22;TodoListController&#x22;&#x3E;
+                            &#x3C;!-- Render each list item from the model --&#x3E;
+                            &#x3C;psk-for-each data-view-model=&#x22;items&#x22;&#x3E;
+                                &#x3C;p&#x3E;&#x3C;psk-text-input value=&#x22;@item&#x22; read-only=&#x22;true&#x22;&#x3E;&#x3C;/psk-text-input&#x3E;&#x3C;/p&#x3E;
+                            &#x3C;/psk-for-each&#x3E;
+
+
+                            &#x3C;!-- Form controls for adding a new item --&#x3E;
+                            &#x3C;p&#x3E;
+                                &#x3C;psk-text-input view-model=&#x22;item&#x22;&#x3E;&#x3C;/psk-text-input&#x3E;&#x3C;br /&#x3E;
+                                &#x3C;psk-button label=&#x22;Add&#x22; button-class=&#x22;btn btn-info&#x22; event-name=&#x22;list:newItem&#x22;&#x3E;&#x3C;/psk-button&#x3E;
+                            &#x3C;/p&#x3E;
+
+                            &#x3C;!-- Save button --&#x3E;
+                            &#x3C;p&#x3E;&#x3C;psk-button label=&#x22;Save list&#x22; button-class=&#x22;btn btn-primary&#x22; event-name=&#x22;list:save&#x22;&#x3E;&#x3C;/psk-button&#x3E;&#x3C;/p&#x3E;
+                        &#x3C;/psk-container&#x3E;
+                    &#x3C;/psk-page&#x3E;
+
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Controller">
+                <p>The controller will initialize the model and handle all the events triggered by the view controls. Create the <code>code/scripts/controllers/TodoListController.js</code> file:</p>
+
+                <psk-code language="javascript">
+
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+                    import ListModel from "./../models/ListModel.js";
+
+                    export default class TodoListController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+
+                            // List model
+                            this.listModel = new ListModel();
+
+                            // Set some default values for the view model
+                            this.model = this.setModel(this.listModel.toJSON());
+
+                            // Fetch data from EDFS and populate the view model
+                            this.listModel.hydrate(this.model);
+
+                            // Add new item to the list
+                            this.on('list:newItem', (e) => {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                this._addNewListItem();
+                            })
+
+                            // Save the list to EDFS
+                            this.on('list:save', (e) => {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                this._saveList();
+                            })
+                        }
+
+                        _addNewListItem() {
+                            // Get the value from the "item" view model
+                            const newItem = this.model.item.value;
+
+                            // Appended to the "items" array
+                            this.model.items.push({
+                                item: newItem
+                            });
+
+                            // Clear the "item" view model
+                            this.model.item.value = '';
+                        }
+
+                        _saveList() {
+                            // Save data to EDFS
+                            this.listModel.save(this.model)
+                                .then((result) => {
+                                    console.log('List was saved!')
+                                })
+                                .catch((err) => {
+                                    console.log("An error occured");
+                                    console.error(err);
+                                });
+                        }
+                    }
+                </psk-code>
+            </psk-chapter>
+
+            <psk-chapter title="Model">
+                <p>The last piece of the puzzle is the model. Add the following code in <code>code/scripts/models/ListModel.js</code>. The model will fetch the data from EDFS using the <code>Download Middleware</code> of its service worker. When saving the data, the model will upload the list as a JSON file to EDFS using the <code>Upload Middleware</code> provided by the service worker.</p>
+
+                <psk-code language="javascript">
+                    export default class ListModel {
+
+                        constructor() {
+                            this.data = {
+                                items: [], // holds all the items of the list
+                                // view model for the "add new item" input
+                                item: {
+                                    name: 'item',
+                                    label: 'New item'
+                                }
+                            };
+                        }
+
+                        /**
+                        * Fetch data from EDFS and populate the view model
+                        */
+                        hydrate(model) {
+                            // We're getting the data through the Download
+                            // middleware of the Service Worker
+                            return fetch('/download/data/list.json')
+                                .then((response) => {
+                                    if (!response.ok) {
+                                        return;
+                                    }
+
+                                    return response.json().then((data) => {
+                                        model.items = data.items;
+                                    })
+                                })
+                                .catch((err) => {
+                                    console.error(err);
+                                })
+
+                        }
+
+                        /**
+                        * Save the model to EDFS
+                        */
+                        save(data) {
+                            this.data.items = data.items;
+
+                            const listFile = new File([JSON.stringify(this.data)], 'list.json');
+
+                            // We're using the Upload middleware of the Service Worker
+                            // to upload data to EDFS.
+                            const saveEndpointUrl = `/upload?path=/data&filename=${listFile.name}`;
+
+                            return fetch(saveEndpointUrl, {
+                                method: 'POST',
+                                body: listFile
+                            }).then((response) => {
+                                return this.getJsonResponseBody(response).then((data) => {
+                                    if (!response.ok || response.status != 201) {
+                                        return Promise.reject("Unable to save list");
+                                    }
+
+                                    return Promise.resolve();
+                                })
+                            })
+                        }
+
+                        getJsonResponseBody(response) {
+                            return response.json((result) => {
+                                return result;
+                            }).catch((err) => {
+                                return Promise.resolve({});
+                            })
+                        };
+
+                        /**
+                        * Return a copy of the data
+                        */
+                        toJSON() {
+                            return JSON.parse(JSON.stringify(this.data));
+                        }
+                    }
+                </psk-code>
+            </psk-chapter>
+        </psk-chapter>
+
+        <psk-chapter title="SSApp loader">
         </psk-chapter>
     </psk-chapter>
 </psk-page>
