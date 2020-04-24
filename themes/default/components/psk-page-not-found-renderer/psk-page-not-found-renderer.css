@@ -1,6 +1,5 @@
 div.container {
     position: relative;
-    transform: translateX(10rem);
     background-image: url(../../../../assets/images/404.png);
     background-repeat: no-repeat;
     background-size: 200px;
