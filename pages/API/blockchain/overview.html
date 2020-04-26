@@ -1,7 +1,9 @@
 <psk-page title="Blockchain module">
     <psk-toc title="Table of contents"> </psk-toc>
     <psk-chapter title="Introduction">
-        The <code>blockchain</code> module exposes the capability to create public or private custom blockchains. Our blockchain implementation is capable to adapt to different needs for the consensus algorithm, history storage, public and private signature generator, cache state storage and also assets and transactions definitions.
+        The <code>blockchain</code> module provides the ability to create public or private custom blockchains.
+        Our blockchain implementation is capable of adapting to different needs for the consensus algorithm, history storage,
+        public and private signature generator, cache state storage and also assets and transactions definitions.
     </psk-chapter>
     <psk-chapter title="APIs">
         Blockchain module exposes the following APIs:
@@ -11,7 +13,7 @@
             a snapshot of the blockchain's state at a specific moment in time is kept. Different storage strategies
             for implementing a world state cache can be employed. PrivateSky provides three world state cache strategies: <code>Memory Cache</code>, that stores the
             blockchain state in memory, <code>LocalWSCache</code>, that stores the blockchain state in the local file system and <code>BarCache</code> that stores the
-            blockchain state inside a <code>Brick Archive</code><br><br>
+            blockchain state inside a <code>Brick Archive</code>.<br><br>
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createWorldStateCache(type, ...args);
@@ -59,7 +61,8 @@
             </psk-card>
         </psk-chapter>
         <psk-chapter title="createAlgorithm">
-            The <code>createAlgorithm()</code> returns an instance of the specified consensus algorithm. The <code>consensus algorithm</code> is the algorithm used for reaching consensus between nodes when validating blockchain transactions.
+            The <code>createAlgorithm()</code> returns an instance of the specified consensus algorithm.
+            The <code>consensus algorithm</code> is the algorithm used for reaching consensus between nodes when validating blockchain transactions.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createAlgorithm(name, ...args);
@@ -83,7 +86,8 @@
             </psk-card>
         </psk-chapter>
         <psk-chapter title="createSignatureProvider">
-            The <code>createSignatureProvider()</code> returns an instance of a signature provider. The signature provider will be used each time a node communicates with another one to purpose a transaction or to vote and validate one.
+            The <code>createSignatureProvider()</code> returns an instance of a signature provider.
+            The signature provider will be used each time a node communicates with another in order to propose a transaction or to vote and validate one.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createSignatureProvider(name, ...args);
@@ -105,8 +109,8 @@
                 </psk-code>
             </psk-card>
         </psk-chapter>
-        <psk-chapter title="createBlockChain">
-            The <code>createBlockchain()</code> creates a custom <code>Blockchain</code> instance. The blockchain instance will be accessable via $$.blockchain reference.
+        <psk-chapter title="createBlockchain">
+            The <code>createBlockchain()</code> creates a custom <code>Blockchain</code> instance. The blockchain instance will be accessible via <code>$$.blockchain</code> reference.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createBlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider[, loadDefaultConstitution, forcedBoot]);
@@ -117,7 +121,7 @@
                         <code><b>historyStorage</b></code> - History storage strategy instance
                         <code><b>consensusAlgorithm</b></code> - Consensus algorithm instance
                         <code><b>signatureProvider</b></code> - The signature provider
-                        <code><b>loadDefaultConstitution</b></code> - A <code>boolean</code> variable used for deciding whether the default constitution (a collection of assets and transactions available into Blockchain module) is used. Default <code>true</code>
+                        <code><b>loadDefaultConstitution</b></code> - A <code>boolean</code> variable used for deciding whether the default constitution (a collection of assets and transactions available in the Blockchain module) is used. Default <code>true</code>
                         <code><b>forcedBoot</b></code> - A <code>boolean</code> variable used to decide whether $$.blockchain instance of should be overwritten. Default <code>false</code>
                     </psk-list>
                 </psk-card>

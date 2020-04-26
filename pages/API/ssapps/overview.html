@@ -2,21 +2,39 @@
     <psk-toc title="Table of contents"></psk-toc>
 
     <psk-chapter title="Privacy focused DApps">
-        <p align="justify">A SSApp (self-sovereign app) aims at giving control back to the user. An instance of a SSApp is solely under the cryptographic control of the user. The existence of a SSApp instance, as well as the possibility to see and modify its content is strictly limited by the access to the SEED of a RawDossier. The networking, the blockchain where the RawDossiers get anchored or the cloud storages  where Bricks get stored don’t know anything about the  types of the SSApps application or their content.</p>
-        <p align="justify">With this  PrivateSky technology, it is possible to create any new types of SSApps and to be published as RawDossier constitutions for others to deploy totally private instances.</p>
-        <p align="justify">A SSApp is the equivalent of the Decentralised Applications (DApps) in PrivateSky. This new name is useful because in a sense a SSApp is built just like a normal web app but instead of running on a server it is stored in a RawDossier. The RawDossier will therefore store secret smart contracts, asset definitions and transactions necessary for SSApp operation, and even the associated user interface.</p>
-        <p align="justify">The SSApps are a replacement (especially regarding the protection of confidential data) of decentralised apps  (Dapps) from other blockchains. As such, the SSApps are contributing to the achievement of a higher layer of decentralization, as they enable users to control their data through encryption of which they control the decryption keys.</p>
 
-        <psk-img src="/assets/images/newlook/seq.png"></psk-img>
+        <p align="justify"> In in PrivateSky a SSApp is the equivalent of the Decentralised Applications (DApps) found in other blockchain.
+            In a sense a SSApp is built just like a normal web app but instead of running in  a server it is stored in a Dossier.
+            The Dossier will therefore store secret data, code, asset definitions and transactions necessary for SSApp operation. Even the associated user interface is contained in BAR files.</p>
+        <p align="justify">With this  PrivateSky technology, it is possible to create any new types of SSApps and to deploy totally private instances.</p>
 
-        <p align="justify">A PrivateSky based mobile application can be created as a progressive web application running the same code as Self Sovereign Applications running inside of a  desktop browser.</p>
+        <p align="justify">Because SSApps are not running inside of the blockchains ( they are only anchored  in blockchains) they create of a very good opportunity for decentralization while enabling users control on private and confidential.</p>
+
+        <p align="justify">A SSApp (self-sovereign app) aims at giving control to data back to the user. An instance of a SSApp is solely under the cryptographic control of the user.
+            The existence of a SSApp instance, as well as the possibility to see and modify its content is strictly limited by the access to the SEED of a Dossier.
+            The networking, the blockchain where the Dossiers get anchored or the cloud storage  where Bricks get stored do not get access to information about the types of  SSApps  or to their content.</p>
+    </psk-chapter>
+
+    <psk-chapter title="SSApps radiography">
+        <psk-img src="/assets/images/architecture/SSAppsRadiography.png"></psk-img>
+        A SSApp application is created with web technologies (HTML, JavaScript,CSS) and basicaly the PrivateSky implementation is agnostic to the JavaScript frameworks.
+        However, for security and performance reasons we have created Cardinal mini framework based on web-components (Cardinal documentation can be found on this site).
+        SSApps applications can be used on desktops browsers or in embedded in mobile applications acting as Digital Wallets.
+        A Digital Wallet it is created with the same technology as any SSApp but should be created to contain a communication bus between multiple SSApps embedded in the wallet.
+        For each specific cases, a different wallet
+        The code of the Digital Wallet is loaded in what we call a "Loader". The current official loader  is  <a href="web-dossier-loader"> web-dosier-loader</a>.
+        The loader is a web page or could be an  mobile application that embed an webview.
+        The default wallets offered by privacy can be found looking at the <a href="https://github.com/PrivateSky/web-wallet"> web-wallet project </a>
+        In the  <a href="https://github.com/PrivateSky/web-wallet"> web-wallet project </a> you could find the code for other demo SSApps.
+
+        It is important to mention that the  wallet and the SSAppps loaded by te wallet are loaded in separate iframes and each iframe has an associated service worker (SW) as we can see in the above image.
 
     </psk-chapter>
 
     <psk-chapter title="Technology">
         <p align="justify">From the technology point of view each SSApp is simply a single page application created with web components and delivered through browsers by service workers. In the following we briefly present the main technologies used to build SSApps (Service Workers, HTTP Middleware, Web Components).</p>
-        <p align="justify">Instead of using a server, any SSApp is using the Service Worker to get and store data in a RawDossier.</p>
-        <p align="justify">Each SSApp is stored inside of a RawDossier (as files and folders stored in the RawDossier’s BAR).</p>
+        <p align="justify">Instead of using a server, any SSApp is using the Service Worker to get and store data in a Dossier.</p>
+        <p align="justify">Each SSApp is stored inside of a Dossier (as files and folders stored in the Dossier’s BAR).</p>
     </psk-chapter>
 
     <psk-chapter title="Service workers">
@@ -70,6 +88,10 @@
             <li>handlers for PrivateSky logic available to be used on the app (e.g. fetching blockchain for key changes)</li>
             <li>handlers for parent updates through an observer pattern using <i>postMessage</i> WebApi.</li>
 
+            <psk-img src="/assets/images/newlook/seq.png"></psk-img>
+
+            <p align="justify">A PrivateSky based mobile application can be created as a progressive web application running the same code as Self Sovereign Applications running inside of a  desktop browser.</p>
+        </ul>
     </psk-chapter>
 
 </psk-page>

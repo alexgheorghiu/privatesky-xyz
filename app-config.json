@@ -29,7 +29,8 @@
                 "children": [
 
                     {
-                        "name": "Why"
+                        "name": "Why",
+                        "keyword":"why"
                     },
                     {
                         "name": "Main Innovations"
@@ -172,9 +173,12 @@
                         "name": "PSK Wiki",
                         "path": "/psk-wiki",
                         "icon": "fa-bolt",
-                        "children": [{
-                            "name": "psk-card"
-                        },
+                        "children": [
+                            {
+                                "name": "psk-card",
+                                "keyword":"psk-card"
+
+                            },
                             {
                                 "name": "psk-chapter"
                             },
@@ -266,7 +270,8 @@
                                 "name": "Grid"
                             },
                             {
-                                "name": "Container"
+                                "name": "Container",
+                                "keyword":"psk-container"
                             },
                             {
                                 "name": "Slideshow"
@@ -284,11 +289,14 @@
                     },
                     {
                         "name": "Forms",
-                        "children": [{
-                            "name": "Using Forms"
-                        },
+                        "children": [
                             {
-                                "name": "psk-form"
+                                "name": "Using Forms",
+                                "keyword":"using-psk-form"
+                            },
+                            {
+                                "name": "psk-form",
+                                "keyword":"psk-form"
                             },
                             {
                                 "name": "psk-form-row"
@@ -345,7 +353,8 @@
                     "name": "A SSApp"
                     },
                     {
-                        "name": "A documentation site"
+                        "name": "A documentation site",
+                        "keyword":"documentation-site"
                     },
                     {
                         "name": "A web site with swarms"
