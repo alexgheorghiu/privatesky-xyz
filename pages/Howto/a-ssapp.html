@@ -43,7 +43,7 @@
     </psk-chapter>
 
     <psk-chapter title="SSApp Tutorial">
-        <psk-highlight type-of-highlight="example">If you are using a Windows operating system you will need to adapt some bash commands shown in this tutorial in order to execute them.</psk-highlight>
+        <psk-highlight type-of-highlight="example">If you are using a Windows operating system you may need to adapt some bash commands shown in this tutorial in order to execute them.</psk-highlight>
 
         <p>The gist of creating, integrating and developing a SSApp in <code>web-wallet</code> is:</p>
         <psk-list list-type="ordered">
@@ -168,7 +168,7 @@
                 <li>octopus.json</li>
                 <li>package.json</li>
             </ul>
-            <p>Go ahead and commit all those file in your git repository. It's time to integrate the application folder inside <code>web-wallet</code> and start adding some business logic to it:</p>
+            <p>Go ahead and commit all those files in your git repository. It's time to integrate the application folder inside <code>web-wallet</code> and start adding some business logic to it:</p>
             <psk-code>
                 cd todo-app
                 git add --all
@@ -191,7 +191,7 @@
             </psk-code>
 
             <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-app/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>web-wallet</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
-            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this web-wallet. You can think of <strong>secure-channels</strong> as container for SSApps.</p>
+            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this web-wallet. You can think of <strong>secure-channels</strong> as container for SSApps, for more information read the <strong>SSApp loader</strong> chapter of this document.</p>
 
             <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into web-wallet and we have binded it to the web-wallet's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>web-wallet</code> comes with a wallet template which is a SSApp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
             <psk-code language="javascript">
@@ -485,7 +485,33 @@
 
     <psk-chapter title="SSApp loader">
         <p>This section focuses a bit on the inner workings of the SSApp/Wallet loader, specifically on how it loads and runs wallets and SSApps.</p>
-        <p><em>Work in progress...</em></p>
+        <p>The loader makes heavy use of service workers in order to load wallets and SSApps from EDFS. Once a wallet has been created and a SEED is generated, using that SEED the loader is able to request the content of that wallet from EDFS and load any SSApps found in it.</p>
+        <p>In order to better understand the loading process let's have a look at the structure of a wallet:</p>
+
+        <object data="assets/images/wallet-structure.svg" type="image/svg+xml">
+            Wallet Structure
+        </object>
+
+        <p>A <strong>solution wallet</strong> is a <psk-link page="API/edfs/overview">Dossier</psk-link> containing a blockchain and a set of SSApps which encapsulate business logic. In the diagram above you can see that the "Secure Channels Solution" is based on the <strong>menu-wallet</strong> template and contains 3 more SSApps: profile-app, secure-channels-app and our newly created todo-app. The "menu-wallet" template is in itself just a regular SSApp which displays a menu in the UI with links to the rest of the SSApps contained in the solution. Each individual SSApp (including the menu-wallet) is built by Octopus using the command line (<code>npm run build-all</code> command) while the <strong>solution wallet</strong> is build by the loader during first use. The steps for creating the solution wallet in the loader are the following:</p>
+
+        <psk-list list-type="ordered">
+            Create a new Dossier
+            Mount the "menu-wallet" in the <code>code/</code> folder inside the new Dossier
+            Copy any files found in the web server's wallet-template folder inside the <code>app/</code> folder of the new Dossier
+        </psk-list>
+
+        <p>The purpose of the <code>app/</code> folder in a Dossier folder is to customize/overwrite any existing fuctionality stored in the <code>code/</code> folder. When an SSApp is loaded and run, its assigned service worker will first try to load files from the <code>app/</code> folder and if it fails it will use the <code>code/</code> folder as failover. This applies to all the other SSApps in the solution.<br />
+        Once the solution's dossier has been created the loader adds the rest of the applications by using the following algorithm:</p>
+
+        <psk-list list-type="ordered">
+            Create a new application Dossier
+            Mount the application's source code in the new Dossier's <code>code/</code> folder
+            Copy any files found in the web server's [application-name]-template folder inside the <code>app/</code> folder of the new Dossier
+            Mount the new Dossier in the solutions wallet under <code>apps/[application-name]</code>
+        </psk-list>
+
+        <p>Another way to understand this structure is by using an OOP analogy: The <strong>solution wallet</strong> is a collection of application instances created from application classes. For example, the <strong>todo-app</strong> application instance is the "My To do List App" from the diagram, mounted in the <code>apps/</code> folder in the solution's wallet, while the <strong>todo-app</strong> application class is the "To do list App" from the diagram.</p>
+        <p>In order to load and run the solution, the loader will load each SSApp (including the menu-wallet) in its separate iframe and register dedicated instances of a service worker for that iframe to handle HTTP requests:</p>
 
         <object data="assets/images/wallet-loader.svg" type="image/svg+xml">
             SSApp loader architecture
