@@ -30,7 +30,7 @@
 
                     {
                         "name": "Why",
-                        "keyword":"why"
+                        "tags":"why"
                     },
                     {
                         "name": "Main Innovations"
@@ -176,7 +176,7 @@
                         "children": [
                             {
                                 "name": "psk-card",
-                                "keyword":"psk-card"
+                                "tags":"psk-card"
 
                             },
                             {
@@ -271,7 +271,7 @@
                             },
                             {
                                 "name": "Container",
-                                "keyword":"psk-container"
+                                "tags":"psk-container"
                             },
                             {
                                 "name": "Slideshow"
@@ -292,11 +292,11 @@
                         "children": [
                             {
                                 "name": "Using Forms",
-                                "keyword":"using-psk-form"
+                                "tags":"using-psk-form"
                             },
                             {
                                 "name": "psk-form",
-                                "keyword":"psk-form"
+                                "tags":"psk-form"
                             },
                             {
                                 "name": "psk-form-row"
@@ -354,7 +354,7 @@
                     },
                     {
                         "name": "A documentation site",
-                        "keyword":"documentation-site"
+                        "tags":"documentation-site, ssapp"
                     },
                     {
                         "name": "A web site with swarms"
