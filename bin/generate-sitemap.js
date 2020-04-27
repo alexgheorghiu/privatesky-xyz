@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const appConfig = "./app-config.json";
-import AppControllerUtils from "../cardinal/utils/AppControllerUtils";
+import AppControllerUtils from "../cardinal/controllers/AppConfigurationHelper.js";
 
 let buildSiteMap = function() {
 
