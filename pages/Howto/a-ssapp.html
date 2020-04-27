@@ -488,9 +488,7 @@
         <p>The loader makes heavy use of service workers in order to load wallets and SSApps from EDFS. Once a wallet has been created and a SEED is generated, using that SEED the loader is able to request the content of that wallet from EDFS and load any SSApps found in it.</p>
         <p>In order to better understand the loading process let's have a look at the structure of a wallet:</p>
 
-        <object data="assets/images/wallet-structure.svg" type="image/svg+xml">
-            Wallet Structure
-        </object>
+        <psk-img src="assets/images/wallet-structure.svg"></psk-img>
 
         <p>A <strong>solution wallet</strong> is a <psk-link page="API/edfs/overview">Dossier</psk-link> containing a blockchain and a set of SSApps which encapsulate business logic. In the diagram above you can see that the "Secure Channels Solution" is based on the <strong>menu-wallet</strong> template and contains 3 more SSApps: profile-app, secure-channels-app and our newly created todo-app. The "menu-wallet" template is in itself just a regular SSApp which displays a menu in the UI with links to the rest of the SSApps contained in the solution. Each individual SSApp (including the menu-wallet) is built by Octopus using the command line (<code>npm run build-all</code> command) while the <strong>solution wallet</strong> is build by the loader during first use. The steps for creating the solution wallet in the loader are the following:</p>
 
@@ -513,8 +511,6 @@
         <p>Another way to understand this structure is by using an OOP analogy: The <strong>solution wallet</strong> is a collection of application instances created from application classes. For example, the <strong>todo-app</strong> application instance is the "My To do List App" from the diagram, mounted in the <code>apps/</code> folder in the solution's wallet, while the <strong>todo-app</strong> application class is the "To do list App" from the diagram.</p>
         <p>In order to load and run the solution, the loader will load each SSApp (including the menu-wallet) in its separate iframe and register dedicated instances of a service worker for that iframe to handle HTTP requests:</p>
 
-        <object data="assets/images/wallet-loader.svg" type="image/svg+xml">
-            SSApp loader architecture
-        </object>
+        <psk-img src="assets/images/wallet-loader.svg"></psk-img>
     </psk-chapter>
 </psk-page>
