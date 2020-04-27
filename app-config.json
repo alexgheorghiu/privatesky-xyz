@@ -40,7 +40,7 @@
                     },
                     {
                         "name": "Blockchain",
-                        "path": "/Blockchain",
+                        "path": "Blockchain",
                         "icon": "fa-cog",
                         "children": [
                             {
