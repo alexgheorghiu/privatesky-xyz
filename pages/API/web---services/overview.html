@@ -1,22 +1,23 @@
 <psk-page title="PrivateSky Web Services ">
     <psk-highlight type-of-highlight="note">
-        VirtualMQ is a HTTP server that allows the communication between PrivateSky nodes and/or agents inside a node, allows the
+        PSK Web Server is a HTTP server that allows the communication between PrivateSky nodes and/or agents inside a node, allows the
         storage and retrieval of bricks (blocks of data stored on the server in files identified by the block's cryptographic hash) and
         allows the grouping of different bricks under the same unique identifier (<code>anchor</code>). Each one of the three components is
         explained in more detail at the links below.
-        The VirtualMQ server can also be extended to include custom services (besides the default ones below). The section
-        <a href="?API/virtualmq/overview&chapter=how-to-extend-a-virtualmq-server"> <code>How to extend a VirtualMQ server</code> </a> explains in more
-        detail how a VirtualMQ server can be extended.
+        The PSK Web Server can also be extended to include custom services (besides the default ones below). The section
+        <a href="?API/virtualmq/overview&chapter=how-to-extend-a-virtualmq-server"> <code>How to extend a PSK Web Server</code> </a> explains in more
+        detail how a PSK Web Server can be extended.
     </psk-highlight>
     <psk-toc title="Table of contents"></psk-toc>
-    <psk-chapter title="Default VirtualMQ services">
+    <psk-chapter title="Default PSK Web Server services">
         <psk-list list-type="unordered">
-            <psk-link page="apis/virtualmq/brick-storage">Brick Storage</psk-link>
-            <psk-link page="apis/virtualmq/anchoring">Anchoring</psk-link>
-            <psk-link page="apis/virtualmq/message-passing">Message Passing</psk-link>
+            <psk-link page="apis/web-services/brick-storage">Brick Storage</psk-link>
+            <psk-link page="apis/web-services/anchoring">Anchoring</psk-link>
+            <psk-link page="apis/web-services/message-passing">Message Passing</psk-link>
+            <psk-link page="apis/web-services/dossier-wizard">Dossier Wizard</psk-link>
         </psk-list>
     </psk-chapter>
-    <psk-chapter title="How to create a VirtualMQ server">
+    <psk-chapter title="How to create a PSK Web Server">
         <psk-card title="createVirtualMQ">
             The <code>createVirtualMQ()</code> method creates and starts a VirtualMQ server.
             <psk-card title="Syntax">
@@ -45,7 +46,7 @@
             </psk-card>
 
             <psk-card title="Description">
-                The <code>createVirtualMQ()</code> method starts a VirtualMQ server and returns its instance.
+                The <code>createVirtualMQ()</code> method starts a PSK Web Server and returns its instance.
             </psk-card>
 
             <psk-card title="Examples">
@@ -67,7 +68,7 @@
         </psk-card>
     </psk-chapter>
 
-    <psk-chapter title="How to extend a VirtualMQ server">
+    <psk-chapter title="How to extend a PSK Web Server">
         The <code>createVirtualMQ()</code> method starts a HTTP server and return the server instance. As a result, the
         server can be dynamically
         extended using the API below.
