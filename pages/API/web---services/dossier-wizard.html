@@ -4,15 +4,20 @@
     </psk-highlight>
 
     <psk-highlight type-of-highlight="example">
-        Note: In order to use the provided API, it is mandatory to start a PSK Web Server. A PSK Web Server can be started
+        <b>Note 1:</b> In order to use the provided API, it is mandatory to start a PSK Web Server. A PSK Web Server can be started
         from command line running the command <code>npm run start</code>, which starts a PSK Web Server on port <code>8080</code>, or programmatically as shown
         <a href="?API/web---services/overview&chapter=how-to-create-a-psk-web-server">here</a>.
+    </psk-highlight>
+
+    <psk-highlight type-of-highlight="example">
+        <b>Note 2:</b> The requests presented below should be received by the PSK Web Server in the order in which they
+        are described.
     </psk-highlight>
 
     <psk-toc title="Table of contents"></psk-toc>
     <psk-chapter title="begin">
         <psk-highlight type-of-highlight="note">
-            <code>PSK Web Server</code> generates a <code>transaction id</code> that uniquely identifies the working session.
+            When receiving a <code>begin</code> request, the <code>PSK Web Server</code> generates a <code>transaction id</code> that uniquely identifies the working session.
             The <code>transaction id</code> should be stored and used for every subsequent operation.
         </psk-highlight>
 
