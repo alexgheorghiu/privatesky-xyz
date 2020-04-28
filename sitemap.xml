@@ -39,6 +39,8 @@
       </url><url>
         <loc>https://privatesky.xyz/?API/web---services/virtualmq</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?API/web---services/dossier-wizard</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?API/ssapps/overview</loc>
       </url><url>
         <loc>https://privatesky.xyz/?API/ssapps/service-worker-middleware</loc>
