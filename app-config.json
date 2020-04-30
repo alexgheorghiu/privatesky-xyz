@@ -155,7 +155,8 @@
                 "path": "/Cardinal",
                 "icon": "fa-cog",
                 "children": [{
-                        "name": "Web Components MVC"
+                        "name": "Web Components MVC",
+                        "tags": "cardinal-mvc"
                     },
                     {
                         "name": "Models"

@@ -35,7 +35,7 @@
             <p>The <strong>SSApp application loader</strong> is the first thing you'll see after running the <code>web-wallet</code> web server and accessing <code>http://localhost:8080/secure-channels/loader</code>. It is a basic web application which allows creation and loading of wallets based on the <em>menu wallet</em> template. The SSApp loader registers a service worker responsible with loading the built SSApps from the Brick Storage.</p>
 
             <p><strong>Before advancing to the next chapters make sure you have correctly installed <code>web-wallet</code> and have started the web server:</strong></p>
-            <psk-code>
+            <psk-code language="bash">
                 cd web-wallet
                 npm run server
             </psk-code>
@@ -57,13 +57,13 @@
 
         <psk-chapter title="Creating the folder structure">
             <p>Start by cloning the <a href="https://github.com/privatesky/ssapp-template" target="_blank">ssapp-template</a> repository and rename the <code>ssapp-template</code> directory. For the purpose of this tutorial we will create a basic "To Do list" application, thus, the name of our new app will be <code>todo-app</code>.</p>
-            <psk-code>
+            <psk-code language="bash">
                 git clone https://github.com/privatesky/ssapp-template todo-app
             </psk-code>
 
             <p>Next, go ahead and remove the existing <code>.git</code> folder from <code>todo-app</code>, initialize a new empty git repo and commit the existing content to your own repository.</p>
 
-            <psk-code>
+            <psk-code language="bash">
                 cd todo-app
                 rm -rf .git
                 git init
@@ -102,7 +102,7 @@
                 <p>Make sure the web-wallet web server is running before proceeding with the next examples.</p>
             </psk-highlight>
             <p>It is time to integrate our application inside <code>web-wallet</code> by running a few octopus commands inside the web-wallet directory:</p>
-            <psk-code>
+            <psk-code language="bash">
                 cd web-wallet
 
                 # This command will tell octopus to fetch the application from your git repository
@@ -161,7 +161,7 @@
             </psk-highlight>
             <p>The first thing you'll need to do before adding new code to the application is to switch the SSApp loader to run in "development" mode. To do that, go into <code>web-server/secure-channels/loader</code> and create a copy of <code>loader-config.local.json-template</code> file:</p>
 
-            <psk-code>
+            <psk-code language="bash">
                 cd web-server/secure-channels/loader
                 cp loader-config.local.json-template loader-config.local.json
             </psk-code>
@@ -170,7 +170,7 @@
 
             <p>Next start the "watch" feature of the <code>web-wallet</code> that watches for source code changes and updates the application's BAR - remember, the SSApp, once built it is stored in a BAR in Brick Storage. In order to update the code we need to somehow update the BAR:</p>
 
-            <psk-code>
+            <psk-code language="bash">
                 # inside web-wallet's directory
                 npm run watch -- --app=todo-app
             </psk-code>
