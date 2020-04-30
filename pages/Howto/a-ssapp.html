@@ -58,19 +58,26 @@
         <psk-chapter title="Creating the folder structure">
             <p>Start by cloning the <a href="https://github.com/privatesky/ssapp-template" target="_blank">ssapp-template</a> repository and rename the <code>ssapp-template</code> directory. For the purpose of this tutorial we will create a basic "To Do list" application, thus, the name of our new app will be <code>todo-app</code>.</p>
             <psk-code>
-                git clone https://github.com/privatesky/ssapp-template
-                mv ssapp-template todo-app
+                git clone https://github.com/privatesky/ssapp-template todo-app
             </psk-code>
 
-            <p>Next, go ahead and remove the existing <code>.git</code> folder from <code>todo-app</code>, initialize a new empty git repo and commit the existing content to your own repository:</p>
+            <p>Next, go ahead and remove the existing <code>.git</code> folder from <code>todo-app</code>, initialize a new empty git repo and commit the existing content to your own repository.</p>
 
             <psk-code>
                 cd todo-app
                 rm -rf .git
                 git init
+
+                # set the url of your git repository
+                # replace 'https://github.com/username/todo-app.git' with the your own url
+                git remote add origin https://github.com/username/todo-app.git
+                git fetch
+
                 git add --all
                 git commit -m "Todo App SSApp structure"
-                git push
+
+                # push the files to your git repository.
+                git push --set-upstream origin master
             </psk-code>
 
             <p>A typical SSApp will have the following structure:
@@ -99,7 +106,9 @@
                 cd web-wallet
 
                 # This command will tell octopus to fetch the application from your git repository
-                npm run add todo-app [url of your todo-app repository]
+                # Make sure you replace 'https://github.com/username/todo-app.git' with your
+                # actual git repository url
+                npm run add todo-app https://github.com/username/todo-app.git
 
                 npm run bind-app secure-channels todo-app
             </psk-code>
@@ -147,7 +156,9 @@
         </psk-chapter>
 
         <psk-chapter title="Application Development">
-            <p><strong>From now on the development work will be done from within the <code>todo-app</code> folder in the <code>web-wallet</code>. The only purpose for the initial todo-app directory was to be able to install it inside web-wallet.</strong></p>
+            <psk-highlight type-of-highlight="example">
+                <p>From now on the development work will be done from within the <code>todo-app</code> folder in the <code>web-wallet</code>. The only purpose for the initial todo-app directory was to be able to install it inside web-wallet.</p>
+            </psk-highlight>
             <p>The first thing you'll need to do before adding new code to the application is to switch the SSApp loader to run in "development" mode. To do that, go into <code>web-server/secure-channels/loader</code> and create a copy of <code>loader-config.local.json-template</code> file:</p>
 
             <psk-code>
