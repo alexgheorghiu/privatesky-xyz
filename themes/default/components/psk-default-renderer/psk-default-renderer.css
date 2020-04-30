@@ -41,12 +41,13 @@ aside {
     font-size: 85%;
 }
 
+.is-mobile .nav-footer{
+    display: none;
+}
+
 @media (max-width: 960px) {
     aside {
         grid-template-rows: auto minmax(0px, auto);
-    }
-    .nav-footer {
-        display: none;
     }
 }
 
