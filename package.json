@@ -4,10 +4,12 @@
     "version": "0.0.2",
     "description": "PrivateSky Development Hub",
     "scripts": {
+        "cardinal-update": "node ./node_modules/octopus/scripts/run cardinal-update",
         "generate-sitemap": "node -r esm ./bin/generate-sitemap.js https://privatesky.xyz",
         "web-server": "ws --spa ./index.html"
     },
     "devDependencies": {
+        "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0.1",
         "local-web-server": "^3.0.7",
         "esm": "^3.2.25"
     },
