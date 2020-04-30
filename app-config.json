@@ -1,4 +1,5 @@
-{
+{   "theme":"default",
+    "appVersion":"0.2.0",
     "basePagesUrl": "/pages/",
     "profile": {
         "username": "PrivateSky",
