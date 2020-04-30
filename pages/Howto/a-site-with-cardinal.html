@@ -2,7 +2,7 @@
 	<psk-toc title="Table of contents"></psk-toc>
 
 	<psk-dscription title="Summary">
-		<p>On this page can be found all the information about how to create a new application using Cardinal.Js framework.</p>
+		<p>This guide will provide the necessary information on how to create a new application using Cardinal.Js framework.</p>
 	</psk-dscription>
 
 	<psk-chapter title="Prerequisites">
@@ -19,7 +19,7 @@
 				git clone https://github.com/privatesky/cardinal-app-template web-site
 			</psk-code>
 
-			<p>Next, go ahead and remove the existing <code>.git</code> folder from your web-site folder, initialize a new empty git repo and commit the existing content to your own repository.</p>
+			<p>Next, go ahead and remove the existing <code>.git</code> folder from your <code>web-site</code> folder, initialize a new empty git repo and commit the existing content to your own repository.</p>
 
 			<psk-code language="shell-session">
 				cd web-site
@@ -37,39 +37,39 @@
 				# push the files to your git repository.
 				git push --set-upstream origin master
 			</psk-code>
-			<p>At this point you just created the basic structure of your new website that uses Cardinal.Js framework.</p>
+			<p>You've just developed your new website's basic structure, using the Cardinal.Js framework.</p>
 		</psk-card>
 	</psk-chapter>
 
 	<psk-chapter title="Running the website locally">
-		To run locally the website that you just created run the command
+		To run the website you just created execute the command
 		<psk-code language="shell-session">
 			npm run web
 		</psk-code>
-		Once the web server starts go to browser and navigate to: <a href="http://localhost:8000/">http://localhost:8000/</a>
+		Upon the start of the web server, go to the browser and navigate to: <a href="http://localhost:8000/">http://localhost:8000/</a>
 	</psk-chapter>
 
 	<psk-chapter title="Update Cardinal.Js framework">
-		<p>To update the instance of Cardinal.Js framework used, you have to be inside the root of the web-site, (where you can run <code>npm run web</code>) and to run the command:.</p>
+		<p>To update the instance of Cardinal.Js framework used, you must be within the web-site root folder and to execute the command:</p>
 		<psk-code language="shell-session">
-npm run update
+			npm run update
 		</psk-code>
 	</psk-chapter>
 
 	<psk-chapter title="How to add a new page">
-		<p>To add a hello-world page to a Cardinal.Js based website follow the steps:</p>
+		<p>To add a Hello-world page to the website follow the steps:</p>
 		<psk-list list-type="ordered">
-			Navigate to web-site/pages folder
+			Navigate to <code>web-site/pages</code> folder
 				<psk-code language="shell-session">
 					cd web-site/pages
 				</psk-code>
-			create a new html file called hello-world.html
-			Open hello-world.html file and add the following code as content:
+			create a new html file called <code>hello-world.html</code>
+			Open <code>hello-world.html</code> file and add the following code as content:
 				<psk-code language="html">
 					<psk-page title="Hello world!">
 					</psk-page>
 				</psk-code>
-			Navigate back to web-site root folder and edit app-config.json file in order to add a new entry for the hello-world page into the menu configuration.
+			Navigate back to web-site root folder and edit <code>app-config.json</code> file in order to add a new entry for the hello-world page into the menu configuration.
 				<psk-code language="JavaScript">
 					{
 						"basePagesUrl": "/pages/",
