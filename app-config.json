@@ -414,7 +414,7 @@
                         "indexed": "false"
                     },
                     {
-                        "name": "PSKWallet",
+                        "name": "pskwallet",
                         "indexed": "false"
 
                     },
