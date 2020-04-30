@@ -1,6 +1,6 @@
 <psk-page title="Dossier Wizard API">
     <psk-highlight type-of-highlight="note">
-        <code>Dossier Wizard</code> provides an API for creating and manipulating <code>Raw Dossiers</code>.
+        <code>Dossier Wizard</code> provides an API for creating and manipulating <code>dossiers</code>.
     </psk-highlight>
 
     <psk-highlight type-of-highlight="example">
@@ -56,9 +56,9 @@
 
     <psk-chapter title="setEndpoint">
         <psk-highlight type-of-highlight="note">
-            The provided <code>endpoint</code> is the Brick Storage's URL where the Raw Dossier's bricks are stored when PSK Web Server
+            The provided <code>endpoint</code> is the Brick Storage's URL where the dossier's bricks are stored when PSK Web Server
             receives a <a href="?API/web---services/dossier-wizard&chapter=build">build</a> request. Also, the <code>endpoint</code> is used
-            when generating the Raw Dossier's <psk-link page="apis/classes/seed">SEED</psk-link>.
+            when generating the dossier's <psk-link page="apis/classes/seed">SEED</psk-link>.
         </psk-highlight>
 
         <psk-card title="Request's structure">
@@ -92,7 +92,7 @@
 
     <psk-chapter title="addFile">
         <psk-highlight type-of-highlight="note">
-            Allows the addition of a file to the <code>Raw Dossier</code> that is created when PSK Web Server receives a
+            Allows the addition of a file to the <code>dossier</code> that is created when PSK Web Server receives a
             <a href="?API/web---services/dossier-wizard&chapter=build">build</a> request.
         </psk-highlight>
 
@@ -109,8 +109,8 @@
                     when receives a <a href="?API/web---services/dossier-wizard&chapter=begin" >begin</a> request.
                 </psk-card>
                 <psk-card title="Headers">
-                    <code>x-dossier-path</code> <b>|</b>  The path in the <code>Raw Dossier's bar map</code> where the file bricks' hashes are stored.
-                    The path has the format <code>/dir1/dir2</code>. By default, the files are stored in Raw dossier's root (at path <code>/</code>).
+                    <code>x-dossier-path</code> <b>|</b>  The path in the <code>dossier's bar map</code> where the file bricks' hashes are stored.
+                    The path has the format <code>/dir1/dir2</code>. By default, the files are stored in dossier's root (at path <code>/</code>).
                 </psk-card>
                 <psk-card title="Data Params">
                     Content-Type: <code>application/octet-stream</code><br>
@@ -128,10 +128,10 @@
     </psk-chapter>
     <psk-chapter title="mount">
         <psk-highlight type-of-highlight="note">
-            Mounts a previously created Raw Dossier in the Raw Dossier created when PSK Web Server receives a
+            Mounts a previously created dossier in the dossier created when PSK Web Server receives a
             <a href="?API/web---services/dossier-wizard&chapter=build">build</a> request. In order for the mount operation
-            to be completed it is necessary to provide a <code>mountPath</code> (the path were the previously created Raw Dossier
-            is mounted) and the <psk-link page="apis/classes/seed">SEED</psk-link> of the Raw Dossier that is being mounted. For more details about <code>mount</code>
+            to be completed it is necessary to provide a <code>mountPath</code> (the path were the previously created dossier
+            is mounted) and the <psk-link page="apis/classes/seed">SEED</psk-link> of the dossier that is being mounted. For more details about <code>mount</code>
             click <psk-link page="apis/edfs/raw-dossiers">here</psk-link>.
         </psk-highlight>
 
@@ -148,8 +148,8 @@
                     when receives the <a href="?API/web---services/dossier-wizard&chapter=begin" >begin</a> request.
                 </psk-card>
                 <psk-card title="Headers">
-                    <code>x-mount-path</code> <b>|</b>  The path where the Raw Dossier is mounted. The path should have the format <code>/dir1/dir2</code>.
-                    <code>x-mounted-dossier-seed</code> <b>|</b>  The <psk-link page="apis/classes/seed">SEED</psk-link> of the Raw Dossier that is being mounted.
+                    <code>x-mount-path</code> <b>|</b>  The path where the dossier is mounted. The path should have the format <code>/dir1/dir2</code>.
+                    <code>x-mounted-dossier-seed</code> <b>|</b>  The <psk-link page="apis/classes/seed">SEED</psk-link> of the dossier that is being mounted.
                 </psk-card>
                 <psk-card title="Data Params">
                     <code>None</code>
@@ -167,14 +167,14 @@
 
     <psk-chapter title="build">
         <psk-highlight type-of-highlight="note">
-            The Raw Dossier is created and its <psk-link page="apis/classes/seed">SEED</psk-link> returned. The created Raw Dossier
+            The dossier is created and its <psk-link page="apis/classes/seed">SEED</psk-link> returned. The created dossier
             contains the file added through a <a href="?API/web---services/dossier-wizard&chapter=addFile" >addFile</a> request and
-            the <psk-link page="apis/classes/seed">SEED</psk-link> of the Raw Dossier mounted through a
+            the <psk-link page="apis/classes/seed">SEED</psk-link> of the dossier mounted through a
             <a href="?API/web---services/dossier-wizard&chapter=mount" >mount</a> request.
         </psk-highlight>
         <psk-highlight type-of-highlight="example">
             Note: The <code>build</code> request is not processed unless a file is added through a
-            <a href="?API/web---services/dossier-wizard&chapter=addFile" >addFile</a> request or a Raw Dossier is
+            <a href="?API/web---services/dossier-wizard&chapter=addFile" >addFile</a> request or a dossier is
             mounted through a <a href="?API/web---services/dossier-wizard&chapter=mount" >mount</a> request previous to
             sending a <code>build</code> request.
         </psk-highlight>
@@ -199,7 +199,7 @@
                 <psk-card title="Success Response">
                     Code: <code>200 OK</code><br>
                     Content type: <code>text/plain</code><br>
-                    Content: <code>SEED</code> <b>|</b> The created Raw Dossier's <psk-link page="apis/classes/seed">SEED</psk-link>.
+                    Content: <code>SEED</code> <b>|</b> The created dossier's <psk-link page="apis/classes/seed">SEED</psk-link>.
                 </psk-card>
                 <psk-card title="Error Response">
                     Code: <code>404</code><br>
