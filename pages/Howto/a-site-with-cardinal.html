@@ -21,7 +21,7 @@
 
 			<p>Next, go ahead and remove the existing <code>.git</code> folder from your <code>web-site</code> folder, initialize a new empty git repo and commit the existing content to your own repository.</p>
 
-			<psk-code language="shell-session">
+			<psk-code language="bash">
 				cd web-site
 				rm -rf .git
 				git init
@@ -43,7 +43,7 @@
 
 	<psk-chapter title="Running the website locally">
 		To run the website you just created execute the command
-		<psk-code language="shell-session">
+		<psk-code language="bash">
 			npm run web
 		</psk-code>
 		Upon the start of the web server, go to the browser and navigate to: <a href="http://localhost:8000/">http://localhost:8000/</a>
@@ -51,7 +51,7 @@
 
 	<psk-chapter title="Update Cardinal.Js framework">
 		<p>To update the instance of Cardinal.Js framework used, you must be within the web-site root folder and to execute the command:</p>
-		<psk-code language="shell-session">
+		<psk-code language="bash">
 			npm run update
 		</psk-code>
 	</psk-chapter>
@@ -60,7 +60,7 @@
 		<p>To add a Hello-world page to the website follow the steps:</p>
 		<psk-list list-type="ordered">
 			Navigate to <code>web-site/pages</code> folder
-				<psk-code language="shell-session">
+				<psk-code language="bash">
 					cd web-site/pages
 				</psk-code>
 			create a new html file called <code>hello-world.html</code>
