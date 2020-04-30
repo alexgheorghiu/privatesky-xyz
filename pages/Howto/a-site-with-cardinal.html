@@ -2,88 +2,110 @@
 	<psk-toc title="Table of contents"></psk-toc>
 
 	<psk-dscription title="Summary">
-		<p>On this page can be found all the information about how to creat a new skeleton site using Cardinal.Js
-			module, cardinal-updater.</p>
+		<p>On this page can be found all the information about how to create a new application using Cardinal.Js framework.</p>
 	</psk-dscription>
 
 	<psk-chapter title="Prerequisites">
-		<psk-chapter title="Git">
-			<p>
-				<a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> - using git, you can
-				clone the project from Github, but is also necessary in the creation process.
-			</p>
-		</psk-chapter>
-
-		<psk-chapter title="NPM">
-			<p>
-				<a href="https://nodejs.org/en/download/">Node.Js with NPM</a> - npm is required to be able to run the
-				installer, to install and run the created project.
-			</p>
-		</psk-chapter>
-
-		<psk-chapter title="cardinal-updater">
-			<p>
-				<a href="https://github.com/PrivateSky/cardinal-updater">cardinal-updater</a> - this module is the one
-				who is responsable with the creation of the application skeleton.
-			</p>
-			<p>Download the archive with the project or clone it to your machine, then install the module globally by
-				running:</p>
-			<psk-code language="shell-session">
-$ ~/path/to/cardinal-updater> npm install -g
-			</psk-code>
-		</psk-chapter>
+		<psk-list list-type="ordered">
+			Install or update <a href="https://nodejs.org/en/">Node</a> (including NPM) to version <b>12.14.0</b>.
+			Install or update <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a>
+		</psk-list>
 	</psk-chapter>
 
-	<psk-chapter title="Instalation">
+	<psk-chapter title="Creating the folder structure">
 		<psk-card>
-			<p>Display the help section: command <code>cardinal -h</code> or <code>cardinal --help</code> or <code>cardinal help</code>.</p>
-			<psk-code language="shell-session">
-$ cardinal -h
-
-Usage: cardinal [options] [command]
-
-Options:
-
-	--version      output the version number
--m, --menu [type]  [type] set where to dock the application menu. Possible values (left|top). The default value is left. (default: left)
--h, --help         output usage information
-
-Commands:
-
-init [dir]         creates an instance of Cardinal.Js withing a directory named [dir]. Default: Cardinal-SSApp
-update             updates an existing instance of Cardinal.Js. This must be executed on the root of the project. E.g: $ path/to/Cardinal-SSApp> cardinal update
-help [cmd]         display help for [cmd]
+			<p>Start by cloning the <a href="https://github.com/privatesky/cardinal-app-template" target="_blank">cardinal-app-template</a> repository.</p>
+			<psk-code>
+				git clone https://github.com/privatesky/cardinal-app-template web-site
 			</psk-code>
-		</psk-card>
 
-		<psk-card>
-			<p>Example of creation of a skeleton: dir = "myCardinalApp", --menu=top. Run the following command:</p>
+			<p>Next, go ahead and remove the existing <code>.git</code> folder from your web-site folder, initialize a new empty git repo and commit the existing content to your own repository.</p>
+
 			<psk-code language="shell-session">
-$ cardinal init myCardinalApp --menu=top
+				cd web-site
+				rm -rf .git
+				git init
+
+				# set the url of your git repository
+				# replace 'https://github.com/username/web-site.git' with the your own url
+				git remote add origin https://github.com/username/web-site.git
+				git fetch
+
+				git add --all
+				git commit -m "first commit"
+
+				# push the files to your git repository.
+				git push --set-upstream origin master
 			</psk-code>
-			<p>By running this command a directory named "myCardinalApp" was created. </p>
-			<p>Inside it there were added the builds from <a href="https://github.com/PrivateSky/psk-release">PrivateSky-Release</a>, which includes the source files for BlockChain, CSB and Two-way binding and also the build which includes all the web-components developed within <a href="https://github.com/PrivateSky/cardinal">cardinal</a> module.</p>
-			<p>The build is made within <a href="https://github.com/PrivateSky/cardinal-website">cardinal-website</a> module and the built source file are brought to the skeleton.</p>
-			<p><b>Node:</b> <i>You can run also <code>cardinal init</code> with no problems, the differences are that the default values for <code>menu</code> and <code>dir</code> will be taken as parameters for the skeleton creation process.</i></p>
+			<p>At this point you just created the basic structure of your new website that uses Cardinal.Js framework.</p>
 		</psk-card>
 	</psk-chapter>
 
-	<psk-chapter title="Usage">
-		<p>After all the skeleton is created, use the following commands:</p>
+	<psk-chapter title="Running the website locally">
+		To run locally the website that you just created run the command
 		<psk-code language="shell-session">
-$ cd myCardinalApp
-$ npm install
-$ npm run web (make sure you dont have port: 8000 already used, but you can change this in package.json file.)
+			npm run web
 		</psk-code>
-		<p>The opened page should look similar to the below print-screen:</p>
-		<psk-img src="/assets/images/cardinal-instance.png"></psk-img>
+		Once the web server starts go to browser and navigate to: <a href="http://localhost:8000/">http://localhost:8000/</a>
 	</psk-chapter>
 
-	<psk-chapter title="Update">
-		<p>To update an instance of Cardinal.Js framework, you have to be inside the root of the web-site, (where you can run <code>npm run web</code>) and to run the command:.</p>
+	<psk-chapter title="Update Cardinal.Js framework">
+		<p>To update the instance of Cardinal.Js framework used, you have to be inside the root of the web-site, (where you can run <code>npm run web</code>) and to run the command:.</p>
 		<psk-code language="shell-session">
-$ cardinal update
+npm run update
 		</psk-code>
-		<p>The <code>cardinal-updater</code> module will bring the latest updates from PrivateSky-Release and Cardinal.Js to your own project.</p>
+	</psk-chapter>
+
+	<psk-chapter title="How to add a new page">
+		<p>To add a hello-world page to a Cardinal.Js based website follow the steps:</p>
+		<psk-list list-type="ordered">
+			Navigate to web-site/pages folder
+				<psk-code language="shell-session">
+					cd web-site/pages
+				</psk-code>
+			create a new html file called hello-world.html
+			Open hello-world.html file and add the following code as content:
+				<psk-code language="html">
+					<psk-page title="Hello world!">
+					</psk-page>
+				</psk-code>
+			Navigate back to web-site root folder and edit app-config.json file in order to add a new entry for the hello-world page into the menu configuration.
+				<psk-code language="JavaScript">
+					{
+						"basePagesUrl": "/pages/",
+						"profile": {
+							"username": "Cardinal",
+							"email": "cardinal@axiologic.net",
+							"avatar": "/assets/images/cardinal.png"
+						},
+						"menu": {
+							"defaultMenuConfig": {
+								"icon": "fa-bars",
+								"type": "route",
+								"component": "psk-page-loader",
+								"exact": true,
+								"404": "/pages/404.html"
+							},
+							"pages": [
+								{
+									"name": "Home",
+									"path": "/home",
+									"icon": "fa-home",
+									"pageSrc": "home.html"
+								},
+								{
+									"name": "Hello World",
+									"path": "/hello-world",
+									"pageSrc": "hello-world.html"
+								}
+							]
+						}
+					}
+				</psk-code>
+			Open the browser and navigate to <a href="http://localhost:8000/">http://localhost:8000</a> and check the new menu item.
+		</psk-list>
+	</psk-chapter>
+	<psk-chapter title="Develop the website">
+		To learn how to develop the website more check <psk-link tag="cardinal-mvc">Cardinal.Js documentation page</psk-link>
 	</psk-chapter>
 </psk-page>
