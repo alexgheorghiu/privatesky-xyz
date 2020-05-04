@@ -10,7 +10,7 @@
             <span>By writing javascript code inside the tag <code>script</code>. This tag will be connected as controller only inside <psk-link page="web-components/container">psk-container</psk-link> and <psk-link page="forms/psk-form">psk-form</psk-link> components.</span>
         </psk-list>
 
-        <p>There is also a default controller that is available, which is named <code>"BindableController"</code>. Our suggestion is that when you want to create a controller, is to extend this already available controller.</p>
+        <p>There is also a default controller that is available, which is named <code>"ContainerController"</code>. Our suggestion is that when you want to create a controller, is to extend this already available controller.</p>
         <p>Why? There are two reasons for this: First, we already handle the HTML container where you desire to use the controller and the second reason is that the controller already handles the possibility to listen or to trigger events. More about these,
             in the chapters below.</p>
 
@@ -26,13 +26,13 @@
         <psk-chapter title="Create a controller by creating a Javascript class">
 			<p>Javascript classes that will serve as controllers should be created in the directory <code>/src/scripts/controllers</code> in order to mentain the project structure.</p>
 			<p>Also, in the folder structure, there are also a folder, <code>base-controllers</code>. It is very important that these controllers remain not changed, as we are under development and we will provide updates from time to time.</p>
-            <p>After the creation of this class, you should extend the base controller named <code>BindableController</code>, like in the below example. If you chose not to extend the controller, then you will nt have to possibility to use the binding features.</p>
+            <p>After the creation of this class, you should extend the base controller named <code>ContainerController</code>, like in the below example. If you chose not to extend the controller, then you will nt have to possibility to use the binding features.</p>
             <p>The base controller has already some functionalities provided, like triggering and listening to events, binding (one-way and two-way binding) and in the future we will bring other features.</p>
             <p>The starting point of your class should look like the below one (the class <strong>must</strong> be created in the base path of controllers - <code>/src/scripts/controllers</code>)</p>
 			<psk-code language="Javascript">
-				import BindableController from "./base-controllers/BindableController.js";
+                import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
 
-				export default class TestFormController extends BindableController {
+				export default class TestFormController extends ContainerController {
 					constructor(element) {
 						super(element);
 					}
@@ -70,7 +70,7 @@
             <psk-chapter title="Loading a controller by default">
                 <p>This type of controller is the easiest to be instantiated. You just need to load the <psk-link page="web-components/container">psk-container</psk-link> component, and inside it you only need to write down the web components you desire for the layout. The source code should look like the following: </p>
 				<psk-code language="markup">
-					<!-- In this way, the default controller named "BindableController" is loaded inside the container -->
+					<!-- In this way, the default controller named "ContainerController" is loaded inside the container -->
 					<psk-container>
 						<!-- YOUR WEB COMPONENTS HERE -->
 					</psk-container>
@@ -90,11 +90,11 @@
             <psk-chapter title="Loading a controller by defining Javascript source code">
                 <p>In the chapter above, <code>Create a controller by writing javascript source code</code>, we have described how to create a controller inside the HTML tag <code>script</code> and provided a small example of usage.</p>
                 <p>Here we have two cases, to provide a <code>controller-name</code> attribute or not. If we provide a controller, it will be verified and only if it exists, the <code>script</code> tag will be taken into consideration.</p>
-                <p>If the <code>controller-name</code> attribute is not provided, then <code>BindableController</code> will be attached to the container and the script defined will be executed.</p>
+                <p>If the <code>controller-name</code> attribute is not provided, then <code>ContainerController</code> will be attached to the container and the script defined will be executed.</p>
             </psk-chapter>
     </psk-chapter>
 
-    <psk-chapter title="API Definition - BindableController">
+    <psk-chapter title="API Definition - ContainerController">
         <psk-chapter   class="api-title" title="controller.on()">
             <p>The function <code>on</code> will listen for the event and when the event is triggered, the callback function given as parameter will be executed.</p>
             <p>If a HTMLElement is provided, then the listener will be attached to it, otherwise it is attached to the container where the controller is attached.</p>
