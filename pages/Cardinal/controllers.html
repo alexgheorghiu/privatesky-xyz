@@ -77,7 +77,7 @@
 				</psk-code>
             </psk-chapter>
             <psk-chapter title="Loading a controller by name">
-                <p>This type of controller can be loaded by providing to <psk-link page="web-components/container">psk-container</psk-link> component, the attribute contrller-name with the name of the controller.</p>
+                <p>This type of controller can be loaded by providing to <psk-link page="web-components/container">psk-container</psk-link> component, the attribute controller-name with the name of the controller.</p>
                 <p>If the controller given as attribute does not exists, no controller will be attached to the container, so pay attention when you type the controller-name.</p>
                 <p>The source code of the container component should look like this:</p>
 				<psk-code language="markup">
@@ -117,7 +117,7 @@
             <p>The function <code>off</code> will remove the provided event listener.</p>
             <p>In order to remove the correct event listener, the function should receive the same tuple (htmlElement, element, options) used when <code>on</code> is registering the event handler</p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.on(eventName: string, htmlElement: HTMLElement | Function, callback?: Function, options:Object)</p>
+                <p>controller.off(eventName: string, htmlElement: HTMLElement | Function, callback?: Function, options:Object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <psk-list>

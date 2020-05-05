@@ -16,12 +16,12 @@
     Every theme folder  contains an assets and a components subfolder. In the assets we can add different fonts, icons, images or libraries that are necessary for the new design system. The assets subfolder can be empty, but the components subfolder is absolutely necessary in order to make the new theme. In “components” we will have to add a folder for every web component and assign to each one a css file with the same name. This will help us customize each web component separately by changing the css properties according to the new design system.
   </p>
    <p>
-    After creating the new theme folder, we need to modify the <b>index.html</b> file. In <code>globalConfig</code> we have to specify which theme we want to render. Below you can see how to change the theme to “newlook”.
+    After creating the new theme folder, we need to modify the <b>app-config.json</b> file. In this JSON's object we have to specify which theme we want to render. Below you can see how to change the theme to “newlook”.
    </p>
     <psk-code language="markup">
           <script>
-            globalConfig = {
-                theme: "newlook"
+            {
+              theme: "newlook"
             }
           </script>
     </psk-code>
