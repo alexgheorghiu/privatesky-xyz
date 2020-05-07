@@ -28,17 +28,10 @@
 
                 export default class MyCustomFormController extends ContainerController {
                     constructor(element) {
-                    super(element);
-                    this.model = this.setModel({
-                        // Your JavaScript object model here.
-                    });
-
-                    // This event dispatcher is mandatory to be executed, otherwise, the form will not be binded to the model.
-                    document.dispatchEvent(new CustomEvent('modelReady', {
-                        bubbles: true,
-                        cancelable: true,
-                        composed: true
-                    }));
+                        super(element);
+                        this.model = this.setModel({
+                            // Your JavaScript object model here.
+                        });
                     }
                 }
             </psk-code>

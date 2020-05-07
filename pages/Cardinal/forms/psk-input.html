@@ -22,11 +22,24 @@
         <psk-input data-define-props="true">
         </psk-input>
     </psk-property-descriptor>
-
-    <psk-example title="Live Examples">
-        <p>A very good example of using this component and the other form components can be found here:
-            <psk-link page="forms/using-forms">Using forms</psk-link>.
-        </p>
+    
+    <psk-example>
+            <psk-code>
+                <psk-input view-model="name"></psk-input>
+                <psk-input view-model="email"></psk-input>
+                <psk-input view-model="password"></psk-input>
+            </psk-code>
     </psk-example>
+    
+    <psk-container controller-name="FormComponentsExampleController">
+        <psk-example title="Live Examples">   
+            <psk-input view-model="name"></psk-input>
+            <psk-input view-model="email"></psk-input>
+            <psk-input view-model="password"></psk-input>
+            <p>A very good example of using this component and the other form components can be found here:
+                <psk-link page="forms/using-forms">Using forms</psk-link>.
+            </p>
+        </psk-example>
+    </psk-container>
 
 </psk-page>

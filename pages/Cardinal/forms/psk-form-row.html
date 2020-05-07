@@ -29,9 +29,28 @@
                 <psk-password-input view-model="password"></psk-password-input>
             </psk-form-row>
         </psk-code>
-
         <p>A complete live example can be found at:
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
     </psk-example>
+    <psk-container controller-name ="FormComponentsExampleController">
+        <script>
+            const model = {
+                name : "Please enter your Name :",
+                email : "Please enter your E-mail :",
+                password: "Please enter your Password :"
+            }
+            
+        </script>
+        <psk-example title="Code Examples">
+            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                <psk-label>Name, E-mail & Password</psk-label>
+            </psk-form-row>
+            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                <psk-text-input view-model="name"></psk-text-input>
+                <psk-email-input view-model="email"></psk-email-input>
+                <psk-password-input view-model="password"></psk-password-input>
+            </psk-form-row>
+        </psk-example> 
+    </psk-container>
 
 </psk-page>

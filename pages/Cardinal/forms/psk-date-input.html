@@ -21,11 +21,26 @@
         <psk-date-input data-define-props="true">
         </psk-date-input>
     </psk-property-descriptor>
-
     <psk-example title="Live Examples">
-        <p>A very good example of using this component and the other form components can be found here:
-            <psk-link page="forms/using-forms">Using forms</psk-link>.
-        </p>
+        <psk-code>
+            <psk-grid columns="2" layout="l=[4,4]">
+                <psk-date-input view-model="startDate"></psk-date-input>
+                <psk-date-input view-model="endDate"></psk-date-input>
+            </psk-grid>
+        </psk-code>
     </psk-example>
+    <psk-container controller-name="FormComponentsExampleController">
+        <psk-example title="Live Examples">
+            <psk-code>
+                <psk-grid columns="2" layout="l=[4,4]">
+                    <psk-date-input view-model="startDate"></psk-date-input>
+                    <psk-date-input view-model="endDate"></psk-date-input>
+                </psk-grid>
+            </psk-code>
+            <p>A very good example of using this component and the other form components can be found here:
+                <psk-link page="forms/using-forms">Using forms</psk-link>.
+            </p>
+        </psk-example>
+    </psk-container>
 
 </psk-page>

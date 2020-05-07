@@ -4,12 +4,12 @@
 
     <psk-description>
         <p>This component is the most important component for documentation as it renders the entire page.</p>
-        <p>This component renders everything on UI starting with on it's <code>title</code> property.</p>
+        <p>This component renders everything on UI starting with it's <code>title</code> property.</p>
         <span>For loading it uses <psk-link page="web-components/ui-loader">psk-ui-loader</psk-link> as a mean to
             mark the loading process.</span>
         <span><code>Psk-page</code> listens to all the <code>psk-send-chapter</code> events sent by the <psk-link
                 page="psk-wiki/psk-chapter">psk-chapter</psk-link>.</span>
-        <p>For every event sent the hierarchy of chapters there are two possible situations:</p>
+        <p>For every event sent there are two possible situations that affects the hierarchy of chapters:</p>
         <ul>
             <li>The hierarchy is not instantiated and therefore it will be created.</li>
             <li>If it exists then it will be updated </li>
@@ -22,8 +22,7 @@
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
-        <p>If the loading has finished then the information between the two tags will be rendered on the UI in a slot
-            child.</p>
+        <p>If the loading has finished then the information between the two tags will be rendered on the UI in a child slot.</p>
     </psk-chapter>
 
     <psk-chapter title="Code Example">
