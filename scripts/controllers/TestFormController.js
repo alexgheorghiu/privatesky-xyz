@@ -9,21 +9,21 @@ const model = {
         name: "name",
         required: true,
         placeholder: "Name here...",
-        value: ''
+        value: 'John'
     },
     email: {
         label: "Email address",
         name: "email",
         required: true,
         placeholder: "Email address here...",
-        value: ''
+        value: 'john@privatesky.xyz'
     },
     age: {
         label: "Your age",
         name: "age",
         required: false,
         placeholder: "Your age here...",
-        value: ''
+        value: '20'
     },
     dateOfBirth: {
         label: "Select from the calendar your birth date",
@@ -82,5 +82,24 @@ export default class TestFormController extends ContainerController {
     constructor(element) {
         super(element);
         this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+        let customSubmit = () =>{
+			let name = this.model.getChainValue("name.value");
+			let email = this.model.getChainValue("email.value");
+			let age = this.model.getChainValue("age.value");
+			alert(`Submitted:[${name},${email},${age}]`)
+        };
+
+		let resetForm = () => {
+			this.model.name.value = model.name.value;
+			this.model.email.value = model.email.value;
+			this.model.age.value = model.age.value;
+		};
+
+        this.on("submit",customSubmit,true);
+		this.on("reset-form",resetForm,true);
+		this.on("custom-submit",customSubmit,true);
+
+
     }
 }
