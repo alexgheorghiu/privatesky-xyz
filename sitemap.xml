@@ -133,6 +133,8 @@
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/psk-button</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/psk-for-each</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/using-forms</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/psk-form</loc>
@@ -160,8 +162,6 @@
         <loc>https://privatesky.xyz/?Cardinal/forms/psk-radio-group</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/psk-checkbox</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-for-each</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Howto/a-site-with-cardinal</loc>
       </url><url>
