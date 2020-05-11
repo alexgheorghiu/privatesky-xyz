@@ -4,16 +4,14 @@
         The <code>mount()</code> method adds a reference to another dossier at a specific path.
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
-                mount(path, name, archiveIdentifier, callback)
+                mount(path, archiveIdentifier, callback)
             </psk-code>
             <psk-card title="Parameters">
 
             </psk-card>
                 <psk-list list-type="unordered">
                     <code><b>path</b></code>
-                   The path where the dossier's reference is added.<br><br>
-                    <code><b>name</b></code>
-                        The name associated with added dossier reference.<br><br>
+                        The path where the dossier's reference is added.<br><br>
                     <code><b>archiveIdentifier</b></code>
                         The string that uniquely identifies the mounted dossier. Usually it's the dossier's SEED.<br><br>
                     <code><b>callback</b></code>
@@ -27,20 +25,19 @@
             "/manifest". If a reference with the same name and at the same path
             already exists, an error is thrown. The mounted dossier can store references to other dossiers. As a result,
             all mounted dossier form a tree of arbitrary depth. Inside the tree, a dossier is uniquely identified by the path that leads to its
-            reference. For example, let's say that a dossier having the SEED "seed2" is mounted in a dossier with the SEED "seed1" at path "/foo" under
-            the name "bar" which, in turn,
-            is mounted inside the dossier whose SEED is "seedRoot" at path "/dir" under the name "baz". The SEED "seed2" that uniquely identifies a dossier
+            reference. For example, let's say that a dossier having the SEED "seed2" is mounted in a dossier with the SEED "seed1" at path "/foo/bar" which, in turn,
+            is mounted inside the dossier whose SEED is "seedRoot" at path "/dir/baz". The SEED "seed2" that uniquely identifies a dossier
             can be retrieved by traversing the path "/dir/baz/foo/bar".
         </psk-card>
 
         <psk-card title="Examples">
-            In the following example the mounteddossier's SEED is added in rootdossier at path "/foo" under the name "bar".
+            In the following example the mounted dossier's SEED is added in rootDossier at path "/foo/bar".
             <psk-code language="JavaScript">
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
                 const rootDossier = edfs.createRawDossier();
-                rootDossier.mount("/foo", "bar", mountedDossier.getSeed(), (err) => {
+                rootDossier.mount("/foo/bar", mountedDossier.getSeed(), (err) => {
                     if (err) {
                         throw err;
                     }
@@ -55,14 +52,12 @@
         The <code>unmount()</code> method removes a reference to a dossier.
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
-                unmount(path, name, callback)
+                unmount(path, callback)
             </psk-code>
             <psk-card title="Parameters">
                 <psk-list list-type="unordered">
                     <code><b>path</b></code>
                         The path where the dossier reference is kept. <br><br>
-                    <code><b>name</b></code>
-                        The name associated with the dossier reference.<br><br>
                     <code><b>callback</b></code>
                         The function called when the operation is completed.<br><br>
                 </psk-list>
@@ -70,19 +65,18 @@
         </psk-card>
 
         <psk-card title="Description">
-            The <code>unmount()</code> method deletes from the file "/manifest" the mounting point at <code>path</code> identified by
-            <code>name</code>.  If no such mounting point exists,
+            The <code>unmount()</code> method deletes from the file "/manifest" the mounting point at <code>path</code>. If no such mounting point exists,
             then an error is thrown.
         </psk-card>
 
         <psk-card title="Examples">
-            In the following example mounting point at path "/foo" with the name "bar" is deleted.
+            In the following example mounting point at path "/foo/bar" is deleted.
             <psk-code language="JavaScript">
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
                 const rootDossier = edfs.createRawDossier();
-                rootDossier.unmount("/foo", "bar", (err) => {
+                rootDossier.unmount("/foo/bar", (err) => {
                     if (err) {
                         throw err;
                     }
@@ -117,17 +111,17 @@
         </psk-card>
 
         <psk-card title="Examples">
-            In the following example mounting point at path "/foo" with the name "bar" is deleted.
+            In the following example the  mounting points at path "/foo" are printed.
             <psk-code language="JavaScript">
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
                 const rootDossier = edfs.createRawDossier();
-                rootDossier.unmount("/foo", "bar", (err) => {
+                rootDossier.listMountedDossiers("/foo/bar", (err, mountedDossiersList) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("Dossier successfully unmounted");
+                    console.log("The list of mounted dossiers", mountedDossiersList);
                 });
             </psk-code>
 
@@ -532,6 +526,55 @@
                             }
 
                             console.log("These are the folders", folders);
+                        });
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="delete">
+        The <code>delete()</code> method deletes the folder/file found at the specified path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                listFolders(barPath, callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive path from where the entry is deleted.<br><br>
+                    <code><b>callback</b></code>
+                        The function called when the entry has been deleted.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Description">
+            The <code>delete()</code> traverses the specified path inside the dossier and removes from the archive's bar map the entry(file or folder)
+            stored at the specified path. If the specified path point to a folder, then the folder and all its subfolders are removed recursively.
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the folder stored inside the dossier at path "/bar" is deleted.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const dossier = edfs.createRawDossier();
+                dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log("This is the dossier's hash", archiveDigest);
+                    dossier.delete( "/bar", (err) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("Folder successfully deleted.");
                         });
                     });
                 });
