@@ -535,6 +535,59 @@
         </psk-card>
     </psk-chapter>
 
+    <psk-chapter title="readDir">
+        The <code>readDir()</code> method returns the names of all the folders, files and mount points stored inside a dossier at a specific path.
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                readDir(barPath [, options], callback)
+            </psk-code>
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>barPath</b></code>
+                        The archive path from where the folders, files and mount points names are read.<br><br>
+                    <code><b>options</b></code> <b>|</b> Optional
+                        Determines whether the type of each entry is specified. By default, the options object is
+                        <code>{withFileTypes: true}</code>, which means that the entry type is specified. In this case,
+                        <code>readDir</code> passes to <code>callback</code> an object having the format <code>{files: [], folders: [], mounts: []}</code>. if the options
+                        object is <code>{withFileTypes: false}</code>, then the callback receives an array containing all the files, folders and mounts names found at <code>barPath</code><br><br>
+                    <code><b>callback</b></code>
+                        The function called when the entries have been printed. It receives an error and an object or an array depending on <code>options</code>.<br><br>
+                </psk-list>
+            </psk-card>
+        </psk-card>
+
+        <psk-card title="Examples">
+            In the following example the folders stored inside the dossier at path "/" are returned through the provided callback.
+            <psk-code language="JavaScript">
+                const EDFS = require("edfs");
+                const endpoint = "http://127.0.0.1:8080";
+                const edfs = EDFS.attachToEndpoint(endpoint);
+                const dossier = edfs.createRawDossier();
+                dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
+                    if (err) {
+                        throw err;
+                    }
+                    dossier.file("/bar/file", "/foo", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("This is the dossier's hash", archiveDigest);
+                        dossier.readDir( "/", (err, entries) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("These are the entries", entries);
+                        });
+                    });
+                });
+
+            </psk-code>
+
+        </psk-card>
+    </psk-chapter>
+
     <psk-chapter title="delete">
         The <code>delete()</code> method deletes the folder/file found at the specified path.
         <psk-card title="Syntax">
