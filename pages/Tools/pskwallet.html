@@ -154,7 +154,7 @@
 
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
-                pskwallet mount [destinationSeed] [alias] path name sourceSeed
+                pskwallet mount [destinationSeed] [alias] path sourceSeed
             </psk-code>
 
             <psk-card title="Parameters">
@@ -171,9 +171,6 @@
 
                     <code>path</code>
                         The path inside the destination dossier where the source dossier is mounted. <br><br>
-
-                    <code>name</code>
-                        The name given to the source dossier when it is mounted.<br><br>
 
                     <code>sourceSeed</code>
                         The source dossier's SEED.
@@ -186,7 +183,7 @@
         </psk-highlight>
     </psk-chapter>
 
-    <psk-chapter title="mount">
+    <psk-chapter title="unmount">
         <psk-highlight type-of-highlight="note">
             The <code>unmount</code> command deletes the reference of a dossier (source) from another dossier (destination) inside which
             was previously mounted.
@@ -194,7 +191,7 @@
 
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
-                pskwallet unmount [destinationSeed] [alias] path name
+                pskwallet unmount [destinationSeed] [alias] path
             </psk-code>
 
             <psk-card title="Parameters">
@@ -210,10 +207,7 @@
                     </psk-highlight>
 
                     <code>path</code>
-                        The path inside the destination dossier where the source dossier is mounted. <br><br>
-
-                    <code>name</code>
-                        The name given to the source dossier when it was mounted.
+                        The path inside the destination dossier where the source dossier is mounted.
                 </psk-list>
 
             </psk-card>

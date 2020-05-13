@@ -16,9 +16,9 @@
         in order to receive the callback used to send the messages:</p>
 
         <psk-code language="Javascript">
-            import BindableController from "./base-controllers/BindableController.js";
+            import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController";
 
-            export default class DefaultController extends BindableController {
+            export default class DefaultController extends ContainerController {
                 constructor(element) {
                     super(element);
 
@@ -98,4 +98,24 @@
             </psk-list-feedbacks>
         </psk-code>
     </psk-chapter>
+    <psk-example title="Live Example">
+        <psk-container >
+            <script>
+                this.feedbackEmitter = null;
+                // Listen for the 'openFeedback' event to receive a handle to the
+                // Feedback List emitter
+                controller.on('openFeedback', (e) => {
+                    e.stopImmediatePropagation();
+                    if (e.detail) {
+                        feedbackEmitter = e.detail;
+                        if (typeof feedbackEmitter === 'function') {
+                            feedbackEmitter("ceva","info","toast");
+                        }
+                    }
+                });
+            </script>
+            <psk-list-feedbacks messages-to-display={5} time-alive={5000} toast-renderer="my-toast-renderer">
+            </psk-list-feedbacks>
+        </psk-container>
+</psk-example>
 </psk-page>
