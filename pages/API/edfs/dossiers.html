@@ -438,12 +438,16 @@
         The <code>listFiles()</code> returns the names of all the files stored inside a dossier at a specific path.
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
-                listFiles(barPath, callback)
+                listFiles(barPath [, options], callback)
             </psk-code>
             <psk-card title="Parameters">
                 <psk-list list-type="unordered">
                     <code><b>barPath</b></code>
                         The dossier path from where the file names are read.<br><br>
+                    <code><b>options</b></code> <b>|</b> Optional
+                        An object that specifies whether the files located in <code>barPath</code> subfolders are ignored or not. If the argument is not specified, then,
+                        by default the files in subfolders are listed recursively (<code>options = {recursive: true}</code>). If <code>options = {recursive: false}</code>,
+                        then only the files located at path <code>barPath</code> are listed and the subfolders located at this path are ignored. <br><br>
                     <code><b>callback</b></code>
                         The function called when the file names have been read. It receives an error and the list of files.<br><br>
                 </psk-list>
@@ -548,7 +552,7 @@
                     <code><b>options</b></code> <b>|</b> Optional
                         Determines whether the type of each entry is specified. By default, the options object is
                         <code>{withFileTypes: true}</code>, which means that the entry type is specified. In this case,
-                        <code>readDir</code> passes to <code>callback</code> an object having the format <code>{files: [], folders: [], mounts: []}</code>. if the options
+                        <code>readDir</code> passes to <code>callback</code> an object having the format <code>{files: [], folders: [], mounts: []}</code>. If the options
                         object is <code>{withFileTypes: false}</code>, then the callback receives an array containing all the files, folders and mounts names found at <code>barPath</code><br><br>
                     <code><b>callback</b></code>
                         The function called when the entries have been printed. It receives an error and an object or an array depending on <code>options</code>.<br><br>
