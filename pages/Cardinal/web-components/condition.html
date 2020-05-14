@@ -16,13 +16,13 @@
 
         <psk-code language="javascript">
             // Controller
-            import BindableController from "./base-controllers/BindableController.js";
+            import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
 
             const model = {
                 gdpr: 0,
             };
 
-            export default class TestConditionController extends BindableController {
+            export default class TestConditionController extends ContainerController {
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
@@ -62,7 +62,7 @@
 
         <psk-code language="javascript">
             // Controller
-            import BindableController from "./base-controllers/BindableController.js";
+            import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
 
             const model = {
                 gdpr: 0,
@@ -75,7 +75,7 @@
                 }
             };
 
-            export default class TestConditionController extends BindableController {
+            export default class TestConditionController extends ContainerController {
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));

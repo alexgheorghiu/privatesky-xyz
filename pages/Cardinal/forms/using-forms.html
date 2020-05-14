@@ -24,7 +24,7 @@
 				<span>The other way to do so is by extending the ContainerController and by following the exact source code below:</span>
             </psk-list>
             <psk-code language="Javascript">
-                import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+                import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
 
                 export default class MyCustomFormController extends ContainerController {
                     constructor(element) {
@@ -54,7 +54,7 @@
         <p>To bind the model to a component, we need set the attribute <code>view-model</code> or <code>data-view-model</code> to the component we want to bind the data. Pay attention that the attribute <code>data-view-model</code> is available only for the component <psk-link page="forms/psk-for-each">psk-for-each</psk-link>, as described in the above chapter.</p>
         <p>Let's take a look at the following source code of a controller wich loads a model, and the HTML view:</p>
         <psk-code language="Javascript">
-            import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+            import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
 
             const model = {
                 sectionTitle: {
@@ -210,7 +210,7 @@
         <psk-chapter title="Simple form example">
             <psk-chapter title="Model and Controller - TestFormController">
                 <psk-code language="Javascript">
-                    import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+                    import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
 
                     const model = {
                         sectionTitle: {
@@ -350,7 +350,7 @@
         <psk-chapter title="Form example using psk-for-each component">
             <psk-chapter title="Model and Controller - TestFormForEachController">
                 <psk-code language="Javascript">
-                    import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
+                    import ContainerController from '../../../cardinal/controllers/base-controllers/ContainerController.js';
 
                     const model = {
                         entities: [{

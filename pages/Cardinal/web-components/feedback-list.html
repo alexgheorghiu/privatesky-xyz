@@ -21,15 +21,20 @@
             export default class DefaultController extends ContainerController {
                 constructor(element) {
                     super(element);
-
-                    this.feedbackEmitter = null;
-
+        
+                    this.feedbackEmitter = null
+                    
                     // Listen for the 'openFeedback' event to receive a handle to the
                     // Feedback List emitter
-                    this.receive('openFeedback', (e) => {
+                    this.on('openFeedback', function (e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
                         this.feedbackEmitter = e.detail;
+                        if (typeof this.feedbackEmitter === 'function') {
+                            this.feedbackEmitter(["string","string"],"string",["toast","alert-primary"]);
+                        }
                     });
-
+                    console.log(this.feedbackEmitter)
                     // Show an error when something happens
                     element.addEventListener('validation-error', (e) => {
                         const errorMessage = e.detail;
@@ -76,14 +81,12 @@
 
     <psk-chapter title="Code Examples">
         <psk-code language="markup">
-            <psk-list-feedbacks messages-to-display={5} time-alive={5000} toast-renderer="my-toast-renderer">
+            <psk-list-feedbacks messages-to-display="5" toast-renderer="my-toast-renderer">
             </psk-list-feedbacks>
         </psk-code>
         <psk-code language="markup">
             <psk-list-feedbacks
-                    messages-to-display={5}
-                    time-alive={5000}
-                    alert-renderer="my-alert-renderer"
+                    messages-to-display="5"
                     styleCustomisation='
                     {
                         "toast": {
@@ -99,22 +102,8 @@
         </psk-code>
     </psk-chapter>
     <psk-example title="Live Example">
-        <psk-container >
-            <script>
-                this.feedbackEmitter = null;
-                // Listen for the 'openFeedback' event to receive a handle to the
-                // Feedback List emitter
-                controller.on('openFeedback', (e) => {
-                    e.stopImmediatePropagation();
-                    if (e.detail) {
-                        feedbackEmitter = e.detail;
-                        if (typeof feedbackEmitter === 'function') {
-                            feedbackEmitter("ceva","info","toast");
-                        }
-                    }
-                });
-            </script>
-            <psk-list-feedbacks messages-to-display={5} time-alive={5000} toast-renderer="my-toast-renderer">
+        <psk-container controller-name="FeedbackListController">
+            <psk-list-feedbacks messages-to-display="5" >
             </psk-list-feedbacks>
         </psk-container>
 </psk-example>
