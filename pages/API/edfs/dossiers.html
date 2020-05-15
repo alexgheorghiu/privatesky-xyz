@@ -36,13 +36,22 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const rootDossier = edfs.createRawDossier();
-                rootDossier.mount("/foo/bar", mountedDossier.getSeed(), (err) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
+                    edfs.createRawDossier((err, mountedDossier) => {
+                        if (err) {
+                            throw err;
+                        }
+                        dossier.mount("/foo/bar", mountedDossier.getSeed(), (err) => {
+                            if (err) {
+                                throw err;
+                            }
 
-                    console.log("Dossier successfully mounted");
+                            console.log("Dossier successfully mounted");
+                        });
+                    });
                 });
             </psk-code>
 
@@ -75,13 +84,28 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const rootDossier = edfs.createRawDossier();
-                rootDossier.unmount("/foo/bar", (err) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("Dossier successfully unmounted");
+                    edfs.createRawDossier((err, mountedDossier) => {
+                        if (err) {
+                            throw err;
+                        }
+                        dossier.mount("/foo/bar", mountedDossier.getSeed(), (err) => {
+                            if (err) {
+                                throw err;
+                            }
+                            dossier.unmount("/foo/bar", (err) => {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                console.log("Dossier successfully unmounted");
+                            });
+                        });
+                    });
                 });
             </psk-code>
 
@@ -89,7 +113,7 @@
     </psk-chapter>
 
      <psk-chapter title="listMountedDossiers">
-        The <code>listMountedDossiers()</code> method lists all the dossiers mounted at a specific path.
+        The <code>listMountedDossiers()</code> method lists the mount name and SEED of all dossiers mounted at the provided path.
         <psk-card title="Syntax">
             <psk-code language="JavaScript">
                 listMountedDossiers(path, callback)
@@ -108,20 +132,45 @@
         <psk-card title="Description">
             The <code>listMountedDossiers()</code> method reads the "/manifest" file from the last dossier in
             <code>path</code> and returns the list of mounting points from the file.
+            <psk-highlights type-of-highlight="example">
+                Note: A <code>mount point</code> is a pair <code>{path, identifier}</code>, where <code>path</code> is the path relative to the path provided
+                when calling <code>listMountedDossiers</code> and <code>identifier</code> is the mounted dossier's SEED.
+            </psk-highlights>
         </psk-card>
 
         <psk-card title="Examples">
             In the following example the  mounting points at path "/foo" are printed.
             <psk-code language="JavaScript">
                 const endpoint = "http://127.0.0.1:8080";
+                const EDFS = require("edfs");
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const rootDossier = edfs.createRawDossier();
-                rootDossier.listMountedDossiers("/foo/bar", (err, mountedDossiersList) => {
+                edfs.createRawDossier((err, rootDossier) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("The list of mounted dossiers", mountedDossiersList);
+                    edfs.createRawDossier((err, mountedDossier) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log(mountedDossier.getSeed());
+                        //Output: 2JH4JqcP31WmtmoyaWdMmrYDqxcrtQMEHBTeNrDtomL78pFRZSqht3hTkBt1Cujjx1qgatiZiyffRxQiMK3QxzBRGP43itY2t6t5zkG8yAwnDAmB9Nw7K5
+                        rootDossier.mount("/bar/mount", mountedDossier.getSeed(), (err) => {
+                            if (err) {
+                                throw err;
+                            }
+                            rootDossier.listMountedDossiers("/bar", (err, mountedDossiersList) => {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                console.log(mountedDossiersList);
+                                //Output: [{path: 'mount",  identifier: '2JH4JqcP31WmtmoyaWdMmrYDqxcrtQMEHBTeNrDtomL78pFRZSqht3hTkBt1Cujjx1qgatiZiyffRxQiMK3QxzBRGP43itY2t6t5zkG8yAwnDAmB9Nw7K5'}]
+                            });
+                        });
+                    });
+
                 });
             </psk-code>
 
@@ -169,14 +218,20 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("This is the dossier's hash", archiveDigest);
+                    dossier.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("Folder has been added");
+                    });
                 });
+
             </psk-code>
 
         </psk-card>
@@ -211,19 +266,22 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
-
-                    console.log("This is the dossier's hash", archiveDigest);
-                    dossier.extractFolder("/home/foo/bar", "bar", (err) => {
+                    dossier.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
 
-                        console.log("Successfully extracted");
+                        dossier.extractFolder("/home/foo/bar", "bar", (err) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("Successfully extracted");
+                        });
                     });
                 });
 
@@ -273,14 +331,17 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-
-                dossier.addFile("/home/foo/bar.js", "bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
-                         throw err;
+                        throw err;
                     }
+                    dossier.addFile("/home/foo/bar.js", "/bar", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
 
-                    console.log("This is the dossier's hash", archiveDigest);
+                        console.log("File has been added to dossier.");
+                    });
                 });
             </psk-code>
 
@@ -316,19 +377,23 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addfile("/home/foo/bar.js", "bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
-                          throw err;
+                        throw err;
                     }
 
-                    console.log("This is the dossier's hash", archiveDigest);
-                    dossier.extractFile("/home/foo/bar.js", "bar", (err) => {
+                    dossier.addfile("/home/foo/bar.js", "bar", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
 
-                        console.log("Successfully extracted");
+                        dossier.extractFile("/home/foo/bar.js", "bar", (err) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log("Successfully extracted");
+                        });
                     });
                 });
 
@@ -375,13 +440,18 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.writeFile("bar", "content", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("This is the dossier's hash", archiveDigest);
+                    dossier.writeFile("bar", "content", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        console.log("File has been written successfully. ");
+                    });
                 });
             </psk-code>
 
@@ -414,19 +484,24 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.writeFile("bar", "content", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier)=>{
                     if (err) {
                         throw err;
                     }
 
-                    console.log("This is the dossier's hash", archiveDigest);
-                    dossier.readFile("bar", (err, readData) => {
+                    dossier.writeFile("/bar", "content", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
 
-                        console.log("This is the data", readData);
+                        dossier.readFile("/bar", (err, readData) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log(readData.toString());
+                            //Expected output: "content"
+                        });
                     });
                 });
             </psk-code>
@@ -465,19 +540,24 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
 
-                    console.log("This is the dossier's hash", archiveDigest);
-                    dossier.listFiles( "bar", (err, fileNames) => {
+                    dossier.addFile("/home/foo/file1", "/bar", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
 
-                        console.log("These are the files", fileNames);
+                        dossier.listFiles( "/bar", (err, fileNames) => {
+                            if (err) {
+                                throw err;
+                            }
+
+                            console.log(fileNames);
+                            //Expected output: ["file1"]
+                        });
                     });
                 });
 
@@ -513,23 +593,28 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
-                    dossier.addFolder("/home/foo", "/foo", (err, archiveDigest) => {
+
+                    dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
-
-                        console.log("This is the dossier's hash", archiveDigest);
-                        dossier.listFolders( "/", (err, folders) => {
+                        dossier.addFolder("/home/foo", "/foo", (err, archiveDigest) => {
                             if (err) {
                                 throw err;
                             }
 
-                            console.log("These are the folders", folders);
+                            dossier.listFolders( "/", (err, folders) => {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                console.log(folders);
+                                //Expected output: ["bar", "foo"]
+                            });
                         });
                     });
                 });
@@ -566,23 +651,28 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
+                edfs.createRawDossier((err, dossier) => {
                     if (err) {
                         throw err;
                     }
-                    dossier.file("/bar/file", "/foo", (err, archiveDigest) => {
+
+                    dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
                         if (err) {
                             throw err;
                         }
-
-                        console.log("This is the dossier's hash", archiveDigest);
-                        dossier.readDir( "/", (err, entries) => {
+                        dossier.addFile("/bar/file", "/foo", (err, archiveDigest) => {
                             if (err) {
                                 throw err;
                             }
 
-                            console.log("These are the entries", entries);
+                            dossier.readDir( "/", (err, entries) => {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                console.log(entries);
+                                //Output: [ 'foo', 'bar' ]
+                            });
                         });
                     });
                 });
@@ -619,14 +709,13 @@
                 const EDFS = require("edfs");
                 const endpoint = "http://127.0.0.1:8080";
                 const edfs = EDFS.attachToEndpoint(endpoint);
-                const dossier = edfs.createRawDossier();
-                dossier.addFolder("/home/foo/bar", "/bar", (err, archiveDigest) => {
-                    if (err) {
-                        throw err;
-                    }
+                edfs.createRaw`Dossier((err, dossier) => {
+                    dossier.addFolder("/foo/bar", "/bar", (err, archiveDigest) => {
+                        if (err) {
+                            throw err;
+                        }
 
-                    console.log("This is the dossier's hash", archiveDigest);
-                    dossier.delete( "/bar", (err) => {
+                        dossier.delete("/bar", (err) => {
                             if (err) {
                                 throw err;
                             }
@@ -635,7 +724,6 @@
                         });
                     });
                 });
-
             </psk-code>
 
         </psk-card>
