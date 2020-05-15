@@ -1,6 +1,6 @@
 <psk-page title="PrivateSky Web Services ">
     <psk-highlight type-of-highlight="note">
-        PSK Web Server is a HTTP server that allows the communication between PrivateSky nodes and/or agents inside a node, allows the
+        PSK Web Server is a HTTP/HTTPS server that allows the communication between PrivateSky nodes and/or agents inside a node, allows the
         storage and retrieval of bricks (blocks of data stored on the server in files identified by the block's cryptographic hash) and
         allows the grouping of different bricks under the same unique identifier (<code>anchor</code>). Each one of the three components is
         explained in more detail at the links below.
@@ -13,16 +13,130 @@
         <psk-list list-type="unordered">
             <psk-link page="apis/web-services/brick-storage">Brick Storage</psk-link>
             <psk-link page="apis/web-services/anchoring">Anchoring</psk-link>
-            <psk-link page="apis/web-services/message-passing">Message Passing</psk-link>
+            <psk-link page="apis/web-services/virtualmq">VirtualMQ</psk-link>
             <psk-link page="apis/web-services/dossier-wizard">Dossier Wizard</psk-link>
         </psk-list>
     </psk-chapter>
+
+    <psk-chapter title="How to configure and start a PSK Web Server">
+        <psk-card title="Configuring a PSK Web Server">
+            <psk-highlight type-of-highlight="example">
+                A PSK Web Server is configured using the configuration file <code>server.json</code> located at <code>./privatesky/conf</code>.
+                If the configuration file does not exist, then a default configuration is used. Also, if the configuration file is missing fields
+                necessary for the server to start, then the missing configurations are taken from the default configuration. Below is described the
+                default PSK Web Server configuration.
+            </psk-highlight>
+            <psk-card title="Default configuration">
+
+                <psk-code language="JavaScript">
+                        {
+                            "storage": path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "tmp"),
+                            "sslFolder": path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "conf", "ssl"),
+                            "port": 8080,
+                            "zeromqForwardAddress": "tcp://127.0.0.1:5001",
+                            "preventRateLimit": false,
+                            "endpoints": ["virtualMQ", "filesManager", "edfs", "dossier-wizard"],
+                            "endpointsConfig": {
+                                "virtualMQ": {
+                                    "path": "./modules/psk-webserver/ChannelsManager.js",
+                                    "channelsFolderName": "channels",
+                                    "maxSize": 100,
+                                    "tokenSize": 48,
+                                    "tokenHeaderName": "x-tokenHeader",
+                                    "signatureHeaderName": "x-signature",
+                                    "enableSignatureCheck": true
+                                },
+                                "dossier-wizard": {
+                                    "path": "dossier-wizard"
+                                },
+                                "edfs": {
+                                    "path": "edfs-middleware"
+                                },
+                                "filesManager": {
+                                    "path": "./modules/psk-webserver/FilesManager.js"
+                                }
+                            }
+                        };
+                </psk-code>
+                <psk-card title="Configuration fields">
+                    <psk-list list-type="unordered">
+                        <code><b>storage</b></code>
+                            The folder in which PSK Web Server stores its files. By default, the server uses the folder <code>./privatesky/tmp</code> (the environment variable
+                            <code>PSK_ROOT_INSTALLATION_FOLDER</code> stores path of the folder in which PrivateSky is installed). For the server to use another
+                            folder for storage, it is necessary to add the folder's path in the the configuration file's (<code>server.json</code>) <code>storage</code> property.
+                            <psk-card title="Example">
+                                If we want to set the server's storage folder to <code>/home/bar</code>, then the configuration file should be
+                                <psk-code language="JavaScript">
+                                    {
+                                        "storage": "/home/bar"
+                                    }
+                                </psk-code>
+
+                                <psk-highlight type-of-highlight="example">
+                                    Note: In order to change one or just a few properties in the default configuration it is sufficient to include just these properties in the configuration file, as
+                                    the server takes the remaining properties from the default configuration presented above. For example, if the above configuration file is used, then
+                                    the server will take all of the properties in the default configuration, except the <code>storage</code> property which is read from the configuration file.
+                                </psk-highlight>
+                            </psk-card>
+                        <code><b>sslFolder</b></code>
+                            The folder in which Psk Web Server looks for  SSL certificates when started. If the folder contains certificates, then
+                            the PSK Web Server is started as a HTTPS server; otherwise, PKS Web Server is a HTTP server. By default, PSK Web server
+                            is a HTTP server (<code>sslFolder</code> is empty). If SSL certificates are copied into the <code>sslFolder</code>, then Psk Web Server is
+                            started as a HTTPS server.<br><br>
+                        <code><b>port</b></code>
+                            The port that the server uses to listen for requests. By default, the port 8080 is used.
+                            <psk-card title="Example">
+                                Below is an example of a configuration file that sets the server's port to 9090.
+                                <psk-code language="JavaScript">
+                                    {
+                                        "port": 9090
+                                    }
+                                </psk-code>
+                            </psk-card>
+
+                        <code><b>endpoints</b></code>
+                            An array which contains the names of the services that the server provides. By default, the server provides four services:
+                            <code>filesManager</code> for uploading and downloading files, <psk-link page="apis/web-services/virtualmq">ChannelsManager</psk-link> which allows the communication
+                            between PrivateSky nodes and between processes running in the same node, <psk-link page="apis/web-services/brick-storage">edfs</psk-link> which allows
+                            the storage and retrieval of <code>bricks</code> (encrypted blocks of data identifiable by their content's cryptographic hash) and
+                            <psk-link page="apis/web-services/dossier-wizard">dossier-wizard</psk-link> which allows the creation and manipulation of
+                            <psk-link page="apis/edfs/dossiers">dossiers</psk-link>. New services can be added by adding their name in <code>endpoints</code> and
+                            adding a corresponding entry in <code>endpointsConfig</code>.
+                            <psk-highlight type-of-highlight="example">
+                                Note: Every service declared in <code>endpoints</code> should have a corresponding entry in <code>endpointsConfig</code>.
+                            </psk-highlight>
+                            <psk-card title="Example">
+                                Below is an example of a configuration file for a server that uses only one service, <code>myService</code>. As pointed out above,
+                                <code>endpointsConfig</code> contains the entry <code>myService</code> whose path property is set to <code>"/home/bar"</code>, the file system
+                                path where the module that contains <code>myService</code>'s implementation is located.
+                                <psk-code language="JavaScript">
+                                    {
+                                        "endpoints": ['myService'],
+                                        "endpointsConfig": {
+                                            "myService": {
+                                                  "path": "/home/bar/myService"
+                                            }
+                                        }
+                                    }
+                                </psk-code>
+                            </psk-card>
+                        <code><b>endpointsConfig</b></code>
+                            An object that contains the service's configurations. Each service declared in <code>endpoints</code> should have the <code>path</code> property <code>endpointsConfig</code> set.
+                            The <code>path</code> property is either a file system path to a module that contains the service or the name of a PrivateSky module. In the default configuration
+                            the <code>edfs</code> service has the path <code>edfs-middleware</code> which is the name of a PrivateSky module and <code>channelsManager</code>'s
+                            path property is <code>./modules/psk-webserver/ChannelsManager</code> which is a file system path.
+                    </psk-list>
+                </psk-card>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
     <psk-chapter title="How to create a PSK Web Server">
-        <psk-card title="createVirtualMQ">
-            The <code>createVirtualMQ()</code> method creates and starts a VirtualMQ server.
+        <psk-card title="createPskWebServer">
+            The <code>createPskWebServer()</code> method creates and starts a VirtualMQ server.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
-                    createVirtualMQ(port, rootFolder, sslConfig, callback)
+                    createPskWebServer(port, rootFolder, sslConfig, callback)
                 </psk-code>
                 <psk-list list-type="unordered">
                     <psk-card title="Parameters">
@@ -46,7 +160,7 @@
             </psk-card>
 
             <psk-card title="Description">
-                The <code>createVirtualMQ()</code> method starts a PSK Web Server and returns its instance.
+                The <code>createPskWebServer()</code> method starts a PSK Web Server and returns its instance.
             </psk-card>
 
             <psk-card title="Examples">
@@ -55,7 +169,7 @@
                 <psk-code language="JavaScript">
                     const VirtualMQ = require("virtualmq");
                     const port = 8080;
-                    const server VirtualMQ.createVirtualMQ(port, "/foo/tmp", undefined, (err) => {
+                    const server VirtualMQ.createPskWebServer(port, "/foo/tmp", undefined, (err) => {
                         if (err) {
                             throw err;
                         }
@@ -69,7 +183,7 @@
     </psk-chapter>
 
     <psk-chapter title="How to extend a PSK Web Server">
-        The <code>createVirtualMQ()</code> method starts a HTTP server and return the server instance. As a result, the
+        The <code>createPskWebServer()</code> method starts a HTTP/HTTPS server and return the server instance. As a result, the
         server can be dynamically
         extended using the API below.
         <psk-card title="server.use()">
