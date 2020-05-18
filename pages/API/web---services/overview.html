@@ -30,12 +30,12 @@
 
                 <psk-code language="JavaScript">
                         {
-                            "storage": path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "tmp"),
-                            "sslFolder": path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "conf", "ssl"),
+                            "storage": "path-to-privatesky-installation-folder/tmp",
+                            "sslFolder": "path-to-privatesky-installation-folder/conf/ssl",
                             "port": 8080,
                             "zeromqForwardAddress": "tcp://127.0.0.1:5001",
                             "preventRateLimit": false,
-                            "endpoints": ["virtualMQ", "filesManager", "edfs", "dossier-wizard"],
+                            "activeEndpoints": ["virtualMQ", "filesManager", "anchoring", "edfs", "dossier-wizard"],
                             "endpointsConfig": {
                                 "virtualMQ": {
                                     "path": "./modules/psk-webserver/ChannelsManager.js",
@@ -49,6 +49,9 @@
                                 "dossier-wizard": {
                                     "path": "dossier-wizard"
                                 },
+                                "anchoring": {
+                                    "path": "./modules/psk-webserver/AnchoringService.js"
+                                },
                                 "edfs": {
                                     "path": "edfs-middleware"
                                 },
@@ -61,9 +64,9 @@
                 <psk-card title="Configuration fields">
                     <psk-list list-type="unordered">
                         <code><b>storage</b></code>
-                            The folder in which PSK Web Server stores its files. By default, the server uses the folder <code>./privatesky/tmp</code> (the environment variable
-                            <code>PSK_ROOT_INSTALLATION_FOLDER</code> stores path of the folder in which PrivateSky is installed). For the server to use another
-                            folder for storage, it is necessary to add the folder's path in the the configuration file's (<code>server.json</code>) <code>storage</code> property.
+                            The folder in which PSK Web Server stores its files. By default, the server uses the folder <code>path-to-privatesky-installation-folder/tmp</code>
+                            (<code>path-to-privatesky-installation-folder</code> stores path of the folder in which PrivateSky is installed). For the server to use another folder for storage, it is necessary to add the folder's path in the the configuration file's
+                            (<code>server.json</code>) <code>storage</code> property.
                             <psk-card title="Example">
                                 If we want to set the server's storage folder to <code>/home/bar</code>, then the configuration file should be
                                 <psk-code language="JavaScript">
@@ -94,7 +97,14 @@
                                 </psk-code>
                             </psk-card>
 
-                        <code><b>endpoints</b></code>
+                        <code><b>zeromqForwardAddress</b></code>
+                            A string that stores the address and port of a <code>zeromq</code> node along with the protocol that <code>zeromq</code> uses; the <code>zeromq</code> node
+                            acts as a forwarder for the messages that arrive in <psk-link page="apis/web-services/virtualmq">virtualMQ</psk-link>.
+
+                        <code><b>preventRateLimit</b></code>
+                            A flag that determines if the PSK Web Server's throttling component is enabled. By default, throttling is disabled.
+
+                        <code><b>activeEndpoints</b></code>
                             An array which contains the names of the services that the server provides. By default, the server provides four services:
                             <code>filesManager</code> for uploading and downloading files, <psk-link page="apis/web-services/virtualmq">ChannelsManager</psk-link> which allows the communication
                             between PrivateSky nodes and between processes running in the same node, <psk-link page="apis/web-services/brick-storage">edfs</psk-link> which allows
@@ -103,7 +113,7 @@
                             <psk-link page="apis/edfs/dossiers">dossiers</psk-link>. New services can be added by adding their name in <code>endpoints</code> and
                             adding a corresponding entry in <code>endpointsConfig</code>.
                             <psk-highlight type-of-highlight="example">
-                                Note: Every service declared in <code>endpoints</code> should have a corresponding entry in <code>endpointsConfig</code>.
+                                Note: Every service declared in <code>activeEndpoints</code> should have a corresponding entry in <code>endpointsConfig</code>.
                             </psk-highlight>
                             <psk-card title="Example">
                                 Below is an example of a configuration file for a server that uses only one service, <code>myService</code>. As pointed out above,
@@ -111,7 +121,7 @@
                                 path where the module that contains <code>myService</code>'s implementation is located.
                                 <psk-code language="JavaScript">
                                     {
-                                        "endpoints": ['myService'],
+                                        "activeEndpoints": ['myService'],
                                         "endpointsConfig": {
                                             "myService": {
                                                   "path": "/home/bar/myService"
@@ -121,7 +131,7 @@
                                 </psk-code>
                             </psk-card>
                         <code><b>endpointsConfig</b></code>
-                            An object that contains the service's configurations. Each service declared in <code>endpoints</code> should have the <code>path</code> property <code>endpointsConfig</code> set.
+                            An object that contains the service's configurations. Each service declared in <code>activeEndpoints</code> should have the <code>path</code> property <code>endpointsConfig</code> set.
                             The <code>path</code> property is either a file system path to a module that contains the service or the name of a PrivateSky module. In the default configuration
                             the <code>edfs</code> service has the path <code>edfs-middleware</code> which is the name of a PrivateSky module and <code>channelsManager</code>'s
                             path property is <code>./modules/psk-webserver/ChannelsManager</code> which is a file system path.
@@ -133,7 +143,7 @@
 
     <psk-chapter title="How to create a PSK Web Server">
         <psk-card title="createPskWebServer">
-            The <code>createPskWebServer()</code> method creates and starts a VirtualMQ server.
+            The <code>createPskWebServer()</code> method creates and starts a  PSK Web Server.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createPskWebServer(port, rootFolder, sslConfig, callback)
@@ -167,9 +177,9 @@
                 In the following example, a server that listens on port 8080 and saves files in folder "/foo/tmp"
                 is created.
                 <psk-code language="JavaScript">
-                    const VirtualMQ = require("virtualmq");
+                    const pskWebServer = require("psk-webserver");
                     const port = 8080;
-                    const server VirtualMQ.createPskWebServer(port, "/foo/tmp", undefined, (err) => {
+                    const server pskWebServer.createPskWebServer(port, "/foo/tmp", undefined, (err) => {
                         if (err) {
                             throw err;
                         }

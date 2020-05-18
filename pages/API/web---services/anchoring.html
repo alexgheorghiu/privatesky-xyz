@@ -1,11 +1,11 @@
 <psk-page title="Anchoring API">
     <psk-highlight type-of-highlight="note">
-        The Anchoring component of VirtualMQ is linked with the Brick Storage component as it allows the association of
+        The Anchoring component of PSK Web Server is linked with the Brick Storage component as it allows the association of
         a set of brick hashes to a unique
         identifier called <code>anchor</code>. As explained in the description of the
         <psk-link page="apis/brick-storage">Brick Storage</psk-link>
         component,
-        a brick is stored on the VirtualMQ server in a file whose name is the cryptographic hash of its content. As the
+        a brick is stored on the PSK Web Server in a file whose name is the cryptographic hash of its content. As the
         data in a brick corresponds to a block
         of data in a file, any change to that block of data will lead to the creation of a new brick. The Anchoring
         component allows the grouping of
@@ -18,7 +18,7 @@
             Associates an anchor to a brick id.
             <psk-list list-type="unordered">
                 <psk-card title="URL">
-                    <code>/addAnchor/:fileId</code>
+                    <code>/anchoring/attachHashToAlias/:fileId</code>
                 </psk-card>
                 <psk-card title="Method">
                     <code>POST</code>
@@ -49,7 +49,7 @@
         <psk-card title="Syntax">
             <psk-list list-type="unordered">
                 <psk-card title="URL">
-                    <code>/getVersions/:anchor</code>
+                    <code>/anchoring/getVersions/:anchor</code>
                 </psk-card>
                 <psk-card title="Method">
                     <code>GET</code>
