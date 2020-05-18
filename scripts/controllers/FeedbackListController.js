@@ -27,12 +27,27 @@ export default class ExampleController extends ContainerController {
             e.preventDefault();
             e.stopImmediatePropagation();
             if(typeof this.feedbackEmitter === 'function'){
-                    this.feedbackEmitter(`${e.data} example`,`${e.data} example`,e.data)
+                if(e.data === 'toast'){
+                    this.feedbackEmitter(`A toast example where you can see even the stackable property`,`${e.data} example`,e.data)
                 } else {
-                    this.feedbackEmitter("Email is invalid!","Mail Validation","alert-danger")
-                }
-        });
+                    this.feedbackEmitter(`${e.data} example`,`${e.data} example`,e.data)
 
+                }
+            }
+        });
+        
+        this.on("alerts-pool-test", (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            let alerts= e.data.split(',')
+            if(typeof this.feedbackEmitter === 'function'){
+                    this.feedbackEmitter(`The question is "to be or not to be?"`,`Not Your Tipical Example`,alerts[0])
+
+                    this.feedbackEmitter(`The answer is "it used to be, but now no more"`,`You expected something else?`,alerts[0])
+                    
+                    this.feedbackEmitter(`This used to be a cooler alert,now it's just primary`,`${alerts[1]} example`,alerts[1])
+            } 
+        });
         this.on("show-feedback",(e) =>{
             e.preventDefault();
             e.stopImmediatePropagation();
