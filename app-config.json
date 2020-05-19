@@ -180,48 +180,48 @@
                         "icon": "fa-bolt",
                         "children": [
                             {
-                                "name": "psk-card",
+                                "name": "Card",
                                 "tags":"psk-card"
 
                             },
                             {
-                                "name": "psk-chapter"
+                                "name": "Chapter"
                             },
                             {
-                                "name": "psk-code"
+                                "name": "Code"
                             },
                             {
-                                "name": "psk-copy-clipboard"
+                                "name": "Copy clipboard"
                             },
                             {
-                                "name": "psk-description"
+                                "name": "Description"
                             },
                             {
-                                "name": "psk-example"
+                                "name": "Example"
                             },
                             {
-                                "name": "psk-highlight"
+                                "name": "Highlight"
                             },
                             {
-                                "name": "psk-img"
+                                "name": "Img"
                             },
                             {
-                                "name": "psk-link"
+                                "name": "Link"
                             },
                             {
-                                "name": "psk-list"
+                                "name": "List"
                             },
                             {
-                                "name": "psk-page"
+                                "name": "Page"
                             },
                             {
-                                "name": "psk-property-descriptor"
+                                "name": "Property descriptor"
                             },
                             {
-                                "name": "psk-table"
+                                "name": "Table"
                             },
                             {
-                                "name": "psk-toc"
+                                "name": "Toc"
                             }
                         ]
                     },
@@ -229,32 +229,62 @@
                         "name": "Web Components",
                         "path": "/web-components",
                         "icon": "fa-cog",
-                        "children": [{
-                            "name": "App Root"
-                        },
+                        "children": [
                             {
-                                "name": "App Router"
-                            },
-                            {
-                                "name": "Condition"
-                            },
-                            {
-                                "name": "Page Not Found"
-                            },
-                            {
-                                "name": "Feedback List"
+                                "name": "App Menu"
                             },
                             {
                                 "name": "Attachments List"
                             },
                             {
+                                "name": "App Root"
+                            },
+                            {
+                                "name": "App Router"
+                            },
+                            {
+                                "name": "Button"
+                            },
+                            {
+                                "name": "Condition"
+                            },
+                            {
+                                "name": "Container",
+                                "tags":"psk-container"
+                            },
+                            {
+                                "name": "Feedback List"
+                            },
+                            {
                                 "name": "Files Chooser"
+                            },
+                            {
+                                "name": "Floating Menu"
+                            },
+                            {
+                                "name": "For each",
+                                "tag":"psk-for-each"
+                            },
+                            {
+                                "name": "Grid"
+                            },
+                            {
+                                "name": "Icon"
                             },
                             {
                                 "name": "Modal"
                             },
                             {
+                                "name": "Page Not Found"
+                            },
+                            {
                                 "name": "PIN Popup"
+                            },
+                            {
+                                "name": "Slideshow"
+                            },
+                            {
+                                "name": "Toolbar"
                             },
                             {
                                 "name": "UI Loader"
@@ -264,34 +294,6 @@
                             },
                             {
                                 "name": "Wizard"
-                            },
-                            {
-                                "name": "Floating Menu"
-                            },
-                            {
-                                "name": "Icon"
-                            },
-                            {
-                                "name": "Grid"
-                            },
-                            {
-                                "name": "Container",
-                                "tags":"psk-container"
-                            },
-                            {
-                                "name": "Slideshow"
-                            },
-                            {
-                                "name": "Toolbar"
-                            },
-                            {
-                                "name": "App Menu"
-                            },
-                            {
-                                "name": "PSK Button"
-                            },
-                            {
-                                "name": "psk-for-each"
                             }
                         ]
                     },
@@ -303,44 +305,44 @@
                                 "tags":"using-psk-form"
                             },
                             {
-                                "name": "psk-form",
+                                "name": "Checkbox"
+                            },                            
+                            {
+                                "name": "Date input"
+                            },
+                            {
+                                "name": "Email input"
+                            },
+                            {
+                                "name": "Form",
                                 "tags":"psk-form"
                             },
                             {
-                                "name": "psk-form-row"
+                                "name": "Form row"
                             },
                             {
-                                "name": "psk-label"
+                                "name": "Input"
                             },
                             {
-                                "name": "psk-input"
+                                "name": "Label"
                             },
                             {
-                                "name": "psk-date-input"
+                                "name": "Number input"
                             },
                             {
-                                "name": "psk-text-input"
+                                "name": "Password input"
                             },
                             {
-                                "name": "psk-password-input"
+                                "name": "Radio"
                             },
                             {
-                                "name": "psk-number-input"
-                            },
-                            {
-                                "name": "psk-email-input"
+                                "name": "Radio group"
                             },
                             {
                                 "name": "psk-select"
                             },
                             {
-                                "name": "psk-radio"
-                            },
-                            {
-                                "name": "psk-radio-group"
-                            },
-                            {
-                                "name": "psk-checkbox"
+                                "name": "Text input"
                             }
                         ]
                     }
