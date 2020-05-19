@@ -65,51 +65,69 @@
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/themes</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-card</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/card</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-chapter</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/chapter</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-code</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/code</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-copy-clipboard</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/copy-clipboard</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-description</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/description</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-example</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/example</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-highlight</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/highlight</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-img</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/img</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-link</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/link</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-list</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/list</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-page</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/page</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-property-descriptor</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/property-descriptor</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-table</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/table</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/psk-toc</loc>
+        <loc>https://privatesky.xyz/?Cardinal/psk-wiki/toc</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/app-menu</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/attachments-list</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/app-root</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/app-router</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/button</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/condition</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/page-not-found</loc>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/container</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/feedback-list</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/attachments-list</loc>
-      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/files-chooser</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/floating-menu</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/for-each</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/grid</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/icon</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/modal</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/page-not-found</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/pin-popup</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/slideshow</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/toolbar</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/ui-loader</loc>
       </url><url>
@@ -117,51 +135,33 @@
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/wizard</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/floating-menu</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/icon</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/grid</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/container</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/slideshow</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/toolbar</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/app-menu</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/psk-button</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/web-components/psk-for-each</loc>
-      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/using-forms</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-form</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/checkbox</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-form-row</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/date-input</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-label</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/email-input</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/form</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-date-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/form-row</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-text-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/input</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-password-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/label</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-number-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/number-input</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-email-input</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/password-input</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/forms/radio</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/forms/radio-group</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/forms/psk-select</loc>
       </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-radio</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-radio-group</loc>
-      </url><url>
-        <loc>https://privatesky.xyz/?Cardinal/forms/psk-checkbox</loc>
+        <loc>https://privatesky.xyz/?Cardinal/forms/text-input</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Howto/a-site-with-cardinal</loc>
       </url><url>
