@@ -35,10 +35,10 @@
                             "port": 8080,
                             "zeromqForwardAddress": "tcp://127.0.0.1:5001",
                             "preventRateLimit": false,
-                            "activeEndpoints": ["virtualMQ", "filesManager", "anchoring", "edfs", "dossier-wizard"],
+                            "activeEndpoints": ["virtualMQ", "filesManager", "anchoring", "edfs", "dossier-wizard", "staticServer"],
                             "endpointsConfig": {
                                 "virtualMQ": {
-                                    "path": "./modules/psk-webserver/ChannelsManager.js",
+                                    "path": "./ChannelsManager.js",
                                     "channelsFolderName": "channels",
                                     "maxSize": 100,
                                     "tokenSize": 48,
@@ -50,13 +50,16 @@
                                     "path": "dossier-wizard"
                                 },
                                 "anchoring": {
-                                    "path": "./modules/psk-webserver/AnchoringService.js"
+                                    "path": "./AnchoringService.js"
                                 },
                                 "edfs": {
                                     "path": "edfs-middleware"
                                 },
                                 "filesManager": {
-                                    "path": "./modules/psk-webserver/FilesManager.js"
+                                    "path": "./FilesManager.js"
+                                },
+                                "staticServer": {
+                                    "path": "./Static.js"
                                 }
                             }
                         };
@@ -108,12 +111,20 @@
                             An array which contains the names of the services that the server provides. By default, the server provides four services:
                             <code>filesManager</code> for uploading and downloading files, <psk-link page="apis/web-services/virtualmq">ChannelsManager</psk-link> which allows the communication
                             between PrivateSky nodes and between processes running in the same node, <psk-link page="apis/web-services/brick-storage">edfs</psk-link> which allows
-                            the storage and retrieval of <code>bricks</code> (encrypted blocks of data identifiable by their content's cryptographic hash) and
+                            the storage and retrieval of <code>bricks</code> (encrypted blocks of data identifiable by their content's cryptographic hash),
                             <psk-link page="apis/web-services/dossier-wizard">dossier-wizard</psk-link> which allows the creation and manipulation of
-                            <psk-link page="apis/edfs/dossiers">dossiers</psk-link>. New services can be added by adding their name in <code>endpoints</code> and
-                            adding a corresponding entry in <code>endpointsConfig</code>.
+                        <psk-link page="apis/edfs/dossiers">dossiers</psk-link> and <code>staticServer</code> which handles all the requests that not processed by the other middlewares.
+
                             <psk-highlight type-of-highlight="example">
-                                Note: Every service declared in <code>activeEndpoints</code> should have a corresponding entry in <code>endpointsConfig</code>.
+                                Note: <code>staticServer</code> should be added last in the <code>activeEndpoints</code> list because the server loads the middlewares
+                                in the order they are declared in <code>activeEndpoints</code> and <code>staticServer</code> handles the requests not processed by the other
+                                middlewares.
+                            </psk-highlight>
+
+                            <psk-highlight type-of-highlight="example">
+                                Note: New services can be added by adding their name in <code>activeEndpoints</code> and
+                                adding a corresponding entry in <code>endpointsConfig</code>. Every service declared in <code>activeEndpoints</code>
+                                should have a corresponding entry in <code>endpointsConfig</code>.
                             </psk-highlight>
                             <psk-card title="Example">
                                 Below is an example of a configuration file for a server that uses only one service, <code>myService</code>. As pointed out above,
