@@ -1,5 +1,4 @@
 <psk-page title="psk-files-chooser">
-
     <psk-toc title="Table of contents"></psk-toc>
 
     <psk-description>
@@ -21,5 +20,22 @@
             <psk-files-chooser label="Select files" accept="png">
             </psk-files-chooser>
         </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <p>In case the controller isn't set up then the component will be rendered in this fashion :</p>
+        <psk-files-chooser label="Select files" accept="png">
+        </psk-files-chooser>
+        <psk-container>
+            <script>
+                console.log(controller);
+                controller.onFilesSelect = function() {
+                    console.log('10');
+                }
+            </script>
+            <p>But in case a controller with the onFilesSelect function exists and the 
+                psk-files-chooser sends an event, then the component will be rendered like this:</p>
+            <psk-files-chooser label="Select files" accept="png" event-name="privatesky_example">
+            </psk-files-chooser>
+        </psk-container>
     </psk-chapter>
 </psk-page>
