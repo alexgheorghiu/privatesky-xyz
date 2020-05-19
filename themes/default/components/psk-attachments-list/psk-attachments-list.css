@@ -4,3 +4,11 @@
     font-weight: lighter;
     color: rgba(255, 0, 0, 0.5);
 }
+
+.example-attachments{
+    color:white;
+    background-color: #5E7FE1;
+    padding: 1rem;
+    font-weight: 800;
+    border-radius: 0.5rem;
+}

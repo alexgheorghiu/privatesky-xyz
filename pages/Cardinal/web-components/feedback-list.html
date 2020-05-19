@@ -89,13 +89,13 @@
             <psk-list>
                 toast <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="toast">Show Example!</psk-button> (Here you can also test the stackble property!)
                 alert-primary  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-primary">Show Example!</psk-button>
-                alert-secondary  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-secondary">Show Example!</psk-button>
                 alert-success  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-success">Show Example!</psk-button>
-                alert-danger  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-danger">Show Example!</psk-button>
-                alert-warning  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-warning">Show Example!</psk-button>
-                alert-info  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-info">Show Example!</psk-button>
-                alert-light  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-light">Show Example!</psk-button>
-                alert-dark  <psk-button button-class="btn btn-info btn-sm" event-name ="show-example" event-data="alert-dark">Show Example!</psk-button>
+                alert-secondary  
+                alert-danger  
+                alert-warning  
+                alert-info  
+                alert-light  
+                alert-dark  
             </psk-list>
             <p>In order to change the style of the alerts or the toast you can modify their css in <code><span class="nt">&lt;psk-ui-toast/&gt;</span></code> theme file and
                 <code><span class="nt">&lt;psk-ui-alert/&gt;</span></code>. For the later one you need to modify the <code><span class="nt">alert-feedback</span></code> class 
@@ -130,8 +130,7 @@
             <psk-code language="markup">
                 <psk-list-feedbacks
                         messages-to-display="5"
-                        styleCustomisation='
-                        {
+                        styleCustomisation='{
                             "toast": {
                                 "header":{
                                     "style":{
@@ -152,14 +151,13 @@
                 e.stopImmediatePropagation();
                 let alerts= e.data.split(',')
                 if(typeof this.feedbackEmitter === 'function'){
-                        this.feedbackEmitter(`The question is "to be or not to be?"`,`Not Your Tipical Example`,alerts[0])
-    
-                        this.feedbackEmitter(`The answer is "it used to be, but now no more"`,`You expected something else?`,alerts[0])
-                        
-                        this.feedbackEmitter(`This used to be a cooler alert,now it's just primary`,`${alerts[1]} example`,alerts[1])
+                    this.feedbackEmitter(`The question is "to be or not to be?"`,`Not Your Tipical Example`,alerts[0])
+
+                    this.feedbackEmitter(`The answer is "it used to be, but now no more"`,`You expected something else?`,alerts[0])
+                    
+                    this.feedbackEmitter(`This used to be a cooler alert,now it's just primary`,`${alerts[1]} example`,alerts[1])
                 } 
             </psk-code>
-            <p>It's practical because you can send an <code><span class="nt">alert-danger</span></code> to tell the user that there is a problem and a <code><span class="nt">toast</span></code> to explain exactly what the problem is.</p>
         </psk-example>
     </psk-container>
 </psk-page>
