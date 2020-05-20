@@ -27,6 +27,7 @@ export default class WizardController extends ContainerController {
             e.preventDefault();
             e.stopImmediatePropagation();
             wizardConfiguration = e.detail;
+            
             if(typeof wizardConfiguration === 'function'){
                 console.log(this.model.wizardSteps[0])
                 wizardConfiguration(this.model.wizardSteps)
