@@ -144,7 +144,7 @@
             </psk-code>
         </psk-chapter>
         <psk-example title="Double Alert Example">
-            <psk-button event-name="alerts-pool-test", event-data="toast,alert-primary">Show a pool of alerts</psk-button>
+            <psk-button event-name="alerts-pool-test", event-data="toast,alert-danger">Show a pool of alerts</psk-button>
             <p>To create this kind of pools is quite easy, all you have to do is call the callback function multiple times in the same event listener.</p>
             <psk-code language="Javascript">
                 e.preventDefault();
@@ -158,6 +158,8 @@
                     this.feedbackEmitter(`This used to be a cooler alert,now it's just primary`,`${alerts[1]} example`,alerts[1])
                 } 
             </psk-code>
+            <p>It's practical because you can send an <code><span class="nt">alert-danger</span></code> to tell the user that there is a problem and a 
+                <code><span class="nt">toast</span></code> to explain exactly what the problem is.</p>
         </psk-example>
     </psk-container>
 </psk-page>

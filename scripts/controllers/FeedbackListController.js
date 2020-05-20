@@ -41,12 +41,11 @@ export default class ExampleController extends ContainerController {
             e.stopImmediatePropagation();
             let alerts= e.data.split(',')
             if(typeof this.feedbackEmitter === 'function'){
-                this.feedbackEmitter(`The question is "to be or not to be?"`,`Not Your Tipical Example`,alerts[0]);
-
-                this.feedbackEmitter(`The answer is "it used to be, but now no more"`,`You expected something else?`,alerts[0]);
-                
-                this.feedbackEmitter(`This used to be a cooler alert,now it's just primary`,`${alerts[1]} example`,alerts[1]);
-            } 
+                this.feedbackEmitter(`There was a problem with the confirmation`,`${alerts[1]} example`,alerts[1]);
+                setTimeout(() => {
+                    this.feedbackEmitter(`The register failed because the credentials you entered are faulty.`,`Problem Description`,alerts[0]);
+                }, 2000);
+        } 
         });
         this.on("show-feedback",(e) =>{
             e.preventDefault();

@@ -74,11 +74,12 @@
         <psk-chapter title="Live Example">
             <psk-example>
 
-                <psk-modal opened="true" event-name="closeModal">
+                <psk-modal opened="@opened" event-name="closeModal">
                     <h5 slot="title">Modal Title</h5>
                     <p>This is the content of my modal</p>
                     <button slot="confirm_action">Modal Action</button>
                 </psk-modal>
+                <psk-button event-name="openModal">Open Modal</psk-button>
             </psk-example>
         </psk-chapter>
     </psk-container>
