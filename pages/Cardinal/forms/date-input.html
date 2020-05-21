@@ -21,18 +21,42 @@
         <psk-date-input data-define-props="true">
         </psk-date-input>
     </psk-property-descriptor>
-    <psk-example title="Live Examples">
-        <psk-code>
-            <psk-grid columns="2" layout="l=[4,4]">
-                <psk-date-input view-model="startDate"></psk-date-input>
-                <psk-date-input view-model="endDate"></psk-date-input>
-            </psk-grid>
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                startDate: {
+                    label: "START DATE",
+                    input: {
+                        name: "date-to-start",
+                        required: false,
+                        value: ''
+                    }
+                },
+                endDate: {
+                    label: "CLOSE DATE",
+                    input: {
+                        name: "date-to-end",
+                        required: false,
+                        value: ''
+                    }
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
         </psk-code>
     </psk-example>
-    <psk-container controller-name="FormComponentsExampleController">
-        <psk-example title="Live Examples">
+
+    <psk-example title="View Example">
+        <psk-container controller-name="FormComponentsExampleController">
             <psk-code>
-                <psk-grid columns="2" layout="l=[4,4]">
+                <psk-grid columns="2" layout="l=[5,5]">
                     <psk-date-input view-model="startDate"></psk-date-input>
                     <psk-date-input view-model="endDate"></psk-date-input>
                 </psk-grid>
@@ -40,7 +64,14 @@
             <p>A very good example of using this component and the other form components can be found here:
                 <psk-link page="forms/using-forms">Using forms</psk-link>.
             </p>
-        </psk-example>
-    </psk-container>
-
+        </psk-container>
+    </psk-example>
+    <psk-example title="Live Example">
+        <psk-container controller-name="FormComponentsExampleController">
+            <psk-grid columns="2" layout="l=[5,5]">
+                <psk-date-input view-model="startDate"></psk-date-input>
+                <psk-date-input view-model="endDate"></psk-date-input>
+            </psk-grid>
+        </psk-container>
+    </psk-example>
 </psk-page>

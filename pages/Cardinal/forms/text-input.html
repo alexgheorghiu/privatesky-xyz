@@ -21,18 +21,57 @@
         <psk-text-input data-define-props="true">
         </psk-text-input>
     </psk-property-descriptor>
-    <psk-example>
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                },
+                password: {
+                    label: "Password",
+                    name: "password",
+                    required: true,
+                    placeholder: "Password here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-example title="View Example">
         <psk-code>
-            <psk-grid columns = "3" layout="l=[4,4,4]">
-                <psk-text-input view-model="name"></psk-text-input>
-                <psk-text-input view-model="email"></psk-text-input>
-                <psk-text-input view-model="password"></psk-text-input>
-            </psk-grid>
+            <psk-container controller-name="FormComponentsExampleController">
+                    <psk-grid columns = "3" layout="l=[4,4,4]">
+                        <psk-text-input view-model="name"></psk-text-input>
+                        <psk-text-input view-model="email"></psk-text-input>
+                        <psk-text-input view-model="password"></psk-text-input>
+                    </psk-grid>
+            </psk-container>
         </psk-code>
     </psk-example>
 
     <psk-container controller-name="FormComponentsExampleController">
-        <psk-example title="Live Examples">
+        <psk-example title="Live Example">
             <psk-grid columns = "3" layout="l=[4,4,4]">
                 <psk-text-input view-model="name"></psk-text-input>
                 <psk-text-input view-model="email"></psk-text-input>

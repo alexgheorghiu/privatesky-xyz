@@ -21,16 +21,40 @@
         <psk-number-input data-define-props="true">
         </psk-number-input>
     </psk-property-descriptor>
-    <psk-example title="Code Examples">
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                number: {
+                    label: "Choose a number:",
+                    name: "number",
+                    required: true,
+                    value: '0'
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-example title="View Example">
         <psk-code>
-            <psk-grid columns="1" layout="l=[4]">
-                <psk-number-input view-model="number">
-                </psk-number-input>
-            </psk-grid>
+            <psk-container controller-name="FormComponentsExampleController">
+                <psk-grid columns="1" layout="l=[4]">
+                    <psk-number-input view-model="number">
+                    </psk-number-input>
+                </psk-grid>
+            </psk-container>
     </psk-code>
     </psk-example>
     <psk-container controller-name="FormComponentsExampleController">
-        <psk-example title="Live Examples">
+        <psk-example title="Live Example">
             <psk-grid columns="1" layout="l=[4]">
                 <psk-number-input view-model="number">
                 </psk-number-input>

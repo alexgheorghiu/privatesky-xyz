@@ -17,8 +17,44 @@
         <p>Every form component will be rendered on a single row.</p>
         <p>On mobile devices, the responsive design is making all the form components to be displayed in a single column.</p>
     </psk-chapter>
+    
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                },
+                password: {
+                    label: "Password",
+                    name: "password",
+                    required: true,
+                    placeholder: "Password here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-example>
 
-    <psk-example title="Code Examples">
+    <psk-example title="View Examples">
         <psk-code language="markup">
             <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                 <psk-label>Name, E-mail & Password</psk-label>
@@ -32,15 +68,8 @@
         <p>A complete live example can be found at:
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
     </psk-example>
+    
     <psk-container controller-name ="FormComponentsExampleController">
-        <script>
-            const model = {
-                name : "Please enter your Name :",
-                email : "Please enter your E-mail :",
-                password: "Please enter your Password :"
-            }
-            
-        </script>
         <psk-example title="Code Examples">
             <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                 <psk-label>Name, E-mail & Password</psk-label>

@@ -21,13 +21,37 @@
         <psk-email-input data-define-props="true">
         </psk-email-input>
     </psk-property-descriptor>
-    <psk-example title="Code Example">
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-example title="View Example">
         <psk-code>
             <psk-grid columns="1" layout="l=[5]">
                 <psk-email-input view-model="email"></psk-email-input>
             </psk-grid>
         </psk-code>
     </psk-example>
+    
     <psk-container controller-name="FormComponentsExampleController">
         <psk-example title="Live Examples">
             <psk-grid columns="1" layout="l=[5]">

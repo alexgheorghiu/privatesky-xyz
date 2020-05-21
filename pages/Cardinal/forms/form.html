@@ -20,11 +20,58 @@
     <psk-chapter title="HTML Children">
         <p>As HTML children, any component can be rendered inside.</p>
     </psk-chapter>
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
-    <psk-example title="Usage examples">
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: 'John'
+                },
+                email: {
+                    label: "Email address",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: 'john@privatesky.xyz'
+                },
+                age: {
+                    label: "Your age",
+                    name: "age",
+                    required: false,
+                    placeholder: "Your age here...",
+                    value: '20'
+                }
+            }
+            
+            
+            export default class TestFormController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    let customSubmit = () =>{
+                        let name = this.model.getChainValue("name.value");
+                        let email = this.model.getChainValue("email.value");
+                        let age = this.model.getChainValue("age.value");
+                        alert(`Submitted:[${name},${email},${age}]`)
+                    };
+
+                    this.on("submit",customSubmit,true);
+                    this.on("custom-submit",customSubmit,true);
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-example title="View examples">
         <psk-example title="With defined actions -Source Code">
             <psk-code language="markup">
-                <psk-form controller-name="TestFormController" form-actions="submit, reset-form>
+                <psk-form controller-name="TestFormController" form-actions="submit, reset-form">
                     <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
                         <psk-label label="Personal information"></psk-label>
                     </psk-form-row>

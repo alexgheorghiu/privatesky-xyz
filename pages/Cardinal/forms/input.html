@@ -22,8 +22,44 @@
         <psk-input data-define-props="true">
         </psk-input>
     </psk-property-descriptor>
-    
-    <psk-example>
+
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+            const model = {
+                name: {
+                    label: "Name",
+                    name: "name",
+                    required: true,
+                    placeholder: "Name here...",
+                    value: ''
+                },
+                email: {
+                    label: "Email ",
+                    name: "email",
+                    required: true,
+                    placeholder: "Email address here...",
+                    value: ''
+                },
+                password: {
+                    label: "Password",
+                    name: "password",
+                    required: true,
+                    placeholder: "Password here...",
+                    value: ''
+                }
+            }
+            
+            export default class FormComponentsExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
+        </psk-code>
+    </psk-example>
+
+    <psk-example title="View Example">
             <psk-code>
                 <psk-input view-model="name"></psk-input>
                 <psk-input view-model="email"></psk-input>
@@ -32,10 +68,12 @@
     </psk-example>
     
     <psk-container controller-name="FormComponentsExampleController">
-        <psk-example title="Live Examples">   
-            <psk-input view-model="name"></psk-input>
-            <psk-input view-model="email"></psk-input>
-            <psk-input view-model="password"></psk-input>
+        <psk-example title="Live Example">
+            <psk-grid columns = "3" layout="l=[4,4,4]">   
+                <psk-input view-model="name"></psk-input>
+                <psk-input view-model="email"></psk-input>
+                <psk-input view-model="password"></psk-input>
+            </psk-grid>
             <p>A very good example of using this component and the other form components can be found here:
                 <psk-link page="forms/using-forms">Using forms</psk-link>.
             </p>

@@ -15,6 +15,20 @@ const model = {
         placeholder: "Email address here...",
         value: ''
     },
+    age: {
+        label: "Age",
+        name: "age",
+        required: true,
+        placeholder:"Enter you age here...",
+        value:''
+    },
+    adress: {
+        label: "Adress",
+        name: "adress",
+        required: true,
+        placeholder:"Enter you adress here...",
+        value:''
+    },
     password: {
         label: "Password",
         name: "password",
