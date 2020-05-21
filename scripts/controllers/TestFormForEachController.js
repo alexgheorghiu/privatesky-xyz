@@ -96,8 +96,9 @@ const model = {
         name: "gdpr",
         required: true,
         checkboxLabel: "GDPR Consent",
-        checkedValue: "yes",
-        uncheckedValue: "no"
+        checkedValue: "true",
+        uncheckedValue: "false",
+        value:false
     },
     terms: {
         label: "Do you accept our terms and conditions?",
