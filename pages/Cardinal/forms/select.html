@@ -18,37 +18,35 @@
         <p>This component has no children elements.</p>
     </psk-chapter>
 
-    <psk-example title="Examples">
-        <psk-chapter title="Code examples">
-            <psk-code language="markup">
-                <psk-form controller-name="TestFormController">
-                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                        <psk-label>Psk-Select examples</psk-label>
-                    </psk-form-row>
+    <psk-example title="Controller Example">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
-                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
-                        <!-- This component will receive the options and the other properties from the model -->
-                        <psk-select view-model="nationality"></psk-select>
+            const model = {
+                nationality: {
+                    label: "Select your nationality",
+                    placeholder: "Please select one option...",
+                    required: true,
+                    options: [{
+                        label: "Romanian",
+                        value: "RO"
+                    }]
+                },
+            };
 
-                        <!-- This component is loaded using the options defined by the select-options attribute -->
-                        <psk-select 
-                            label="Select your city of birth" 
-                            select-options="Iasi | Bucuresti | Timisoara">
-                        </psk-select>
+            export default class TestFormController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                }
+            }
 
-                        <!-- This component has the property "multiple", so the selection can be multiple. -->
-                        <psk-select 
-                            label="Select numbers above 20" 
-                            selection-type="multiple" 
-                            select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12">
-                        </psk-select>
-                    </psk-form-row>
-                </psk-form>
-            </psk-code>
-        </psk-chapter>
+        </psk-code>
+    </psk-example>
 
-        <psk-chapter title="Code preview">
-            <psk-form controller-name="TestFormController" actions=" ">
+    <psk-example title="View Example">
+        <psk-code language="markup">
+            <psk-form controller-name="TestFormController">
                 <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                     <psk-label>Psk-Select examples</psk-label>
                 </psk-form-row>
@@ -58,13 +56,38 @@
                     <psk-select view-model="nationality"></psk-select>
 
                     <!-- This component is loaded using the options defined by the select-options attribute -->
-                    <psk-select label="Select your city of birth" select-options="Iasi | Bucuresti | Timisoara"></psk-select>
+                    <psk-select 
+                        label="Select your city of birth" 
+                        select-options="Iasi | Bucuresti | Timisoara">
+                    </psk-select>
 
                     <!-- This component has the property "multiple", so the selection can be multiple. -->
-                    <psk-select label="Select numbers above 20" selection-type="multiple" select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12"></psk-select>
+                    <psk-select 
+                        label="Select numbers above 20" 
+                        selection-type="multiple" 
+                        select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12">
+                    </psk-select>
                 </psk-form-row>
             </psk-form>
-        </psk-chapter>
+        </psk-code>
+    </psk-example>
+    <psk-example title="Live Example">
+        <psk-form controller-name="TestFormController" actions=" ">
+            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                <psk-label>Psk-Select examples</psk-label>
+            </psk-form-row>
+
+            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                <!-- This component will receive the options and the other properties from the model -->
+                <psk-select view-model="nationality"></psk-select>
+
+                <!-- This component is loaded using the options defined by the select-options attribute -->
+                <psk-select label="Select your city of birth" select-options="Iasi | Bucuresti | Timisoara"></psk-select>
+
+                <!-- This component has the property "multiple", so the selection can be multiple. -->
+                <psk-select label="Select numbers above 20" selection-type="multiple" select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12"></psk-select>
+            </psk-form-row>
+        </psk-form>
 
         <p>An explanatory example using a full form can be found at:
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
