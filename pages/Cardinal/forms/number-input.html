@@ -38,6 +38,30 @@
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                                
+                    this.feedbackEmitter = null;
+                    
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                    });
+                    
+                    let numberSubmit = () => {
+                        let number = this.model.number.value;
+                        if (number < 10){
+                            this.feedbackEmitter(`You entered a number between -infinite and 10, Thank you!`,"number Example","alert-success")
+
+                        } else if (number < 100){
+                            this.feedbackEmitter(`You entered a number between 10 and 100, Look at you go!`,"number Example","alert-warning")
+                            
+                        } else if (number < 1000){
+                            this.feedbackEmitter("You entered a nubmer between 100 and 1000,I think you shouldn't increase!","number Example","alert-danger")
+                        } else {
+                            this.feedbackEmitter(`The number you entered is : ${number}, Thank you!`,"number Example","alert-secondary")
+                        }
+                    }
+                    this.on("Number submit",numberSubmit,true)
                 }
             }
         </psk-code>
@@ -45,7 +69,7 @@
 
     <psk-example title="View Example">
         <psk-code>
-            <psk-container controller-name="FormComponentsExampleController">
+            <psk-container controller-name="FormComponentsExampleController" form-actions="Number submit">
                 <psk-grid columns="1" layout="l=[4]">
                     <psk-number-input view-model="number">
                     </psk-number-input>
@@ -53,15 +77,17 @@
             </psk-container>
     </psk-code>
     </psk-example>
-    <psk-container controller-name="FormComponentsExampleController">
-        <psk-example title="Live Example">
+    <psk-example title="Live Example">
+        <psk-form controller-name="FormComponentsExampleController" form-actions="Number submit">
             <psk-grid columns="1" layout="l=[4]">
                 <psk-number-input view-model="number">
                 </psk-number-input>
             </psk-grid>
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
+        </psk-form>
             <p>A very good example of using this component and the other form components can be found here:
                 <psk-link page="forms/using-forms">Using forms</psk-link>.
             </p>
-        </psk-example>
-    </psk-container>
+    </psk-example>
 </psk-page>

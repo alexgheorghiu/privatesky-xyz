@@ -49,6 +49,27 @@
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    this.feedbackEmitter = null;
+        
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                        console.log(this.feedbackEmitter)
+                    });
+
+                    let rowSubmit = () => {
+                        let name = this.model.name.value;
+                        let email = this.model.email.value;
+                        if(name != "" && email !=""){
+                            this.feedbackEmitter(`You succesfully sent your data, Thank you!`,"row Example","alert-success")
+                        } else{
+                            this.feedbackEmitter("You have not entered a name or an email, please enter one!","row Example","alert-danger")
+                            
+                        }
+                    }
+                    this.on("Row submit",rowSubmit, true);
                 }
             }
         </psk-code>
@@ -56,30 +77,32 @@
 
     <psk-example title="View Examples">
         <psk-code language="markup">
-            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                <psk-label>Name, E-mail & Password</psk-label>
-            </psk-form-row>
-            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
-                <psk-text-input view-model="name"></psk-text-input>
-                <psk-email-input view-model="email"></psk-email-input>
-                <psk-password-input view-model="password"></psk-password-input>
-            </psk-form-row>
+            <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
+                <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Name, E-mail & Password</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
+                        <psk-text-input view-model="name"></psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                    </psk-form-row>
+            </psk-form>
         </psk-code>
         <p>A complete live example can be found at:
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
     </psk-example>
     
-    <psk-container controller-name ="FormComponentsExampleController">
-        <psk-example title="Code Examples">
+    <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
+        <psk-example title="Live Examples">
             <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                 <psk-label>Name, E-mail & Password</psk-label>
             </psk-form-row>
-            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
                 <psk-text-input view-model="name"></psk-text-input>
                 <psk-email-input view-model="email"></psk-email-input>
-                <psk-password-input view-model="password"></psk-password-input>
             </psk-form-row>
         </psk-example> 
-    </psk-container>
+        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+        </psk-list-feedbacks>
+    </psk-form>
 
 </psk-page>

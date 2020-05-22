@@ -48,30 +48,55 @@
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    this.feedbackEmitter = null;
+                    
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                        console.log(this.feedbackEmitter)
+                    });
+
+                    let dateSubmit = () => {
+                        let startDate = this.model.startDate.value
+                        let endDate = this.model.endDate.value
+                        if(startDate<=endDate){
+                            this.feedbackEmitter("You entered two valid dates, Thank you!","date-input Example","alert-success")
+                        } else {
+                            this.feedbackEmitter("The end date is before the start date, please review!","date-input Example","alert-danger")
+                        
+                        }
+                    }
+
+                    this.on("Date submit",dateSubmit,true);
                 }
             }
         </psk-code>
     </psk-example>
 
     <psk-example title="View Example">
-        <psk-container controller-name="FormComponentsExampleController">
             <psk-code>
-                <psk-grid columns="2" layout="l=[5,5]">
-                    <psk-date-input view-model="startDate"></psk-date-input>
-                    <psk-date-input view-model="endDate"></psk-date-input>
-                </psk-grid>
+                <psk-form controller-name="FormComponentsExampleController" form-actions="Date submit">
+                    <psk-grid columns="2" layout="l=[5,5]">
+                            <psk-date-input view-model="startDate"></psk-date-input>
+                            <psk-date-input view-model="endDate"></psk-date-input>
+                        </psk-grid>
+                </psk-form>
             </psk-code>
             <p>A very good example of using this component and the other form components can be found here:
                 <psk-link page="forms/using-forms">Using forms</psk-link>.
             </p>
-        </psk-container>
     </psk-example>
     <psk-example title="Live Example">
-        <psk-container controller-name="FormComponentsExampleController">
+        <psk-form controller-name="FormComponentsExampleController" form-actions="Date submit">
+            <p>If you enter a good starting and ending date (start date before end date) a alert-success will be shown, else a alert-danger will pop up.</p>
             <psk-grid columns="2" layout="l=[5,5]">
                 <psk-date-input view-model="startDate"></psk-date-input>
                 <psk-date-input view-model="endDate"></psk-date-input>
             </psk-grid>
-        </psk-container>
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
+        </psk-form>
     </psk-example>
 </psk-page>

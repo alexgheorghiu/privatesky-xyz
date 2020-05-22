@@ -50,6 +50,29 @@
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+
+                    this.feedbackEmitter = null;
+        
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                    });
+
+                    let labelSubmit = () => {
+                        let name = this.model.name.value;
+                        let age = this.model.age.value;
+                        let address = this.model.address.value
+                        if(name != "" && age !="" && address !=""){
+                            this.feedbackEmitter(`You succesfully sent us your personal information, Thank you!`,"label Example","alert-success")
+                        } else{
+                            this.feedbackEmitter("You have not entered the name ,the age or the adress, please enter one!","label Example","alert-danger")
+                            
+                        }
+                    }
+
+                    this.on("Label submit",labelSubmit, true);
+
                 }
             }
         </psk-code>
@@ -57,7 +80,7 @@
 
     <psk-example title="View Example">
         <psk-code language="markup">
-            <psk-form controller-name="FormComponentsExampleController" form-actions=''>
+            <psk-form controller-name="FormComponentsExampleController" form-actions='Label submit'>
                 <psk-form-row layout="xs=[12,12,12,12,12,12] m=[2,10,2,10,2,10] l=[12,12,12,12,12,12] xl=[2,10,2,10,2,10]">
                     <!-- Label set as attribute -->
                     <psk-label label="Enter your name"></psk-label>
@@ -69,15 +92,15 @@
 
                     <!-- Label set in pair with input using "for" attribute.
                     Has more sense using screen readers. -->
-                    <psk-label for="input-name">Enter your adress</psk-label>
-                    <psk-text-input name="input-name" view-model="adress"></psk-text-input>
+                    <psk-label for="input-address">Enter your adress</psk-label>
+                    <psk-text-input name="input-address" view-model="address"></psk-text-input>
                 </psk-form-row>
             </psk-form>
         </psk-code>
     </psk-example>
 
     <psk-example title="Live Examples">
-        <psk-form controller-name="FormComponentsExampleController" form-actions=''>
+        <psk-form controller-name="FormComponentsExampleController" form-actions='Label submit'>
             <psk-form-row layout="xs=[12,12,12,12,12,12] m=[2,10,2,10,2,10] l=[12,12,12,12,12,12] xl=[2,10,2,10,2,10]">
                 <!-- Label set as attribute -->
                 <psk-label label="Enter your name"></psk-label>
@@ -90,9 +113,11 @@
 
                 <!-- Label set in pair with input using "for" attribute.
                 Has more sense using screen readers. -->
-                <psk-label for="input-name">Enter your adress</psk-label>
-                <psk-text-input name="input-name" view-model="adress"></psk-text-input>
+                <psk-label for="input-address">Enter your adress</psk-label>
+                <psk-text-input name="input-address" view-model="address"></psk-text-input>
             </psk-form-row>
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
         </psk-form>
     </psk-example>
 

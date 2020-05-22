@@ -58,7 +58,8 @@ const model = {
         options: [{
             label: "Romanian",
             value: "RO"
-        }]
+        }],
+        value:''
     },
     gdpr: {
         label: "Check if you agree with GDPR regulations",
@@ -83,6 +84,14 @@ export default class TestFormController extends ContainerController {
         super(element);
         this.model = this.setModel(JSON.parse(JSON.stringify(model)));
 
+        this.feedbackEmitter = null;
+        
+        this.on('openFeedback', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            this.feedbackEmitter = e.detail;
+        });
+
         let customSubmit = () =>{
 			let name = this.model.getChainValue("name.value");
 			let email = this.model.getChainValue("email.value");
@@ -96,10 +105,19 @@ export default class TestFormController extends ContainerController {
 			this.model.age.value = model.age.value;
 		};
 
+        let checkSubmit = () => {
+            this.feedbackEmitter("Never forget to check the terms and the gdpr!","Checkbox Example","alert-warning")
+        }
+       
+        let selectSubmit = () => {
+            let nationality = this.model.nationality.value;
+            console.log(nationality)
+            // this.feedbackEmitter("")
+        }
         this.on("submit",customSubmit,true);
 		this.on("reset-form",resetForm,true);
-		this.on("custom-submit",customSubmit,true);
-
-
+        this.on("custom-submit",customSubmit,true);
+        this.on("Check submit",checkSubmit,true);
+        this.on("Select submit",selectSubmit,true);
     }
 }

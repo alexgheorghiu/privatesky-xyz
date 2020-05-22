@@ -35,7 +35,7 @@
 
             <psk-chapter title="Component usage with model">
                 <psk-code language="markup">
-                    <psk-form controller-name="TestFormController" actions=" ">
+                    <psk-form controller-name="FormComponentsExampleController" form-actions="Radio-group submit">
                         <psk-form-row layout="xs=[12] m=[12] l=[12] xl=[12]">
                             <psk-radio-group view-model="gender"> </psk-radio-group>
                         </psk-form-row>
@@ -46,11 +46,13 @@
 
         </psk-chapter>
 
-        <psk-chapter title="Visual example">
-            <psk-form controller-name="TestFormController" actions=" ">
+        <psk-chapter title="Live example">
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Radio-group submit">
 				<psk-form-row layout="xs=[12] m=[12] l=[12] xl=[12]">
 					<psk-radio-group view-model="gender"> </psk-radio-group>
-				</psk-form-row>
+                </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
             </psk-form>
         </psk-chapter>
 

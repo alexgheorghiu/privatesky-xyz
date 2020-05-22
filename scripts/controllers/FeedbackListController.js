@@ -22,6 +22,7 @@ export default class ExampleController extends ContainerController {
             e.preventDefault();
             e.stopImmediatePropagation();
             this.feedbackEmitter = e.detail;
+            console.log("okay!")
         });
         this.on("show-example", (e) => {
             e.preventDefault();
