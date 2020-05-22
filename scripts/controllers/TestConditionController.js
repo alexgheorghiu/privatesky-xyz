@@ -8,7 +8,8 @@ const model = {
         email: {
             label: 'Email',
             name: 'email',
-            isValid: true
+            isValid: true,
+			value:""
         }
     }
 };
