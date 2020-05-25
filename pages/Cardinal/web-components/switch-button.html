@@ -18,16 +18,38 @@
     </psk-chapter>
 
     <psk-example title="psk-switch-button Examples">
-        <psk-chapter title="Source code">
+        <psk-chapter title="View Example">
             <psk-code>
-             
+                <psk-container controller-name = "SwitchController">
+                    <psk-grid columns="1" layout="xl=[4]">
+                        <psk-switch-button active="Custom" inactive="Automatic" title="SELECTION OF RECIPIENTS" toggle-event="switch-invitation-type"></psk-switch-button>
+                    </psk-grid>
+                    <psk-condition condition="@switchButtonState">
+                        <div slot="condition-true">
+                          <p>Random info</p>
+                        </div>
+                        <div slot="condition-false">
+                            <p>Another random Info</p>
+                        </div>
+                    </psk-condition>
+                </psk-container>
             </psk-code>
         </psk-chapter>
 
         <psk-chapter title="Visual example">
-            <div>
-               
-            </div>
+            <psk-container controller-name = "SwitchController">
+                <psk-grid columns="1" layout="xl=[4]">
+                    <psk-switch-button active="Custom" inactive="Automatic" title="Simple Example" toggle-event="switch-invitation-type"></psk-switch-button>
+                </psk-grid>
+                <psk-condition condition="@switchButtonState">
+                    <div slot="condition-true">
+                      <p>Active slot information</p>
+                    </div>
+                    <div slot="condition-false">
+                        <p>Inactive slot information(this is also the default component that will be shown when the component is rendered)</p>
+                    </div>
+                </psk-condition>
+            </psk-container>
         </psk-chapter>
     </psk-example>
 
