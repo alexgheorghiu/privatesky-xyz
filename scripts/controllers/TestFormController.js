@@ -112,12 +112,16 @@ export default class TestFormController extends ContainerController {
         let selectSubmit = () => {
             let nationality = this.model.nationality.value;
             console.log(nationality)
-            // this.feedbackEmitter("")
+            if(nationality === 'RO'){
+                this.feedbackEmitter(`Good day to you, beautiful Romanian guy!`,"radio Example","alert-primary")
+            } else {
+                this.feedbackEmitter(`OH NO, you need to select your nationality in order to continue!`,"radio Example","alert-danger")
+            }
         }
+        this.on("Select submit",selectSubmit,true);
         this.on("submit",customSubmit,true);
 		this.on("reset-form",resetForm,true);
         this.on("custom-submit",customSubmit,true);
         this.on("Check submit",checkSubmit,true);
-        this.on("Select submit",selectSubmit,true);
     }
 }

@@ -38,6 +38,26 @@
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                    
+                    this.feedbackEmitter = null;
+                    
+                    this.on('openFeedback', (e) => {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        this.feedbackEmitter = e.detail;
+                    });
+
+                    let selectSubmit = () => {
+                        let nationality = this.model.nationality.value;
+                        console.log(nationality)
+                        if(nationality === 'RO'){
+                            this.feedbackEmitter(`Good day to you, beautiful Romanian guy!`,"radio Example","alert-primary")
+                        } else {
+                            this.feedbackEmitter(`OH NO, you need to select your nationality in order to continue!`,"radio Example","alert-danger")
+                        }
+                    }
+                    
+                    this.on("Select submit",selectSubmit,true);
                 }
             }
 
@@ -87,7 +107,8 @@
                 <!-- This component has the property "multiple", so the selection can be multiple. -->
                 <psk-select label="Select numbers above 20" selection-type="multiple" select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12"></psk-select>
             </psk-form-row>
-            
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
         </psk-form>
 
         <p>An explanatory example using a full form can be found at:
