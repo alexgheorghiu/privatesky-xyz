@@ -27,18 +27,50 @@
         <psk-chapter title="Source Code">
             <psk-chapter title="JavaScript Model">
                 <psk-code language="Javascript">
-                    gender: {
-                        label: "Select your gender",
-                        required: true,
-                        options: [{
-                                label: "Male"
-                            },
-                            {
-                                label: "Female",
-                                value: "F"
+                        import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                        const model = {
+                            gender: {
+                                label: "Select your gender",
+                                required: true,
+                                options: [{
+                                        label: "Male",
+                                        value: 'M'
+                                    },
+                                    {
+                                        label: "Female",
+                                        value: "F"
+                                    }
+                                ],
+                                value: ''
                             }
-                        ]
-                    }
+                        
+                        }
+                        
+                        export default class FormComponentExampleController extends ContainerController {
+                            constructor(element) {
+                                super(element);
+                                this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                        
+                                this.feedbackEmitter = null;
+                                
+                                this.on('openFeedback', (e) => {
+                                    e.preventDefault();
+                                    e.stopImmediatePropagation();
+                                    this.feedbackEmitter = e.detail;
+                                });
+                        
+                                let radioSubmit = () => {
+                                    let gender = this.model.gender.value;
+                                    if (gender === "M"){
+                                        this.feedbackEmitter(`Hello there, gentleman!`,"radio Example","alert-primary")
+                                    } else {
+                                        this.feedbackEmitter(`Good day to you, mademoiselle!`,"radio Example","alert-primary")
+                                    }
+                                }
+                                this.on("Radio submit",radioSubmit,true);
+                            }
+                        }
                 </psk-code>
             </psk-chapter>
 

@@ -143,17 +143,23 @@ export default class FormComponentExampleController extends ContainerController 
             }
         }
         let passwordSubmit = () => {
-            this.feedbackEmitter(`We can't show the password you just entered, Thank you for your understanding!`,"number Example","alert-primary")
+            let password = this.model.password.value
+            if(password === ''){
+                this.feedbackEmitter(`We can't show you how the component works if you don't give us a password!`,"password Example","alert-danger")
+            } else {
+                this.feedbackEmitter(`We shouldn't show the password you just entered, but we will still do so : ${password} !`,"password Example","alert-primary")
+            }
             
         }
         let radioSubmit = () => {
 			let gender = this.model.gender.value;
-            console.log(gender)
+            if (gender === "M"){
+                this.feedbackEmitter(`Hello there, gentleman!`,"radio Example","alert-primary")
+            } else {
+                this.feedbackEmitter(`Good day to you, mademoiselle!`,"radio Example","alert-primary")
+            }
         }
-        let radioGroupSubmit = () => {
-            let gender = this.model.gender.value;
-            console.log(gender)
-        }
+       
         this.on("Date submit",dateSubmit,true);
         this.on("Email submit",emailSubmit,true);
         this.on("Row submit",rowSubmit, true);
@@ -163,7 +169,7 @@ export default class FormComponentExampleController extends ContainerController 
         this.on("Number submit",numberSubmit,true);
         this.on("Password submit",passwordSubmit,true);
         this.on("Radio submit",radioSubmit,true);
-        this.on("Radio-group submit",radioGroupSubmit,true);
+        this.on("Radio-group submit",radioSubmit,true);
         
     }
 }
