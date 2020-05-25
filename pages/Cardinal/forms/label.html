@@ -6,7 +6,7 @@
     <psk-description>
         <p>This component is part of the form components and is inteded to display a text inside the form, or a label for a form component (check
             <psk-link page="forms/using-formss">Using Forms</psk-link> for details).</p>
-        <p>The components, by their logic, already have the possiblity to display a label for them, but there are always different needs.</p>
+        <p>The components, by their logic, already have the possibility to display a label for them, but there are always different needs.</p>
         <p>So this component is ment to please your needs to display a label anywhere you want it.</p>
     </psk-description>
 
@@ -37,22 +37,22 @@
                     placeholder:"Enter you age here...",
                     value:''
                 },
-                adress: {
-                    label: "Adress",
-                    name: "adress",
+                address: {
+                    label: "Address",
+                    name: "address",
                     required: true,
-                    placeholder:"Enter you adress here...",
+                    placeholder:"Enter you address here...",
                     value:''
                 }
             }
-            
+
             export default class FormComponentsExampleController extends ContainerController {
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
 
                     this.feedbackEmitter = null;
-        
+
                     this.on('openFeedback', (e) => {
                         e.preventDefault();
                         e.stopImmediatePropagation();
@@ -63,15 +63,15 @@
                         let name = this.model.name.value;
                         let age = this.model.age.value;
                         let address = this.model.address.value
-                        if(name != "" && age !="" && address !=""){
-                            this.feedbackEmitter(`You succesfully sent us your personal information, Thank you!`,"label Example","alert-success")
+                        if(name !== "" && age !=="" && address !==""){
+                            this.feedbackEmitter(`You successfully sent us your personal information, Thank you!`,"label Example","alert-success")
                         } else{
-                            this.feedbackEmitter("You have not entered the name ,the age or the adress, please enter one!","label Example","alert-danger")
-                            
+                            this.feedbackEmitter("You have not entered the name ,the age or the address, please enter one!","label Example","alert-danger")
+
                         }
                     }
 
-                    this.on("Label submit",labelSubmit, true);
+                    this.on("Label submit",labelSubmit);
 
                 }
             }
@@ -81,39 +81,44 @@
     <psk-example title="View Example">
         <psk-code language="markup">
             <psk-form controller-name="FormComponentsExampleController" form-actions='Label submit'>
-                <psk-form-row layout="xs=[12,12,12] m=[2,10,2] l=[12,12,12] xl=[2,10,2]">
+                <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                     <!-- Label set as attribute -->
                     <psk-label label="Enter your name"></psk-label>
                     <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
 
+                <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                     <!-- Label set inside the psk-label component -->
                     <psk-label>Enter your age</psk-label>
                     <psk-text-input view-model="age"></psk-text-input>
-
+                </psk-form-row>
+                <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                     <!-- Label set in pair with input using "for" attribute.
                     Has more sense using screen readers. -->
-                    <psk-label for="input-address">Enter your adress</psk-label>
+                    <psk-label for="input-address">Enter your address</psk-label>
                     <psk-text-input name="input-address" view-model="address"></psk-text-input>
                 </psk-form-row>
             </psk-form>
         </psk-code>
     </psk-example>
 
-    <psk-example title="Live Examples">
+    <psk-example class="app-example" title="Live Examples">
         <psk-form controller-name="FormComponentsExampleController" form-actions='Label submit'>
-            <psk-form-row layout="xs=[12,12,12] m=[2,10,2] l=[12,12,12] xl=[2,10,2]">
+            <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                 <!-- Label set as attribute -->
                 <psk-label label="Enter your name"></psk-label>
                 <psk-text-input view-model="name"></psk-text-input>
+            </psk-form-row>
 
-
+            <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                 <!-- Label set inside the psk-label component -->
                 <psk-label>Enter your age</psk-label>
                 <psk-text-input view-model="age"></psk-text-input>
-
+            </psk-form-row>
+            <psk-form-row layout="xs=[12,12] m=[5,7] l=[4,8] xl=[4,8]">
                 <!-- Label set in pair with input using "for" attribute.
                 Has more sense using screen readers. -->
-                <psk-label for="input-address">Enter your adress</psk-label>
+                <psk-label for="input-address">Enter your address</psk-label>
                 <psk-text-input name="input-address" view-model="address"></psk-text-input>
             </psk-form-row>
             <psk-list-feedbacks messages-to-display="5" time-alive="3000">

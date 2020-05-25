@@ -17,7 +17,7 @@
         <p>Every form component will be rendered on a single row.</p>
         <p>On mobile devices, the responsive design is making all the form components to be displayed in a single column.</p>
     </psk-chapter>
-    
+
     <psk-example title="Controller Example">
         <psk-code language="Javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
@@ -44,14 +44,14 @@
                     value: ''
                 }
             }
-            
+
             export default class FormComponentsExampleController extends ContainerController {
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
 
                     this.feedbackEmitter = null;
-        
+
                     this.on('openFeedback', (e) => {
                         e.preventDefault();
                         e.stopImmediatePropagation();
@@ -63,10 +63,10 @@
                         let name = this.model.name.value;
                         let email = this.model.email.value;
                         if(name != "" && email !=""){
-                            this.feedbackEmitter(`You succesfully sent your data, Thank you!`,"row Example","alert-success")
+                            this.feedbackEmitter(`You successfully sent your data, Thank you!`,"row Example","alert-success")
                         } else{
                             this.feedbackEmitter("You have not entered a name or an email, please enter one!","row Example","alert-danger")
-                            
+
                         }
                     }
                     this.on("Row submit",rowSubmit, true);
@@ -90,7 +90,7 @@
         <p>A complete live example can be found at:
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
     </psk-example>
-    
+
     <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
         <psk-example title="Live Examples">
             <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
@@ -100,7 +100,7 @@
                 <psk-text-input view-model="name"></psk-text-input>
                 <psk-email-input view-model="email"></psk-email-input>
             </psk-form-row>
-        </psk-example> 
+        </psk-example>
         <psk-list-feedbacks messages-to-display="5" time-alive="3000">
         </psk-list-feedbacks>
     </psk-form>
