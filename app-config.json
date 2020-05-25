@@ -306,7 +306,7 @@
                             },
                             {
                                 "name": "Checkbox"
-                            },                            
+                            },
                             {
                                 "name": "Date input"
                             },
@@ -390,7 +390,8 @@
                 "name": "About",
                 "path": "/About",
                 "icon": "fa-cog",
-                "pageSrc": "About/about.html"
+                "pageSrc": "About/about.html",
+                "tags":"about, open-source"
             },
             {
                 "name": "Tools",
