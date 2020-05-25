@@ -67,6 +67,14 @@ const model = {
             }
         ],
         value: ''
+    },
+    terms: {
+        label: "Do you accept our terms and conditions?",
+        name: "terms",
+        required: true,
+        checkboxLabel: "Terms & Conditions",
+        checkedValue: "yes",
+        uncheckedValue: "no"
     }
 
 }
