@@ -49,6 +49,32 @@
 		Upon the start of the web server, go to the browser and navigate to: <a href="http://localhost:8000/">http://localhost:8000/</a>
 	</psk-chapter>
 
+	<psk-chapter title="Running the website in a subfolder">
+		Let's say you want to run your app with a different web server capable of serving multiple web apps.
+		So, your app will be hosted in a subfolder(e.g. <i>cardinal-app</i>) and the app url will be <a href="#">http://localhost:8000/cardinal-app</a>.
+		All you have to do is to add the <code>base</code> tag in your cardinal index.html file.
+		<psk-code language="html">
+			&lt;head&gt;
+				<meta charset="UTF-8"/>
+				<meta http-equiv="x-ua-compatible" content="IE=Edge"/>
+				<base href="/cardinal-app/"/>
+			&lt;/head&gt;
+		</psk-code>
+		Make sure that your web-server is properly configured to handle SPA routes. If you're not sure, or you can't configure your web-server, set
+		the <code>historyType="query"</code> in your <code>app-config.json</code> file.
+		<psk-code language="json">
+		    "defaultMenuConfig": {
+            "icon": "fa-bars",
+            "type": "route",
+            "component": "psk-page-loader",
+            "exact": true,
+            "indexed": true,
+            "pagePrefix": "?",
+            "historyType": "query"
+        },
+		</psk-code>
+	</psk-chapter>
+
 	<psk-chapter title="Update Cardinal.Js framework">
 		<p>To update the instance of Cardinal.Js framework used, you must be within the web-site root folder and to execute the command:</p>
 		<psk-code language="bash">
