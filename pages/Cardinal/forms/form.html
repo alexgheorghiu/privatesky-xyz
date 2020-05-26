@@ -4,12 +4,13 @@
     </psk-toc>
 
     <psk-description>
-        <p>Psk-form component is a wrapper over
-            <psk-link page="web-components/container">psk-container</psk-link>, so the functionalities available in <code>psk-container</code> are also in <code>psk-form</code>.</p>
-        <p>The purpose of the component is to create an user form.</p>
-        <p>The form submition will be handled by the controller attached via <code>controller-name</code> attribute. Also, the model for the form will be defined in the same controller.</p>
+        <p>Psk-form component is similar with
+            <psk-link tag="psk-container">psk-container</psk-link>, in the way that both components have support for <b>controller</b> declaration.</p>
+        <p>The purpose of this component is to create easy forms that have attached to them controllers that can handle the submission of the form.</p>
+        <p>Controller declaration is not necessary in the component, it may be declared on a parent element (e.g, on a psk-container) if one controller would be used for handling multiple forms.
+         The model for the form(s) will be defined in the same controller.</p>
         <p>At the bottom of the page stands a minimal example of using the component with its attributes. More examples can be found within
-            <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
+            <psk-link tag="using-psk-form">Using forms</psk-link> page.</p>
     </psk-description>
 
     <psk-property-descriptor title="Supported properties">
@@ -61,14 +62,14 @@
                         alert(`Submitted:[${name},${email},${age}]`)
                     };
 
-                    this.on("submit",customSubmit,true);
-                    this.on("custom-submit",customSubmit,true);
+                    this.on("submit",customSubmit);
+                    this.on("custom-submit",customSubmit);
                 }
             }
         </psk-code>
     </psk-example>
 
-    <psk-example title="View examples">
+    <psk-chapter title="View examples">
         <psk-example title="With defined actions -Source Code">
             <psk-code language="markup">
                 <psk-form controller-name="TestFormController" form-actions="submit, reset-form">
@@ -84,7 +85,7 @@
             </psk-code>
         </psk-example>
 
-        <psk-example title="With defined actions - Live Example">
+        <psk-example title="With defined actions - Live Example" class="app-example">
             <psk-form controller-name="TestFormController" form-actions="submit, reset-form">
                 <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
                     <psk-label label="Personal information"></psk-label>
@@ -115,7 +116,7 @@
             </psk-code>
         </psk-example>
 
-        <psk-example title="With psk-button component - Live Example">
+        <psk-example title="With psk-button component - Live Example" class="app-example">
             <psk-form controller-name="TestFormController">
                 <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
                     <psk-label label="Personal information"></psk-label>
@@ -130,5 +131,5 @@
                 </psk-form-row>
             </psk-form>
         </psk-example>
-    </psk-example>
+    </psk-chapter>
 </psk-page>

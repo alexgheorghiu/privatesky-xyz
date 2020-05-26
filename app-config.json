@@ -1,6 +1,5 @@
 {   "theme":"default",
     "appVersion":"0.2.0",
-    "basePagesUrl": "/pages/",
     "profile": {
         "username": "PrivateSky",
         "email": "privatesky@axiologic.net",
@@ -166,7 +165,8 @@
                         "name": "Views"
                     },
                     {
-                        "name": "Controllers"
+                        "name": "Controllers",
+                        "tags":"mvc-controller"
                     },
                     {
                         "name": "Events"
@@ -243,7 +243,8 @@
                                 "name": "App Router"
                             },
                             {
-                                "name": "Button"
+                                "name": "Button",
+                                "tags":"psk-button"
                             },
                             {
                                 "name": "Condition"
