@@ -1,0 +1,34 @@
+<psk-page title="Psk SSApp">
+
+    <psk-toc title="Table of Contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>This component handles the loading and running of a SSApp , more information on how to create a SSApp you have on the <psk-link page="/a-ssapp">How to create a SSApp</psk-link> page.</p>
+        <p>It loades the SSApp inside an iframe using the properties given.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-ss-app data-define-props="true">
+        </psk-ss-app>
+    </psk-property-descriptor>
+
+    <psk-event-descriptor title="Supported properties">
+        <psk-ss-app data-define-events="true">
+        </psk-ss-app>
+    </psk-event-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>This component has no HTML Children.</p>
+    </psk-chapter>
+
+    <psk-example title="View Example">
+        <psk-code language="javascript">
+            <psk-container controller-name="ExampleController">
+                <psk-ss-app app-name="todo-app">
+                </psk-ss-app>
+            </psk-container> 
+        </psk-code>
+    </psk-example>
+    
+
+</psk-page>
