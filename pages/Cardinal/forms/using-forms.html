@@ -120,24 +120,26 @@
             </psk-form>
         </psk-code>
 
-        <psk-form controller-name="TestFormChildrenController">
-            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                <psk-label view-model="sectionTitle"></psk-label>
-                <psk-text-input view-model="name"></psk-text-input>
-            </psk-form-row>
+        <psk-example class="app-example">
+            <psk-form controller-name="TestFormChildrenController">
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="sectionTitle"></psk-label>
+                    <psk-text-input view-model="name"></psk-text-input>
+                </psk-form-row>
 
-            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                <psk-label view-model="subSection.title"></psk-label>
-                <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
-            </psk-form-row>
+                <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                    <psk-label view-model="subSection.title"></psk-label>
+                    <psk-email-input view-model="subSection.otherInformation.email"></psk-email-input>
+                </psk-form-row>
 
-            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
-                <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
-                <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
-                <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
-            </psk-form-row>
-        </psk-form>
-
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
+                    <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
+                </psk-form-row>
+            </psk-form>
+        </psk-example>
+        
         <p>The bind is made only if the value of the attribute <code>view-model</code> is an existing <code>chain</code> inside the model. The <code>chain</code> is the sequence to the JavaScript object that will be binded to the component. If the <code>chain</code> is not a valid one, then the component will be rendered blank, without any properties.</p>
 
         <psk-chapter title="Two-way binding">
@@ -206,7 +208,7 @@
         <p><i>Don't hesitate to contact us in case there are further clarifications!</i></p>
     </psk-description>
 
-    <psk-example title="Form Examples">
+    <psk-example  title="Form Examples">
         <psk-chapter title="Simple form example">
             <psk-chapter title="Model and Controller - TestFormController">
                 <psk-code language="Javascript">
@@ -324,7 +326,7 @@
                 </psk-code>
             </psk-chapter>
 
-            <psk-chapter title="Visual example- TestFormController">
+            <psk-example class="app-example" title="Visual example- TestFormController">
                 <psk-form controller-name="TestFormController">
                     <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                         <psk-label view-model="sectionTitle"></psk-label>
@@ -344,7 +346,7 @@
                         <psk-checkbox view-model="gdpr"></psk-checkbox>
                     </psk-form-row>
                 </psk-form>
-            </psk-chapter>
+            </psk-example>
         </psk-chapter>
 
         <psk-chapter title="Form example using psk-for-each component">
@@ -501,7 +503,7 @@
                 </psk-code>
             </psk-chapter>
 
-            <psk-chapter title="Visual example - TestFormForEachController">
+            <psk-example class="app-example" title="Visual example - TestFormForEachController">
                 <psk-form controller-name="TestFormForEachController">
                     <psk-for-each data-view-model="entities">
                         <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
@@ -528,7 +530,7 @@
                     </psk-form-row>
                 </psk-form>
             </psk-chapter>
-        </psk-chapter>
+        </psk-example>
     </psk-example>
 
 </psk-page>

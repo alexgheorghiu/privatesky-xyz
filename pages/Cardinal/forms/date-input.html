@@ -88,16 +88,16 @@
             <psk-link page="forms/using-forms">Using forms</psk-link>.
         </p>
     </psk-example>
-    <psk-example title="Live Example">
+    <psk-example class="app-example" title="Live Example">
         <psk-form controller-name="FormComponentsExampleController" form-actions="Date submit">
             <p>If you enter a good starting and ending date (start date before end date) a alert-success will be shown,
                 else a alert-danger will pop up.</p>
             <psk-grid columns="2" layout="l=[5,5]">
                 <psk-date-input view-model="startDate"></psk-date-input>
-                <psk-date-input view-model="endDate"></psk-date-input>
+                <psk-date-input view-model="endDate" data-format="DD YYYY MM" value="2015-08-09"></psk-date-input>
             </psk-grid>
             <psk-list-feedbacks messages-to-display="5" time-alive="3000">
             </psk-list-feedbacks>
         </psk-form>
-    </psk-example>
+    </psk-example>  
 </psk-page>
