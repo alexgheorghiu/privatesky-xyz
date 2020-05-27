@@ -103,6 +103,8 @@
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/button</loc>
       </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/button-group</loc>
+      </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/condition</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/container</loc>
@@ -128,6 +130,8 @@
         <loc>https://privatesky.xyz/?Cardinal/web-components/slideshow</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/switch-button</loc>
+      </url><url>
+        <loc>https://privatesky.xyz/?Cardinal/web-components/ss-app</loc>
       </url><url>
         <loc>https://privatesky.xyz/?Cardinal/web-components/toolbar</loc>
       </url><url>
