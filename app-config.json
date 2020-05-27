@@ -247,6 +247,9 @@
                                 "tags":"psk-button"
                             },
                             {
+                                "name": "Button Group"
+                            },
+                            {
                                 "name": "Condition"
                             },
                             {
@@ -286,6 +289,9 @@
                             },
                             {
                                 "name": "Switch Button"
+                            },
+                            {
+                                "name": "SS App"
                             },
                             {
                                 "name": "Toolbar"
