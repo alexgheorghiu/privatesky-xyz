@@ -75,7 +75,7 @@
         </psk-code>
     </psk-example>
 
-    <psk-example class="app-example" title="View Examples">
+    <psk-example title="View Examples">
         <psk-code language="markup">
             <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
                 <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
@@ -91,8 +91,8 @@
             <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
     </psk-example>
 
-    <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
-        <psk-example title="Live Examples">
+    <psk-example class="app-example" title="Live Examples">
+        <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
             <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                 <psk-label>Name, E-mail & Password</psk-label>
             </psk-form-row>
@@ -100,9 +100,9 @@
                 <psk-text-input view-model="name"></psk-text-input>
                 <psk-email-input view-model="email"></psk-email-input>
             </psk-form-row>
-        </psk-example>
-        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-        </psk-list-feedbacks>
-    </psk-form>
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
+        </psk-form>
+    </psk-example>
 
 </psk-page>

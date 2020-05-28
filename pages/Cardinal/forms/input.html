@@ -80,7 +80,7 @@
         </psk-code>
     </psk-example>
 
-    <psk-example class="app-example" title="View Example">
+    <psk-example title="View Example">
         <psk-code>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Input submit">
                 <psk-grid columns = "2" layout="l=[4,4]">
@@ -91,8 +91,8 @@
         </psk-code>
     </psk-example>
 
-    <psk-form controller-name="FormComponentsExampleController" form-actions="Input submit">
-        <psk-example title="Live Example">
+    <psk-example class="app-example" title="Live Example">
+        <psk-form controller-name="FormComponentsExampleController" form-actions="Input submit">
             <psk-grid columns = "2" layout="l=[4,4]">
                 <psk-input view-model="name"></psk-input>
                 <psk-input view-model="email"></psk-input>
@@ -100,9 +100,9 @@
             <p>A very good example of using this component and the other form components can be found here:
                 <psk-link page="forms/using-forms">Using forms</psk-link>.
             </p>
-        </psk-example>
-        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-        </psk-list-feedbacks>
-    </psk-form>
+            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+            </psk-list-feedbacks>
+        </psk-form>
+    </psk-example>
 
 </psk-page>

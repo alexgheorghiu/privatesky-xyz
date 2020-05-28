@@ -65,7 +65,7 @@
         </psk-code>
     </psk-example>
 
-    <psk-example class="app-example" title="View Example">
+    <psk-example title="View Example">
         <psk-code>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Email submit">
                 <psk-grid columns="1" layout="l=[5]">
@@ -74,18 +74,17 @@
             </psk-form>
         </psk-code>
     </psk-example>
-    
-    <psk-form controller-name="FormComponentsExampleController" form-actions="Email submit">
-        <psk-example title="Live Examples">
-            <psk-grid columns="1" layout="l=[5]">
-                <psk-email-input view-model="email"></psk-email-input>
-            </psk-grid>
-            <p>A very good example of using this component and the other form components can be found here:
-                <psk-link page="forms/using-forms">Using forms</psk-link>.
-            </p>
-        </psk-example>
-        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-        </psk-list-feedbacks>
-    </psk-form>
+        <psk-example  class="app-example" title="Live Examples">
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Email submit">
+                <psk-grid columns="1" layout="l=[5]">
+                    <psk-email-input view-model="email"></psk-email-input>
+                </psk-grid>
+                <p>A very good example of using this component and the other form components can be found here:
+                    <psk-link page="forms/using-forms">Using forms</psk-link>.
+                </p>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+</psk-example>
 
 </psk-page>
