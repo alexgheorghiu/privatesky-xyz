@@ -74,7 +74,8 @@ const model = {
         required: true,
         checkboxLabel: "Terms & Conditions",
         checkedValue: "yes",
-        uncheckedValue: "no"
+        uncheckedValue: "no",
+        value: ''
     }
 
 }
@@ -160,11 +161,11 @@ export default class FormComponentExampleController extends ContainerController 
 
         }
         let radioSubmit = () => {
-			let gender = this.model.gender.value;
-            if (gender === "M"){
-                this.feedbackEmitter(`Hello there, gentleman!`,"radio Example","alert-primary")
+			let terms = this.model.terms.value;
+            if(terms === ''){
+                this.feedbackEmitter(`You need to accept the terms and conditions in order to move further!`,"radio Example","alert-danger")
             } else {
-                this.feedbackEmitter(`Good day to you, mademoiselle!`,"radio Example","alert-primary")
+                this.feedbackEmitter(`Thank you for accepting the terms and conditions!`,"radio Example","alert-success")
             }
         }
 

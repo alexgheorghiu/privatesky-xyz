@@ -121,7 +121,7 @@
         </psk-code>
 
         <psk-example class="app-example">
-            <psk-form controller-name="TestFormChildrenController">
+            <psk-form controller-name="TestFormChildrenController" form-actions="First Example">
                 <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
                     <psk-label view-model="sectionTitle"></psk-label>
                     <psk-text-input view-model="name"></psk-text-input>
@@ -137,6 +137,8 @@
                     <psk-label view-model="subSection.otherInformation.otherLabels.0.subLabel"></psk-label>
                     <psk-label view-model="subSection.otherInformation.otherLabels.1"></psk-label>
                 </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
             </psk-form>
         </psk-example>
         
@@ -326,8 +328,8 @@
                 </psk-code>
             </psk-chapter>
 
-            <psk-example class="app-example" title="Visual example- TestFormController">
-                <psk-form controller-name="TestFormController">
+            <psk-example class="app-example" title="Visual example- TestFormController" >
+                <psk-form controller-name="TestFormController" form-actions="Second Example">
                     <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                         <psk-label view-model="sectionTitle"></psk-label>
                     </psk-form-row>
@@ -345,6 +347,8 @@
                         <psk-checkbox view-model="terms"></psk-checkbox>
                         <psk-checkbox view-model="gdpr"></psk-checkbox>
                     </psk-form-row>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
                 </psk-form>
             </psk-example>
         </psk-chapter>
@@ -504,7 +508,7 @@
             </psk-chapter>
 
             <psk-example class="app-example" title="Visual example - TestFormForEachController">
-                <psk-form controller-name="TestFormForEachController">
+                <psk-form controller-name="TestFormForEachController" form-actions="Third Example">
                     <psk-for-each data-view-model="entities">
                         <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                             <psk-label view-model="sectionTitle"></psk-label>
@@ -528,6 +532,8 @@
                         <psk-checkbox view-model="terms"></psk-checkbox>
                         <psk-checkbox view-model="gdpr"></psk-checkbox>
                     </psk-form-row>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
                 </psk-form>
             </psk-chapter>
         </psk-example>

@@ -117,10 +117,18 @@ export default class TestFormController extends ContainerController {
                 this.feedbackEmitter(`OH NO, you need to select your nationality in order to continue!`,"radio Example","alert-danger")
             }
         }
+        let secondExample = () => {
+            let name= this.model.name.value
+            let email= this.model.email.value
+            let password= this.model.password.value
+            this.feedbackEmitter(`Hello there ${name}, thank you for sending us your email: ${email} and your password: ${password}`,"Second Form Example","toast")
+           
+        }
         this.on("Select submit",selectSubmit);
         this.on("submit",customSubmit);
 		this.on("reset-form",resetForm);
         this.on("custom-submit",customSubmit);
         this.on("Check submit",checkSubmit);
+        this.on("Second Example",secondExample)
     }
 }

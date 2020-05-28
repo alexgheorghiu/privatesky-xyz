@@ -114,5 +114,39 @@ export default class TestFormForEachController extends ContainerController {
     constructor(element) {
         super(element);
         this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+ 
+        this.feedbackEmitter = null;
+
+        this.on('openFeedback', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            this.feedbackEmitter = e.detail;
+        });
+        
+        let thirdExample = () => {
+           this.model.entities.forEach(entity => {
+                let name=entity.name.value;
+                let email=entity.email.value;
+                let gender=entity.gender.value;
+                let nationality=entity.nationality.value;
+                setTimeout(()=> {
+                    this.feedbackEmitter(`Good day to you mister ${name}, we hope your email is ${email} so we can send you an email.`,`For Each Example`,"toast")
+                },400)
+           });
+        }
+
+        let forEachSubmit = () => {
+            this.model.entities.forEach(entity => {
+                let name=entity.name.value;
+                let email=entity.email.value;
+                setTimeout(()=> {
+                    this.feedbackEmitter(`Good day to you mister ${name}, we hope your email is ${email} so we can send you an email.`,`For Each Example`,"toast")
+                },400)
+            });
+        }
+
+        this.on("For Each Submit",forEachSubmit)
+        this.on("Third Example",thirdExample)
+    
     }
 }

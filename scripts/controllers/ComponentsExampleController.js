@@ -36,6 +36,7 @@ export default class ComponentsExampleController extends ContainerController {
             this.model.buttonStatus = (this.model.buttonStatus + 1) % 2;
 
         })
+
         this.on('add-file-folder',(evt) => {
             evt.preventDefault();
             evt.stopImmediatePropagation();
@@ -44,12 +45,33 @@ export default class ComponentsExampleController extends ContainerController {
                 this.feedbackEmitter(`${file.name} has a size of ${file.size}`,`Psk-file-chooser in Psk-button-group example`,'toast')
             });
         })
+
         this.on("show-alert",(evt) => {
             evt.preventDefault();
             evt.stopImmediatePropagation();
             let typeOfAlert = evt.data
             console.log(typeOfAlert)
             this.feedbackEmitter(`You just ordered a special ${typeOfAlert}-alert, have fun with it!`,`${typeOfAlert}-alert Example`,`alert-${typeOfAlert}`)
+        })
+
+        this.on("send-user-data",(evt) => {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            this.feedbackEmitter(`${evt.data}`,"Button Example","toast");
+        })
+
+        this.on("need-double-click",(evt) => {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            this.feedbackEmitter(`${evt.data}`,"Double Click Example","alert-danger");
+        })
+        
+        this.on("double-click-event",(evt) => {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            setTimeout( ()=> {
+                this.feedbackEmitter(`You really tried it out and it worked, Good Job!`,"Double Click Example","alert-success");
+            },400)
         })
     }
 }

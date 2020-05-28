@@ -80,7 +80,7 @@
         </psk-chapter>
 
 		<psk-example class="app-example" title="Visual example using above model & template">
-			<psk-form controller-name="TestFormForEachController">
+			<psk-form controller-name="TestFormForEachController" form-actions="For Each Submit">
 				<psk-for-each data-view-model="entities">
                     <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                         <psk-label view-model="sectionTitle"></psk-label>
@@ -92,6 +92,8 @@
                         <psk-email-input view-model="email"></psk-email-input>
                     </psk-form-row>
                 </psk-for-each>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
 			</psk-form>
 		</psk-example>
 

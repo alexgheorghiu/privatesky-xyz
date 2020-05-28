@@ -41,5 +41,21 @@ export default class TestFormChildrenController extends ContainerController {
     constructor(element) {
         super(element);
         this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+        
+        this.feedbackEmitter = null;
+
+        this.on('openFeedback', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            this.feedbackEmitter = e.detail;
+        });
+
+        let firstExample = () => {
+            let name=this.model.name.value
+            let email=this.model.subSection.otherInformation.email.value
+            this.feedbackEmitter(`Hello there, ${name}, your email is: ${email}`,"First Form Example","toast")
+        }
+
+        this.on("First Example",firstExample)
     }
 }

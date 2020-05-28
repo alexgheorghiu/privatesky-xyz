@@ -34,7 +34,8 @@
                 If we want to display the icon on the left side of the label, we will not use the label attribute and we
                 can write down the text after the icon component.
                 -->
-                <psk-button button-class="btn btn-success">
+                <psk-button button-class="btn btn-success" event-name="need-double-click" event-data="This is not the way this button works, how about a double click ? Just saying."
+                                double-click-event-name="double-click-event">
                     <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
                     Send user data
                 </psk-button>
@@ -42,19 +43,24 @@
         </psk-chapter>
 
         <psk-example class="app-example"  title="Visual example">
-            <div>
-                <psk-button label="Send user data" event-name="send-user-data"
-                            event-data="some informations about the user / can also be a JavaScript Object written as a string.">
-                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
-                </psk-button>
-            </div>
+            <psk-container controller-name="ComponentsExampleController">
+                <div>
+                    <psk-button label="Send user data" event-name="send-user-data"
+                                event-data="some informations about the user / can also be a JavaScript Object written as a string.">
+                        <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                    </psk-button>
+                </div>
 
-            <div>
-                <psk-button button-class="btn btn-success">
-                    <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
-                    Send user data
-                </psk-button>
-            </div>
+                <div>
+                    <psk-button button-class="btn btn-success" event-name="need-double-click" event-data="This is not the way this button works, how about a double click ? Just saying."
+                                double-click-event-name="double-click-event">
+                        <psk-icon icon="user" color="rgb(255, 255, 255)"></psk-icon>
+                        Send user data
+                    </psk-button>
+                </div>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-container>
         </psk-example>
     </psk-chapter>
 
