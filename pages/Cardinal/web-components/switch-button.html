@@ -24,7 +24,7 @@
                 buttonStatus: "0"
             };
 
-            export default class TestFormChildrenController extends ContainerController {
+            export default class ComponentsExampleController extends ContainerController {
                 constructor(element) {
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
@@ -72,7 +72,7 @@
         </psk-chapter>
 
         <psk-chapter title="Visual example">
-            <psk-container controller-name = "SwitchController">
+            <psk-container controller-name = "ComponentsExampleController">
                 <psk-grid columns="1" layout="xl=[4]">
                     <psk-switch-button active="Custom" inactive="Automatic" title="Simple Example" toggle-event="switch-invitation-type"></psk-switch-button>
                 </psk-grid>
