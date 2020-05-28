@@ -24,7 +24,6 @@ export default class ComponentsExampleController extends ContainerController {
         this.on('toggle-property', (e) => {
             e.preventDefault();
             e.stopImmediatePropagation();
-            console.log(property, e.data)
             const property = e.data;
             const value = this.model[property];
             this.model[property] = !value;
@@ -50,7 +49,6 @@ export default class ComponentsExampleController extends ContainerController {
             evt.preventDefault();
             evt.stopImmediatePropagation();
             let typeOfAlert = evt.data
-            console.log(typeOfAlert)
             this.feedbackEmitter(`You just ordered a special ${typeOfAlert}-alert, have fun with it!`,`${typeOfAlert}-alert Example`,`alert-${typeOfAlert}`)
         })
 
