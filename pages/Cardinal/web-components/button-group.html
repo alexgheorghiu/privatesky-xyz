@@ -15,7 +15,8 @@
     <psk-chapter title="HTML Children">
         <p>The button group components that will represent the button will be rendered inside the slot of the component. </p>
     </psk-chapter>
-    <psk-example title="Controller Example">
+
+    <psk-chapter title="Controller Example">
         <psk-code language="javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
@@ -43,7 +44,7 @@
             }
                 
         </psk-code>
-    </psk-example>
+    </psk-chpater>
     <psk-chapter  title="psk-button-group Examples">
         <psk-chapter title="View Example">
             <psk-code>
@@ -65,25 +66,25 @@
                 </psk-container>
             </psk-code>
         </psk-chapter>
-
-        <psk-example class="app-example" title="Visual example">
-            <psk-container controller-name = "ComponentsExampleController">
-                <psk-button-group label="Add label" icon="plus" icon-color="blue" classes="add-menu bottom-border">
-                    <psk-files-chooser event-name="add-file-folder" label="Add New File" class="btn-menu bottom-border mb-3">
-                    </psk-files-chooser>
-                    <psk-files-chooser event-name="add-file-folder" label="Add New Folder" accept="directory"
-                      class="btn-menu bottom-border mb-3"></psk-files-chooser>
-                    <psk-button label="Show alert-danger" event-name="show-alert" event-data="danger" class="btn-menu bottom-border">
-                    </psk-button>
-                    <psk-button label="Show alert-primary" event-name="show-alert" event-data="primary" class="btn-menu">
-                    </psk-button>
-                    <psk-button label="Show alert-secondary" event-name="show-alert" event-data="secondary" class="btn-menu">
-                    </psk-button>
-                  </psk-button-group>
-                  <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-                </psk-list-feedbacks>
-            </psk-container>
-        </psk-example>
+        <psk-chapter  title="Visual example">
+            <psk-example class="app-example">
+                <psk-container controller-name = "ComponentsExampleController">
+                    <psk-button-group label="Add label" icon="plus" icon-color="blue" classes="add-menu bottom-border">
+                        <psk-files-chooser event-name="add-file-folder" label="Add New File" class="btn-menu bottom-border mb-3">
+                        </psk-files-chooser>
+                        <psk-files-chooser event-name="add-file-folder" label="Add New Folder" accept="directory"
+                        class="btn-menu bottom-border mb-3"></psk-files-chooser>
+                        <psk-button label="Show alert-danger" event-name="show-alert" event-data="danger" class="btn-menu bottom-border">
+                        </psk-button>
+                        <psk-button label="Show alert-primary" event-name="show-alert" event-data="primary" class="btn-menu">
+                        </psk-button>
+                        <psk-button label="Show alert-secondary" event-name="show-alert" event-data="secondary" class="btn-menu">
+                        </psk-button>
+                    </psk-button-group>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                </psk-container>
+            </psk-example>
+        </psk-chapter>
     </psk-chapter>
-
 </psk-page>

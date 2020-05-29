@@ -67,52 +67,53 @@
             </psk-container>
         </psk-code>
     </psk-chapter>
-    <psk-example title="Live example">
-        <p>The button is in the bottom right corner with a "+" style and the menu with the 2 options.</p>
-        <psk-container>
-            <script>
-                controller.on("needFloatingMenu", function (evt) {
-                    evt.stopImmediatePropagation();
-                    if (evt.detail) {
-                        callback = evt.detail;
-                        if (typeof callback === 'function') {
-                            callback(null, menuItems);
+    <psk-chapter title="Live example">
+        <psk-example >
+            <p>The button is in the bottom right corner with a "+" style and the menu with the 2 options.</p>
+            <psk-container>
+                <script>
+                    controller.on("needFloatingMenu", function (evt) {
+                        evt.stopImmediatePropagation();
+                        if (evt.detail) {
+                            callback = evt.detail;
+                            if (typeof callback === 'function') {
+                                callback(null, menuItems);
+                            }
                         }
-                    }
-                });
+                    });
 
-                let menuItems = [{
-                    "name": "Main Innovations",
-                    "path": "?PrivateSky/main-innovations",
-                    "icon": "fa-bars",
-                    "type": "route",
-                    "component": "psk-page-loader",
-                    "exact": true,
-                    "indexed": true,
-                    "pagePrefix": "?",
-                    "historyType": "query",
-                    "componentProps": {
-                        "pageUrl": "http://localhost:8000/pages/PrivateSky/main-innovations.html"
-                    }
-                },
-                {
-                    "name": "Architecture",
-                    "icon": "fa-bars",
-                    "path": "?PrivateSky/architecture",
-                    "type": "route",
-                    "component": "psk-page-loader",
-                    "exact": true,
-                    "indexed": true,
-                    "pagePrefix": "?",
-                    "historyType": "query",
-                    "componentProps": {
-                        "pageUrl": "http://localhost:8000/pages/PrivateSky/architecture.html"
-                    }
-                }]
-            </script>
+                    let menuItems = [{
+                        "name": "Main Innovations",
+                        "path": "?PrivateSky/main-innovations",
+                        "icon": "fa-bars",
+                        "type": "route",
+                        "component": "psk-page-loader",
+                        "exact": true,
+                        "indexed": true,
+                        "pagePrefix": "?",
+                        "historyType": "query",
+                        "componentProps": {
+                            "pageUrl": "http://localhost:8000/pages/PrivateSky/main-innovations.html"
+                        }
+                    },
+                    {
+                        "name": "Architecture",
+                        "icon": "fa-bars",
+                        "path": "?PrivateSky/architecture",
+                        "type": "route",
+                        "component": "psk-page-loader",
+                        "exact": true,
+                        "indexed": true,
+                        "pagePrefix": "?",
+                        "historyType": "query",
+                        "componentProps": {
+                            "pageUrl": "http://localhost:8000/pages/PrivateSky/architecture.html"
+                        }
+                    }]
+                </script>
 
-            <psk-floating-menu> </psk-floating-menu>
-        </psk-container>
-    </psk-example>
-
+                <psk-floating-menu> </psk-floating-menu>
+            </psk-container>
+        </psk-example>
+    </psk-chapter>
 </psk-page>

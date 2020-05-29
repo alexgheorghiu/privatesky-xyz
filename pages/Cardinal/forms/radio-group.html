@@ -4,7 +4,7 @@
     </psk-toc>
 
     <psk-description title="Definition and usage">
-        <p>Psk-radio-group is the component that groups the <psk-link page="forms/psk-radio">Psk-Radio</psk-link> components. The main responsability is to ensure that only one radio option is checked.</p>
+        <p>Psk-radio-group is the component that groups the <psk-link tag="psk-radio">Psk-Radio</psk-link> components. The main responsability is to ensure that only one radio option is checked.</p>
         <p>Psk-radio-group is notified when a psk-radio is clicked, so the group can then update the model.</p>
     </psk-description>
 
@@ -13,7 +13,7 @@
         </psk-radio-group>
     </psk-property-descriptor>
 
-    <psk-example title="Code Examples">
+    <psk-chapter title="Code Examples">
         <psk-chapter title="Source Code">
             <psk-chapter title="JavaScript Model">
                 <psk-code language="Javascript">
@@ -77,20 +77,20 @@
             </psk-chapter>
 
         </psk-chapter>
-
-        <psk-example class="app-example" title="Live example">
-            <psk-form controller-name="FormComponentsExampleController" form-actions="Radio-group submit">
-				<psk-form-row layout="xs=[12] m=[12] l=[12] xl=[12]">
-					<psk-radio-group view-model="gender"> </psk-radio-group>
-                </psk-form-row>
-                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-                </psk-list-feedbacks>
-            </psk-form>
-        </psk-example>
-        <psk-chapter title="Form Usage">
-            <p>An explanatory example using a full form can be found at:
-                <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
+        <psk-chapter title="Live example">
+            <psk-example class="app-example">
+                <psk-form controller-name="FormComponentsExampleController" form-actions="Radio-group submit">
+                    <psk-form-row layout="xs=[12] m=[12] l=[12] xl=[12]">
+                        <psk-radio-group view-model="gender"> </psk-radio-group>
+                    </psk-form-row>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                </psk-form>
+            </psk-example>
+            <psk-chapter title="Form Usage">
+                <p>An explanatory example using a full form can be found at:
+                    <psk-link tag="using-forms">Using forms</psk-link> page.</p>
+            </psk-chapter>
         </psk-chapter>
-    </psk-example>
-
+    </psk-chapter>
 </psk-page>

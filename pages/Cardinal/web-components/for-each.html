@@ -19,7 +19,7 @@
         <p>This component accepts a child with slot="no data" in case it has nothing to render for the user. </p>
     </psk-chapter>
 
-    <psk-example title="Examples">
+    <psk-chapter title="Examples">
         <psk-chapter title="Model example">
             <psk-code language="Javascript">
                 {
@@ -78,28 +78,28 @@
                 </psk-for-each>
             </psk-code>
         </psk-chapter>
+        <psk-chapter title="Visual example using above model & template">
+            <psk-example class="app-example" >
+                <psk-form controller-name="TestFormForEachController" form-actions="For Each Submit">
+                    <psk-for-each data-view-model="entities">
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label view-model="sectionTitle"></psk-label>
+                        </psk-form-row>
 
-		<psk-example class="app-example" title="Visual example using above model & template">
-			<psk-form controller-name="TestFormForEachController" form-actions="For Each Submit">
-				<psk-for-each data-view-model="entities">
-                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                        <psk-label view-model="sectionTitle"></psk-label>
-                    </psk-form-row>
 
-
-                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                        <psk-text-input view-model="name"></psk-text-input>
-                        <psk-email-input view-model="email"></psk-email-input>
-                    </psk-form-row>
-                </psk-for-each>
-                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-                </psk-list-feedbacks>
-			</psk-form>
-		</psk-example>
-
+                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                            <psk-text-input view-model="name"></psk-text-input>
+                            <psk-email-input view-model="email"></psk-email-input>
+                        </psk-form-row>
+                    </psk-for-each>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                </psk-form>
+            </psk-example>
+        </psk-chapter>
         <p>A very good example of using this component can be found here:
-            <psk-link page="forms/using-forms">Using forms</psk-link>.
+            <psk-link tag="using-forms">Using forms</psk-link>.
         </p>
-    </psk-example>
+    </psk-chapter>
 
 </psk-page>

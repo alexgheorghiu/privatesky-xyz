@@ -4,10 +4,10 @@
     </psk-toc>
 
     <psk-description>
-        <span>This component creates a <psk-link page="psk-wiki/psk-chapter">psk-chapter</psk-link> using the title
+        <span>This component creates a <psk-link tag="psk-chapter">psk-chapter</psk-link> using the title
             property.</span>
         <p>It's role is to create a good looking description for the documentaion. </p>
-        <span>If the title property is not given than the component will create a <psk-link page="psk-wiki/psk-card">
+        <span>If the title property is not given than the component will create a <psk-link tag="psk-card">
                 psk-card</psk-link> instead of a <code>psk-chapter</code></span>
     </psk-description>
 
@@ -31,12 +31,13 @@
             </psk-description>
         </psk-code>
     </psk-chapter>
-
-    <psk-example class="app-example"  title="Live Example">
-        <psk-description title="PSK-description Example">
-            <p>Minus 40 degrees Celsius is exactly the same as minus 40 degrees Fahrenheit.</p>
-            <p>A lion's roar can be heard from eight kilometres away.</p>
-            <p>Cats can hear ultrasound.</p>
-        </psk-description>
-    </psk-example>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-description title="PSK-description Example">
+                <p>Minus 40 degrees Celsius is exactly the same as minus 40 degrees Fahrenheit.</p>
+                <p>A lion's roar can be heard from eight kilometres away.</p>
+                <p>Cats can hear ultrasound.</p>
+            </psk-description>
+        </psk-example>
+    </psk-chapter>
 </psk-page>

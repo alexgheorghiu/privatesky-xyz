@@ -18,7 +18,7 @@
         <p>This component has no children elements.</p>
     </psk-chapter>
 
-    <psk-example title="Controller Example">
+    <psk-chapter title="Controller Example">
         <psk-code language="Javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
@@ -62,9 +62,9 @@
             }
 
         </psk-code>
-    </psk-example>
+    </psk-chapter>
 
-    <psk-example title="View Example">
+    <psk-chapter title="View Example">
         <psk-code language="markup">
             <psk-form controller-name="TestFormController">
                 <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
@@ -90,28 +90,30 @@
                 </psk-form-row>
             </psk-form>
         </psk-code>
-    </psk-example>
-    <psk-example class="app-example" title="Live Example">
-        <psk-form controller-name="TestFormController" form-actions="Select submit">
-            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                <psk-label>Psk-Select examples</psk-label>
-            </psk-form-row>
+    </psk-chapter>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-form controller-name="TestFormController" form-actions="Select submit">
+                <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                    <psk-label>Psk-Select examples</psk-label>
+                </psk-form-row>
 
-            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
-                <!-- This component will receive the options and the other properties from the model -->
-                <psk-select view-model="nationality"></psk-select>
+                <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4,4]">
+                    <!-- This component will receive the options and the other properties from the model -->
+                    <psk-select view-model="nationality"></psk-select>
 
-                <!-- This component is loaded using the options defined by the select-options attribute -->
-                <psk-select label="Select your city of birth" select-options="Iasi | Bucuresti | Timisoara"></psk-select>
+                    <!-- This component is loaded using the options defined by the select-options attribute -->
+                    <psk-select label="Select your city of birth" select-options="Iasi | Bucuresti | Timisoara"></psk-select>
 
-                <!-- This component has the property "multiple", so the selection can be multiple. -->
-                <psk-select label="Select numbers above 20" selection-type="multiple" select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12"></psk-select>
-            </psk-form-row>
-            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-            </psk-list-feedbacks>
-        </psk-form>
-    </psk-example>
+                    <!-- This component has the property "multiple", so the selection can be multiple. -->
+                    <psk-select label="Select numbers above 20" selection-type="multiple" select-options="1, 1 | 21, 21 | 22 | 40 | 5 | 12, 12"></psk-select>
+                </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+        </psk-example>
+    </psk-chapter>
     <p>An explanatory example using a full form can be found at:
-        <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
+        <psk-link tag="using-forms">Using forms</psk-link> page.</p>
 
 </psk-page>

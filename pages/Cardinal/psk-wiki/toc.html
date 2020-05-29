@@ -5,9 +5,9 @@
 
     <psk-description>
         <span>This component creates a Table of Content in which every item is a link to that item's position in our
-            <psk-link page="psk-wiki/psk-page">psk-page</psk-link>.</span>
+            <psk-link tag="psk-page">psk-page</psk-link>.</span>
         <span>It renders a psk-card with the given <code>title</code> in which every <code>psk-page</code>
-            and <psk-link page="psk-wiki/psk-chapter">psk-chapter</psk-link> is rendered.</span>
+            and <psk-link tag="psk-chapter">psk-chapter</psk-link> is rendered.</span>
         <p>This components selects all <code>psk-chapter</code> components and creates a ordered list based on each
             chapter existing in the page.</p>
         <p>It renders a unordered list with it's HTML children.</p>
@@ -28,8 +28,10 @@
             </psk-toc>
         </psk-code>
     </psk-chapter>
-    <psk-example class="app-example"  title="Live Example">
-        <psk-toc title="PSK-toc Example">
-        </psk-toc>
-    </psk-example>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example">
+            <psk-toc title="PSK-toc Example">
+            </psk-toc>
+        </psk-example>
+    </psk-chapter>
 </psk-page>

@@ -33,10 +33,12 @@
                         "tags":"why"
                     },
                     {
-                        "name": "Main Innovations"
+                        "name": "Main Innovations",
+                        "tags":"main-innovations"
                     },
                     {
-                        "name": "Architecture"
+                        "name": "Architecture",
+                        "tags": "arhitecture"
                     },
                     {
                         "name": "Blockchain",
@@ -44,19 +46,23 @@
                         "icon": "fa-cog",
                         "children": [
                             {
-                                "name": "Secret Smart Contracts"
+                                "name": "Secret Smart Contracts",
+                                "tags": "secret-smart-contracts"
                             }
                         ]
                     },
                     {
                         "name": "Development Vision",
+                        "tags": "development-vision",
                         "indexed": "false"
                     },
                     {
-                        "name": "Swarms Explained"
+                        "name": "Swarms Explained",
+                        "tags": "swarms-explained"
                     },
                     {
-                        "name": "Dependencies"
+                        "name": "Dependencies",
+                        "tags": "dependencies"
                     }
                 ]
             },
@@ -66,20 +72,23 @@
                 "icon": "fa-cog",
                 "children": [
                     {
-                        "name": "PrivateSky APIs"
-
+                        "name": "PrivateSky APIs",
+                        "tags": "privatesky-apis"
                     },
                     {
-                        "name": "Swarms"
+                        "name": "Swarms",
+                        "tags": "swarms"
                     },
                     {
                         "name": "Blockchain",
                         "children": [
                             {
-                                "name": "Overview"
+                                "name": "Overview",
+                                "tags": "overview"
                             },
                             {
-                                "name": "Blockchain"
+                                "name": "Blockchain",
+                                "tags": "blockchain"
                             }
                         ]
                     },
@@ -185,43 +194,68 @@
 
                             },
                             {
-                                "name": "Chapter"
+                                "name": "Chapter",
+                                "tags": "psk-chapter"
                             },
                             {
-                                "name": "Code"
+                                "name": "Code",
+                                "tags": "psk-code"
+
                             },
                             {
-                                "name": "Copy clipboard"
+                                "name": "Copy clipboard",
+                                "tags": "psk-copy-clipboard"
+
                             },
                             {
-                                "name": "Description"
+                                "name": "Description",
+                                "tags": "psk-description"
+
                             },
                             {
-                                "name": "Example"
+                                "name": "Example",
+                                "tags": "psk-example"
+
                             },
                             {
-                                "name": "Highlight"
+                                "name": "Highlight",
+                                "tags": "psk-highlight"
+
                             },
                             {
-                                "name": "Img"
+                                "name": "Img",
+                                "tags": "psk-img"
+
                             },
                             {
-                                "name": "Link"
+                                "name": "Link",
+                                "tags": "psk-link"
+
                             },
                             {
-                                "name": "List"
+                                "name": "List",
+                                "tags": "psk-list"
+
                             },
                             {
-                                "name": "Page"
+                                "name": "Page",
+                                "tags": "psk-page"
+
                             },
                             {
-                                "name": "Property descriptor"
+                                "name": "Property descriptor",
+                                "tags": "psk-property-descriptor"
+
                             },
                             {
-                                "name": "Table"
+                                "name": "Table",
+                                "tags": "psk-table"
+
                             },
                             {
-                                "name": "Toc"
+                                "name": "Toc",
+                                "tags": "psk-toc"
+
                             }
                         ]
                     },
@@ -231,79 +265,121 @@
                         "icon": "fa-cog",
                         "children": [
                             {
-                                "name": "App Menu"
+                                "name": "App Menu",
+                                "tags": "psk-app-menu"
+
                             },
                             {
-                                "name": "Attachments List"
+                                "name": "Attachments List",
+                                "tags": "psk-attachments-list"
+
                             },
                             {
-                                "name": "App Root"
+                                "name": "App Root",
+                                "tags": "psk-app-root"
+
                             },
                             {
-                                "name": "App Router"
+                                "name": "App Router",
+                                "tags": "psk-app-router"
+
                             },
                             {
                                 "name": "Button",
                                 "tags":"psk-button"
                             },
                             {
-                                "name": "Button Group"
+                                "name": "Button Group",
+                                "tags": "psk-button-group"
+
                             },
                             {
-                                "name": "Condition"
+                                "name": "Condition",
+                                "tags": "psk-condition"
+
                             },
                             {
                                 "name": "Container",
                                 "tags":"psk-container"
                             },
                             {
-                                "name": "Feedback List"
+                                "name": "Feedback List",
+                                "tags": "psk-feedback-list"
+
                             },
                             {
-                                "name": "Files Chooser"
+                                "name": "Files Chooser",
+                                "tags": "psk-files-chooser"
+
                             },
                             {
-                                "name": "Floating Menu"
+                                "name": "Floating Menu",
+                                "tags": "psk-floating-menu"
+
                             },
                             {
                                 "name": "For each",
                                 "tag":"psk-for-each"
                             },
                             {
-                                "name": "Grid"
+                                "name": "Grid",
+                                "tags": "psk-grid"
+
                             },
                             {
-                                "name": "Icon"
+                                "name": "Icon",
+                                "tags": "psk-icon"
+
                             },
                             {
-                                "name": "Modal"
+                                "name": "Modal",
+                                "tags": "psk-modal"
+
                             },
                             {
-                                "name": "Page Not Found"
+                                "name": "Page Not Found",
+                                "tags": "psk-page-not-found"
+
                             },
                             {
-                                "name": "PIN Popup"
+                                "name": "PIN Popup",
+                                "tags": "psk-pin-popup"
+
                             },
                             {
-                                "name": "Slideshow"
+                                "name": "Slideshow",
+                                "tags": "psk-slideshow"
+
                             },
                             {
-                                "name": "Switch Button"
+                                "name": "Switch Button",
+                                "tags": "psk-switch-button"
+
                             },
                             {
-                                "name": "SS App"
+                                "name": "SS App",
+                                "tags": "psk-ss-app"
+
                             },
                             {
-                                "name": "Toolbar"
+                                "name": "Toolbar",
+                                "tags": "psk-toolbar"
+
                             },
                             {
-                                "name": "UI Loader"
+                                "name": "UI Loader",
+                                "tags": "psk-ui-loader"
+
                             },
                             {
-                                "name": "User Profile"
+                                "name": "User Profile",
+                                "tags": "psk-user-profile"
+
                             },
                             {
-                                "name": "Wizard"
+                                "name": "Wizard",
+                                "tags": "psk-wizard"
+
                             }
                         ]
                     },
@@ -312,47 +388,69 @@
                         "children": [
                             {
                                 "name": "Using Forms",
-                                "tags":"using-psk-form"
+                                "tags":"using-forms"
                             },
                             {
-                                "name": "Checkbox"
+                                "name": "Checkbox",
+                                "tags": "psk-checkbox"
+
                             },
                             {
-                                "name": "Date input"
+                                "name": "Date input",
+                                "tags": "psk-date-input"
+
                             },
                             {
-                                "name": "Email input"
+                                "name": "Email input",
+                                "tags": "psk-email-input"
                             },
                             {
                                 "name": "Form",
                                 "tags":"psk-form"
                             },
                             {
-                                "name": "Form row"
+                                "name": "Form row",
+                                "tags": "psk-form-row"
+
                             },
                             {
-                                "name": "Input"
+                                "name": "Input",
+                                "tags":"psk-input"
                             },
                             {
-                                "name": "Label"
+                                "name": "Label",
+                                "tags": "psk-label"
+
                             },
                             {
-                                "name": "Number input"
+                                "name": "Number input",
+                                "tags": "psk-number-input"
+
                             },
                             {
-                                "name": "Password input"
+                                "name": "Password input",
+                                "tags": "psk-password-input"
+
                             },
                             {
-                                "name": "Radio"
+                                "name": "Radio",
+                                "tags": "psk-radio"
+
                             },
                             {
-                                "name": "Radio group"
+                                "name": "Radio group",
+                                "tags": "psk-radio-group"
+
                             },
                             {
-                                "name": "Select"
+                                "name": "Select",
+                                "tags": "psk-select"
+
                             },
                             {
-                                "name": "Text input"
+                                "name": "Text input",
+                                "tags": "psk-text-input"
+
                             }
                         ]
                     }
@@ -367,7 +465,8 @@
                         "name": "A site with Cardinal"
                     },
                     {
-                    "name": "A SSApp"
+                        "name": "A SSApp",
+                        "tags": "a-ssapp"
                     },
                     {
                         "name": "A documentation site",

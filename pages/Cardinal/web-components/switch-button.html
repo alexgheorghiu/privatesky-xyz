@@ -16,7 +16,7 @@
     <psk-chapter title="HTML Children">
         <p>This component has no HTML children.</p>
     </psk-chapter>
-    <psk-example title="Controller Example">
+    <psk-chapter title="Controller Example">
         <psk-code language="javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
@@ -51,8 +51,8 @@
                 }
             }
         </psk-code>
-    </psk-example>
-    <psk-example title="psk-switch-button Examples">
+    </psk-chapter>
+    <psk-chapter title="psk-switch-button Examples">
         <psk-chapter title="View Example">
             <psk-code>
                 <psk-container controller-name = "ComponentsExampleController">
@@ -72,20 +72,22 @@
         </psk-chapter>
 
         <psk-chapter title="Visual example">
-            <psk-container controller-name = "ComponentsExampleController">
-                <psk-grid columns="1" layout="xl=[4]">
-                    <psk-switch-button active="Custom" inactive="Automatic" title="Simple Example" toggle-event="switch-invitation-type"></psk-switch-button>
-                </psk-grid>
-                <psk-condition condition="@switchButtonState">
-                    <div slot="condition-true">
-                      <p>Active slot information</p>
-                    </div>
-                    <div slot="condition-false">
-                        <p>Inactive slot information(this is also the default component that will be shown when the component is rendered)</p>
-                    </div>
-                </psk-condition>
-            </psk-container>
+            <psk-example class="app-example">
+                <psk-container controller-name = "ComponentsExampleController">
+                    <psk-grid columns="1" layout="xl=[4]">
+                        <psk-switch-button active="Custom" inactive="Automatic" title="Simple Example" toggle-event="switch-invitation-type"></psk-switch-button>
+                    </psk-grid>
+                    <psk-condition condition="@switchButtonState">
+                        <div slot="condition-true">
+                        <p>Active slot information</p>
+                        </div>
+                        <div slot="condition-false">
+                            <p>Inactive slot information(this is also the default component that will be shown when the component is rendered)</p>
+                        </div>
+                    </psk-condition>
+                </psk-container>
+            </psk-example>
         </psk-chapter>
-    </psk-example>
+    </psk-chapter>
 
 </psk-page>

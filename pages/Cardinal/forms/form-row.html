@@ -18,7 +18,7 @@
         <p>On mobile devices, the responsive design is making all the form components to be displayed in a single column.</p>
     </psk-chapter>
 
-    <psk-example title="Controller Example">
+    <psk-chapter title="Controller Example">
         <psk-code language="Javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
             const model = {
@@ -73,10 +73,26 @@
                 }
             }
         </psk-code>
-    </psk-example>
-
-    <psk-example title="View Examples">
-        <psk-code language="markup">
+    </psk-chapter>
+    <psk-chapter title="View Examples">
+        <psk-example >
+            <psk-code language="markup">
+                <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
+                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                        <psk-label>Name, E-mail & Password</psk-label>
+                    </psk-form-row>
+                    <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
+                        <psk-text-input view-model="name"></psk-text-input>
+                        <psk-email-input view-model="email"></psk-email-input>
+                    </psk-form-row>
+                </psk-form>
+            </psk-code>
+            <p>A complete live example can be found at:
+                <psk-link tag="using-forms">Using forms</psk-link> page.</p>
+        </psk-example>
+    </psk-chapter>
+    <psk-chapter title="Live Examples">
+        <psk-example class="app-example">
             <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
                 <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                     <psk-label>Name, E-mail & Password</psk-label>
@@ -85,24 +101,10 @@
                     <psk-text-input view-model="name"></psk-text-input>
                     <psk-email-input view-model="email"></psk-email-input>
                 </psk-form-row>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
             </psk-form>
-        </psk-code>
-        <p>A complete live example can be found at:
-            <psk-link page="forms/using-forms">Using forms</psk-link> page.</p>
-    </psk-example>
-
-    <psk-example class="app-example" title="Live Examples">
-        <psk-form controller-name ="FormComponentsExampleController" form-actions="Row submit">
-            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                <psk-label>Name, E-mail & Password</psk-label>
-            </psk-form-row>
-            <psk-form-row layout="xs=[12,12,12] m=[6,6,6] l=[12,12,12] xl=[4,4]">
-                <psk-text-input view-model="name"></psk-text-input>
-                <psk-email-input view-model="email"></psk-email-input>
-            </psk-form-row>
-            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-            </psk-list-feedbacks>
-        </psk-form>
-    </psk-example>
+        </psk-example>
+    </psk-chapter>
 
 </psk-page>

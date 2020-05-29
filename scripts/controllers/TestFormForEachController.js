@@ -23,8 +23,9 @@ const model = {
             label: "Select your gender",
             required: true,
             options: [{
-                label: "Male"
-            },
+                    label: "Male",
+                    value: 'M'
+                },
                 {
                     label: "Female",
                     value: "F"
@@ -68,8 +69,9 @@ const model = {
             label: "Associate gender",
             required: true,
             options: [{
-                label: "Male"
-            },
+                    label: "Male",
+                    value: 'M'
+                },
                 {
                     label: "Female",
                     value: "F"

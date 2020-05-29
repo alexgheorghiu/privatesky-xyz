@@ -210,7 +210,7 @@
         <p><i>Don't hesitate to contact us in case there are further clarifications!</i></p>
     </psk-description>
 
-    <psk-example  title="Form Examples">
+    <psk-chapter title="Form Examples">
         <psk-chapter title="Simple form example">
             <psk-chapter title="Model and Controller - TestFormController">
                 <psk-code language="Javascript">
@@ -506,37 +506,38 @@
                     </psk-form>
                 </psk-code>
             </psk-chapter>
+            <psk-chapter  title="Visual example - TestFormForEachController">
+                <psk-example class="app-example">
+                    <psk-form controller-name="TestFormForEachController" form-actions="Third Example">
+                        <psk-for-each data-view-model="entities">
+                            <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                                <psk-label view-model="sectionTitle"></psk-label>
+                            </psk-form-row>
 
-            <psk-example class="app-example" title="Visual example - TestFormForEachController">
-                <psk-form controller-name="TestFormForEachController" form-actions="Third Example">
-                    <psk-for-each data-view-model="entities">
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-text-input view-model="name"></psk-text-input>
+                                <psk-email-input view-model="email"></psk-email-input>
+                            </psk-form-row>
+
+                            <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                                <psk-select view-model="nationality"></psk-select>
+                                <psk-radio-group view-model="gender"> </psk-radio-group>
+                            </psk-form-row>
+                        </psk-for-each>
+
                         <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                            <psk-label view-model="sectionTitle"></psk-label>
+                            <psk-label>Submission Agreements</psk-label>
                         </psk-form-row>
-
                         <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                            <psk-text-input view-model="name"></psk-text-input>
-                            <psk-email-input view-model="email"></psk-email-input>
+                            <psk-checkbox view-model="terms"></psk-checkbox>
+                            <psk-checkbox view-model="gdpr"></psk-checkbox>
                         </psk-form-row>
-
-                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                            <psk-select view-model="nationality"></psk-select>
-                            <psk-radio-group view-model="gender"> </psk-radio-group>
-                        </psk-form-row>
-                    </psk-for-each>
-
-                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                        <psk-label>Submission Agreements</psk-label>
-                    </psk-form-row>
-                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                        <psk-checkbox view-model="terms"></psk-checkbox>
-                        <psk-checkbox view-model="gdpr"></psk-checkbox>
-                    </psk-form-row>
-                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-                    </psk-list-feedbacks>
-                </psk-form>
+                        <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                        </psk-list-feedbacks>
+                    </psk-form>
+                </psk-example>
             </psk-chapter>
         </psk-example>
-    </psk-example>
+    </psk-chapter>
 
 </psk-page>

@@ -5,7 +5,7 @@
 
     <psk-description>
         <p>This component creates a toolbar using the given properties and the HTML children.</p>
-        <span>If the property <code>icons</code> is passed ,then a pool of <psk-link page="web-components/icon">psk-icon
+        <span>If the property <code>icons</code> is passed ,then a pool of <psk-link tag="/psk-icon">psk-icon
             </psk-link>, else a pool of <code>button</code> will be instantiated.</span>
         <p>Each time a pool item is clicked a new event is created with the <code>eventData</code> property passed
             along.</p>
@@ -34,13 +34,13 @@
             </psk-toolbar>
         </psk-code>
 
-        <psk-example title="Icon Example">
+        <psk-chapter title="Icon Example">
             <psk-toolbar slot="toolbar" actions="active, inactive">
                 <psk-icon slot="active" icon="check-circle" title="Active Tender"></psk-icon>
                 <psk-icon slot="inactive" icon="circle" title="Inactive Tender" disable-color="true">
                 </psk-icon>
             </psk-toolbar>
-        </psk-example>
+        </psk-chapter>
     </psk-chapter>
 
     <psk-chapter title="Button Code Example">
@@ -52,12 +52,14 @@
                 <!-- Since the "no-click" action hasn't been used the toolbar creates anothe button with the name of the unused action  -->
             </psk-toolbar>
         </psk-code>
-        <psk-example title="Button Example">
-            <psk-toolbar slot="toolbar" actions="click,no-click">
-                <psk-button slot="click" title="Active Button">Click Action
-                </psk-button>
-            </psk-toolbar>
-        </psk-example>
+        <psk-chapter title="Button Example">
+            <psk-example>
+                <psk-toolbar slot="toolbar" actions="click,no-click">
+                    <psk-button slot="click" title="Active Button">Click Action
+                    </psk-button>
+                </psk-toolbar>
+            </psk-example>
+        </psk-chapter>
     </psk-chapter>
 
 </psk-page>

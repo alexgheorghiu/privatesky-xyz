@@ -5,15 +5,15 @@
 
     <psk-description title="Definition">
         <p>This component is extended from the
-            <psk-link page="forms/psk-input">psk-input</psk-link> component, it is used inside a
-            <psk-link page="forms/psk-form">psk-form</psk-link> component and is intending to be used as input for simple texts, like name, address and so on.</p>
+            <psk-link tag="psk-input">psk-input</psk-link> component, it is used inside a
+            <psk-link tag="psk-form">psk-form</psk-link> component and is intending to be used as input for simple texts, like name, address and so on.</p>
         <p>The other components derived from
-            <psk-link page="forms/psk-input">psk-input</psk-link> are:</p>
+            <psk-link tag="psk-input">psk-input</psk-link> are:</p>
         <psk-list>
-            <psk-link page="forms/psk-password-input">psk-password-input</psk-link>
-            <psk-link page="forms/psk-email-input">psk-email-input</psk-link>
-            <psk-link page="forms/psk-date-input">psk-date-input</psk-link>
-            <psk-link page="forms/psk-number-input">psk-number-input</psk-link>
+            <psk-link tag="psk-password-input">psk-password-input</psk-link>
+            <psk-link tag="psk-email-input">psk-email-input</psk-link>
+            <psk-link tag="psk-date-input">psk-date-input</psk-link>
+            <psk-link tag="psk-number-input">psk-number-input</psk-link>
         </psk-list>
     </psk-description>
 
@@ -22,7 +22,7 @@
         </psk-text-input>
     </psk-property-descriptor>
 
-    <psk-example title="Controller Example">
+    <psk-chapter title="Controller Example">
         <psk-code language="Javascript">
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
             const model = {
@@ -56,9 +56,9 @@
                 }
             }
         </psk-code>
-    </psk-example>
+    </psk-chapter>
 
-    <psk-example title="View Example">
+    <psk-chapter title="View Example">
         <psk-code>
             <psk-container controller-name="FormComponentsExampleController" form-actions="Text submit">
                 <psk-grid columns = "3" layout="l=[4,4,4]">
@@ -67,19 +67,21 @@
                 </psk-grid>
             </psk-container>
         </psk-code>
-    </psk-example>
+    </psk-chapter>
 
-    <psk-example class="app-example" title="Live Example">
-        <psk-form  controller-name="FormComponentsExampleController" form-actions="Text submit">
-            <psk-grid columns = "3" layout="l=[4,4,4]">
-                <psk-text-input view-model="name"></psk-text-input>
-                <psk-text-input view-model="email"></psk-text-input>
-            </psk-grid>
-            <psk-list-feedbacks messages-to-display="5" time-alive="3000">
-            </psk-list-feedbacks>        
-        </psk-form>
-    </psk-example>
+    <psk-chapter title="Live Example">
+        <psk-example class="app-example" >
+            <psk-form  controller-name="FormComponentsExampleController" form-actions="Text submit">
+                <psk-grid columns = "3" layout="l=[4,4,4]">
+                    <psk-text-input view-model="name"></psk-text-input>
+                    <psk-text-input view-model="email"></psk-text-input>
+                </psk-grid>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>        
+            </psk-form>
+        </psk-example>
+    </psk-chapter>
     <p>A very good example of using this component and the other form components can be found here:
-        <psk-link page="forms/using-forms">Using forms</psk-link>.
+        <psk-link tag="using-forms">Using forms</psk-link>.
     </p>
 </psk-page>
