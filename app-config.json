@@ -133,7 +133,8 @@
                         "name": "SSApps",
                         "children": [
                             {
-                                "name": "Overview"
+                                "name": "Overview",
+                                "tags": "ss-app-overview"
                             },
                             {
                                 "name": "Service Worker Middleware"

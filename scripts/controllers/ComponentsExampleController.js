@@ -1,16 +1,28 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
 const model = {
-    buttonStatus: "0"
+    buttonStatus: "0",
+    button: {
+        label: "Disable Property Example",
+        disabled: false
+    },
+    disabled: {
+        label: "If you check the box and submit it, then the 'Disable Property Example' will become disabled, but if it is already disabled and you uncheck, then it will become active again",
+        name: "disable",
+        required: false,
+        checkboxLabel: "Disable",
+        checkedValue: "disabled",
+        uncheckedValue: "not-disabled",
+        value:""
+    }
 };
 
 export default class ComponentsExampleController extends ContainerController {
     constructor(element) {
         super(element);
         this.model = this.setModel(JSON.parse(JSON.stringify(model)));
-
+        console.log(this.model.disabled.value)
         this.feedbackEmitter = null;
-
         this.on('openFeedback', (e) => {
             e.preventDefault();
             e.stopImmediatePropagation();
@@ -70,6 +82,15 @@ export default class ComponentsExampleController extends ContainerController {
             setTimeout( ()=> {
                 this.feedbackEmitter(`You really tried it out and it worked, Good Job!`,"Double Click Example","alert-success");
             },400)
+        })
+        this.on("Disable Button Submit",(evt) => {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            if(this.model.disabled.value =="disabled"){
+                this.model.button.disabled=true 
+            } else {
+                this.model.button.disabled=false;
+            }
         })
     }
 }
