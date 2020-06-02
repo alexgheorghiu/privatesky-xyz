@@ -6,14 +6,14 @@
     </psk-description>
 
     <psk-chapter title="Prerequisites">
-        <p>In order to get started you need to install the <a href="https://github.com/PrivateSky/web-wallet" target="_blank">web-wallet</a> bundle by following the steps provided on the <psk-link page="quick start/installation">Setup page</psk-link> (Setup SSApps section).</p>
+        <p>In order to get started you need to install the <a href="https://github.com/PrivateSky/ssapp-demo-workspace" target="_blank">ssapp-demo-workspace</a> by following the steps provided on the <psk-link page="quick start/installation">Setup page</psk-link> (Setup SSApps section).</p>
 
-        <p><strong>web-wallet</strong> bundles all the necessary dependencies for building and running SSApps in a single package.</p>
+        <p><strong>ssapp-demo-workspace</strong> bundles all the necessary dependencies for building and running SSApps in a single package.</p>
     </psk-chapter>
 
-    <psk-chapter title="web-wallet architecture">
+    <psk-chapter title="ssapp-demo-workspace architecture">
         <psk-chapter title="Core components">
-            <p>The <strong>web-wallet</strong> bundle contains the following core components required for building and running a Self Sovereign Application:</p>
+            <p>The <strong>ssapp-demo-workspace</strong> bundle contains the following core components required for building and running a Self Sovereign Application:</p>
 
             <ul>
                 <li>Octopus task runner</li>
@@ -24,19 +24,19 @@
                 <li>SSApp application loader</li>
             </ul>
 
-            <p><strong>Octopus</strong> is the first tool installed by the web-wallet and it is used to further fetch and build the rest of the dependencies. For more information on Octopus read the <psk-link page="Tools/Octopus">dedicated page</psk-link> in the documentation.</p>
+            <p><strong>Octopus</strong> is the first tool installed by the ssapp-demo-workspace and it is used to further fetch and build the rest of the dependencies. For more information on Octopus read the <psk-link page="Tools/Octopus">dedicated page</psk-link> in the documentation.</p>
 
             <p><strong>PrivateSky</strong> provides the VirtualMQ service and the javascript runtime bundles required for a SSApp to interact with EDFS and PrivateSky nodes</p>
 
-            <p>The <strong>web server</strong> functionality is provided by VirtualMQ which is configured to serve static files from the <code>web-server</code> directory inside the <strong>web-wallet</strong> installation. Besides serving static files, the server exposes the Brick Storage API required to store data to EDFS.</p>
+            <p>The <strong>web server</strong> functionality is provided by VirtualMQ which is configured to serve static files from the <code>web-server</code> directory inside the <strong>ssapp-demo-workspace</strong> installation. Besides serving static files, the server exposes the Brick Storage API required to store data to EDFS.</p>
 
-            <p>The <strong>wallet template</strong> installed by <strong>web-wallet</strong> is a plain customisable SSApp which once loaded will display a menu with  all the SSApp applications contained in this <code>web-wallet</code> installation. Through this app you will be able to access your newly created SSApp.</p>
+            <p>The <strong>wallet template</strong> installed by <strong>ssapp-demo-workspace</strong> is a plain customisable SSApp which once loaded will display a menu with  all the SSApp applications contained in this <code>ssapp-demo-workspace</code> installation. Through this app you will be able to access your newly created SSApp.</p>
 
-            <p>The <strong>SSApp application loader</strong> is the first thing you'll see after running the <code>web-wallet</code> web server and accessing <code>http://localhost:8080/secure-channels/loader</code>. It is a basic web application which allows creation and loading of wallets based on the <em>menu wallet</em> template. The SSApp loader registers a service worker responsible with loading the built SSApps from the Brick Storage.</p>
+            <p>The <strong>SSApp application loader</strong> is the first thing you'll see after running the <code>ssapp-demo-workspace</code> web server and accessing <code>http://localhost:8080/secure-channels/loader</code>. It is a basic web application which allows creation and loading of wallets based on the <em>menu wallet</em> template. The SSApp loader registers a service worker responsible with loading the built SSApps from the Brick Storage.</p>
 
-            <p><strong>Before advancing to the next chapters make sure you have correctly installed <code>web-wallet</code> and have started the web server:</strong></p>
+            <p><strong>Before advancing to the next chapters make sure you have correctly installed <code>ssapp-demo-workspace</code> and have started the web server:</strong></p>
             <psk-code language="bash">
-                cd web-wallet
+                cd ssapp-demo-workspace
                 npm run server
             </psk-code>
         </psk-chapter>
@@ -45,11 +45,11 @@
     <psk-chapter title="SSApp Tutorial">
         <psk-highlight type-of-highlight="example">If you are using a Windows operating system you may need to adapt some bash commands shown in this tutorial in order to execute them.</psk-highlight>
 
-        <p>The gist of creating, integrating and developing a SSApp in <code>web-wallet</code> is:</p>
+        <p>The gist of creating, integrating and developing a SSApp in <code>ssapp-demo-workspace</code> is:</p>
         <psk-list list-type="ordered">
             Create a git repository containing the minimum required configuration files for your application
-            Add the application into <code>web-wallet</code>
-            Bind the application to the web-wallet's solution
+            Add the application into <code>ssapp-demo-workspace</code>
+            Bind the application to the ssapp-demo-workspace's solution
             Enter the development cycle
         </psk-list>
 
@@ -89,21 +89,21 @@
                     <li>package.json</li>
                 </ul>
             </p>
-            <p>The <code>bin</code> folder contains executable scripts and for this SSApp to be compatible with <strong>web-wallet</strong> a <code>build.js</code> script is required. This build script will create an empty Brick Archive, copy the application's code from the <code>code</code> folder into the BAR and write the BAR's SEED into a file in the root of the application's directory. This seed file will be later read by the SSApp loader in order to load the application.</p>
+            <p>The <code>bin</code> folder contains executable scripts and for this SSApp to be compatible with <strong>ssapp-demo-workspace</strong> a <code>build.js</code> script is required. This build script will create an empty Brick Archive, copy the application's code from the <code>code</code> folder into the BAR and write the BAR's SEED into a file in the root of the application's directory. This seed file will be later read by the SSApp loader in order to load the application.</p>
 
             <p>The <code>code</code> folder will contain the application source code files (html, javacript &amp; css files).</p>
-            <p>The <code>package.json</code> contains a single dependency, the <strong>Octopus</strong> package which will help with building and installing the application in <code>web-wallet</code>. You are free to add as many dependencies as you want in order to develop your application.
+            <p>The <code>package.json</code> contains a single dependency, the <strong>Octopus</strong> package which will help with building and installing the application in <code>ssapp-demo-workspace</code>. You are free to add as many dependencies as you want in order to develop your application.
 
             <p>The <code>octopus.json</code> file contains actions executed by Octopus that will copy the runtime javascript bundles from PrivateSky into our new application into the <code>code</code> folder and install the <psk-link page="Cardinal/web-components-mvc">Cardinal</psk-link> framework.</p>
         </psk-chapter>
 
-        <psk-chapter title="Adding the SSApp in web-wallet">
+        <psk-chapter title="Adding the SSApp in ssapp-demo-workspace">
             <psk-highlight type-of-highlight="issue">
-                <p>Make sure the web-wallet web server is running before proceeding with the next examples.</p>
+                <p>Make sure the ssapp-demo-workspace web server is running before proceeding with the next examples.</p>
             </psk-highlight>
-            <p>It is time to integrate our application inside <code>web-wallet</code> by running a few octopus commands inside the web-wallet directory:</p>
+            <p>It is time to integrate our application inside <code>ssapp-demo-workspace</code> by running a few octopus commands inside the ssapp-demo-workspace directory:</p>
             <psk-code language="bash">
-                cd web-wallet
+                cd ssapp-demo-workspace
 
                 # This command will tell octopus to fetch the application from your git repository
                 # Make sure you replace 'https://github.com/username/todo-app.git' with your
@@ -113,10 +113,10 @@
                 npm run bind-app secure-channels todo-app
             </psk-code>
 
-            <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-app/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>web-wallet</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
-            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this web-wallet. You can think of <strong>secure-channels</strong> as container for SSApps, for more information read the <strong>SSApp loader</strong> chapter of this document.</p>
+            <p>Some of the things the <code>bind-app</code> command does is run our <code>todo-app/bin/build.js</code> script to copy the application code into a Brick Archive and write the seed of that BAR in a file which will be used by the SSApp loader to load the application. If you browse the <code>ssapp-demo-workspace</code> directory you'll see that Octopus has fetched the application from git and placed inside it.<br />
+            The <strong>secure-channels</strong> argument refers to the name of the software solution built with this ssapp-demo-workspace. You can think of <strong>secure-channels</strong> as container for SSApps, for more information read the <strong>SSApp loader</strong> chapter of this document.</p>
 
-            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into web-wallet and we have binded it to the web-wallet's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>web-wallet</code> comes with a wallet template which is a SSApp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
+            <p>Up to this point we have completed steps 1, 2 &amp; 3 from our little gist from the beginning of the page: we have created a basic structure for our application, we added the app into ssapp-demo-workspace and we have binded it to the ssapp-demo-workspace's solution. One last step before doing the actual development work is to add a link to our application in the wallet template - if you remember the <code>ssapp-demo-workspace</code> comes with a wallet template which is a SSApp that displays a menu allowing you to select which application to run. We do this by editing <code>web-server/secure-channels/wallet-template/app-config.json</code> and adding an entry for our application. The <code>pages</code> section of that file should look like this:</p>
             <psk-code language="javascript">
                 "pages": [
                     {
@@ -157,7 +157,7 @@
 
         <psk-chapter title="Application Development">
             <psk-highlight type-of-highlight="example">
-                <p>From now on the development work will be done from within the <code>todo-app</code> folder in the <code>web-wallet</code>. The only purpose for the initial todo-app directory was to be able to install it inside web-wallet.</p>
+                <p>From now on the development work will be done from within the <code>todo-app</code> folder in the <code>ssapp-demo-workspace</code>. The only purpose for the initial todo-app directory was to be able to install it inside ssapp-demo-workspace.</p>
             </psk-highlight>
             <p>The first thing you'll need to do before adding new code to the application is to switch the SSApp loader to run in "development" mode. To do that, go into <code>web-server/secure-channels/loader</code> and create a copy of <code>loader-config.local.json-template</code> file:</p>
 
@@ -168,10 +168,10 @@
 
             <p>The <code>loader-config.local.json</code> is a configuration file that will allow us to override the default loader options set in <code>loader-config.js</code>. Our local configuration file will override the loader mode setting from "secure" to "development". While in development mode, the loader will skip the UI and create a new wallet if one doesn't exist, or update an existing one as the source code changes to speed up development.</p>
 
-            <p>Next start the "watch" feature of the <code>web-wallet</code> that watches for source code changes and updates the application's BAR - remember, the SSApp, once built it is stored in a BAR in Brick Storage. In order to update the code we need to somehow update the BAR:</p>
+            <p>Next start the "watch" feature of the <code>ssapp-demo-workspace</code> that watches for source code changes and updates the application's BAR - remember, the SSApp, once built it is stored in a BAR in Brick Storage. In order to update the code we need to somehow update the BAR:</p>
 
             <psk-code language="bash">
-                # inside web-wallet's directory
+                # inside ssapp-demo-workspace's directory
                 npm run watch -- --app=todo-app
             </psk-code>
 
@@ -366,7 +366,7 @@
 
         <psk-img src="assets/images/wallet-structure.svg"></psk-img>
 
-        <p>A <strong>solution wallet</strong> is a <psk-link page="API/edfs/overview">Dossier</psk-link> containing a blockchain and a set of SSApps which encapsulate business logic. In the diagram above you can see that the "Secure Channels Solution" is based on the <strong>menu-wallet</strong> template and contains 3 more SSApps: profile-app, secure-channels-app and our newly created todo-app. The "menu-wallet" template is in itself just a regular SSApp which displays a menu in the UI with links to the rest of the SSApps contained in the solution. Each individual SSApp (including the menu-wallet) is built by Octopus using the command line (<code>npm run build-all</code> command) while the <strong>solution wallet</strong> is build by the loader during first use. The steps for creating the solution wallet in the loader are the following:</p>
+        <p>A <strong>solution wallet</strong> is a <psk-link page="API/edfs/overview">Dossier</psk-link> containing a blockchain and a set of SSApps which encapsulate business logic. In the diagram above you can see that the "Secure Channels Solution" is based on the <strong>menu-wallet</strong> template and contains 3 more SSApps: profile-sapp, secure-channels-app and our newly created todo-app. The "menu-wallet" template is in itself just a regular SSApp which displays a menu in the UI with links to the rest of the SSApps contained in the solution. Each individual SSApp (including the menu-wallet) is built by Octopus using the command line (<code>npm run build-all</code> command) while the <strong>solution wallet</strong> is build by the loader during first use. The steps for creating the solution wallet in the loader are the following:</p>
 
         <psk-list list-type="ordered">
             Create a new Dossier
