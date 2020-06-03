@@ -161,6 +161,11 @@
                 ]
             },
             {
+                "name": "FAQ",
+                "path": "/FAQ",
+                "icon": "fa-cog"
+            },
+            {
                 "name": "Cardinal",
                 "path": "/Cardinal",
                 "icon": "fa-cog",
