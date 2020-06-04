@@ -88,7 +88,7 @@
             wallets.
         </psk-highlight>
 
-        <psk-img src="/assets/images/faq/web-server-structure.png">Web server folder structure</psk-img>
+        <psk-img src="/assets/images/faq/web-server-structure.png" title="Web server folder structure"></psk-img>
 
         You can can see that the <code>web-server/web-wallet</code> directory has three main sub folders:
         <psk-list list-type="unordered">
@@ -131,7 +131,7 @@
         To build a wallet on the user’s request, the Loader communicates with the web server to retrieve the necessary details like wallet type seed,
         wallet customization content and ssapps prototypes’ seeds. After the information is accessible, the Loader passes through the phases illustrated
         in the workflow below:
-        <psk-img src="/assets/images/faq/build-workflow.png">Build workflow</psk-img>
+        <psk-img src="/assets/images/faq/build-workflow.png" title="Build workflow"></psk-img>
         Basically, the Loader creates a Dossier instance and then mounts at specific paths the Wallet type prototype code, and newly created SSApp instances
         using the seeds of the SSApp prototypes.
         The instantiation process of new SSApp, presented in the following diagram, is executed for each SSApp found in the folder <code>/web-server/web-wallet/apps</code>.
