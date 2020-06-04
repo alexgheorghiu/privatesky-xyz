@@ -48,6 +48,12 @@ const model = {
         required: false,
         value: ''
     },
+    formatedDate: {
+        label: "FORMATED DATE",
+        name: "date-to-format",
+        required: false,
+        value: ''
+    },
     number: {
         label: "Choose a number:",
         name: "number",
@@ -168,8 +174,16 @@ export default class FormComponentExampleController extends ContainerController 
                 this.feedbackEmitter(`Thank you for accepting the terms and conditions!`,"radio Example","alert-success")
             }
         }
-
+        let formatedDateSubmit = () => {
+            let date = this.model.formatedDate.value;
+            if(date === ''){
+                this.feedbackEmitter(`Please click on the calendar to select a date and see the example!`,"radio Example","alert-danger")
+            } else {
+                this.feedbackEmitter(`Thank you for trying out our framework!`,"radio Example","alert-success")
+            }   
+        }
         this.on("Date submit",dateSubmit);
+        this.on("Formated Date submit",formatedDateSubmit)
         this.on("Email submit",emailSubmit);
         this.on("Row submit",rowSubmit);
         this.on("Input submit",rowSubmit);

@@ -69,19 +69,37 @@
                             this.feedbackEmitter("The end date is before the start date, please review!","date-input Example","alert-danger")
                         } 
                     } 
+
+                    let formatedDateSubmit = () => {
+                        let date = this.model.formatedDate.value;
+                        if(date === ''){
+                            this.feedbackEmitter(`Please click on the calendar to select a date and see the example!`,"radio Example","alert-danger")
+                        } else {
+                            this.feedbackEmitter(`Thank you for trying out our framework!`,"radio Example","alert-success")
+                        }   
+                    }
+                    
                     this.on("Date submit",dateSubmit,true); 
+                    this.on("Formated Date submit",formatedDateSubmit);
                 } 
             }
         </psk-code>
     </psk-chapter>
 
-    <psk-chapter     title="View Example">
+    <psk-chapter title="View Example">
         <psk-code>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Date submit">
                 <psk-grid columns="2" layout="l=[5,5]">
                     <psk-date-input view-model="startDate"></psk-date-input>
                     <psk-date-input view-model="endDate"></psk-date-input>
                 </psk-grid>
+            </psk-form>
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Formated Date submit">
+                <psk-grid columns="1" layout="xl=[5]">
+                    <psk-date-input view-model="formatedDate" data-format="DD MM YYYY"></psk-date-input>
+                </psk-grid>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
             </psk-form>
         </psk-code>
         <p>A very good example of using this component and the other form components can be found here:
@@ -95,7 +113,15 @@
                     else a alert-danger will pop up.</p>
                 <psk-grid columns="2" layout="l=[5,5]">
                     <psk-date-input view-model="startDate"></psk-date-input>
-                    <psk-date-input view-model="endDate" data-format="DD YYYY MM" ></psk-date-input>
+                    <psk-date-input view-model="endDate"></psk-date-input>
+                </psk-grid>
+                <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                </psk-list-feedbacks>
+            </psk-form>
+            <p>Since these dates use the standard format given by the <code>type="date"</code> property of the <code>input</code>, we added the <code>data-format</code> property.</p>
+            <psk-form controller-name="FormComponentsExampleController" form-actions="Formated Date submit">
+                <psk-grid columns="1" layout="xl=[5]">
+                    <psk-date-input view-model="formatedDate" data-format="DD MM YYYY"></psk-date-input>
                 </psk-grid>
                 <psk-list-feedbacks messages-to-display="5" time-alive="3000">
                 </psk-list-feedbacks>
