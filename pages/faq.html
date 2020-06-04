@@ -9,7 +9,7 @@
         <psk-img src="/assets/images/faq/ssapp-workspace-structure.png" title="SSApp workspace structure"></psk-img>
 
         After the local cloning of ssapp-demo-workspace repo, an installation process can be performed by running the npm install command
-        in the project’s directory. The installation process is done by the <a href="https://privatesky.xyz/?Tools/octopus.git">Octopus</a>  task runner which reads
+        in the project’s directory. The installation process is done by the <psk-link page="tools/octopus">Octopus</psk-link>  task runner which reads
         the <code>octopus.json</code> file and, based on the information found in the file, runs the tasks that need to be completed to obtain a fully working
         workspace project.
         <psk-img src="/assets/images/faq/installation.png" title="SSApp workspace installation"></psk-img>
@@ -17,7 +17,6 @@
         Once the installation process finishes, the developer can access all the sub projects that are added in the workspace.
     </psk-chapter>
     <psk-chapter title="How to add new projects to a SSApp workspace">
-        <psk-card></psk-card>
         To manage the workspace and to reliably replicate the workspace’s structure, new projects should be added with the help of Octopus.
         The command:
             <psk-code>npm run add projectName http://git_repo_url_of_project</psk-code>
@@ -73,7 +72,7 @@
             </psk-card>
         </psk-list>
 
-        To test the result open a browser and go <a href="http://localhost:8080/{name_of_wallet_type}/loader/ ">here</a>.
+        To test the result open a browser and go to <code>"http://localhost:8080/{name_of_wallet_type}/loader/"</code>.
     </psk-chapter>
 
     <psk-chapter title="How to customize a wallet">
@@ -127,7 +126,7 @@
 
     <psk-chapter title="What is the Loader's purpose?">
         The Loader is a simple web application capable of instantiating a new wallet or recovering one based on the user’s option.
-        The Loader doesn’t have any external dependencies except for the PrivateSky bundles that facilitate the interaction with <psk-link page="apis/edfs">EDFS</psk-link>.
+        The Loader doesn’t have any external dependencies except for the PrivateSky bundles that facilitate the interaction with <psk-link page="apis/edfs/overview">EDFS</psk-link>.
         To build a wallet on the user’s request, the Loader communicates with the web server to retrieve the necessary details like wallet type seed,
         wallet customization content and ssapps prototypes’ seeds. After the information is accessible, the Loader passes through the phases illustrated
         in the workflow below:
