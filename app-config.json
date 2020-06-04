@@ -190,8 +190,8 @@
                         "name": "Themes"
                     },
                     {
-                        "name": "PSK Wiki",
-                        "path": "/psk-wiki",
+                        "name": "Wiki Components",
+                        "path": "/wiki-components",
                         "icon": "fa-bolt",
                         "children": [
                             {
