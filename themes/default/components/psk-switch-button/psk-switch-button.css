@@ -1,12 +1,12 @@
 .switch-item:first-child {
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
     border-right: none;
 }
 
 .switch-item:last-child {
-    border-top-right-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
     border-left: none;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .switch-item {
-    border: 0.0625rem solid #b75367;
+    border: 0.0625rem solid #5474D0;
     background-color: white;
     align-items: center;
     justify-content: center;
@@ -42,5 +42,5 @@
 .selected {
     color: white;
     align-self: center;
-    background-color: #b75367;
+    background-color: #5474D0;
 }
