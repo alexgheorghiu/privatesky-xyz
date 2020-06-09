@@ -14,7 +14,8 @@ const model = {
         checkedValue: "disabled",
         uncheckedValue: "not-disabled",
         value:""
-    }
+    },
+    opened: false
 };
 
 export default class ComponentsExampleController extends ContainerController {
@@ -91,6 +92,11 @@ export default class ComponentsExampleController extends ContainerController {
             } else {
                 this.model.button.disabled=false;
             }
+        })
+        this.on("trigger-popup",(evt) => {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            this.model.opened = 1;
         })
     }
 }
