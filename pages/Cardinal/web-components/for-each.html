@@ -16,7 +16,7 @@
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
-        <p>This component accepts a child with slot="no data" in case it has nothing to render for the user. </p>
+        <p>This component accepts a child with slot="no-data" in case it has nothing to render for the user. </p>
     </psk-chapter>
 
     <psk-chapter title="Examples">
@@ -66,26 +66,32 @@
 
         <psk-chapter title="Template example">
             <psk-code language="markup">
-                <psk-for-each data-view-model="entities">            
-                    <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
-                        <psk-label view-model="sectionTitle"></psk-label>
-                    </psk-form-row>
+                <psk-form controller-name="TestFormForEachController" form-actions="For Each Submit">
+                    <psk-for-each data-view-model="entities">            
+                        <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
+                            <psk-label view-model="sectionTitle"></psk-label>
+                        </psk-form-row>
 
-                    <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
-                        <psk-text-input view-model="name"></psk-text-input>
-                        <psk-email-input view-model="email"></psk-email-input>
-                    </psk-form-row>
-                </psk-for-each>
+                        <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
+                            <psk-text-input view-model="name"></psk-text-input>
+                            <psk-email-input view-model="email"></psk-email-input>
+                        </psk-form-row>
+                    
+                    </psk-for-each>
+                    <psk-list-feedbacks messages-to-display="5" time-alive="3000">
+                    </psk-list-feedbacks>
+                </psk-form>
+
             </psk-code>
         </psk-chapter>
         <psk-chapter title="Visual example using above model & template">
             <psk-example class="app-example" >
                 <psk-form controller-name="TestFormForEachController" form-actions="For Each Submit">
                     <psk-for-each data-view-model="entities">
+
                         <psk-form-row layout="xs=[12] m=[6] l=[12] xl=[4]">
                             <psk-label view-model="sectionTitle"></psk-label>
                         </psk-form-row>
-
 
                         <psk-form-row layout="xs=[12,12] m=[6,6] l=[12,12] xl=[6,6]">
                             <psk-text-input view-model="name"></psk-text-input>
@@ -100,6 +106,31 @@
         <p>A very good example of using this component can be found here:
             <psk-link tag="using-forms">Using forms</psk-link>.
         </p>
+
+        <psk-chapter title="Slot 'no-data' example">
+            <psk-code language="markup">
+                <psk-container controller-name="TestFormForEachController">
+                    <psk-for-each  data-view-model="entity">            
+                        <psk-card slot="no-data" title="Slot 'no-data' example">
+                            <p>A psk-card with slot="no-data" for the psk-for-each example!</p>
+                        </psk-card>
+                    </psk-for-each>
+                </psk-container>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Visual example using above model & template">
+            <psk-example class="app-example" >
+                <psk-container controller-name="TestFormForEachController">
+                    <psk-for-each  data-view-model="entity">            
+                        <psk-card slot="no-data" title="Slot 'no-data' example">
+                            <p>A psk-card with slot="no-data" for the psk-for-each example!</p>
+                        </psk-card>
+                    </psk-for-each>
+                </psk-container>
+            </psk-example>
+        </psk-chapter>
+        
     </psk-chapter>
 
 </psk-page>

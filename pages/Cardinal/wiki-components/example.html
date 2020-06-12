@@ -4,9 +4,12 @@
     </psk-toc>
 
     <psk-description>
-        <span>This component will create a <code>psk-chapter</code> using the given title property .</span>
+        <!-- <span>This component will create a <code>psk-chapter</code> using the given title property .</span>
         <p>This function of the component is to provide the UI with examples so that the explanations can be made easier.</p>
-        <p>It has a special class <code>app-example</code> which renders a nice style for the example (as you can see below).</p>
+        <p>It has a special class <code>app-example</code> which renders a nice style for the example (as you can see below).</p> -->
+        <p>It's role is in rendering an exemple to the User Interface so the explanations are made easier.</p>
+        <p>It's best used with <psk-link tag="psk-code">psk-code</psk-link> for rendering a code example.</p>
+        <p>For the Visual Example we created we recommend using the <code>class="app-example"</code> for a better experience.</p>
     </psk-description>
 
     <psk-property-descriptor title="Supported properties">
@@ -15,13 +18,12 @@
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
-        <p>This component has a slot,as a HTML child, that renders the data between the tags in the new
-            <code>psk-chapter</code>.</p>
+        <p>This component's HTML Children are rendered in the new <code>psk-chapter</code> created using it's title property.</p>
     </psk-chapter>
 
     <psk-chapter title="Code Example">
         <psk-code language="markup">
-            <psk-example title="Title Example">
+            <psk-example class="app-example" title="Title Example">
                 <psk-list list-type="bullet">
                     <p>First entry</p>
                     <p>Second entry</p>
