@@ -1,5 +1,6 @@
-{   "theme":"default",
-    "appVersion":"0.2.0",
+{
+    "theme": "default",
+    "appVersion": "0.2.0",
     "profile": {
         "username": "PrivateSky",
         "email": "privatesky@axiologic.net",
@@ -30,11 +31,11 @@
 
                     {
                         "name": "Why",
-                        "tags":"why"
+                        "tags": "why"
                     },
                     {
                         "name": "Main Innovations",
-                        "tags":"main-innovations"
+                        "tags": "main-innovations"
                     },
                     {
                         "name": "Architecture",
@@ -44,12 +45,10 @@
                         "name": "Blockchain",
                         "path": "Blockchain",
                         "icon": "fa-cog",
-                        "children": [
-                            {
-                                "name": "Secret Smart Contracts",
-                                "tags": "secret-smart-contracts"
-                            }
-                        ]
+                        "children": [{
+                            "name": "Secret Smart Contracts",
+                            "tags": "secret-smart-contracts"
+                        }]
                     },
                     {
                         "name": "Development Vision",
@@ -70,8 +69,7 @@
                 "name": "APIs",
                 "path": "/API",
                 "icon": "fa-cog",
-                "children": [
-                    {
+                "children": [{
                         "name": "PrivateSky APIs",
                         "tags": "privatesky-apis"
                     },
@@ -81,8 +79,7 @@
                     },
                     {
                         "name": "Blockchain",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Overview",
                                 "tags": "overview"
                             },
@@ -94,8 +91,7 @@
                     },
                     {
                         "name": "EDFS",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Overview"
                             },
                             {
@@ -111,8 +107,7 @@
                     },
                     {
                         "name": "Web - Services",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Overview"
                             },
                             {
@@ -131,8 +126,7 @@
                     },
                     {
                         "name": "SSApps",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Overview",
                                 "tags": "ss-app-overview"
                             },
@@ -149,8 +143,7 @@
                     },
                     {
                         "name": "Classes",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Seed"
                             },
                             {
@@ -181,7 +174,7 @@
                     },
                     {
                         "name": "Controllers",
-                        "tags":"mvc-controller"
+                        "tags": "mvc-controller"
                     },
                     {
                         "name": "Events"
@@ -193,10 +186,9 @@
                         "name": "Wiki Components",
                         "path": "/wiki-components",
                         "icon": "fa-bolt",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Card",
-                                "tags":"psk-card"
+                                "tags": "psk-card"
 
                             },
                             {
@@ -269,8 +261,7 @@
                         "name": "Web Components",
                         "path": "/web-components",
                         "icon": "fa-cog",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "App Menu",
                                 "tags": "psk-app-menu"
 
@@ -292,7 +283,7 @@
                             },
                             {
                                 "name": "Button",
-                                "tags":"psk-button"
+                                "tags": "psk-button"
                             },
                             {
                                 "name": "Button Group",
@@ -306,7 +297,7 @@
                             },
                             {
                                 "name": "Container",
-                                "tags":"psk-container"
+                                "tags": "psk-container"
                             },
                             {
                                 "name": "Feedback List",
@@ -325,7 +316,7 @@
                             },
                             {
                                 "name": "For each",
-                                "tag":"psk-for-each"
+                                "tag": "psk-for-each"
                             },
                             {
                                 "name": "Grid",
@@ -335,6 +326,11 @@
                             {
                                 "name": "Icon",
                                 "tags": "psk-icon"
+
+                            },
+                            {
+                                "name": "Live Code",
+                                "tags": "live-code"
 
                             },
                             {
@@ -391,10 +387,9 @@
                     },
                     {
                         "name": "Forms",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Using Forms",
-                                "tags":"using-forms"
+                                "tags": "using-forms"
                             },
                             {
                                 "name": "Checkbox",
@@ -412,7 +407,7 @@
                             },
                             {
                                 "name": "Form",
-                                "tags":"psk-form"
+                                "tags": "psk-form"
                             },
                             {
                                 "name": "Form row",
@@ -421,7 +416,7 @@
                             },
                             {
                                 "name": "Input",
-                                "tags":"psk-input"
+                                "tags": "psk-input"
                             },
                             {
                                 "name": "Label",
@@ -470,8 +465,7 @@
                 "name": "How To Create",
                 "path": "/Howto",
                 "icon": "fa-cog",
-                "children": [
-                    {
+                "children": [{
                         "name": "A site with Cardinal"
                     },
                     {
@@ -480,7 +474,7 @@
                     },
                     {
                         "name": "A documentation site",
-                        "tags":"documentation-site, ssapp"
+                        "tags": "documentation-site, ssapp"
                     },
                     {
                         "name": "A web site with swarms"
@@ -491,8 +485,7 @@
                 "name": "Quick Start",
                 "path": "/Start",
                 "icon": "fa-cog",
-                "children": [
-                    {
+                "children": [{
                         "name": "Installation"
                     },
                     {
@@ -510,14 +503,13 @@
                 "path": "/About",
                 "icon": "fa-cog",
                 "pageSrc": "About/about.html",
-                "tags":"about, open-source"
+                "tags": "about, open-source"
             },
             {
                 "name": "Tools",
                 "path": "/Tools",
                 "icon": "fa-cog",
-                "children": [
-                    {
+                "children": [{
                         "name": "Octopus"
                     },
                     {
@@ -550,8 +542,7 @@
                 "name": "Development",
                 "path": "/Development",
                 "icon": "fa-cog",
-                "children": [
-                    {
+                "children": [{
                         "name": "For PrivateSky Contributors"
                     },
                     {
@@ -595,8 +586,7 @@
                         "name": "EDFS",
                         "path": "/EDFS",
                         "icon": "fa-cog",
-                        "children": [
-                            {
+                        "children": [{
                                 "name": "Brick Archives"
                             },
                             {
@@ -606,7 +596,7 @@
                     },
                     {
                         "name": "Smoke Tests Results",
-                        "pageSrc":"https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
+                        "pageSrc": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
                         "options": {
                             "type": "iframe"
                         }

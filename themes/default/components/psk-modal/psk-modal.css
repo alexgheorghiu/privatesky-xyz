@@ -34,25 +34,37 @@
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease-out;
-    border-radius:5px;
+    border-radius: 5px;
 }
-::slotted(h3){
-    margin-top:1.5rem !important;
+
+:host([expanded='true']) #modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+::slotted(h3) {
+    margin-top: 1.5rem !important;
     margin-left: auto;
     font-size: 1.37rem !important;
-    color:#4C71DE;
+    color: #4C71DE;
 }
-.modal-header{
-    border:none;
-    padding:2rem 2rem 0.5rem;
+
+.modal-header {
+    border: none;
+    padding: 2rem 2rem 0.5rem;
 }
-.modal-body{
-    padding:0 3rem;
+
+.modal-body {
+    padding: 0 3rem;
 }
-.modal-footer{
-    border:none;
-    padding:0 4rem 1rem;
+
+.modal-footer {
+    border: none;
+    padding: 0 4rem 1rem;
 }
+
 #main {
     padding: 1rem;
 }
@@ -78,7 +90,7 @@
     #actions {
         padding: 2rem;
     }
-    .modal-content{
+    .modal-content {
         margin-bottom: 1rem;
     }
 }

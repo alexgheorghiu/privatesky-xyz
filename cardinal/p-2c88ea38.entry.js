@@ -1,1 +1,0 @@
-import{r as o}from"./p-9eaba2bd.js";import"./p-31d717e6.js";import{i as s}from"./p-532bd942.js";import"./p-1728ead7.js";const t=class{constructor(s){o(this,s)}componentWillLoad(){this.url?this.history.push(this.url,{}):console.error("Url was not provided")}};s(t);export{t as psk_route_redirect}
