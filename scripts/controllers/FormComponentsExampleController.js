@@ -8,6 +8,13 @@ const model = {
         placeholder: "Name here...",
         value: ''
     },
+    description: {
+        label: "Description",
+        name: "description",
+        required: true,
+        placeholder: "Describe your Tender Offer",
+        value: ''
+    },
     email: {
         label: "Email ",
         name: "email",
@@ -182,6 +189,17 @@ export default class FormComponentExampleController extends ContainerController 
                 this.feedbackEmitter(`Thank you for trying out our framework!`,"radio Example","alert-success")
             }   
         }
+
+        let textareaSubmit = () => {
+            let description = this.model.description.value;
+            console.log(this.model.description.value)
+            if(description === ''){
+                this.feedbackEmitter(`Please tell us how you feel about this component before submitting!`,"radio Example","alert-danger")
+            } else {
+                this.feedbackEmitter(`Thank you for this feedback : ${description}`,"radio Example","alert-success")
+            }
+        }
+
         this.on("Date submit",dateSubmit);
         this.on("Formated Date submit",formatedDateSubmit)
         this.on("Email submit",emailSubmit);
@@ -193,6 +211,6 @@ export default class FormComponentExampleController extends ContainerController 
         this.on("Password submit",passwordSubmit);
         this.on("Radio submit",radioSubmit);
         this.on("Radio-group submit",radioSubmit);
-
+        this.on("Textarea submit",textareaSubmit);
     }
 }

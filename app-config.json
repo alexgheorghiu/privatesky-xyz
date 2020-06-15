@@ -454,6 +454,10 @@
 
                             },
                             {
+                                "name": "Textarea",
+                                "tags": "psk-textarea"
+                            },
+                            {
                                 "name": "Text input",
                                 "tags": "psk-text-input"
 
