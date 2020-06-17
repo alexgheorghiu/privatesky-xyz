@@ -59,7 +59,10 @@ const model = {
         label: "FORMATED DATE",
         name: "date-to-format",
         required: false,
-        value: ''
+        value: '2322352464212',
+        dataFormat:"MM YYYY DD",
+        timestamp: "true"
+
     },
     number: {
         label: "Choose a number:",
@@ -186,7 +189,7 @@ export default class FormComponentExampleController extends ContainerController 
             if(date === ''){
                 this.feedbackEmitter(`Please click on the calendar to select a date and see the example!`,"radio Example","alert-danger")
             } else {
-                this.feedbackEmitter(`Thank you for trying out our framework!`,"radio Example","alert-success")
+                this.feedbackEmitter(`Thank you for trying out our framework,here is your date: ${date}!`,"radio Example","alert-success")
             }   
         }
 

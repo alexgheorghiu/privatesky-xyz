@@ -7,7 +7,7 @@
         <p>This component is extended from the
             <psk-link tag="psk-input">psk-input</psk-link> component, it is used inside a
             <psk-link tag="psk-form">psk-form</psk-link> component and is intending to be used as input for
-            dates, as the component will be able to display a calendar in order to select a date, but also can be
+            dates or timestamps, as the component will be able to display a calendar in order to select a date, but also can be
             written by the user in the displayed format.</p>
         <p>The other components derived from
             <psk-link tag="psk-input">psk-input</psk-link> are:</p>
@@ -43,6 +43,14 @@
                         required: false,
                         value: ''
                     }
+                },
+                formatedDate: {
+                    label: "FORMATED DATE",
+                    name: "date-to-format",
+                    required: false,
+                    value: '2322352464212',
+                    dataFormat:"MM YYYY DD",
+                    timestamp: "true"
                 }
             }
 
@@ -75,7 +83,7 @@
                         if(date === ''){
                             this.feedbackEmitter(`Please click on the calendar to select a date and see the example!`,"radio Example","alert-danger")
                         } else {
-                            this.feedbackEmitter(`Thank you for trying out our framework!`,"radio Example","alert-success")
+                            this.feedbackEmitter(`Thank you for trying out our framework,here is your date: ${date}!`,"radio Example","alert-success")
                         }   
                     }
                     
@@ -96,7 +104,7 @@
             </psk-form>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Formated Date submit">
                 <psk-grid columns="1" layout="xl=[5]">
-                    <psk-date-input view-model="formatedDate" data-format="DD MM YYYY"></psk-date-input>
+                    <psk-date-input view-model="formatedDate" ></psk-date-input>
                 </psk-grid>
                 <psk-list-feedbacks messages-to-display="5" time-alive="3000">
                 </psk-list-feedbacks>
@@ -119,9 +127,11 @@
                 </psk-list-feedbacks>
             </psk-form>
             <p>Since these dates use the standard format given by the <code>type="date"</code> property of the <code>input</code>, we added the <code>data-format</code> property.</p>
+            <p>And since sometimes it is easier to work with timestamps than with actual dates we added the <code>timestamp</code> property.</p>
+            <p>Here is an example where you can see both the properties at work:</p>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Formated Date submit">
-                <psk-grid columns="1" layout="xl=[5]">
-                    <psk-date-input view-model="formatedDate" data-format="DD MM YYYY"></psk-date-input>
+                <psk-grid columns="2" layout="xl=[5,5]">
+                    <psk-date-input view-model="formatedDate"></psk-date-input>
                 </psk-grid>
                 <psk-list-feedbacks messages-to-display="5" time-alive="3000">
                 </psk-list-feedbacks>
