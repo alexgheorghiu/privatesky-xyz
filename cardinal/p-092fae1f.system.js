@@ -1,1 +1,0 @@
-System.register(["./p-4263d201.system.js"],(function(t){"use strict";var e;return{setters:[function(t){e=t.A}],execute:function(){t("i",n);function n(t){e.injectProps(t,["history","location"])}}}}));
