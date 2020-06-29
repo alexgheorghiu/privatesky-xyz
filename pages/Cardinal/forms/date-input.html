@@ -49,8 +49,7 @@
                     name: "date-to-format",
                     required: false,
                     value: '2322352464212',
-                    dataFormat:"MM YYYY DD",
-                    timestamp: "true"
+                    dataFormat:"MM YYYY DD"
                 }
             }
 
@@ -127,8 +126,7 @@
                 </psk-list-feedbacks>
             </psk-form>
             <p>Since these dates use the standard format given by the <code>type="date"</code> property of the <code>input</code>, we added the <code>data-format</code> property.</p>
-            <p>And since sometimes it is easier to work with timestamps than with actual dates we added the <code>timestamp</code> property.</p>
-            <p>Here is an example where you can see both the properties at work:</p>
+            <p>The model is storing the timestamp representation of the selected date. As example, select a date from the below component, then submit it. A feedback component will display the timestamp of the date.</p>
             <psk-form controller-name="FormComponentsExampleController" form-actions="Formated Date submit">
                 <psk-grid columns="2" layout="xl=[5,5]">
                     <psk-date-input view-model="formatedDate"></psk-date-input>
