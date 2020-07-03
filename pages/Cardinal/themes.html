@@ -10,13 +10,13 @@
 
   <psk-chapter title="New theme set-up">
    <p>
-    By default, Cardinal has a folder named “themes” where we can find a standard theme for the web components. The first step in creating a new theme is to add a new theme folder. For example, besides the default theme, we can add a new folder called “newlook”. 
+    By default, Cardinal has a folder named “themes” where we can find a standard theme for the web components. The first step in creating a new theme is to add a new theme folder. For example, besides the default theme, we can add a new folder called “newlook”.
    </p>
    <p>
     Every theme folder  contains an assets and a components subfolder. In the assets we can add different fonts, icons, images or libraries that are necessary for the new design system. The assets subfolder can be empty, but the components subfolder is absolutely necessary in order to make the new theme. In “components” we will have to add a folder for every web component and assign to each one a css file with the same name. This will help us customize each web component separately by changing the css properties according to the new design system.
   </p>
    <p>
-    After creating the new theme folder, we need to modify the <b>app-config.json</b> file. In this JSON's object we have to specify which theme we want to render. Below you can see how to change the theme to “newlook”.
+    After creating the new theme folder, we need to modify the <b>config.json</b> file. In this JSON's object we have to specify which theme we want to render. Below you can see how to change the theme to “newlook”.
    </p>
     <psk-code language="markup">
           <script>
@@ -25,7 +25,7 @@
             }
           </script>
     </psk-code>
-  
+
   </psk-chapter>
   <psk-chapter  title="Particularities in designing web components">
     <p>
@@ -40,7 +40,7 @@
       }
       my-element p {
         color: blue;
-      }      
+      }
     </psk-code>
     <p>
       With Shadow DOM, CSS selectors inside the component can be simplified and the parent component can be styled using the <code>:host</code> selector. Therefore the code above could be:
@@ -51,7 +51,7 @@
       }
       p {
         color: blue;
-      }      
+      }
     </psk-code>
     <p>
       The <code>:host</code> selector can be in handy, if you want to add style to elements based on the parent component attributes. For example, the app-menu component uses in its composition the psk-menu-item-renderer component. Using the app-menu attribute named <b>hamburger</b>, we can write in <b>psk-menu-item-renderer.css</b> file new css rules that can change the children elements of the app-menu component. In the example below, you can see how to change all the div elements width, if the attribute hamburger is set up to true:
@@ -59,7 +59,7 @@
     <psk-code language="css">
       :host([hamburger]) div {
         width: 300px;
-    }    
+    }
     </psk-code>
   </psk-chapter>
 
@@ -84,7 +84,7 @@
 
           <div class="card-body">
           </div>
-        </div>        
+        </div>
       </psk-code>
       <p>
         Based on this structure, we can use the automatically generated classes to customize the header and the body, as well as any other html elements that may be included in the body section, by the parent component.
@@ -104,10 +104,10 @@
       </p>
       <psk-code language="markup">
         <div class=row>
-          
+
           <!-- elements -->
-          
-        </div>        
+
+        </div>
       </psk-code>
       <p>
         Each element inside the psk-grid component, will have the <code>col-12</code> and <code>col-md-x</code> classes (x is equal to 12 divided by the number of columns we want to be displayed). Using those classes we can style the overall grid.
@@ -127,7 +127,7 @@
           </div>
           <div class=image_description>
           </div>
-        </div>        
+        </div>
       </psk-code>
       <p>
         Based on the <code>image_container</code>, <code>image_wrapper</code>, <code>image_description</code> and <code>img-fluid</code> classes we can target specific elements of this component.
@@ -139,9 +139,9 @@
       </p>
       <psk-code language="markup">
         <div class=psk-link>
-          <a class="btn btn-link"> 
+          <a class="btn btn-link">
           </a>
-        </div>          
+        </div>
       </psk-code>
       <p>
         Using the <code>psk-link</code>, <code>btn</code> and <code>btn-link</code> classes, we can style this component as any other link or we can style it totally different.
@@ -152,7 +152,7 @@
         This component returns a normal ordered or unordered html list structure, depending on the <code>listType</code> property. The resulting list can be styled by changing the <b>psk-list.css</b> file, using the <code>ul</code>, <code>ol</code> and <code>li</code> tags.
       </p>
     </psk-chapter>
-    <psk-chapter title="psk-page"> 
+    <psk-chapter title="psk-page">
       <p>
         This component is extremely useful in creating a page template for a website. The psk-page component returns the following html structure:
       </p>
@@ -163,7 +163,7 @@
           </nav>
           <div class='page-content container'>
           </div>
-        </div>        
+        </div>
       </psk-code>
       <p>
         The automatically generated html structure and css classes can help us in changing the page layout and style.
@@ -207,7 +207,7 @@
         Divided into three different section, by the <code>thead</code>, <code>tbody</code> and <code>tfoot</code> tags, the table can be easily customized.
       </p>
     </psk-chapter>
-    
+
   </psk-chapter>
-  
+
 </psk-page>

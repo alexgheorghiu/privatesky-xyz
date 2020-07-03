@@ -32,7 +32,7 @@
 
 	<psk-chapter title="Create a new page">
 		<p>In order to create a new page, first, we need to understand how works the file named
-			<code>app-config.json</code>. Inside this file, there is a configuration that tells the web-site what pages
+			<code>menu.json</code>. Inside this file, there is a configuration that tells the web-site what pages
 			can be displayed.</p>
 		<p>One of the key names inside the file is "pages". Everything defined inside this key will be displayed in the
 			application menu, so it can be opened. The following example will also show how this page is registered.</p>
@@ -65,11 +65,11 @@
 	]
 }]}
 		</psk-code>
-		<p>Every HTML page is written inside "pages" directory followed by the sub-tree defined in "app-config.json". In
+		<p>Every HTML page is written inside "pages" directory followed by the sub-tree defined in "menu.json". In
 			the above code sample, we have The section About and this page is inside the sub-tree of the section. In
 			this way, the folder structure is the following one: <code>pages/about/how-to-write-documentation-pages.html</code>, so
 			the components will be able to load the page correctly.</p>
-		<p>So, in order to create a new page, keep in mind that the page needs to be registered in the <code>app-config.json</code> file and the HTML file needs to be placed in the folder structure as above explained.</p>
+		<p>So, in order to create a new page, keep in mind that the page needs to be registered in the <code>menu.json</code> file and the HTML file needs to be placed in the folder structure as above explained.</p>
 	</psk-chapter>
 
 	<psk-chapter title="New page structure - Advices and Recommendations">
