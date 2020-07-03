@@ -1,6 +1,6 @@
 <psk-page title="app-menu">
 
-  
+
 
   <psk-toc title="Table of contents"></psk-toc>
 
@@ -21,49 +21,34 @@
   </psk-controller-descriptor>
 
   <psk-chapter title="HTML Children">
-    <p>This component has no HTML children.</p>
+    <p>The menu component accepts 2 types of slots :</p>
+    <psk-list>
+      <psk-label><b>slot="before"</b> - this slot is rendered before the menu items</psk-label>
+      <psk-label><b>slot="after"</b> - this slot is rendered after the menu items</psk-label>
+    </psk-list>
   </psk-chapter>
 
   <psk-chapter title="Code Example">
     <psk-code language="markup">
       <psk-container>
         <script>
-            let menuItems = [{
-              "name": "Main Innovations",
-              "path": "?PrivateSky/main-innovations",
-              "icon": "fa-bars",
-              "type": "route",
-              "component": "psk-page-loader",
-              "exact": true,
-              "indexed": true,
-              "pagePrefix": "?",
-              "historyType": "query",
-              "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/main-innovations.html"
-                } 
-              },
-              {
+          let menuItems = [{
+            "name": "Main Innovations",
+            "path": "?Overview/main-innovations",
+            "icon": "fa-bars",
+            "type": "route",
+            "component": "psk-page-loader",
+            "exact": true,
+            "indexed": true,
+            "pagePrefix": "?",
+            "historyType": "query",
+            "componentProps": {
+              "pageUrl": "http://privatesky.xyz/pages/Overview/main-innovations.html"
+            }
+          },
+            {
               "name": "Architecture",
-              "icon": "fa-bars",
-              "type": "abstract",
-              children: [{
-                  "name": "Architecture",
-                  "path": "?PrivateSky/architecture",
-                  "icon": "fa-bars",
-                  "type": "route",
-                  "component": "psk-page-loader",
-                  "exact": true,
-                  "indexed": true,
-                  "pagePrefix": "?",
-                  "historyType": "query",
-                  "componentProps": {
-                      "pageUrl": "http://localhost:8000/pages/PrivateSky/architecture.html"
-                    }
-                }]
-              },
-              {
-              "name": "Development Vision",
-              "path": "?PrivateSky/development-vision",
+              "path": "?Overview/architecture",
               "icon": "fa-bars",
               "type": "route",
               "component": "psk-page-loader",
@@ -72,24 +57,10 @@
               "pagePrefix": "?",
               "historyType": "query",
               "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/development-vision.html"
-                }
-              },
-              {
-              "name": "Swarms Explained",
-              "path": "?PrivateSky/swarms-explained",
-              "icon": "fa-bars",
-              "type": "route",
-              "component": "psk-page-loader",
-              "exact": true,
-              "indexed": true,
-              "pagePrefix": "?",
-              "historyType": "query",
-              "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/swarms-explained.html"
-                }
+                "pageUrl": "http://privatesky.xyz/pages/Overview/architecture.html"
               }
-              ]
+            }
+          ]
             controller.on("needMenuItems", function (evt) {
               evt.stopImmediatePropagation();
               callback = evt.detail;
@@ -98,6 +69,8 @@
           </script>
         <header style="background: #005cbf;">
             <app-menu>
+              <psk-label slot="before" style="color:white">This is shown before the menu items are rendered</psk-label>
+              <psk-label slot="after" style="color:white">This is shown after the menu items are rendered</psk-label>
             </app-menu>
         </header>
         </psk-container>
@@ -109,7 +82,7 @@
         <script>
           let menuItems = [{
               "name": "Main Innovations",
-              "path": "?PrivateSky/main-innovations",
+              "path": "?Overview/main-innovations",
               "icon": "fa-bars",
               "type": "route",
               "component": "psk-page-loader",
@@ -118,16 +91,12 @@
               "pagePrefix": "?",
               "historyType": "query",
               "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/main-innovations.html"
+                  "pageUrl": "http://privatesky.xyz/pages/Overview/main-innovations.html"
               }
           },
-          {
-              "name": "Architecture",
-              "icon": "fa-bars",
-              "type": "abstract",
-              children: [{
+         {
                   "name": "Architecture",
-                  "path": "?PrivateSky/architecture",
+                  "path": "?Overview/architecture",
                   "icon": "fa-bars",
                   "type": "route",
                   "component": "psk-page-loader",
@@ -136,37 +105,8 @@
                   "pagePrefix": "?",
                   "historyType": "query",
                   "componentProps": {
-                      "pageUrl": "http://localhost:8000/pages/PrivateSky/architecture.html"
+                    "pageUrl": "http://privatesky.xyz/pages/Overview/architecture.html"
                   }
-              }]
-          },
-          {
-              "name": "Development Vision",
-              "path": "?PrivateSky/development-vision",
-              "icon": "fa-bars",
-              "type": "route",
-              "component": "psk-page-loader",
-              "exact": true,
-              "indexed": true,
-              "pagePrefix": "?",
-              "historyType": "query",
-              "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/development-vision.html"
-              }
-          },
-          {
-              "name": "Swarms Explained",
-              "path": "?PrivateSky/swarms-explained",
-              "icon": "fa-bars",
-              "type": "route",
-              "component": "psk-page-loader",
-              "exact": true,
-              "indexed": true,
-              "pagePrefix": "?",
-              "historyType": "query",
-              "componentProps": {
-                  "pageUrl": "http://localhost:8000/pages/PrivateSky/swarms-explained.html"
-              }
           }
           ]
           controller.on("needMenuItems", function (evt) {
@@ -176,8 +116,10 @@
           })
         </script>
           <header style="background: #005cbf;">
-              <app-menu hamburger-max-width="0">
-              </app-menu>
+            <app-menu hamburger-max-width="0">
+              <psk-label slot="before" style="color:white">This is shown before the menu items are rendered</psk-label>
+              <psk-label slot="after" style="color:white">This is shown after the menu items are rendered</psk-label>
+            </app-menu>
           </header>
       </psk-container>
     </psk-example>
