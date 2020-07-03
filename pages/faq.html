@@ -118,7 +118,36 @@
             Our web-wallet solution uses the <code>dossier-explorer-wallet-prototype</code> as a wallet base and if we need to change the menu structure of the
             <code>web-wallet</code> we have to create a file called <code><b>menu.json</b></code> in <code>/web-server/wallet-template</code> directory.
             At this moment we can make changes in our new <code>menu.json</code> file as we wish. Example of menu.json content:
-            <psk-img src="/assets/images/faq/app-config.png"></psk-img>
+            <psk-code language="json">
+                {
+                  "defaultMenuConfig": {
+                    "icon": "fa-bars",
+                    "type": "route",
+                    "component": "psk-page-loader",
+                    "exact": false,
+                    "indexed": true,
+                    "historyType": "browser"
+                  },
+                  "pages": [
+                    {
+                      "name": "Home",
+                      "path": "/home",
+                      "pageSrc": "view-profile.html"
+                    },
+                    {
+                      "name": "Edit",
+                      "path": "/edit",
+                      "pageSrc": "edit-profile.html"
+                    },
+                    {
+                      "name": "Share",
+                      "path": "/share",
+                      "pageSrc": "share.html"
+                    }
+                  ]
+                }
+
+            </psk-code>
             Our new <code>menu.json</code> file will be loaded instead of the <code>menu.json</code>
             file stored inside <code>dossier-explorer-wallet-prototype</code> that is bound to our web-wallet.
         </psk-chapter>
