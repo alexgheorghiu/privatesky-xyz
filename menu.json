@@ -172,7 +172,8 @@
                     "name": "Events"
                 },
                 {
-                    "name": "Themes"
+                    "name": "Themes",
+                    "tags": "Themes"
                 },
                 {
                     "name": "Wiki Components",
