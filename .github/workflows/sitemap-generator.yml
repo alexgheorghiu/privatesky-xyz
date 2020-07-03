@@ -3,7 +3,7 @@ name: Sitemap Generator
 on:
   push:
     paths:
-      - 'app-config.json'
+      - 'menu.json'
 jobs:
   build:
 
@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Create local changes
       run: |
-        npm ci 
+        npm ci
         npm run generate-sitemap --if-present
     - name: Commit files
       run: |
@@ -35,4 +35,4 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        curl -XPOST -H"Authorization: token ${ACCESS_TOKEN}" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds   
+        curl -XPOST -H"Authorization: token ${ACCESS_TOKEN}" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds
