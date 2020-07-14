@@ -94,6 +94,9 @@
                         },
                         {
                             "name": "Dossiers"
+                        },
+                        {
+                            "name": "Key SSIs"
                         }
                     ]
                 },
