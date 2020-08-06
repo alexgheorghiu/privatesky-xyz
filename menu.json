@@ -66,6 +66,13 @@
                     "tags": "privatesky-apis"
                 },
                 {
+                    "name": "OpenDSU communication",
+                    "pageSrc": "API/OpenDSUCommunication/index.html",
+                    "options": {
+                        "type": "iframe"
+                    }
+                },
+                {
                     "name": "Swarms",
                     "tags": "swarms"
                 },
