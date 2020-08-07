@@ -166,7 +166,8 @@
             "icon": "fa-cog",
             "children": [{
                     "name": "Web Components MVC",
-                    "tags": "cardinal-mvc"
+                    "tags": "cardinal-mvc",
+                    "path":"cardinal-web-components"
                 },
                 {
                     "name": "Models"
@@ -285,6 +286,16 @@
 
                         },
                         {
+                            "name": "Barcode Generator",
+                            "tags": "barcode-generator"
+
+                        },
+                        {
+                            "name": "Barcode Scanner",
+                            "tags": "barcode-scanner"
+                        },
+
+                        {
                             "name": "Button",
                             "tags": "psk-button"
                         },
@@ -363,7 +374,8 @@
                         },
                         {
                             "name": "SSApp",
-                            "tags": "psk-ssapp"
+                            "tags": "psk-ssapp",
+                            "indexed": false
 
                         },
                         {
