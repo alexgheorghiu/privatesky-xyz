@@ -67,6 +67,7 @@
             const model = {
                 gdpr: 0,
                 form: {
+                    wasSubmitted:false,
                     email: {
                         label: 'Email',
                         name: 'email',
@@ -99,14 +100,11 @@
                     this.on('validate-email', (e) => {
                         e.preventDefault();
                         e.stopImmediatePropagation();
-                        const elements = this._element.getElementsByClassName('alert');
-                        for (let el of elements) {
-                            el.classList.remove('d-none');
+                        if(this.model.form.wasSubmitted === false){
+                            this.model.form.wasSubmitted = true;
                         }
-
                         const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
                         const emailValue = this.model.form.email.value;
-
                         this.model.form.email.isValid = emailRegex.test(emailValue);
                     })
                 }
@@ -116,14 +114,16 @@
         <psk-code language="markup">
             <!-- View -->
             <psk-container controller-name="TestConditionController">
-                <psk-condition condition="@formHasErrors">
-                    <div slot="condition-true" class="alert alert-danger d-none">
-                        <p>The email address is invalid</p>
-                    </div>
+                <psk-condition condition="@form.wasSubmitted">
+                    <psk-condition condition="@formHasErrors">
+                        <div slot="condition-true" class="alert alert-danger">
+                            <p>The email address is invalid</p>
+                        </div>
 
-                    <div slot="condition-false" class="alert alert-success d-none">
-                        <p>The email address is valid</p>
-                    </div>
+                        <div slot="condition-false" class="alert alert-success">
+                            <p>The email address is valid</p>
+                        </div>
+                    </psk-condition>
                 </psk-condition>
 
                 <psk-form-row>
@@ -137,14 +137,16 @@
         </psk-code>
 
         <psk-container controller-name="TestConditionController">
-            <psk-condition condition="@formHasErrors">
-                <div slot="condition-true" class="alert alert-danger d-none">
-                    <p>The email address is invalid</p>
-                </div>
+            <psk-condition condition="@form.wasSubmitted">
+                <psk-condition condition="@formHasErrors">
+                    <div slot="condition-true" class="alert alert-danger">
+                        <p>The email address is invalid</p>
+                    </div>
 
-                <div slot="condition-false" class="alert alert-success d-none">
-                    <p>The email address is valid</p>
-                </div>
+                    <div slot="condition-false" class="alert alert-success">
+                        <p>The email address is valid</p>
+                    </div>
+                </psk-condition>
             </psk-condition>
 
             <psk-form-row>

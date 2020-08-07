@@ -5,6 +5,7 @@ const model = {
     amount: 20,
     currency: '$',
     form: {
+        wasSubmitted:false,
         email: {
             label: 'Email',
             name: 'email',
@@ -47,14 +48,11 @@ export default class TestConditionController extends ContainerController {
         this.on('validate-email', (e) => {
             e.preventDefault();
             e.stopImmediatePropagation();
-            const elements = this.element.getElementsByClassName('alert');
-            for (let el of elements) {
-                el.classList.remove('d-none');
+            if(this.model.form.wasSubmitted === false){
+                this.model.form.wasSubmitted = true;
             }
-
             const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             const emailValue = this.model.form.email.value;
-
             this.model.form.email.isValid = emailRegex.test(emailValue);
         })
 
