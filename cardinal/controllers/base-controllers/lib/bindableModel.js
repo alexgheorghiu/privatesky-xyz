@@ -1,4 +1,10 @@
-bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\Catalin\\Munca\\d1\\privatesky\\builds\\tmp\\bindableModel_intermediar.js":[function(require,module,exports){
+bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\builds\\tmp\\bindableModel.js":[function(require,module,exports){
+if(typeof window.process === "undefined"){
+	window.process = {};
+}
+require("./bindableModel_intermediar");
+
+},{"./bindableModel_intermediar":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\builds\\tmp\\bindableModel_intermediar.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\builds\\tmp\\bindableModel_intermediar.js":[function(require,module,exports){
 (function (global){
 global.bindableModelLoadModules = function(){ 
 
@@ -40,7 +46,7 @@ if (typeof $$ !== "undefined") {
 require('source-map-support').install({});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"buffer-from":"buffer-from","overwrite-require":"overwrite-require","psk-bindable-model":"psk-bindable-model","soundpubsub":"soundpubsub","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"buffer-from":"buffer-from","overwrite-require":"overwrite-require","psk-bindable-model":"psk-bindable-model","soundpubsub":"soundpubsub","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -49,7 +55,7 @@ module.exports = {
   NODEJS_ENVIRONMENT_TYPE: 'nodejs'
 };
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
 (function (global){
 let logger = console;
 
@@ -363,16 +369,17 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"psklogger":false}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\psk-bindable-model\\lib\\PskBindableModel.js":[function(require,module,exports){
+},{"psklogger":false}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\psk-bindable-model\\lib\\PskBindableModel.js":[function(require,module,exports){
 const SoundPubSub = require("soundpubsub").soundPubSub;
 const CHAIN_CHANGED = 'chainChanged';
 const WILDCARD = "*";
 const CHAIN_SEPARATOR = ".";
 const MODEL_PREFIX = "Model";
-const compactor = function (message, channel) {
-	if (message.type === CHAIN_CHANGED) {
-		return channel;
-	}
+const ARRAY_CHANGE_METHODS = ['copyWithin', 'fill', 'pop', 'push', 'reverse', 'shift', 'slice', 'sort', 'splice', 'unshift'];
+const compactor = function(message, channel) {
+    if (message.type === CHAIN_CHANGED) {
+        return channel;
+    }
 };
 SoundPubSub.registerCompactor(CHAIN_CHANGED, compactor);
 
@@ -380,333 +387,335 @@ let modelCounter = 0;
 
 class PskBindableModel {
 
-	static setModel(_model) {
-		let root = undefined;
-		let targetPrefix = MODEL_PREFIX + CHAIN_SEPARATOR + modelCounter + CHAIN_SEPARATOR;
-		let observedChains = new Set();
-		const expressions = {};
+    static setModel(_model) {
+        let root = undefined;
+        let targetPrefix = MODEL_PREFIX + CHAIN_SEPARATOR + modelCounter + CHAIN_SEPARATOR;
+        let observedChains = new Set();
+        const expressions = {};
 
-		modelCounter++;
+        modelCounter++;
 
-		function extendChain(parentChain, currentChain) {
-			return parentChain ? parentChain + CHAIN_SEPARATOR + currentChain : currentChain
-		}
+        function extendChain(parentChain, currentChain) {
+            return parentChain ? parentChain + CHAIN_SEPARATOR + currentChain : currentChain
+        }
 
-		function createChannelName(chain) {
-			return targetPrefix + chain;
-		}
+        function createChannelName(chain) {
+            return targetPrefix + chain;
+        }
 
-		function makeSetter(parentChain) {
-			return function (obj, prop, value) {
-				let chain = extendChain(parentChain, prop);
-				if (value && typeof value === "object") {
-					obj[prop] = proxify(value, chain);
-				} else {
-					obj[prop] = value;
-				}
-				root.notify(chain);
-				return true;
-			}
-		}
+        function makeSetter(parentChain) {
+            return function(obj, prop, value) {
+                let chain = extendChain(parentChain, prop);
+                if (value && typeof value === "object") {
+                    obj[prop] = proxify(value, chain);
+                } else {
+                    obj[prop] = value;
+                }
+                root.notify(chain);
+                return true;
+            }
+        }
 
-		function pushHandler(target, parentChain) {
-			return function () {
-				try {
-					let arrayLength = Array.prototype.push.apply(target, arguments);
-					let index = arrayLength - 1;
-					root.notify(extendChain(parentChain, index));
-					return arrayLength;
-				} catch (e) {
-					console.log("An error occurred in Proxy");
-					throw e;
-				}
-			}
-		}
+        function pushHandler(target, parentChain) {
+            return function() {
+                try {
+                    let arrayLength = Array.prototype.push.apply(target, arguments);
+                    let index = arrayLength - 1;
+                    root.notify(extendChain(parentChain, index));
+                    return arrayLength;
+                } catch (e) {
+                    console.log("An error occurred in Proxy");
+                    throw e;
+                }
+            }
+        }
 
-		function arrayFnHandler(fn, target, parentChain) {
-			return function () {
-				try {
-					let returnedValue = Array.prototype[fn].apply(target, arguments);
-					root.notify(parentChain);
-					return returnedValue;
-				} catch (e) {
-					console.log("An error occurred in Proxy");
-					throw e;
-				}
-			}
-		}
+        function arrayFnHandler(fn, target, parentChain) {
+            return function() {
+                try {
+                    let returnedValue = Array.prototype[fn].apply(target, arguments);
+                    if (ARRAY_CHANGE_METHODS.indexOf(fn) !== -1) {
+                        root.notify(parentChain);
+                    }
+                    return returnedValue;
+                } catch (e) {
+                    console.log("An error occurred in Proxy");
+                    throw e;
+                }
+            }
+        }
 
-		function makeArrayGetter(parentChain) {
-			return function (target, prop) {
-				const val = target[prop];
-				if (typeof val === 'function') {
-					switch (prop) {
-						case "push":
-							return pushHandler(target, parentChain);
-						default:
-							return arrayFnHandler(prop, target, parentChain);
-					}
-				}
-				return val;
-			}
-		}
+        function makeArrayGetter(parentChain) {
+            return function(target, prop) {
+                const val = target[prop];
+                if (typeof val === 'function') {
+                    switch (prop) {
+                        case "push":
+                            return pushHandler(target, parentChain);
+                        default:
+                            return arrayFnHandler(prop, target, parentChain);
+                    }
+                }
+                return val;
+            }
+        }
 
-		function proxify(obj, parentChain) {
+        function proxify(obj, parentChain) {
 
-			if (typeof obj !== "object") {
-				return obj;
-			}
+            if (typeof obj !== "object") {
+                return obj;
+            }
 
-			let isRoot = !parentChain;
-			let notify, onChange, getChainValue, setChainValue;
-			if (isRoot) {
-				notify = function (changedChain) {
+            let isRoot = !parentChain;
+            let notify, onChange, getChainValue, setChainValue;
+            if (isRoot) {
+                notify = function(changedChain) {
 
-					function getRelatedChains(changedChain) {
-						let chainsRelatedSet = new Set();
-						chainsRelatedSet.add(WILDCARD);
-						let chainSequence = changedChain.split(CHAIN_SEPARATOR).map(el => el.trim());
+                    function getRelatedChains(changedChain) {
+                        let chainsRelatedSet = new Set();
+                        chainsRelatedSet.add(WILDCARD);
+                        let chainSequence = changedChain.split(CHAIN_SEPARATOR).map(el => el.trim());
 
-						let chainPrefix = "";
-						for (let i = 0; i < chainSequence.length; i++) {
-							if (i !== 0) {
-								chainPrefix += CHAIN_SEPARATOR + chainSequence[i];
-							} else {
-								chainPrefix = chainSequence[i];
-							}
-							chainsRelatedSet.add(chainPrefix);
-						}
+                        let chainPrefix = "";
+                        for (let i = 0; i < chainSequence.length; i++) {
+                            if (i !== 0) {
+                                chainPrefix += CHAIN_SEPARATOR + chainSequence[i];
+                            } else {
+                                chainPrefix = chainSequence[i];
+                            }
+                            chainsRelatedSet.add(chainPrefix);
+                        }
 
-						observedChains.forEach((chain) => {
-							if (chain.startsWith(changedChain)) {
-								chainsRelatedSet.add(chain);
-							}
-						});
+                        observedChains.forEach((chain) => {
+                            if (chain.startsWith(changedChain)) {
+                                chainsRelatedSet.add(chain);
+                            }
+                        });
 
-						return chainsRelatedSet;
-					}
+                        return chainsRelatedSet;
+                    }
 
-					let changedChains = getRelatedChains(changedChain);
+                    let changedChains = getRelatedChains(changedChain);
 
-					changedChains.forEach(changedChain => {
-						SoundPubSub.publish(createChannelName(changedChain), {
-							type: CHAIN_CHANGED,
-							chain: changedChain
-						});
-					})
-				};
+                    changedChains.forEach(changedChain => {
+                        SoundPubSub.publish(createChannelName(changedChain), {
+                            type: CHAIN_CHANGED,
+                            chain: changedChain
+                        });
+                    })
+                };
 
-				getChainValue = function (chain) {
+                getChainValue = function(chain) {
 
-					if (!chain) {
-						return root;
-					}
+                    if (!chain) {
+                        return root;
+                    }
 
-					let chainSequence = chain.split(CHAIN_SEPARATOR).map(el => el.trim());
-					let reducer = (accumulator, currentValue) => {
-						if (accumulator !== null && typeof accumulator !== 'undefined') {
-							return accumulator[currentValue];
-						}
-						return undefined;
-					};
-					return chainSequence.reduce(reducer, root);
-				};
+                    let chainSequence = chain.split(CHAIN_SEPARATOR).map(el => el.trim());
+                    let reducer = (accumulator, currentValue) => {
+                        if (accumulator !== null && typeof accumulator !== 'undefined') {
+                            return accumulator[currentValue];
+                        }
+                        return undefined;
+                    };
+                    return chainSequence.reduce(reducer, root);
+                };
 
-				setChainValue = function (chain, value) {
-					let chainSequence = chain.split(CHAIN_SEPARATOR).map(el => el.trim());
+                setChainValue = function(chain, value) {
+                    let chainSequence = chain.split(CHAIN_SEPARATOR).map(el => el.trim());
 
-					let reducer = (accumulator, currentValue, index, array) => {
-						if (accumulator !== null && typeof accumulator !== 'undefined') {
-							if (index === array.length - 1) {
-								accumulator[currentValue] = value;
-								return true;
-							}
-							accumulator = accumulator[currentValue];
-							return accumulator;
-						}
-						return undefined;
-					};
-					return chainSequence.reduce(reducer, root);
-				};
+                    let reducer = (accumulator, currentValue, index, array) => {
+                        if (accumulator !== null && typeof accumulator !== 'undefined') {
+                            if (index === array.length - 1) {
+                                accumulator[currentValue] = value;
+                                return true;
+                            }
+                            accumulator = accumulator[currentValue];
+                            return accumulator;
+                        }
+                        return undefined;
+                    };
+                    return chainSequence.reduce(reducer, root);
+                };
 
-				onChange = function (chain, callback) {
-					observedChains.add(chain);
-					SoundPubSub.subscribe(createChannelName(chain), callback);
-				}
-			}
-			let setter = makeSetter(parentChain);
+                onChange = function(chain, callback) {
+                    observedChains.add(chain);
+                    SoundPubSub.subscribe(createChannelName(chain), callback);
+                }
+            }
+            let setter = makeSetter(parentChain);
 
-			let handler = {
-				apply: function (target, prop, argumentsList) {
-					throw new Error("A function call was not expected inside proxy!");
-				},
-				constructor: function (target, args) {
-					throw new Error("A constructor call was not expected inside proxy!");
-				},
-				isExtensible: function (target) {
-					return Reflect.isExtensible(target);
-				},
-				preventExtensions: function (target) {
-					return Reflect.preventExtensions(target);
-				},
-				get: function (obj, prop) {
-					if (isRoot) {
-						switch (prop) {
-							case "onChange":
-								return onChange;
-							case "notify":
-								return notify;
-							case "getChainValue":
-								return getChainValue;
-							case "setChainValue":
-								return setChainValue;
-						}
-					}
+            let handler = {
+                apply: function(target, prop, argumentsList) {
+                    throw new Error("A function call was not expected inside proxy!");
+                },
+                constructor: function(target, args) {
+                    throw new Error("A constructor call was not expected inside proxy!");
+                },
+                isExtensible: function(target) {
+                    return Reflect.isExtensible(target);
+                },
+                preventExtensions: function(target) {
+                    return Reflect.preventExtensions(target);
+                },
+                get: function(obj, prop) {
+                    if (isRoot) {
+                        switch (prop) {
+                            case "onChange":
+                                return onChange;
+                            case "notify":
+                                return notify;
+                            case "getChainValue":
+                                return getChainValue;
+                            case "setChainValue":
+                                return setChainValue;
+                        }
+                    }
 
-					return obj[prop];
-				},
-				set: makeSetter(parentChain),
+                    return obj[prop];
+                },
+                set: makeSetter(parentChain),
 
-				deleteProperty: function (oTarget, sKey) {
-					delete oTarget[sKey];
-				},
+                deleteProperty: function(oTarget, sKey) {
+                    delete oTarget[sKey];
+                },
 
-				ownKeys: function (oTarget) {
-					return Reflect.ownKeys(oTarget);
-				},
-				has: function (oTarget, sKey) {
-					return sKey in oTarget
-				},
-				defineProperty: function (oTarget, sKey, oDesc) {
-					let oDescClone = Object.assign({}, oDesc);
-					oDescClone.set = function (obj, prop, value) {
-						if (oDesc.hasOwnProperty("set")) {
-							oDesc.set(obj, prop, value);
-						}
-						setter(obj, prop, value);
-					};
-					return Object.defineProperty(oTarget, sKey, oDescClone);
-				},
-				getOwnPropertyDescriptor: function (oTarget, sKey) {
-					return Object.getOwnPropertyDescriptor(oTarget, sKey)
-				},
-				getPrototypeOf: function (target) {
-					return Reflect.getPrototypeOf(target)
-				},
-				setPrototypeOf: function (target, newProto) {
-					Reflect.setPrototypeOf(target, newProto);
-				}
-			};
+                ownKeys: function(oTarget) {
+                    return Reflect.ownKeys(oTarget);
+                },
+                has: function(oTarget, sKey) {
+                    return sKey in oTarget
+                },
+                defineProperty: function(oTarget, sKey, oDesc) {
+                    let oDescClone = Object.assign({}, oDesc);
+                    oDescClone.set = function(obj, prop, value) {
+                        if (oDesc.hasOwnProperty("set")) {
+                            oDesc.set(obj, prop, value);
+                        }
+                        setter(obj, prop, value);
+                    };
+                    return Object.defineProperty(oTarget, sKey, oDescClone);
+                },
+                getOwnPropertyDescriptor: function(oTarget, sKey) {
+                    return Object.getOwnPropertyDescriptor(oTarget, sKey)
+                },
+                getPrototypeOf: function(target) {
+                    return Reflect.getPrototypeOf(target)
+                },
+                setPrototypeOf: function(target, newProto) {
+                    Reflect.setPrototypeOf(target, newProto);
+                }
+            };
 
-			if (Array.isArray(obj)) {
-				handler.get = makeArrayGetter(parentChain);
-			}
+            if (Array.isArray(obj)) {
+                handler.get = makeArrayGetter(parentChain);
+            }
 
-			//proxify inner objects
-			Object.keys(obj).forEach(prop => {
-				if(obj[prop]) {
-					obj[prop] = proxify(obj[prop], extendChain(parentChain, prop));
-				}
-			});
+            //proxify inner objects
+            Object.keys(obj).forEach(prop => {
+                if (obj[prop]) {
+                    obj[prop] = proxify(obj[prop], extendChain(parentChain, prop));
+                }
+            });
 
-			return new Proxy(obj, handler);
-		}
+            return new Proxy(obj, handler);
+        }
 
-		root = proxify(_model);
+        root = proxify(_model);
 
-		////////////////////////////
-		// Model expressions support
-		////////////////////////////
-		/**
-		 * @param {string} expressionName
-		 * @param {callback} callback
-		 * @param {...string} var_args Variable number of chains to watch. First argument can be an array of chains
-		 * @throws {Error}
-		 */
-		root.addExpression = function (expressionName, callback, ...args) {
-			if (typeof expressionName !== 'string' || !expressionName.length) {
-				throw new Error("Expression name must be a valid string");
-			}
+        ////////////////////////////
+        // Model expressions support
+        ////////////////////////////
+        /**
+         * @param {string} expressionName
+         * @param {callback} callback
+         * @param {...string} var_args Variable number of chains to watch. First argument can be an array of chains
+         * @throws {Error}
+         */
+        root.addExpression = function(expressionName, callback, ...args) {
+            if (typeof expressionName !== 'string' || !expressionName.length) {
+                throw new Error("Expression name must be a valid string");
+            }
 
-			if (typeof callback !== 'function') {
-				throw new Error("Expression must have a callback");
-			}
+            if (typeof callback !== 'function') {
+                throw new Error("Expression must have a callback");
+            }
 
-			let watchChain = [];
-			if (args.length) {
-				let chainList = args;
+            let watchChain = [];
+            if (args.length) {
+                let chainList = args;
 
-				if (Array.isArray(chainList[0])) {
-					chainList = chainList[0];
-				}
+                if (Array.isArray(chainList[0])) {
+                    chainList = chainList[0];
+                }
 
-				watchChain = chainList.filter((chain) => {
-					return typeof chain === 'string' && chain.length;
-				});
-			}
+                watchChain = chainList.filter((chain) => {
+                    return typeof chain === 'string' && chain.length;
+                });
+            }
 
-			expressions[expressionName] = {
-				watchChain,
-				callback: function () {
-					return callback.call(root);
-				}
-			}
-		}
+            expressions[expressionName] = {
+                watchChain,
+                callback: function() {
+                    return callback.call(root);
+                }
+            }
+        }
 
-		/**
-		 * @param {string} expressionName
-		 * @return {mixed}
-		 * @throws {Error}
-		 */
-		root.evaluateExpression = function (expressionName) {
-			if (!this.hasExpression(expressionName)) {
-				throw new Error(`Expression "${expressionName}" is not defined`);
-			}
+        /**
+         * @param {string} expressionName
+         * @return {mixed}
+         * @throws {Error}
+         */
+        root.evaluateExpression = function(expressionName) {
+            if (!this.hasExpression(expressionName)) {
+                throw new Error(`Expression "${expressionName}" is not defined`);
+            }
 
-			return expressions[expressionName].callback();
-		}
+            return expressions[expressionName].callback();
+        }
 
-		/**
-		 * @param {string} expressionName
-		 * @return {boolean}
-		 */
-		root.hasExpression = function (expressionName) {
-			if (typeof expressions[expressionName] === 'object' &&
-				typeof expressions[expressionName].callback === 'function') {
-				return true;
-			}
-			return false;
-		}
+        /**
+         * @param {string} expressionName
+         * @return {boolean}
+         */
+        root.hasExpression = function(expressionName) {
+            if (typeof expressions[expressionName] === 'object' &&
+                typeof expressions[expressionName].callback === 'function') {
+                return true;
+            }
+            return false;
+        }
 
-		/**
-		 * Watch expression chains
-		 *
-		 * @param {string} expressionName
-		 * @param {callback} callback
-		 */
-		root.onChangeExpressionChain = function (expressionName, callback) {
-			if (!this.hasExpression(expressionName)) {
-				throw new Error(`Expression "${expressionName}" is not defined`);
-			}
+        /**
+         * Watch expression chains
+         *
+         * @param {string} expressionName
+         * @param {callback} callback
+         */
+        root.onChangeExpressionChain = function(expressionName, callback) {
+            if (!this.hasExpression(expressionName)) {
+                throw new Error(`Expression "${expressionName}" is not defined`);
+            }
 
-			const expr = expressions[expressionName];
+            const expr = expressions[expressionName];
 
-			if (!expr.watchChain.length) {
-				return;
-			}
+            if (!expr.watchChain.length) {
+                return;
+            }
 
-			for (let i = 0; i < expr.watchChain.length; i++) {
-				this.onChange(expr.watchChain[i], callback);
-			}
-		}
+            for (let i = 0; i < expr.watchChain.length; i++) {
+                this.onChange(expr.watchChain[i], callback);
+            }
+        }
 
-		return root;
-	}
+        return root;
+    }
 }
 
 module.exports = PskBindableModel;
 
-},{"soundpubsub":"soundpubsub"}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js":[function(require,module,exports){
+},{"soundpubsub":"soundpubsub"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js":[function(require,module,exports){
 /*
 Initial License: (c) Axiologic Research & Alboaie Sînică.
 Contributors: Axiologic Research , PrivateSky project
@@ -1081,7 +1090,7 @@ function SoundPubSub(){
 }
 
 exports.soundPubSub = new SoundPubSub();
-},{"swarmutils":"swarmutils"}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
+},{"swarmutils":"swarmutils"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
 function product(args) {
     if(!args.length){
         return [ [] ];
@@ -1107,7 +1116,7 @@ function objectProduct(obj) {
 }
 
 module.exports = objectProduct;
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
 var meta = "meta";
 
 function OwM(serialized){
@@ -1198,7 +1207,7 @@ OwM.prototype.setMetaFor = function(obj, name, value){
 };
 
 module.exports = OwM;
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
 function QueueElement(content) {
 	this.content = content;
 	this.next = null;
@@ -1266,7 +1275,7 @@ Queue.prototype.toString = function () {
 Queue.prototype.inspect = Queue.prototype.toString;
 
 module.exports = Queue;
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
 const HEADER_SIZE_RESEARVED = 4;
 
 function SwarmPacker(){
@@ -1415,7 +1424,7 @@ SwarmPacker.getHeader = function(pack){
     return header;
 };
 module.exports = SwarmPacker;
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
 
 function TaskCounter(finalCallback) {
 	let results = [];
@@ -1465,7 +1474,7 @@ function TaskCounter(finalCallback) {
 }
 
 module.exports = TaskCounter;
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
 const OwM = require("./OwM");
 
 /*
@@ -1521,7 +1530,7 @@ exports.jsonToNative = function(serialisedValues, result){
     };
 
 };
-},{"./OwM":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\path.js":[function(require,module,exports){
+},{"./OwM":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\path.js":[function(require,module,exports){
 function replaceAll(str, search, replacement) {
     return str.split(search).join(replacement);
 }
@@ -1664,7 +1673,7 @@ module.exports = {
     relative
 };
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
 const PING = "PING";
 const PONG = "PONG";
 
@@ -1756,7 +1765,7 @@ module.exports.enableLifeLine = function(timeout){
         }
     }, interval);
 };
-},{"child_process":false}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
+},{"child_process":false}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
 var commands = {};
 var commands_help = {};
 
@@ -1827,7 +1836,7 @@ module.exports = {
 };
 
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
 
 function encode(buffer) {
     return buffer.toString('base64')
@@ -1895,7 +1904,7 @@ exports.short_uuid = function(callback) {
         callback(null, encode(buf));
     });
 };
-},{"crypto":false}],"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
+},{"crypto":false}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 const Queue = require("./Queue");
@@ -2001,7 +2010,7 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":false,"crypto":false}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
+},{"./Queue":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":false,"crypto":false}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2124,7 +2133,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
+},{"./util":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2266,7 +2275,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
+},{"./base64":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2335,7 +2344,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2448,7 +2457,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -2529,7 +2538,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
+},{"./util":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2645,7 +2654,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -3729,7 +3738,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
+},{"./array-set":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -4147,7 +4156,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
+},{"./array-set":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -4562,7 +4571,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
+},{"./source-map-generator":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5221,7 +5230,7 @@ function enableForEnvironment(envType){
         }
 
         if (!result) {
-            $$.log("Failed to load module ", request, result);
+            throw Error(`Failed to load module ${request}`);
         }
 
         enableRequire(request);
@@ -5397,13 +5406,13 @@ module.exports = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./moduleConstants":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js"}],"psk-bindable-model":[function(require,module,exports){
+},{"./moduleConstants":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js"}],"psk-bindable-model":[function(require,module,exports){
 module.exports = require("./lib/PskBindableModel");
-},{"./lib/PskBindableModel":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\psk-bindable-model\\lib\\PskBindableModel.js"}],"soundpubsub":[function(require,module,exports){
+},{"./lib/PskBindableModel":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\psk-bindable-model\\lib\\PskBindableModel.js"}],"soundpubsub":[function(require,module,exports){
 module.exports = {
 					soundPubSub: require("./lib/soundPubSub").soundPubSub
 };
-},{"./lib/soundPubSub":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js"}],"source-map-support":[function(require,module,exports){
+},{"./lib/soundPubSub":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js"}],"source-map-support":[function(require,module,exports){
 var SourceMapConsumer = require('source-map').SourceMapConsumer;
 var path = require('path');
 
@@ -6019,7 +6028,7 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\Catalin\\Munca\\d1\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarmutils":[function(require,module,exports){
+},{"./lib/source-map-consumer":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarmutils":[function(require,module,exports){
 (function (global){
 module.exports.OwM = require("./lib/OwM");
 module.exports.beesHealer = require("./lib/beesHealer");
@@ -6053,7 +6062,6 @@ if(typeof global.$$.uidGenerator == "undefined"){
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/Combos":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/path":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\path.js","./lib/pingpongFork":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\Catalin\\Munca\\d1\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}]},{},["D:\\Catalin\\Munca\\d1\\privatesky\\builds\\tmp\\bindableModel_intermediar.js"])
+},{"./lib/Combos":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/path":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\path.js","./lib/pingpongFork":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}]},{},["D:\\work\\git\\webcomponents\\ssapp-demo-workspace\\privatesky\\builds\\tmp\\bindableModel.js"])
 //# sourceMappingURL=bindableModel.js.map
-
-export default  bindableModelRequire("psk-bindable-model");
+export default bindableModelRequire('psk-bindable-model')
