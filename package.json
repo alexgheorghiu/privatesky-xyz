@@ -1,7 +1,7 @@
 {
     "name": "privatesky-xyz",
     "private": true,
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "PrivateSky Development Hub",
     "scripts": {
         "cardinal-update": "node ./node_modules/octopus/scripts/run cardinal-update",

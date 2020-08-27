@@ -343,6 +343,11 @@
 
                         },
                         {
+                            "name": "Icon Chooser",
+                            "tags": "psk-icon-chooser"
+
+                        },
+                        {
                             "name": "Live Code",
                             "tags": "live-code"
 
