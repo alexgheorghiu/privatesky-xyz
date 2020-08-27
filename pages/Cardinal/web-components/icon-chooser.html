@@ -20,7 +20,7 @@
             import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
             const model = {
-                iconSize: '30px',
+                iconSize: '20px',
                 iconColor: 'red',
                 iconValue: ''
             };
@@ -30,7 +30,8 @@
                     super(element);
                     this.model = this.setModel(JSON.parse(JSON.stringify(model)));
                     this.model.onChange('iconValue', () => {
-                        console.log(this.model.iconValue);
+                        // this.model.iconValue has the value of the icon you just selected.
+                        // Your code here.
                     })
                 }
             }
@@ -40,6 +41,8 @@
     <psk-chapter title="HTML Source Code">
         <psk-code language="markup">
             <psk-container controller-name="PskIconChooserController">
+                <psk-label label="Icon:"></psk-label>
+                <psk-icon icon="@iconValue" color="@iconColor"></psk-icon>
                 <psk-icon-chooser icons-size="@iconSize" icons-color="@iconColor" value="@iconValue"></psk-icon-chooser>
             </psk-container>
         </psk-code>
@@ -48,6 +51,8 @@
     <psk-chapter title="Example">
         <psk-example class="app-example">
             <psk-container controller-name="PskIconChooserController">
+                <psk-label label="Icon:"></psk-label>
+                <psk-icon icon="@iconValue" color="@iconColor"></psk-icon>
                 <psk-icon-chooser icons-size="@iconSize" icons-color="@iconColor" value="@iconValue"></psk-icon-chooser>
             </psk-container>
         </psk-example>

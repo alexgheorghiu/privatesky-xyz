@@ -1,7 +1,7 @@
 import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
 
 const model = {
-    iconSize: '45px',
+    iconSize: '20px',
     iconColor: 'red',
     iconValue: ''
 };
@@ -11,7 +11,8 @@ export default class PskIconChooserController extends ContainerController {
         super(element);
         this.model = this.setModel(model);
         this.model.onChange('iconValue', () => {
-            console.log('changed', this.model.iconValue);
+            // this.model.iconValue has the value of the icon you just selected.
+            // Your code here.
         })
     }
 }
