@@ -167,7 +167,7 @@
             "children": [{
                     "name": "Web Components MVC",
                     "tags": "cardinal-mvc",
-                    "path":"cardinal-web-components"
+                    "path": "cardinal-web-components"
                 },
                 {
                     "name": "Models"
@@ -433,6 +433,10 @@
                             "name": "Form row",
                             "tags": "psk-form-row"
 
+                        },
+                        {
+                            "name": "Image Input",
+                            "tags": "psk-img-input"
                         },
                         {
                             "name": "Input",
