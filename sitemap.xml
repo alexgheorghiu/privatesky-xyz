@@ -137,6 +137,12 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/web-components/modal</loc>
                     </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/web-components/mobile/home</loc>
+                    </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/web-components/mobile/tasks</loc>
+                    </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/web-components/mobile/devs</loc>
+                    </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/web-components/page-not-found</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/web-components/pin-popup</loc>
