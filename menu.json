@@ -360,27 +360,31 @@
                         {
                             "name": "Mobile",
                             "tags": "psk-mobile",
-                            "path": "/mobile/home",
+                            "path": "/mobile",
+                            "pageSrc": "Cardinal/web-components/mobile/index.html"
+
+                        },
+                        {
+                            "indexed": false,
+                            "name": "mobile-demo-home",
+                            "path": "/mobile/demo/home",
                             "pageSrc": "Cardinal/web-components/mobile/home.html"
 
                         },
                         {
                             "indexed": false,
-                            "name": "Tasks",
-                            "tags": "psk-mobile-tasks",
-                            "path": "/mobile/tasks",
+                            "name": "mobile-demo-tasks",
+                            "path": "/mobile/demo/tasks",
                             "pageSrc": "Cardinal/web-components/mobile/tasks.html"
 
                         },
                         {
                             "indexed": false,
-                            "name": "Devs",
-                            "tags": "psk-mobile-devs",
-                            "path": "/mobile/devs",
+                            "name": "mobile-demo-devs",
+                            "path": "/mobile/demo/devs",
                             "pageSrc": "Cardinal/web-components/mobile/devs.html"
 
                         },
-
                         {
                             "name": "Page Not Found",
                             "tags": "psk-page-not-found"

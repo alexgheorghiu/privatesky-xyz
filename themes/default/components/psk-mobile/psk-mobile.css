@@ -6,7 +6,7 @@
 
 .mobile {
     width: 100% !important;
-    height: 80vh !important;
+    height: 75vh !important;
     background-color: #FAFAFA;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .mobile > header .aside-menu {
-    height: calc(80vh - 4rem) !important;
+    height: calc(75vh - 4rem) !important;
     overflow-x: hidden;
 }
 
