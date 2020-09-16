@@ -365,6 +365,7 @@
 
                         },
                         {
+                            "indexed": false,
                             "name": "Tasks",
                             "tags": "psk-mobile-tasks",
                             "path": "/mobile/tasks",
@@ -372,6 +373,7 @@
 
                         },
                         {
+                            "indexed": false,
                             "name": "Devs",
                             "tags": "psk-mobile-devs",
                             "path": "/mobile/devs",
