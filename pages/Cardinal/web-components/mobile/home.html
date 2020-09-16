@@ -1,0 +1,21 @@
+<psk-page title="psk-mobile">
+    <div style="margin: 0 auto; width: 100%; max-width: 400px; box-shadow: 0 0 5px #CDCDCD;">
+
+        <psk-mobile title="Home" controller-name="MobileController">
+            <div slot="content">
+                <psk-card title="Hello World! 👋">
+                    This is our entry in this mobile application!
+                </psk-card>
+            </div>
+
+            <psk-for-each slot="options" data-view-model="options.home">
+                <psk-button-link name="@name" page="@page"></psk-button-link>
+            </psk-for-each>
+
+            <psk-for-each slot="footer" data-view-model="footer">
+                <psk-button-link name="@name" icon="@icon" page="@page"></psk-button-link>
+            </psk-for-each>
+        </psk-mobile>
+        
+    </div>
+</psk-page>

@@ -358,6 +358,28 @@
 
                         },
                         {
+                            "name": "Mobile",
+                            "tags": "psk-mobile",
+                            "path": "/mobile/home",
+                            "pageSrc": "Cardinal/web-components/mobile/home.html"
+
+                        },
+                        {
+                            "name": "Tasks",
+                            "tags": "psk-mobile-tasks",
+                            "path": "/mobile/tasks",
+                            "pageSrc": "Cardinal/web-components/mobile/tasks.html"
+
+                        },
+                        {
+                            "name": "Devs",
+                            "tags": "psk-mobile-devs",
+                            "path": "/mobile/devs",
+                            "pageSrc": "Cardinal/web-components/mobile/devs.html"
+
+                        },
+
+                        {
                             "name": "Page Not Found",
                             "tags": "psk-page-not-found"
 

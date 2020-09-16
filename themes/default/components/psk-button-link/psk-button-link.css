@@ -1,0 +1,14 @@
+psk-link > *,
+psk-link .icon {
+    font-size: 16px;
+}
+
+[slot='footer'] {
+    border-top: 1px solid #EFEFEF;
+}
+
+[slot='footer'] psk-link > *,
+[slot='footer'] psk-link .icon {
+    font-size: 17px;
+    color: #4461B5;
+}

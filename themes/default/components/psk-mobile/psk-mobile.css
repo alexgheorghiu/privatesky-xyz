@@ -1,0 +1,35 @@
+/* Demo overrides */
+:host {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mobile {
+    width: 100% !important;
+    height: 80vh !important;
+    background-color: #FAFAFA;
+}
+
+.mobile > header > .title {
+    font-size: 1.6rem;
+}
+
+.mobile > header .aside-menu {
+    height: calc(80vh - 4rem) !important;
+    overflow-x: hidden;
+}
+
+.mobile > header .aside-menu .profile,
+.mobile > header .btn .icon,
+.mobile > footer .btn .icon {
+    color: #FFFFFF;
+}
+
+.mobile > main .main-cover {
+    position: absolute !important;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mobile > footer {
+    background-color: #FFFFFF;
+}
