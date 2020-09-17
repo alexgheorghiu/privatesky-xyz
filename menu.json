@@ -8,19 +8,18 @@
         "pagePrefix": "?",
         "historyType": "query"
     },
-    "pages": [{
+    "pages": [
+        {
             "name": "Home",
             "path": "/home",
             "icon": "fa-home",
             "pageSrc": "index.html"
         },
-
         {
             "name": "Overview",
             "path": "/Overview",
             "icon": "fa-cog",
             "children": [
-
                 {
                     "name": "Why",
                     "tags": "why"
@@ -37,10 +36,12 @@
                     "name": "Blockchain",
                     "path": "Blockchain",
                     "icon": "fa-cog",
-                    "children": [{
-                        "name": "Secret Smart Contracts",
-                        "tags": "secret-smart-contracts"
-                    }]
+                    "children": [
+                        {
+                            "name": "Secret Smart Contracts",
+                            "tags": "secret-smart-contracts"
+                        }
+                    ]
                 },
                 {
                     "name": "Development Vision",
@@ -61,7 +62,8 @@
             "name": "APIs",
             "path": "/API",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "PrivateSky APIs",
                     "tags": "privatesky-apis"
                 },
@@ -78,7 +80,8 @@
                 },
                 {
                     "name": "Blockchain",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Overview",
                             "tags": "overview"
                         },
@@ -90,7 +93,8 @@
                 },
                 {
                     "name": "EDFS",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Overview"
                         },
                         {
@@ -109,7 +113,8 @@
                 },
                 {
                     "name": "Web - Services",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Overview"
                         },
                         {
@@ -128,7 +133,8 @@
                 },
                 {
                     "name": "SSApps",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Overview",
                             "tags": "ss-app-overview"
                         },
@@ -145,7 +151,8 @@
                 },
                 {
                     "name": "Classes",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Seed"
                         },
                         {
@@ -164,7 +171,8 @@
             "name": "Cardinal",
             "path": "/Cardinal",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "Web Components MVC",
                     "tags": "cardinal-mvc",
                     "path": "cardinal-web-components"
@@ -190,10 +198,10 @@
                     "name": "Wiki Components",
                     "path": "/wiki-components",
                     "icon": "fa-bolt",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Card",
                             "tags": "psk-card"
-
                         },
                         {
                             "name": "Chapter",
@@ -202,62 +210,50 @@
                         {
                             "name": "Code",
                             "tags": "psk-code"
-
                         },
                         {
                             "name": "Copy clipboard",
                             "tags": "psk-copy-clipboard"
-
                         },
                         {
                             "name": "Description",
                             "tags": "psk-description"
-
                         },
                         {
                             "name": "Example",
                             "tags": "psk-example"
-
                         },
                         {
                             "name": "Highlight",
                             "tags": "psk-highlight"
-
                         },
                         {
                             "name": "Img",
                             "tags": "psk-img"
-
                         },
                         {
                             "name": "Link",
                             "tags": "psk-link"
-
                         },
                         {
                             "name": "List",
                             "tags": "psk-list"
-
                         },
                         {
                             "name": "Page",
                             "tags": "psk-page"
-
                         },
                         {
                             "name": "Property descriptor",
                             "tags": "psk-property-descriptor"
-
                         },
                         {
                             "name": "Table",
                             "tags": "psk-table"
-
                         },
                         {
                             "name": "Toc",
                             "tags": "psk-toc"
-
                         }
                     ]
                 },
@@ -265,36 +261,31 @@
                     "name": "Web Components",
                     "path": "/web-components",
                     "icon": "fa-cog",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "App Menu",
                             "tags": "psk-app-menu"
-
                         },
                         {
                             "name": "Attachments List",
                             "tags": "psk-attachments-list"
-
                         },
                         {
                             "name": "App Root",
                             "tags": "psk-app-root"
-
                         },
                         {
                             "name": "App Router",
                             "tags": "psk-app-router"
-
                         },
                         {
                             "name": "Barcode Generator",
                             "tags": "barcode-generator"
-
                         },
                         {
                             "name": "Barcode Scanner",
                             "tags": "barcode-scanner"
                         },
-
                         {
                             "name": "Button",
                             "tags": "psk-button"
@@ -302,12 +293,10 @@
                         {
                             "name": "Button Group",
                             "tags": "psk-button-group"
-
                         },
                         {
                             "name": "Condition",
                             "tags": "psk-condition"
-
                         },
                         {
                             "name": "Container",
@@ -316,17 +305,14 @@
                         {
                             "name": "Feedback List",
                             "tags": "psk-feedback-list"
-
                         },
                         {
                             "name": "Files Chooser",
                             "tags": "psk-files-chooser"
-
                         },
                         {
                             "name": "Floating Menu",
                             "tags": "psk-floating-menu"
-
                         },
                         {
                             "name": "For each",
@@ -335,119 +321,100 @@
                         {
                             "name": "Grid",
                             "tags": "psk-grid"
-
                         },
                         {
                             "name": "Icon",
                             "tags": "psk-icon"
-
                         },
                         {
                             "name": "Icon Chooser",
                             "tags": "psk-icon-chooser"
-
                         },
                         {
                             "name": "Live Code",
                             "tags": "live-code"
-
                         },
                         {
                             "name": "Modal",
                             "tags": "psk-modal"
-
                         },
                         {
                             "name": "Mobile",
                             "tags": "psk-mobile",
                             "path": "/mobile",
                             "pageSrc": "Cardinal/web-components/mobile.html"
-
                         },
                         {
                             "indexed": false,
                             "name": "mobile-hw-home",
                             "path": "/mobile/hello-world/home",
                             "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/home.html"
-
                         },
                         {
                             "indexed": false,
                             "name": "mobile-hw-tasks",
                             "path": "/mobile/hello-world/tasks",
                             "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/tasks.html"
-
                         },
                         {
                             "indexed": false,
                             "name": "mobile-hw-devs",
                             "path": "/mobile/hello-world/devs",
                             "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/devs.html"
-
                         },
                         {
                             "name": "Page Not Found",
                             "tags": "psk-page-not-found"
-
                         },
                         {
                             "name": "PIN Popup",
                             "tags": "psk-pin-popup"
-
                         },
                         {
                             "name": "Slideshow",
                             "tags": "psk-slideshow"
-
                         },
                         {
                             "name": "Switch Button",
                             "tags": "psk-switch-button"
-
                         },
                         {
                             "name": "SSApp",
                             "tags": "psk-ssapp",
                             "indexed": false
-
                         },
                         {
                             "name": "Toolbar",
                             "tags": "psk-toolbar"
-
                         },
                         {
                             "name": "UI Loader",
                             "tags": "psk-ui-loader"
-
                         },
                         {
                             "name": "User Profile",
                             "tags": "psk-user-profile"
-
                         },
                         {
                             "name": "Wizard",
                             "tags": "psk-wizard"
-
                         }
                     ]
                 },
                 {
                     "name": "Forms",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Using Forms",
                             "tags": "using-forms"
                         },
                         {
                             "name": "Checkbox",
                             "tags": "psk-checkbox"
-
                         },
                         {
                             "name": "Date input",
                             "tags": "psk-date-input"
-
                         },
                         {
                             "name": "Email input",
@@ -460,7 +427,6 @@
                         {
                             "name": "Form row",
                             "tags": "psk-form-row"
-
                         },
                         {
                             "name": "Image Input",
@@ -473,32 +439,26 @@
                         {
                             "name": "Label",
                             "tags": "psk-label"
-
                         },
                         {
                             "name": "Number input",
                             "tags": "psk-number-input"
-
                         },
                         {
                             "name": "Password input",
                             "tags": "psk-password-input"
-
                         },
                         {
                             "name": "Radio",
                             "tags": "psk-radio"
-
                         },
                         {
                             "name": "Radio group",
                             "tags": "psk-radio-group"
-
                         },
                         {
                             "name": "Select",
                             "tags": "psk-select"
-
                         },
                         {
                             "name": "Textarea",
@@ -507,7 +467,6 @@
                         {
                             "name": "Text input",
                             "tags": "psk-text-input"
-
                         }
                     ]
                 }
@@ -517,7 +476,8 @@
             "name": "How To Create",
             "path": "/Howto",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "A site with Cardinal"
                 },
                 {
@@ -537,7 +497,8 @@
             "name": "Quick Start",
             "path": "/Start",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "Installation"
                 },
                 {
@@ -561,7 +522,8 @@
             "name": "Tools",
             "path": "/Tools",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "Octopus"
                 },
                 {
@@ -582,7 +544,6 @@
                 {
                     "name": "pskwallet",
                     "indexed": "false"
-
                 },
                 {
                     "name": "Tool List",
@@ -594,7 +555,8 @@
             "name": "Development",
             "path": "/Development",
             "icon": "fa-cog",
-            "children": [{
+            "children": [
+                {
                     "name": "For PrivateSky Contributors"
                 },
                 {
@@ -638,7 +600,8 @@
                     "name": "EDFS",
                     "path": "/EDFS",
                     "icon": "fa-cog",
-                    "children": [{
+                    "children": [
+                        {
                             "name": "Brick Archives"
                         },
                         {
@@ -653,7 +616,6 @@
                         "type": "iframe"
                     }
                 }
-
             ]
         },
         {
