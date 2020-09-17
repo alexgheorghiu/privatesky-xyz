@@ -184,7 +184,7 @@
                 },
                 {
                     "name": "Themes",
-                    "tags": "Themes"
+                    "tags": "themes"
                 },
                 {
                     "name": "Wiki Components",
@@ -562,7 +562,8 @@
             "path": "/Tools",
             "icon": "fa-cog",
             "children": [{
-                    "name": "Octopus"
+                    "name": "Octopus",
+                    "tags": "octopus"
                 },
                 {
                     "name": "bar"
