@@ -112,22 +112,25 @@
                     ]
                 },
                 {
-                    "name": "Web - Services",
+                    "name": "API HUB",
                     "children": [
                         {
                             "name": "Overview"
                         },
                         {
-                            "name": "Brick Storage"
-                        },
-                        {
                             "name": "Anchoring"
                         },
                         {
-                            "name": "VirtualMQ"
+                            "name": "Brick Storage"
+                        },
+                        {
+                            "name": "Brick Fabric Storage"
                         },
                         {
                             "name": "Dossier wizard"
+                        },
+                        {
+                            "name": "VirtualMQ"
                         }
                     ]
                 },
