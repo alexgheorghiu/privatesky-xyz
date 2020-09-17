@@ -20,8 +20,8 @@
                 <psk-mobile class="demo-footer">
                     <div slot="footer">
                         <psk-button-link name="Cloud" icon="cloud" page="Cardinal/web-components/mobile"></psk-button-link>
-                        <psk-button-link name="Bugs" icon="bug" page="Cardinal/web-components/mobile"></psk-button-link>
                         <psk-button-link name="Messages" icon="envelope" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-button-link name="Bugs" icon="bug" page="Cardinal/web-components/mobile"></psk-button-link>
                         <psk-button-link name="Account" icon="user" page="Cardinal/web-components/mobile"></psk-button-link>
                     </div>
                 </psk-mobile>
@@ -31,8 +31,8 @@
                 <psk-mobile title="Footer">
                     <div slot="footer">
                         <psk-button-link name="Cloud" icon="cloud" page="pages/cloud"></psk-button-link>
-                        <psk-button-link name="Bugs" icon="bug" page="pages/bugs"></psk-button-link>
                         <psk-button-link name="Messages" icon="envelope" page="pages/messages"></psk-button-link>
+                        <psk-button-link name="Bugs" icon="bug" page="pages/bugs"></psk-button-link>
                         <psk-button-link name="Account" icon="user" page="pages/account"></psk-button-link>
                     </div>
                 </psk-mobile>
@@ -67,13 +67,23 @@
             <p>This slot contains the entire content of the mobile page.</p>
 
             <psk-example class="mobile-example">
-                <psk-mobile title="Content" class="demo-content">
-                    <div slot="content">
-                        <psk-card title="Hello World! 👋">
-                            <p>This is our entry in the world of mobile devices!</p>
-                        </psk-card>
-                    </div>
-                </psk-mobile>
+                <psk-container>
+                    <script>
+                        let sidebarItems = [...Array(5).keys()].map(item => { return { name: `Menu item ${item + 1}` }});
+                        controller.on("needMenuItems", e => {
+                            e.stopImmediatePropagation();
+                            const callback = e.detail;
+                            callback(null, sidebarItems);
+                        });
+                    </script>
+                    <psk-mobile title="Content" class="demo-content">
+                        <div slot="content">
+                            <psk-card title="Hello World! 👋">
+                                <p>This is our entry in the world of mobile devices!</p>
+                            </psk-card>
+                        </div>
+                    </psk-mobile>
+                </psk-container>
             </psk-example>
 
             <psk-code language="HTML">
@@ -88,15 +98,28 @@
         </psk-chapter>
     </psk-chapter>
 
-    <psk-chapter title="More complex examples">
-        <psk-link page="Cardinal/web-components/mobile-hw-home">
-            <psk-button>Hello World</psk-button>
-        </psk-link>
+    <psk-chapter title="Glue them all together">
+        <psk-example class="mobile-example">
 
-<!-- TODO: Sign Up Example -->
-<!--        <psk-link page="">-->
-<!--            <psk-button>Sign Up Demo</psk-button>-->
-<!--        </psk-link>-->
+                <psk-mobile title="Demo" controller-name="MobileController">
+                    <div slot="content"></div>
+
+                    <psk-for-each slot="options" data-view-model="options">
+                        <psk-button-link name="@name" page="@page"></psk-button-link>
+                    </psk-for-each>
+
+                    <psk-for-each slot="footer" data-view-model="footer">
+                        <psk-button-link name="@name" icon="@icon" page="@page"></psk-button-link>
+                    </psk-for-each>
+                </psk-mobile>
+        </psk-example>
     </psk-chapter>
+
+    <!-- TODO: Sign Up Example -->
+    <!--    <psk-chapter title="Other examples">-->
+    <!--        <psk-link page="">-->
+    <!--            <psk-button>Sign Up Demo</psk-button>-->
+    <!--        </psk-link>-->
+    <!--    </psk-chapter>-->
 
 </psk-page>

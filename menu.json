@@ -345,24 +345,6 @@
                             "pageSrc": "Cardinal/web-components/mobile.html"
                         },
                         {
-                            "indexed": false,
-                            "name": "mobile-hw-home",
-                            "path": "/mobile/hello-world/home",
-                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/home.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-hw-tasks",
-                            "path": "/mobile/hello-world/tasks",
-                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/tasks.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-hw-devs",
-                            "path": "/mobile/hello-world/devs",
-                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/devs.html"
-                        },
-                        {
                             "name": "Page Not Found",
                             "tags": "psk-page-not-found"
                         },

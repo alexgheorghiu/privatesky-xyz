@@ -3,38 +3,36 @@ import ContainerController from '../../cardinal/controllers/base-controllers/Con
 class MobileController extends ContainerController {
     getModel() {
         return {
-            options: {
-                home: [
-                    {
-                        name: 'For developers',
-                        page: 'Cardinal/web-components/mobile-hw-devs'
-                    },
-                    {
-                        name: 'About',
-                        page: 'about'
-                    }
-                ]
-            },
+            options: [
+                {
+                    name: 'About',
+                    page: 'about'
+                },
+                {
+                    name: 'Glossary',
+                    page: 'glossary'
+                }
+            ],
             footer: [
                 {
                     name: 'Home',
                     icon: 'home',
-                    page: 'Cardinal/web-components/mobile-hw-home'
+                    page: 'mobile/home'
                 },
                 {
                     name: 'Tasks',
                     icon: 'tasks',
-                    page: 'Cardinal/web-components/mobile-hw-tasks'
+                    page: 'mobile/tasks'
                 },
                 {
                     name: 'Alerts',
                     icon: 'flag',
-                    page: 'alerts'
+                    page: 'mobile/alerts'
                 },
                 {
                     name: 'Settings',
                     icon: 'cog',
-                    page: 'settings'
+                    page: 'mobile/settings'
                 }
             ]
         }
