@@ -1,0 +1,102 @@
+<psk-page title="psk-mobile">
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description>
+        <p>This component is a wrapper for any page of a mobile application.</p>
+        <p>It must be used like psk-page but only for mobile devices.</p>
+    </psk-description>
+
+    <psk-property-descriptor title="Supported properties">
+        <psk-mobile data-define-props="true"></psk-mobile>
+    </psk-property-descriptor>
+
+    <psk-chapter title="HTML Children">
+        <p>There are three slots available for this component named "footer", "options" and "content".</p>
+
+        <psk-chapter title="Footer">
+            <p>The developer can provide a footer to a mobile page through this slot. He must use one of these two components <strong>psk-button-link</strong> and <strong>psk-link</strong> with the corresponding attributes.</p>
+
+            <psk-example class="mobile-example">
+                <psk-mobile class="demo-footer">
+                    <div slot="footer">
+                        <psk-button-link name="Cloud" icon="cloud" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-button-link name="Bugs" icon="bug" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-button-link name="Messages" icon="envelope" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-button-link name="Account" icon="user" page="Cardinal/web-components/mobile"></psk-button-link>
+                    </div>
+                </psk-mobile>
+            </psk-example>
+
+            <psk-code language="HTML">
+                <psk-mobile title="Footer">
+                    <div slot="footer">
+                        <psk-button-link name="Cloud" icon="cloud" page="pages/cloud"></psk-button-link>
+                        <psk-button-link name="Bugs" icon="bug" page="pages/bugs"></psk-button-link>
+                        <psk-button-link name="Messages" icon="envelope" page="pages/messages"></psk-button-link>
+                        <psk-button-link name="Account" icon="user" page="pages/account"></psk-button-link>
+                    </div>
+                </psk-mobile>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Options">
+            <p>There is also the possibility to display a menu with options for each page rendered with psk-mobile.</p>
+
+            <psk-example class="mobile-example">
+                <psk-mobile title="Options" disable-sidebar class="demo-options">
+                    <div slot="options">
+                        <psk-link page="Cardinal/web-components/mobile">Option 1</psk-link>
+                        <psk-button-link page="Cardinal/web-components/mobile">Option 2</psk-button-link>
+                        <psk-button-link name="Option 3" page="Cardinal/web-components/mobile"></psk-button-link>
+                    </div>
+                </psk-mobile>
+            </psk-example>
+
+            <psk-code language="HTML">
+                <psk-mobile title="Options" disable-sidebar>
+                    <div slot="options">
+                        <psk-link page="page/option-1">Option 1</psk-link>
+                        <psk-button-link page="page/option-2">Option 2</psk-button-link>
+                        <psk-button-link name="Option 3" page="page/option-3"></psk-button-link>
+                    </div>
+                </psk-mobile>
+            </psk-code>
+        </psk-chapter>
+
+        <psk-chapter title="Content">
+            <p>This slot contains the entire content of the mobile page.</p>
+
+            <psk-example class="mobile-example">
+                <psk-mobile title="Content" class="demo-content">
+                    <div slot="content">
+                        <psk-card title="Hello World! 👋">
+                            <p>This is our entry in the world of mobile devices!</p>
+                        </psk-card>
+                    </div>
+                </psk-mobile>
+            </psk-example>
+
+            <psk-code language="HTML">
+                <psk-mobile title="Content">
+                    <div slot="content">
+                        <psk-card title="Hello World! 👋">
+                            <p>This is our entry in the world of mobile devices!</p>
+                        </psk-card>
+                    </div>
+                </psk-mobile>
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
+
+    <psk-chapter title="More complex examples">
+        <psk-link page="Cardinal/web-components/mobile-hw-home">
+            <psk-button>Hello World</psk-button>
+        </psk-link>
+
+<!-- TODO: Sign Up Example -->
+<!--        <psk-link page="">-->
+<!--            <psk-button>Sign Up Demo</psk-button>-->
+<!--        </psk-link>-->
+    </psk-chapter>
+
+</psk-page>

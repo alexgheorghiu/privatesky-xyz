@@ -7,7 +7,7 @@ class MobileController extends ContainerController {
                 home: [
                     {
                         name: 'For developers',
-                        page: 'Cardinal/web-components/mobile-demo-devs'
+                        page: 'Cardinal/web-components/mobile-hw-devs'
                     },
                     {
                         name: 'About',
@@ -19,12 +19,12 @@ class MobileController extends ContainerController {
                 {
                     name: 'Home',
                     icon: 'home',
-                    page: 'Cardinal/web-components/mobile-demo-home'
+                    page: 'Cardinal/web-components/mobile-hw-home'
                 },
                 {
                     name: 'Tasks',
                     icon: 'tasks',
-                    page: 'Cardinal/web-components/mobile-demo-tasks'
+                    page: 'Cardinal/web-components/mobile-hw-tasks'
                 },
                 {
                     name: 'Alerts',

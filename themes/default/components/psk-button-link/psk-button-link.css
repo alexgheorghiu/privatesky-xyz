@@ -1,6 +1,5 @@
-psk-link > *,
-psk-link .icon {
-    font-size: 16px;
+psk-link div {
+    padding: 0 !important;
 }
 
 [slot='footer'] {
