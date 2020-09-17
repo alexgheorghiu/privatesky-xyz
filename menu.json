@@ -361,28 +361,28 @@
                             "name": "Mobile",
                             "tags": "psk-mobile",
                             "path": "/mobile",
-                            "pageSrc": "Cardinal/web-components/mobile/index.html"
+                            "pageSrc": "Cardinal/web-components/mobile.html"
 
                         },
                         {
                             "indexed": false,
-                            "name": "mobile-demo-home",
-                            "path": "/mobile/demo/home",
-                            "pageSrc": "Cardinal/web-components/mobile/home.html"
+                            "name": "mobile-hw-home",
+                            "path": "/mobile/hello-world/home",
+                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/home.html"
 
                         },
                         {
                             "indexed": false,
-                            "name": "mobile-demo-tasks",
-                            "path": "/mobile/demo/tasks",
-                            "pageSrc": "Cardinal/web-components/mobile/tasks.html"
+                            "name": "mobile-hw-tasks",
+                            "path": "/mobile/hello-world/tasks",
+                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/tasks.html"
 
                         },
                         {
                             "indexed": false,
-                            "name": "mobile-demo-devs",
-                            "path": "/mobile/demo/devs",
-                            "pageSrc": "Cardinal/web-components/mobile/devs.html"
+                            "name": "mobile-hw-devs",
+                            "path": "/mobile/hello-world/devs",
+                            "pageSrc": "Cardinal/web-components/mobile-demos/hello-world/devs.html"
 
                         },
                         {
