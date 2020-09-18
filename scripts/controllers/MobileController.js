@@ -3,6 +3,24 @@ import ContainerController from '../../cardinal/controllers/base-controllers/Con
 class MobileController extends ContainerController {
     getModel() {
         return {
+            footer: [
+                {
+                    name: 'Home', icon: 'home',
+                    page: 'mobile/home'
+                },
+                {
+                    name: 'Tasks', icon: 'tasks',
+                    page: 'mobile/tasks'
+                },
+                {
+                    name: 'History', icon: 'history',
+                    page: 'mobile/history'
+                },
+                {
+                    name: 'Settings', icon: 'cog',
+                    page: 'mobile/settings'
+                }
+            ],
             options: [
                 {
                     name: 'About',
@@ -13,26 +31,15 @@ class MobileController extends ContainerController {
                     page: 'glossary'
                 }
             ],
-            footer: [
+            sidebar: [
                 {
-                    name: 'Home',
-                    icon: 'home',
-                    page: 'mobile/home'
+                    name: 'Github',
                 },
                 {
-                    name: 'Tasks',
-                    icon: 'tasks',
-                    page: 'mobile/tasks'
+                    name: 'Android'
                 },
                 {
-                    name: 'Alerts',
-                    icon: 'flag',
-                    page: 'mobile/alerts'
-                },
-                {
-                    name: 'Settings',
-                    icon: 'cog',
-                    page: 'mobile/settings'
+                    name: 'iOS'
                 }
             ]
         }
@@ -41,6 +48,12 @@ class MobileController extends ContainerController {
     constructor(element) {
         super(element);
         this.model = this.setModel(this.getModel());
+
+        this.on("needMenuItems", e => {
+            e.stopImmediatePropagation();
+            const callback = e.detail;
+            callback(null, this.model.sidebar);
+        });
     }
 }
 
