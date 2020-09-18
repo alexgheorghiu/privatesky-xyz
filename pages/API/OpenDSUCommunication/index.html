@@ -692,18 +692,14 @@
             defs["body"] = {
   "type" : "object",
   "properties" : {
-    "anchorId" : {
-      "type" : "string",
-      "description" : "KeySSI (zero access)"
+    "hash" : {
+      "$ref" : "#/components/schemas/body_hash"
     },
     "authToken" : {
       "type" : "string",
       "description" : "empty, JWT, oauth, etc."
     },
-    "hashLink" : {
-      "type" : "string"
-    },
-    "controlProof" : {
+    "digitalProof" : {
       "type" : "string"
     },
     "ZKPValue" : {
@@ -781,6 +777,17 @@
   "example" : {
     "ssi" : "ssi:type:dldomain:specificstring:control:vn:hint",
     "signature" : "Signature of an existing Admin"
+  }
+};
+            defs["body_hash"] = {
+  "type" : "object",
+  "properties" : {
+    "new" : {
+      "type" : "string"
+    },
+    "last" : {
+      "type" : "string"
+    }
   }
 };
   </script>
@@ -2527,7 +2534,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/anchor/add</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/anchor/add/{keySSI}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2549,7 +2556,7 @@ except ApiException as e:
                           <div class="tab-pane active" id="examples-AnchoringService-addAnchor-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT\
 -H "Content-Type: application/json"\
-"https://localhost:8080/anchor/add"</code></pre>
+"https://localhost:8080/anchor/add/{keySSI}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-AnchoringService-addAnchor-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2565,9 +2572,10 @@ public class AnchoringServiceApiExample {
     public static void main(String[] args) {
         
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
+        String keySSI = keySSI_example; // String | keySSI base58
         Body body = ; // Body | 
         try {
-            apiInstance.addAnchor(body);
+            apiInstance.addAnchor(keySSI, body);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#addAnchor");
             e.printStackTrace();
@@ -2583,9 +2591,10 @@ public class AnchoringServiceApiExample {
 
     public static void main(String[] args) {
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
+        String keySSI = keySSI_example; // String | keySSI base58
         Body body = ; // Body | 
         try {
-            apiInstance.addAnchor(body);
+            apiInstance.addAnchor(keySSI, body);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#addAnchor");
             e.printStackTrace();
@@ -2598,12 +2607,14 @@ public class AnchoringServiceApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-AnchoringService-addAnchor-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Body *body = ; //  (optional)
+                              <pre class="prettyprint"><code class="language-cpp">String *keySSI = keySSI_example; // keySSI base58
+Body *body = ; //  (optional)
 
 AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
 
 // Publish a new version of the anchor
-[apiInstance addAnchorWith:body
+[apiInstance addAnchorWith:keySSI
+    body:body
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -2616,6 +2627,7 @@ AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var OpenDsuCommunicationApIs = require('open_dsu_communication_ap_is');
 
 var api = new OpenDsuCommunicationApIs.AnchoringServiceApi()
+var keySSI = keySSI_example; // {{String}} keySSI base58
 var opts = { 
   'body':  // {{Body}} 
 };
@@ -2626,7 +2638,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.addAnchor(opts, callback);
+api.addAnchor(keySSI, opts, callback);
 </code></pre>
                             </div>
 
@@ -2648,12 +2660,13 @@ namespace Example
         {
 
             var apiInstance = new AnchoringServiceApi();
+            var keySSI = keySSI_example;  // String | keySSI base58
             var body = new Body(); // Body |  (optional) 
 
             try
             {
                 // Publish a new version of the anchor
-                apiInstance.addAnchor(body);
+                apiInstance.addAnchor(keySSI, body);
             }
             catch (Exception e)
             {
@@ -2670,10 +2683,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiAnchoringServiceApi();
+$keySSI = keySSI_example; // String | keySSI base58
 $body = ; // Body | 
 
 try {
-    $api_instance->addAnchor($body);
+    $api_instance->addAnchor($keySSI, $body);
 } catch (Exception $e) {
     echo 'Exception when calling AnchoringServiceApi->addAnchor: ', $e->getMessage(), PHP_EOL;
 }
@@ -2686,10 +2700,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AnchoringServiceApi;
 
 my $api_instance = WWW::SwaggerClient::AnchoringServiceApi->new();
+my $keySSI = keySSI_example; # String | keySSI base58
 my $body = WWW::SwaggerClient::Object::Body->new(); # Body | 
 
 eval { 
-    $api_instance->addAnchor(body => $body);
+    $api_instance->addAnchor(keySSI => $keySSI, body => $body);
 };
 if ($@) {
     warn "Exception when calling AnchoringServiceApi->addAnchor: $@\n";
@@ -2705,11 +2720,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AnchoringServiceApi()
+keySSI = keySSI_example # String | keySSI base58
 body =  # Body |  (optional)
 
 try: 
     # Publish a new version of the anchor
-    api_instance.add_anchor(body=body)
+    api_instance.add_anchor(keySSI, body=body)
 except ApiException as e:
     print("Exception when calling AnchoringServiceApi->addAnchor: %s\n" % e)</code></pre>
                             </div>
@@ -2717,6 +2733,35 @@ except ApiException as e:
 
                           <h2>Parameters</h2>
 
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">keySSI*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_addAnchor_keySSI">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+                                  
+                                                      <div class="inner description">
+                                                          keySSI base58
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
 
 
                             <div class="methodsubtabletitle">Body parameters</div>
@@ -2796,7 +2841,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/anchor/subscribe/{anchorId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/anchor/subscribe/{keySSI}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2817,7 +2862,7 @@ except ApiException as e:
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-AnchoringService-createAnchorSubscription-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
-"https://localhost:8080/anchor/subscribe/{anchorId}?fromVersion=&subscriberID=&timeout=&waitForNonExisting="</code></pre>
+"https://localhost:8080/anchor/subscribe/{keySSI}?fromVersion=&subscriberID=&timeout=&waitForNonExisting="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-AnchoringService-createAnchorSubscription-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2833,14 +2878,14 @@ public class AnchoringServiceApiExample {
     public static void main(String[] args) {
         
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | 
         String fromVersion = fromVersion_example; // String | 
         String authToken = authToken_example; // String | 
         String subscriberID = subscriberID_example; // String | 
         String timeout = timeout_example; // String | 
         String waitForNonExisting = waitForNonExisting_example; // String | 
         try {
-            apiInstance.createAnchorSubscription(anchorId, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
+            apiInstance.createAnchorSubscription(keySSI, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#createAnchorSubscription");
             e.printStackTrace();
@@ -2856,14 +2901,14 @@ public class AnchoringServiceApiExample {
 
     public static void main(String[] args) {
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | 
         String fromVersion = fromVersion_example; // String | 
         String authToken = authToken_example; // String | 
         String subscriberID = subscriberID_example; // String | 
         String timeout = timeout_example; // String | 
         String waitForNonExisting = waitForNonExisting_example; // String | 
         try {
-            apiInstance.createAnchorSubscription(anchorId, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
+            apiInstance.createAnchorSubscription(keySSI, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#createAnchorSubscription");
             e.printStackTrace();
@@ -2876,7 +2921,7 @@ public class AnchoringServiceApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-AnchoringService-createAnchorSubscription-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *anchorId = anchorId_example; // 
+                              <pre class="prettyprint"><code class="language-cpp">String *keySSI = keySSI_example; // 
 String *fromVersion = fromVersion_example; //  (optional)
 String *authToken = authToken_example; //  (optional)
 String *subscriberID = subscriberID_example; //  (optional)
@@ -2886,7 +2931,7 @@ String *waitForNonExisting = waitForNonExisting_example; //  (optional)
 AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
 
 // Creates a subscription in order to be notified after a new version of an anchor is available
-[apiInstance createAnchorSubscriptionWith:anchorId
+[apiInstance createAnchorSubscriptionWith:keySSI
     fromVersion:fromVersion
     authToken:authToken
     subscriberID:subscriberID
@@ -2904,7 +2949,7 @@ AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var OpenDsuCommunicationApIs = require('open_dsu_communication_ap_is');
 
 var api = new OpenDsuCommunicationApIs.AnchoringServiceApi()
-var anchorId = anchorId_example; // {{String}} 
+var keySSI = keySSI_example; // {{String}} 
 var opts = { 
   'fromVersion': fromVersion_example, // {{String}} 
   'authToken': authToken_example, // {{String}} 
@@ -2919,7 +2964,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.createAnchorSubscription(anchorId, opts, callback);
+api.createAnchorSubscription(keySSI, opts, callback);
 </code></pre>
                             </div>
 
@@ -2941,7 +2986,7 @@ namespace Example
         {
 
             var apiInstance = new AnchoringServiceApi();
-            var anchorId = anchorId_example;  // String | 
+            var keySSI = keySSI_example;  // String | 
             var fromVersion = fromVersion_example;  // String |  (optional) 
             var authToken = authToken_example;  // String |  (optional) 
             var subscriberID = subscriberID_example;  // String |  (optional) 
@@ -2951,7 +2996,7 @@ namespace Example
             try
             {
                 // Creates a subscription in order to be notified after a new version of an anchor is available
-                apiInstance.createAnchorSubscription(anchorId, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
+                apiInstance.createAnchorSubscription(keySSI, fromVersion, authToken, subscriberID, timeout, waitForNonExisting);
             }
             catch (Exception e)
             {
@@ -2968,7 +3013,7 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiAnchoringServiceApi();
-$anchorId = anchorId_example; // String | 
+$keySSI = keySSI_example; // String | 
 $fromVersion = fromVersion_example; // String | 
 $authToken = authToken_example; // String | 
 $subscriberID = subscriberID_example; // String | 
@@ -2976,7 +3021,7 @@ $timeout = timeout_example; // String |
 $waitForNonExisting = waitForNonExisting_example; // String | 
 
 try {
-    $api_instance->createAnchorSubscription($anchorId, $fromVersion, $authToken, $subscriberID, $timeout, $waitForNonExisting);
+    $api_instance->createAnchorSubscription($keySSI, $fromVersion, $authToken, $subscriberID, $timeout, $waitForNonExisting);
 } catch (Exception $e) {
     echo 'Exception when calling AnchoringServiceApi->createAnchorSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -2989,7 +3034,7 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AnchoringServiceApi;
 
 my $api_instance = WWW::SwaggerClient::AnchoringServiceApi->new();
-my $anchorId = anchorId_example; # String | 
+my $keySSI = keySSI_example; # String | 
 my $fromVersion = fromVersion_example; # String | 
 my $authToken = authToken_example; # String | 
 my $subscriberID = subscriberID_example; # String | 
@@ -2997,7 +3042,7 @@ my $timeout = timeout_example; # String |
 my $waitForNonExisting = waitForNonExisting_example; # String | 
 
 eval { 
-    $api_instance->createAnchorSubscription(anchorId => $anchorId, fromVersion => $fromVersion, authToken => $authToken, subscriberID => $subscriberID, timeout => $timeout, waitForNonExisting => $waitForNonExisting);
+    $api_instance->createAnchorSubscription(keySSI => $keySSI, fromVersion => $fromVersion, authToken => $authToken, subscriberID => $subscriberID, timeout => $timeout, waitForNonExisting => $waitForNonExisting);
 };
 if ($@) {
     warn "Exception when calling AnchoringServiceApi->createAnchorSubscription: $@\n";
@@ -3013,7 +3058,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AnchoringServiceApi()
-anchorId = anchorId_example # String | 
+keySSI = keySSI_example # String | 
 fromVersion = fromVersion_example # String |  (optional)
 authToken = authToken_example # String |  (optional)
 subscriberID = subscriberID_example # String |  (optional)
@@ -3022,7 +3067,7 @@ waitForNonExisting = waitForNonExisting_example # String |  (optional)
 
 try: 
     # Creates a subscription in order to be notified after a new version of an anchor is available
-    api_instance.create_anchor_subscription(anchorId, fromVersion=fromVersion, authToken=authToken, subscriberID=subscriberID, timeout=timeout, waitForNonExisting=waitForNonExisting)
+    api_instance.create_anchor_subscription(keySSI, fromVersion=fromVersion, authToken=authToken, subscriberID=subscriberID, timeout=timeout, waitForNonExisting=waitForNonExisting)
 except ApiException as e:
     print("Exception when calling AnchoringServiceApi->createAnchorSubscription: %s\n" % e)</code></pre>
                             </div>
@@ -3036,11 +3081,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">anchorId*</td>
+                                  <tr><td style="width:150px;">keySSI*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_createAnchorSubscription_anchorId">
+                                      <div id="d2e199_createAnchorSubscription_keySSI">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
@@ -3187,7 +3232,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/anchor/unsubscribe/{anchorId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/anchor/unsubscribe/{keySSI}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -3208,7 +3253,7 @@ except ApiException as e:
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-AnchoringService-deleteAnchorSubscription-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE\
-"https://localhost:8080/anchor/unsubscribe/{anchorId}?subscriberId="</code></pre>
+"https://localhost:8080/anchor/unsubscribe/{keySSI}?subscriberId="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-AnchoringService-deleteAnchorSubscription-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3224,10 +3269,10 @@ public class AnchoringServiceApiExample {
     public static void main(String[] args) {
         
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | 
         String subscriberId = subscriberId_example; // String | 
         try {
-            apiInstance.deleteAnchorSubscription(anchorId, subscriberId);
+            apiInstance.deleteAnchorSubscription(keySSI, subscriberId);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#deleteAnchorSubscription");
             e.printStackTrace();
@@ -3243,10 +3288,10 @@ public class AnchoringServiceApiExample {
 
     public static void main(String[] args) {
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | 
         String subscriberId = subscriberId_example; // String | 
         try {
-            apiInstance.deleteAnchorSubscription(anchorId, subscriberId);
+            apiInstance.deleteAnchorSubscription(keySSI, subscriberId);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#deleteAnchorSubscription");
             e.printStackTrace();
@@ -3259,13 +3304,13 @@ public class AnchoringServiceApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-AnchoringService-deleteAnchorSubscription-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *anchorId = anchorId_example; // 
+                              <pre class="prettyprint"><code class="language-cpp">String *keySSI = keySSI_example; // 
 String *subscriberId = subscriberId_example; // 
 
 AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
 
 // Deletes the subscription
-[apiInstance deleteAnchorSubscriptionWith:anchorId
+[apiInstance deleteAnchorSubscriptionWith:keySSI
     subscriberId:subscriberId
               completionHandler: ^(NSError* error) {
                             if (error) {
@@ -3279,7 +3324,7 @@ AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var OpenDsuCommunicationApIs = require('open_dsu_communication_ap_is');
 
 var api = new OpenDsuCommunicationApIs.AnchoringServiceApi()
-var anchorId = anchorId_example; // {{String}} 
+var keySSI = keySSI_example; // {{String}} 
 var subscriberId = subscriberId_example; // {{String}} 
 
 var callback = function(error, data, response) {
@@ -3289,7 +3334,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.deleteAnchorSubscription(anchorId, subscriberId, callback);
+api.deleteAnchorSubscription(keySSI, subscriberId, callback);
 </code></pre>
                             </div>
 
@@ -3311,13 +3356,13 @@ namespace Example
         {
 
             var apiInstance = new AnchoringServiceApi();
-            var anchorId = anchorId_example;  // String | 
+            var keySSI = keySSI_example;  // String | 
             var subscriberId = subscriberId_example;  // String | 
 
             try
             {
                 // Deletes the subscription
-                apiInstance.deleteAnchorSubscription(anchorId, subscriberId);
+                apiInstance.deleteAnchorSubscription(keySSI, subscriberId);
             }
             catch (Exception e)
             {
@@ -3334,11 +3379,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiAnchoringServiceApi();
-$anchorId = anchorId_example; // String | 
+$keySSI = keySSI_example; // String | 
 $subscriberId = subscriberId_example; // String | 
 
 try {
-    $api_instance->deleteAnchorSubscription($anchorId, $subscriberId);
+    $api_instance->deleteAnchorSubscription($keySSI, $subscriberId);
 } catch (Exception $e) {
     echo 'Exception when calling AnchoringServiceApi->deleteAnchorSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -3351,11 +3396,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AnchoringServiceApi;
 
 my $api_instance = WWW::SwaggerClient::AnchoringServiceApi->new();
-my $anchorId = anchorId_example; # String | 
+my $keySSI = keySSI_example; # String | 
 my $subscriberId = subscriberId_example; # String | 
 
 eval { 
-    $api_instance->deleteAnchorSubscription(anchorId => $anchorId, subscriberId => $subscriberId);
+    $api_instance->deleteAnchorSubscription(keySSI => $keySSI, subscriberId => $subscriberId);
 };
 if ($@) {
     warn "Exception when calling AnchoringServiceApi->deleteAnchorSubscription: $@\n";
@@ -3371,12 +3416,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AnchoringServiceApi()
-anchorId = anchorId_example # String | 
+keySSI = keySSI_example # String | 
 subscriberId = subscriberId_example # String | 
 
 try: 
     # Deletes the subscription
-    api_instance.delete_anchor_subscription(anchorId, subscriberId)
+    api_instance.delete_anchor_subscription(keySSI, subscriberId)
 except ApiException as e:
     print("Exception when calling AnchoringServiceApi->deleteAnchorSubscription: %s\n" % e)</code></pre>
                             </div>
@@ -3390,11 +3435,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">anchorId*</td>
+                                  <tr><td style="width:150px;">keySSI*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_deleteAnchorSubscription_anchorId">
+                                      <div id="d2e199_deleteAnchorSubscription_keySSI">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
@@ -3473,7 +3518,7 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/anchor/versions/{anchorId}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/anchor/versions/{keySSI}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -3494,7 +3539,7 @@ except ApiException as e:
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-AnchoringService-getVersions-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
-"https://localhost:8080/anchor/versions/{anchorId}?authToken="</code></pre>
+"https://localhost:8080/anchor/versions/{keySSI}?authToken="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-AnchoringService-getVersions-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3510,10 +3555,10 @@ public class AnchoringServiceApiExample {
     public static void main(String[] args) {
         
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | keySSI base58
         String authToken = authToken_example; // String | empty, JWT, oauth, etc.
         try {
-            apiInstance.getVersions(anchorId, authToken);
+            apiInstance.getVersions(keySSI, authToken);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#getVersions");
             e.printStackTrace();
@@ -3529,10 +3574,10 @@ public class AnchoringServiceApiExample {
 
     public static void main(String[] args) {
         AnchoringServiceApi apiInstance = new AnchoringServiceApi();
-        String anchorId = anchorId_example; // String | 
+        String keySSI = keySSI_example; // String | keySSI base58
         String authToken = authToken_example; // String | empty, JWT, oauth, etc.
         try {
-            apiInstance.getVersions(anchorId, authToken);
+            apiInstance.getVersions(keySSI, authToken);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnchoringServiceApi#getVersions");
             e.printStackTrace();
@@ -3545,13 +3590,13 @@ public class AnchoringServiceApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-AnchoringService-getVersions-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *anchorId = anchorId_example; // 
+                              <pre class="prettyprint"><code class="language-cpp">String *keySSI = keySSI_example; // keySSI base58
 String *authToken = authToken_example; // empty, JWT, oauth, etc.
 
 AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
 
 // Retrive all the versions of an anchor
-[apiInstance getVersionsWith:anchorId
+[apiInstance getVersionsWith:keySSI
     authToken:authToken
               completionHandler: ^(NSError* error) {
                             if (error) {
@@ -3565,7 +3610,7 @@ AnchoringServiceApi *apiInstance = [[AnchoringServiceApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var OpenDsuCommunicationApIs = require('open_dsu_communication_ap_is');
 
 var api = new OpenDsuCommunicationApIs.AnchoringServiceApi()
-var anchorId = anchorId_example; // {{String}} 
+var keySSI = keySSI_example; // {{String}} keySSI base58
 var authToken = authToken_example; // {{String}} empty, JWT, oauth, etc.
 
 var callback = function(error, data, response) {
@@ -3575,7 +3620,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.getVersions(anchorId, authToken, callback);
+api.getVersions(keySSI, authToken, callback);
 </code></pre>
                             </div>
 
@@ -3597,13 +3642,13 @@ namespace Example
         {
 
             var apiInstance = new AnchoringServiceApi();
-            var anchorId = anchorId_example;  // String | 
+            var keySSI = keySSI_example;  // String | keySSI base58
             var authToken = authToken_example;  // String | empty, JWT, oauth, etc.
 
             try
             {
                 // Retrive all the versions of an anchor
-                apiInstance.getVersions(anchorId, authToken);
+                apiInstance.getVersions(keySSI, authToken);
             }
             catch (Exception e)
             {
@@ -3620,11 +3665,11 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiAnchoringServiceApi();
-$anchorId = anchorId_example; // String | 
+$keySSI = keySSI_example; // String | keySSI base58
 $authToken = authToken_example; // String | empty, JWT, oauth, etc.
 
 try {
-    $api_instance->getVersions($anchorId, $authToken);
+    $api_instance->getVersions($keySSI, $authToken);
 } catch (Exception $e) {
     echo 'Exception when calling AnchoringServiceApi->getVersions: ', $e->getMessage(), PHP_EOL;
 }
@@ -3637,11 +3682,11 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::AnchoringServiceApi;
 
 my $api_instance = WWW::SwaggerClient::AnchoringServiceApi->new();
-my $anchorId = anchorId_example; # String | 
+my $keySSI = keySSI_example; # String | keySSI base58
 my $authToken = authToken_example; # String | empty, JWT, oauth, etc.
 
 eval { 
-    $api_instance->getVersions(anchorId => $anchorId, authToken => $authToken);
+    $api_instance->getVersions(keySSI => $keySSI, authToken => $authToken);
 };
 if ($@) {
     warn "Exception when calling AnchoringServiceApi->getVersions: $@\n";
@@ -3657,12 +3702,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.AnchoringServiceApi()
-anchorId = anchorId_example # String | 
+keySSI = keySSI_example # String | keySSI base58
 authToken = authToken_example # String | empty, JWT, oauth, etc.
 
 try: 
     # Retrive all the versions of an anchor
-    api_instance.get_versions(anchorId, authToken)
+    api_instance.get_versions(keySSI, authToken)
 except ApiException as e:
     print("Exception when calling AnchoringServiceApi->getVersions: %s\n" % e)</code></pre>
                             </div>
@@ -3676,17 +3721,20 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">anchorId*</td>
+                                  <tr><td style="width:150px;">keySSI*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_getVersions_anchorId">
+                                      <div id="d2e199_getVersions_keySSI">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
                                                       String
                                                   </span>
                                   
+                                                      <div class="inner description">
+                                                          keySSI base58
+                                                      </div>
                                               </div>
                                                   <div class="inner required">
                                                       Required
@@ -3731,7 +3779,7 @@ except ApiException as e:
                             </table>
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - Returns the list of the versions of an AnchorId </h3>
+                            <h3> Status: 200 - Returns the list of the versions of a keySSI </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
