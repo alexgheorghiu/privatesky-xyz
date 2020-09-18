@@ -198,3 +198,57 @@ ol>li::before {
         font-size: 1rem;
     }
 }
+
+#mobile-demo__login-card .card {
+    position: absolute;
+    top: 50%;
+    left: 1rem; right: 1rem;
+    transform: translateY(-50%);
+    margin-top: -2.25rem;
+    overflow-y: auto;
+    max-height: 400px;
+    border-radius: 0;
+    padding: 0;
+}
+
+#mobile-demo__login-card .card-body {
+    display: block;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: right;
+}
+
+#mobile-demo__login-card .card-body h1 {
+    text-align: center;
+    padding: 0;
+    margin-bottom: -1rem;
+}
+
+#mobile-demo__login-card .card-body h1 span {
+    color: #4C71DE;
+    font-size: 95%;
+}
+
+#mobile-demo__login-card .card-body psk-form .container {
+    padding: 0;
+}
+
+#mobile-demo__login-card .btn.btn-primary {
+    margin: 0;
+}
+
+#mobile-demo__login-card .btn.btn-primary:focus,
+#mobile-demo__login-card .btn.btn-primary:hover {
+    margin: 1px;
+}
+
+#mobile-demo__login-card .card::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mobile-demo__login-card .card::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
