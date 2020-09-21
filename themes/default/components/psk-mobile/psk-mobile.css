@@ -55,6 +55,15 @@
     }
 }
 
+@media (max-width: 450px) {
+    .mobile {
+        height: calc(100vh - 230px) !important;
+    }
+    .mobile > header .aside-menu {
+        height: calc(100vh - 230px - 4rem) !important;
+    }
+}
+
 /* in order to emphasize slots of psk-mobile in psk-example */
 
 :host([id="demo-footer"]) .mobile {
@@ -87,5 +96,9 @@
 :host([id="mobile-demo"]) .mobile > main {
     padding: 0;
     background: linear-gradient(180deg, #5E7FE1 30%, #354F9B 100%) !important;
+}
+
+.mobile > footer {
+    z-index: 1;
 }
 
