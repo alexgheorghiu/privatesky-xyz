@@ -69,10 +69,7 @@
                 },
                 {
                     "name": "OpenDSU communication",
-                    "pageSrc": "API/OpenDSUCommunication/index.html",
-                    "options": {
-                        "type": "iframe"
-                    }
+                    "pageSrc": "API/OpenDSUCommunication/index.html"
                 },
                 {
                     "name": "Swarms",
