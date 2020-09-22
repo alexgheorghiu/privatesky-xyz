@@ -21,6 +21,9 @@
                     Content-Type: <code>application/octet-stream</code><br>
                     Content: <code>data stream</code>
                 </psk-card>
+                <psk-card title="Body">
+                    <psk-code language="JavaScript">{}</psk-code>
+                </psk-card>
                 <psk-card title="Success Response">
                     Code: <code>200 OK</code><br>
                     Content: <code>None</code>
@@ -32,7 +35,8 @@
             </psk-list>
         </psk-card>
         <psk-card title="Description">
-            This component of brick ledger allows you to execute commands (either run function defined in config or make a HTTP call)
+            This component of brick ledger allows you to execute commands.
+            Commands can either make HTTP call or be defined services.
         </psk-card>
         <psk-card title="Example">
 
@@ -71,7 +75,7 @@
             </psk-list>
         </psk-card>
         <psk-card title="Description">
-            Place bricks on top of each other starting from genesis brick 
+            Place bricks on top of each other starting from genesis initial brick.
         </psk-card>
         <psk-card title="Example">
 

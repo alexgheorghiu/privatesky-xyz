@@ -1,11 +1,11 @@
 <psk-page title="Anchoring API">
     <psk-highlight type-of-highlight="note">
-        The Anchoring component of PSK Web Server is linked with the Brick Storage component as it allows the association of
+        The Anchoring component of PSK API HUB is linked with the Brick Storage component as it allows the association of
         a set of brick hashes to a unique
         identifier called <code>anchor</code>. As explained in the description of the
         <psk-link page="apis/brick-storage">Brick Storage</psk-link>
         component,
-        a brick is stored on the PSK Web Server in a file whose name is the cryptographic hash of its content. As the
+        a brick is stored on the PSK API HUB in a file whose name is the cryptographic hash of its content. As the
         data in a brick corresponds to a block
         of data in a file, any change to that block of data will lead to the creation of a new brick. The Anchoring
         component allows the grouping of
@@ -15,7 +15,7 @@
     <psk-toc title="Table of contents"></psk-toc>
     <psk-chapter title="add anchor">
         <psk-card title="Syntax">
-            Associates an anchor to a brick id.
+            Associates an anchor to a keySSI.
             <psk-list list-type="unordered">
                 <psk-card title="URL">
                     <code>/anchor/add/:keySSI</code>
@@ -24,7 +24,10 @@
                     <code>PUT</code>
                 </psk-card>
                 <psk-card title="URL Params">
-                    <psk-code language="JavaScript">keyssi = [alphanumeric] // base58 key identifier</psk-code>
+                    <psk-code language="JavaScript">
+                        // base58 encoded key identifier
+                        keyssi = [alphanumeric]
+                    </psk-code>
                 </psk-card>
                 <psk-card title="Data Params">
                     Content-Type: <code>application/json</code><br>
@@ -33,7 +36,9 @@
                 <psk-card title="Body">
                     <psk-code language="JavaScript">{ 
                         hash: {
+                            // hashLinkSSI identifier
                             last: [hashLinkSSI],
+                            // hashLinkSSI identifier
                             new: [hashLinkSSI]
                         },
                         zkpValue: [string],
@@ -65,7 +70,10 @@
                     <code>GET</code>
                 </psk-card>
                 <psk-card title="URL Params">
-                    <psk-code language="JavaScript">keyssi = [alphanumeric] // base58 key identifier</psk-code>
+                    <psk-code language="JavaScript">
+                        // base58 encoded key identifier
+                        keyssi = [alphanumeric]
+                    </psk-code>
                 </psk-card>
                 <psk-card title="Data Params">
                     <code>None</code>

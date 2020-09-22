@@ -4,12 +4,12 @@
         storage and retrieval of bricks (blocks of data stored on the server in files identified by the block's cryptographic hash) and
         allows the grouping of different bricks under the same unique identifier (<code>anchor</code>). Each one of the three components is
         explained in more detail at the links below.
-        The PSK Web Server can also be extended to include custom services (besides the default ones below). The section
-        <a href="?API/virtualmq/overview&chapter=how-to-extend-a-virtualmq-server"> <code>How to extend a PSK Web Server</code> </a> explains in more
-        detail how a PSK Web Server can be extended.
+        The PSK API HUB can also be extended to include custom services (besides the default ones below). The section
+        <a href="?API/virtualmq/overview&chapter=how-to-extend-a-virtualmq-server"> <code>How to extend a PSK API HUB</code> </a> explains in more
+        detail how a PSK API HUB can be extended.
     </psk-highlight>
     <psk-toc title="Table of contents"></psk-toc>
-    <psk-chapter title="Default PSK Web Server services">
+    <psk-chapter title="Default PSK API HUB services">
         <psk-list list-type="unordered">
             <psk-link page="apis/api-hub/anchoring">Anchoring</psk-link>
             <psk-link page="apis/api-hub/brick-storage">Brick Storage</psk-link>
@@ -19,13 +19,13 @@
         </psk-list>
     </psk-chapter>
 
-    <psk-chapter title="How to configure and start a PSK Web Server">
-        <psk-card title="Configuring a PSK Web Server">
+    <psk-chapter title="How to configure and start a PSK API HUB">
+        <psk-card title="Configuring a PSK API HUB">
             <psk-highlight type-of-highlight="example">
                 A PSK API HUB is configured using the configuration file <code>server.json</code> located at <code>./privatesky/conf</code>.
                 If the configuration file does not exist, then a default configuration is used. Also, if the configuration file is missing fields
                 necessary for the server to start, then the missing configurations are taken from the default configuration. Below is described the
-                default PSK Web Server configuration.
+                default PSK API HUB configuration.
             </psk-highlight>
             <psk-card title="Default configuration">
 
@@ -119,7 +119,7 @@
                 <psk-card title="Configuration fields">
                     <psk-list list-type="unordered">
                         <code><b>storage</b></code>
-                            The folder in which PSK Web Server stores its files. By default, the server uses the folder <code>path-to-privatesky-installation-folder/tmp</code>
+                            The folder in which PSK API HUB stores its files. By default, the server uses the folder <code>path-to-privatesky-installation-folder/tmp</code>
                             (<code>path-to-privatesky-installation-folder</code> stores path of the folder in which PrivateSky is installed). For the server to use another folder for storage, it is necessary to add the folder's path in the the configuration file's
                             (<code>server.json</code>) <code>storage</code> property.
                             <psk-card title="Example">
@@ -137,9 +137,9 @@
                                 </psk-highlight>
                             </psk-card>
                         <code><b>sslFolder</b></code>
-                            The folder in which Psk Web Server looks for  SSL certificates when started. If the folder contains certificates, then
-                            the PSK Web Server is started as a HTTPS server; otherwise, PKS Web Server is a HTTP server. By default, PSK Web server
-                            is a HTTP server (<code>sslFolder</code> is empty). If SSL certificates are copied into the <code>sslFolder</code>, then Psk Web Server is
+                            The folder in which PSK API HUB looks for SSL certificates when started. If the folder contains certificates, then
+                            the PSK API HUB is started as a HTTPS server; otherwise, PKS Web Server is a HTTP server. By default, PSK API HUB
+                            is a HTTP server (<code>sslFolder</code> is empty). If SSL certificates are copied into the <code>sslFolder</code>, then PSK API HUB is
                             started as a HTTPS server.<br><br>
                         <code><b>port</b></code>
                             The port that the server uses to listen for requests. By default, the port 8080 is used.
@@ -157,7 +157,7 @@
                             acts as a forwarder for the messages that arrive in <psk-link page="apis/api-hub/virtualmq">virtualMQ</psk-link>.
 
                         <code><b>preventRateLimit</b></code>
-                            A flag that determines if the PSK Web Server's throttling component is enabled. By default, throttling is disabled.
+                            A flag that determines if the PSK API HUB's throttling component is enabled. By default, throttling is disabled.
 
                         <code><b>activeEndpoints</b></code>
                             An array which contains the names of the services that the server provides. By default, the server provides four services:
@@ -204,9 +204,9 @@
         </psk-card>
     </psk-chapter>
 
-    <psk-chapter title="How to create a PSK Web Server">
+    <psk-chapter title="How to create a PSK API HUB">
         <psk-card title="createPskWebServer">
-            The <code>createPskWebServer()</code> method creates and starts a  PSK Web Server.
+            The <code>createPskWebServer()</code> method creates and starts a PSK API HUB.
             <psk-card title="Syntax">
                 <psk-code language="JavaScript">
                     createPskWebServer(port, rootFolder, sslConfig, callback)
@@ -233,7 +233,7 @@
             </psk-card>
 
             <psk-card title="Description">
-                The <code>createPskWebServer()</code> method starts a PSK Web Server and returns its instance.
+                The <code>createPskWebServer()</code> method starts a PSK API HUB and returns its instance.
             </psk-card>
 
             <psk-card title="Examples">
@@ -255,7 +255,7 @@
         </psk-card>
     </psk-chapter>
 
-    <psk-chapter title="How to extend a PSK Web Server">
+    <psk-chapter title="How to extend a PSK API HUB">
         The <code>createPskWebServer()</code> method starts a HTTP/HTTPS server and return the server instance. As a result, the
         server can be dynamically
         extended using the API below.
