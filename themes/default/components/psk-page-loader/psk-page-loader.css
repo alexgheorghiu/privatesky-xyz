@@ -1,8 +1,0 @@
-:host {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-:host([id='mobile-demo__load-page']) psk-page {
-    height: 100%;
-}

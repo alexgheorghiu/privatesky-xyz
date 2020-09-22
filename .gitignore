@@ -16,6 +16,7 @@ log.txt
 .versions/
 .vimrc.local
 node_modules/
+/dev/
 $RECYCLE.BIN/
 
 .DS_Store
