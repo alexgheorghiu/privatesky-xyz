@@ -1,0 +1,84 @@
+/* overrides for current default theme */
+
+:host {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* height: 100% of content from a psk-page, only for showcase */
+
+.mobile {
+    width: 100% !important;
+    height: calc(100vh - 230px) !important;
+    background-color: #FAFAFA;
+}
+
+.mobile > header .aside-menu {
+    height: calc(100vh - 230px - 4rem) !important;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1366px) {
+    .mobile {
+        height: calc(100vh - 275px) !important;
+    }
+    .mobile > header .aside-menu {
+        height: calc(100vh - 275px - 4rem) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .mobile {
+        height: calc(100vh - 325px) !important;
+    }
+    .mobile > header .aside-menu {
+        height: calc(100vh - 325px - 4rem) !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .mobile {
+        height: calc(100vh - 230px) !important;
+    }
+    .mobile > header .aside-menu {
+        height: calc(100vh - 230px - 4rem) !important;
+    }
+}
+
+/* in order to emphasize slots of psk-mobile in psk-example */
+
+:host([id="demo-footer"]) .mobile {
+    height: auto !important;
+}
+:host([id="demo-footer"]) .mobile > header,
+:host([id="demo-footer"]) .mobile > main {
+    display: none;
+}
+:host([id="demo-options"]) .mobile {
+    height: 200px !important;
+}
+:host([id="demo-options"]) .mobile > header .options-menu {
+    visibility: hidden;
+    display: none;
+}
+:host([id="demo-options"]) .mobile > header .options-menu[hidden] {
+    visibility: visible !important;
+    display: block !important;
+}
+:host([id="demo-content"]) .mobile {
+    height: 350px !important;
+}
+:host([id="demo-content"]) .mobile > header .aside-menu {
+    height: calc(350px - 4rem) !important;
+}
+
+/* mobile demo */
+
+:host([id="mobile-demo"]) .mobile > main {
+    padding: 0;
+    background: linear-gradient(180deg, #5E7FE1 30%, #354F9B 100%) !important;
+}
+
+.mobile > footer {
+    z-index: 1;
+}
