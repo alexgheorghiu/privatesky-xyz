@@ -277,6 +277,273 @@
                 }
             </psk-code>
         </psk-chapter>
-
     </psk-chapter>
+    
+    <psk-chapter title="Model API methods">
+        In the following chapters we will present the mothods exposed via Model API.
+        <psk-highlight type-of-highlight="example">
+            Note: These methods are available only for the <code>root model</code>, the one created with the method <code>setModel(model)</code> exposed from <code>ContainerController</code>.
+        </psk-highlight>
+    </psk-chapter>
+
+	<psk-chapter title="setChainValue">
+        <psk-card title="Description">
+            <p>The <code>setChainValue()</code> method sets the value to the given chain inside the model. If the chain does not exists, the chain is created.</p>
+            <p>The other way to set a value to a specific chain is by accessing the keys of the model (e.g. <code>form.name.label</code>). This is similar to <code>setChainValue("form.name.label", newLabel)</code>, excepts that using this method you are exposed to errors.</p>
+            <p>Error example for second way: Using the chain <code>"form.name.label"</code>, but inside form there is no key named <code>name</code>, will trigger JavaScript error <code>Uncaught TypeError: Cannot read property 'label' of undefined</code>. But using the first method, with <code>setChainValue</code>, the chain will be created.</p>
+        </psk-card>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                setChainValue(chain, newValue)
+            </psk-code>
+            
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>chain : string</b></code>
+                        The chain inside the model where the new value will be assigned. If <code>null</code> or <code>undefined</code>, nothing will be assigned.<br><br>
+                    <code><b>newValue : any | null</b></code>
+                        The value that will be assigned to the provided chain. It also can be null and even a JavaScript object.<br><br>
+                </psk-list>
+            </psk-card>
+
+            <psk-card title="Example">
+                In the following example we will present the usage of <code>setChainValue</code> method and also the way of accessing the keys of the model directly.
+                <psk-code language="JavaScript">
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                    export default class DocumentationModelController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(this.getInitialModel());
+
+                            let name = this.model.getChainValue("name.value");
+                        }
+
+                        getInitialModel = () => {
+                            return {
+                                name: {
+                                    label: "Name",
+                                    name: "name",
+                                    required: true,
+                                    placeholder: "Name here...",
+                                    value: 'John'
+                                },
+                                email: {
+                                    label: "Email address",
+                                    name: "email",
+                                    required: true,
+                                    placeholder: "Email address here...",
+                                    value: 'john@privatesky.xyz'
+                                },
+                                age: {
+                                    label: "Your age",
+                                    name: "age",
+                                    required: false,
+                                    placeholder: "Your age here...",
+                                    value: '20'
+                                }
+                            }
+                        }
+                    }
+                </psk-code>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="getChainValue">
+        <psk-card title="Description">
+            <p>The <code>getChainValue()</code> retreives the value from the model for a specific chain given as argument to the method.</p>
+            <p>If the chain does not exists, <code>undefined</code> is returned.</p>
+        </psk-card>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                getChainValue(chain)
+            </psk-code>
+            
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>chain : string</b></code>
+                        The chain inside the model from where to retreive the value.<br><br>
+                </psk-list>
+            </psk-card>
+
+            <psk-card title="Example">
+                In the following example we will present the usage of <code>getChainValue</code> method.
+                <psk-code language="JavaScript">
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                    export default class DocumentationModelController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(this.getInitialModel());
+
+                            let name = this.model.getChainValue("name.value");
+                        }
+
+                        getInitialModel = () => {
+                            return {
+                                name: {
+                                    label: "Name",
+                                    name: "name",
+                                    required: true,
+                                    placeholder: "Name here...",
+                                    value: 'John'
+                                },
+                                email: {
+                                    label: "Email address",
+                                    name: "email",
+                                    required: true,
+                                    placeholder: "Email address here...",
+                                    value: 'john@privatesky.xyz'
+                                },
+                                age: {
+                                    label: "Your age",
+                                    name: "age",
+                                    required: false,
+                                    placeholder: "Your age here...",
+                                    value: '20'
+                                }
+                            }
+                        }
+                    }
+                </psk-code>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="onChange">
+        <psk-card title="Description">
+            <p>The <code>onChange()</code> registers a listener for a provided chain and executes the provided callback function when the value from the chain is changed. This is similar to event listeners.</p>
+            <p>At the end of the chain can be only a value, but also a sub-model, another JavaScript object. So, if any value of this sub-model is changed, the callback function will be executed.</p>
+        </psk-card>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                getChainValue(chain)
+            </psk-code>
+            
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>chain : string</b></code>
+                        The chain inside the model where to listen for changes.<br><br>
+                    <code><b>callback : Function</b></code>
+                        The callback function that will be executed when a change inside the chain is made.<br><br>
+                </psk-list>
+            </psk-card>
+
+            <psk-card title="Example">
+                In the following example we will present the usage of <code>onChange</code> method.
+                <psk-code language="JavaScript">
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                    export default class DocumentationModelController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(this.getInitialModel());
+
+                            this.model.onChange("email", () => {
+                                console.log(this.model.toObject("email")); // This will display the JavaScript object representation of the proxified sub-model email every time a value inside it has beed changed
+                            }); 
+                        }
+
+                        getInitialModel = () => {
+                            return {
+                                name: {
+                                    label: "Name",
+                                    name: "name",
+                                    required: true,
+                                    placeholder: "Name here...",
+                                    value: 'John'
+                                },
+                                email: {
+                                    label: "Email address",
+                                    name: "email",
+                                    required: true,
+                                    placeholder: "Email address here...",
+                                    value: 'john@privatesky.xyz'
+                                },
+                                age: {
+                                    label: "Your age",
+                                    name: "age",
+                                    required: false,
+                                    placeholder: "Your age here...",
+                                    value: '20'
+                                }
+                            }
+                        }
+                    }
+                </psk-code>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
+    <psk-chapter title="toObject">
+        <psk-card title="Description">
+            <p>This function is returning the object representanion of the proxified model.</p>
+            <p>It accepts only one optional parameter, chain. If no chain is provided, the root model becomes the source.</p>
+        </psk-card>
+
+        <psk-card title="Syntax">
+            <psk-code language="JavaScript">
+                toObject(chain)
+            </psk-code>
+            
+            <psk-card title="Parameters">
+                <psk-list list-type="unordered">
+                    <code><b>chain : string</b></code>
+                        The chain inside the model where to retreive the object representation.<br><br>
+                </psk-list>
+            </psk-card>
+
+            <psk-card title="Example">
+                In the following example we will present the usage of <code>toObject</code> method.
+                <psk-code language="JavaScript">
+                    import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+                    export default class DocumentationModelController extends ContainerController {
+                        constructor(element) {
+                            super(element);
+                            this.model = this.setModel(this.getInitialModel());
+
+                            this.model.onChange("email", () => {
+                                console.log(this.model.toObject("email")); // This will display the JavaScript object representation of the proxified sub-model email every time a value inside it has beed changed
+                            }); 
+
+                            let fullModel = this.model.toObject();
+                            let nameSubModel = this.model.toObject("name");
+                        }
+
+                        getInitialModel = () => {
+                            return {
+                                name: {
+                                    label: "Name",
+                                    name: "name",
+                                    required: true,
+                                    placeholder: "Name here...",
+                                    value: 'John'
+                                },
+                                email: {
+                                    label: "Email address",
+                                    name: "email",
+                                    required: true,
+                                    placeholder: "Email address here...",
+                                    value: 'john@privatesky.xyz'
+                                },
+                                age: {
+                                    label: "Your age",
+                                    name: "age",
+                                    required: false,
+                                    placeholder: "Your age here...",
+                                    value: '20'
+                                }
+                            }
+                        }
+                    }
+                </psk-code>
+            </psk-card>
+        </psk-card>
+    </psk-chapter>
+
 </psk-page>
