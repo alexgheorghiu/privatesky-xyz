@@ -1,10 +1,3 @@
-/* overrides for current default theme */
-
-:host {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
 /* height: 100% of content from a psk-page, only for showcase */
 
 .mobile {
@@ -51,6 +44,13 @@
 
 /* in order to emphasize slots of psk-mobile in psk-example */
 
+:host([id="demo-title"]) .mobile {
+    height: auto !important;
+}
+:host([id="demo-title"]) .mobile > main {
+    display: none;
+}
+
 :host([id="demo-footer"]) .mobile {
     height: auto !important;
     padding-bottom: 5px;
@@ -77,13 +77,8 @@
     height: calc(350px - 4rem) !important;
 }
 
-/* mobile demo */
-
-:host([id="mobile-demo"]) .mobile > main {
-    padding: 0;
-    background: linear-gradient(180deg, #5E7FE1 30%, #354F9B 100%) !important;
-}
-
-.mobile > footer {
-    z-index: 1;
+@media (max-width: 550px) {
+    :host([id="demo-title"]) .mobile > header .title {
+        font-size: 3vw;
+    }
 }
