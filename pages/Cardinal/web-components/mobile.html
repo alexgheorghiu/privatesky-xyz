@@ -11,7 +11,31 @@
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
-        <p>There are three slots available for this component named "footer", "options" and "content".</p>
+        <p>There are four slots available for this component named "title", "footer", "options" and "content".</p>
+
+        <psk-chapter title="Title">
+            <p>The developer has the possibility to use a custom title.</p>
+            <p>If a slot name "title" is given, the title property from component is ignored.</p>
+
+            <psk-example class="mobile-example">
+                <psk-mobile id="demo-title" disable-sidebar>
+                    <section slot="title">
+                        <psk-icon icon="cloud" color="#FFFFFF"></psk-icon>
+                        <span>PrivateSky <strong>Application</strong></span>
+                    </section>
+                </psk-mobile>
+            </psk-example>
+
+            <psk-code language="HTML">
+                <psk-mobile id="demo-title" disable-sidebar>
+                    <section slot="title">
+                        <psk-icon icon="cloud" color="#FFFFFF"></psk-icon>
+                        <span>PrivateSky <strong>Application</strong></span>
+                    </section>
+                </psk-mobile>
+            </psk-code>
+
+        </psk-chapter>
 
         <psk-chapter title="Footer">
             <p>The developer can provide a footer to a mobile page through this slot. He must use one of these two components <strong>psk-button-link</strong> and <psk-link tag="psk-link">psk-link</psk-link> with the corresponding attributes.</p>
@@ -181,10 +205,10 @@
         </psk-code>
     </psk-chapter>
 
-    <psk-chapter title="Another more complex example">
-        <psk-link page="Cardinal/web-components/mobile-demo_sign-in">
-            <psk-button>Demo application</psk-button>
-        </psk-link>
-    </psk-chapter>
+<!--    <psk-chapter title="Another more complex example">-->
+<!--        <psk-link page="Cardinal/web-components/mobile-demo_sign-in">-->
+<!--            <psk-button>Demo application</psk-button>-->
+<!--        </psk-link>-->
+<!--    </psk-chapter>-->
 
 </psk-page>
