@@ -1,8 +1,7 @@
 <psk-page title="Anchoring API">
     <psk-highlight type-of-highlight="note">
-        The Anchoring component of PSK API HUB is linked with the Brick Storage component as it allows the association of
-        a set of brick hashes to a unique
-        identifier called <code>anchor</code>. As explained in the description of the
+        The Anchoring, component of PSK API HUB, is linked with the Brick Storage component as it allows the association of
+        a set of brick hashes to a unique identifier called <code>anchor</code>. As explained in the description of the
         <psk-link page="apis/brick-storage">Brick Storage</psk-link>
         component,
         a brick is stored on the PSK API HUB in a file whose name is the cryptographic hash of its content. As the
@@ -10,6 +9,8 @@
         of data in a file, any change to that block of data will lead to the creation of a new brick. The Anchoring
         component allows the grouping of
         different bricks that correspond to different versions of the same block inside a file under the same <code>anchor</code>.
+        Anchoring aims to facilitate the creation of blockchain platforms that support multiple blockchains and even more it should
+        support heterogeneous blockchains (blockchains with different capabilities and different security models)
     </psk-highlight>
 
     <psk-toc title="Table of contents"></psk-toc>

@@ -1,12 +1,8 @@
 <psk-page title="Brick Storage API">
     <psk-highlight type-of-highlight="note">
-        The Brick Storage component of VirtualMQ allows the storage and retrieval of bricks (blocks of data from a
-        file).
-        As a brick is uniquely identified by the cryptographic hash of its content, any brick stored in VirtualMQ is an
-        unique block of data. Also, when receiving
-        a brick, VirtualMQ computes the hash of the data and compares it with the brick id included in the request
-        parameters and if the two do not coincide, the data is discarded and the
-        an error is thrown.
+        The Bricks Storages are imagined as simple web services that are capable of storing 
+        and retrieving a brick for those clients that know the hash of the brick. 
+        The basic implementation of a Brick Storages is very simple and offers a tool that works fine in an open, permissionless network. 
     </psk-highlight>
 
     <psk-toc title="Table of contents"></psk-toc>
