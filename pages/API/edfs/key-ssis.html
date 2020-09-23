@@ -67,12 +67,17 @@
             Seed based KeySSI's are not self-certifying (do not contain a reference to the public key in their identifiers).
             The image and table below show the Seed based KeySSI family and the purposes of each KeySSI:
             <psk-img src="/assets/images/edfs/seed_based_keyssis.png"></psk-img>
-            <psk-table header="true">
-                KeySSI type | Purpose
-                SeedSSI | its identifier has the format <code>ssi:seed:ePI.pharma:RANDOM_SEED_KEY:HASH_RANDOM_KEY</code> <br> allows the sharing of DSUs <br>its associated DSU is encrypted with <code>RANDOM_SEED_KEY</code> and is anchored through its derived <code>zaSSI</code>
+            <!-- SeedSSI | its identifier has the format <code>ssi:seed:ePI.pharma:RANDOM_SEED_KEY:HASH_RANDOM_KEY</code> <br> allows the sharing of DSUs <br>its associated DSU is encrypted with <code>RANDOM_SEED_KEY</code> and is anchored through its derived <code>zaSSI</code>
                 PasswordSSI | offers access to a DSU through a key easy to remember by a human user <br> usually is not shared with others<br> its DSU is anchored through its derived <code>zaSSI</code>
                 ConstSSI | its associated DSU is anchored through its derived <code>zaSSI</code> and cannot be updated
-                zaSSI | used for DSU anchoring <br> does not allow the reading/updating of DSUs
+                zaSSI | used for DSU anchoring <br> does not allow the reading/updating of DSUs -->
+            <psk-table header="true">
+                KeySSI type | Purpose
+                secret | Owning a SecretSSI provides total control (ownership) over the anchored DSU <br/> Example: <br/>ssi:secret:domain:secret_key_base58:hash_public_key_base58:v0
+                anchor | Owning an AnchorSSI provides anchoring (write access). The possession of the SecretSSI is required for anchoring new versions of the DSU. An AnchorSSI  provides read access to the confidential information from the DSU and to the secret part of the DSU (as will be defined in the next chapter).The confidential and the secret part are not identical (despite some potential confusion from the name) <br/> Example: <br/> ssi:anchor:domain:hash(SecretSSI):hash_public_key_base58:v0
+                read | Owning a SecretSSI provides read access to the confidential part of the DSU. Depending on the DSU type, typically here confidential part contains business-specific information that is shared to a larger group.<br/>Example:<br/>ssi:read:domain:hash(AnchorSSI):hash_public_key_base58:v0
+                public | Owning a SecretSSI provides read access to the public part of the DSU. The public and confidential parts are not the same, the public contains public keys or other types of information that are not confidential in any important way.<br/>Example: <br/>ssi:public:domain:hash(ReadSSI):hash_public_key_base58:v0
+                za | Owning a zaSSI provides no access. Having a zaSSI indicates that a SecretSSI exists and has a specified number of versions<br/>Example: <br/>ssi:zar:domain:hash(PublicSSI):hash_public_key_base58:v0
             </psk-table>
         </psk-chapter>
     </psk-chapter>

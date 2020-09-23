@@ -345,36 +345,6 @@
                             "pageSrc": "Cardinal/web-components/mobile.html"
                         },
                         {
-                            "indexed": false,
-                            "name": "mobile-demo_sign-in",
-                            "path": "/mobile/demo/sign-in",
-                            "pageSrc": "Cardinal/web-components/mobile-demo/sign-in.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-demo_sign-up",
-                            "path": "/mobile/demo/sign-up",
-                            "pageSrc": "Cardinal/web-components/mobile-demo/sign-up.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-demo_home",
-                            "path": "/mobile/demo",
-                            "pageSrc": "Cardinal/web-components/mobile-demo/home.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-demo_random",
-                            "path": "/mobile/demo/random",
-                            "pageSrc": "Cardinal/web-components/mobile-demo/random.html"
-                        },
-                        {
-                            "indexed": false,
-                            "name": "mobile-demo_about",
-                            "path": "/mobile/demo/about",
-                            "pageSrc": "Cardinal/web-components/mobile-demo/about.html"
-                        },
-                        {
                             "name": "Page Not Found",
                             "tags": "psk-page-not-found"
                         },
