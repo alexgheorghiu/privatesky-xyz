@@ -18,6 +18,10 @@
     overflow-x: hidden;
 }
 
+.mobile > main .main-cover {
+    position: absolute !important;
+}
+
 @media (max-width: 1366px) {
     .mobile {
         height: calc(100vh - 275px) !important;
@@ -49,6 +53,7 @@
 
 :host([id="demo-footer"]) .mobile {
     height: auto !important;
+    padding-bottom: 5px;
 }
 :host([id="demo-footer"]) .mobile > header,
 :host([id="demo-footer"]) .mobile > main {
