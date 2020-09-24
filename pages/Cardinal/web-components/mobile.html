@@ -18,7 +18,7 @@
             <p>If a slot name "title" is given, the title property from component is ignored.</p>
 
             <psk-example class="mobile-example">
-                <psk-mobile id="demo-title" disable-sidebar>
+                <psk-mobile mode="demo" id="demo-title" disable-sidebar>
                     <section slot="title">
                         <psk-icon icon="cloud" color="#FFFFFF"></psk-icon>
                         <span>PrivateSky <strong>Application</strong></span>
@@ -41,7 +41,7 @@
             <p>The developer can provide a footer to a mobile page through this slot. He must use one of these two components <strong>psk-button-link</strong> and <psk-link tag="psk-link">psk-link</psk-link> with the corresponding attributes.</p>
 
             <psk-example class="mobile-example">
-                <psk-mobile id="demo-footer">
+                <psk-mobile mode="demo" id="demo-footer">
                     <div slot="footer">
                         <psk-button-link name="Cloud" icon="cloud" page="Cardinal/web-components/mobile"></psk-button-link>
                         <psk-button-link name="Messages" icon="envelope" page="Cardinal/web-components/mobile"></psk-button-link>
@@ -67,7 +67,7 @@
             <p>There is also the possibility to display a menu with options for each page rendered with psk-mobile.</p>
 
             <psk-example class="mobile-example">
-                <psk-mobile title="Options" disable-sidebar id="demo-options">
+                <psk-mobile mode="demo" title="Options" disable-sidebar id="demo-options">
                     <div slot="options">
                         <psk-link page="Cardinal/web-components/mobile">Option 1</psk-link>
                         <psk-button-link page="Cardinal/web-components/mobile">Option 2</psk-button-link>
@@ -100,7 +100,7 @@
                             callback(null, sidebarItems);
                         });
                     </script>
-                    <psk-mobile title="Content" id="demo-content">
+                    <psk-mobile mode="demo" title="Content" id="demo-content">
                         <div slot="content">
                             <psk-card title="Hello World! 👋">
                                 <p>This is our entry in the world of mobile devices!</p>
@@ -126,7 +126,7 @@
         <p>Your final mobile application will look similar with the one listed bellow.</p>
 
         <psk-example class="mobile-example">
-            <psk-mobile title="Demo" controller-name="MobileController">
+            <psk-mobile mode="demo" title="Demo" controller-name="MobileController">
                 <div slot="content">
                     <psk-description title="Where did it all come from?">
                         <h6>This phone.</h6>
