@@ -1,14 +1,13 @@
 <psk-page title="Key SSIs">
     <psk-toc title="In this section"></psk-toc>
     <psk-chapter title="Introduction">
-        The two purposes of the KeySSI concept are, firstly,  to provide blockchain-anchored identities for things, processes but
-        potentially for companies and individuals. The concept of KeySSI is more general than the concept proposed by
-        the <a href="https://www.w3.org/TR/did-core/">W3C DID web standard</a>. Secondly, KeySSIs
-        are used as secret (symmetrical) encryption/decryption keys for DSUs (or for parts of the DSUs).
-        A KeySSI never comes alone, but is accompanied by KeySSIs derived from it or KeySSIs from which it was derived.
-        Derivation can be understood as a form of delegation, someone who holds a KeySSI with a higher access level
-        delegates access to lower levels. Based on this derivation, KeySSIs are used to implement an access control mechanism
-        on DSUs.
+        The purpose of the KeySSI concept is to provide blockchain-anchored identities for things and processes, 
+        but potentially also for companies and individuals. 
+        The concept of KeySSI is more general than the concept proposed by the <a href="https://www.w3.org/TR/did-core/">W3C DID web standard</a>. 
+        DIDs and KeySSIs are two different methods of creating SSIs (Self Sovereign Identifiers).<br/>
+        Also, an important innovation proposed by KeySSI is that they are used as secret (symmetrical) encryption/decryption keys for DSUs (or for parts of the DSUs).<br/>
+        A KeySSI never comes alone but is accompanied by KeySSIs derived from it or from which it was derived. Derivation can be understood as a form of access delegation:
+        someone who holds a KeySSI with a higher access level delegates accesses to lower levels.
     </psk-chapter>
     <psk-chapter title="Key SSI syntax">
         The syntax of KeySSIs is inspired by the <a href="https://www.w3.org/TR/did-core/">W3C DID</a>, but the KeySSI starts with the “ssi” string and the DID
@@ -67,10 +66,6 @@
             Seed based KeySSI's are not self-certifying (do not contain a reference to the public key in their identifiers).
             The image and table below show the Seed based KeySSI family and the purposes of each KeySSI:
             <psk-img src="/assets/images/edfs/seed_based_keyssis.png"></psk-img>
-            <!-- SeedSSI | its identifier has the format <code>ssi:seed:ePI.pharma:RANDOM_SEED_KEY:HASH_RANDOM_KEY</code> <br> allows the sharing of DSUs <br>its associated DSU is encrypted with <code>RANDOM_SEED_KEY</code> and is anchored through its derived <code>zaSSI</code>
-                PasswordSSI | offers access to a DSU through a key easy to remember by a human user <br> usually is not shared with others<br> its DSU is anchored through its derived <code>zaSSI</code>
-                ConstSSI | its associated DSU is anchored through its derived <code>zaSSI</code> and cannot be updated
-                zaSSI | used for DSU anchoring <br> does not allow the reading/updating of DSUs -->
             <psk-table header="true">
                 KeySSI type | Purpose
                 secret | Owning a SecretSSI provides total control (ownership) over the anchored DSU <br/> Example: <br/>ssi:secret:domain:secret_key_base58:hash_public_key_base58:v0
